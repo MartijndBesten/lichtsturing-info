@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Wat is DALI? · LiveLink Knowledge Hub</title>
+<title>Wat is DALI? · Lichtsturing.info</title>
 <meta name="description" content="Wat DALI en DALI-2 zijn, welke rollen er op een DALI-lijn zitten en waar je bij engineering op let.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#ffffff">
-<link rel="icon" href="data:,">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 32 32&#39;%3E%3Crect width=&#39;32&#39; height=&#39;32&#39; rx=&#39;7&#39; fill=&#39;%23072d78&#39;/%3E%3Cpath d=&#39;M11.5 8.5v15h10&#39; stroke=&#39;%23fff&#39; stroke-width=&#39;3.6&#39; fill=&#39;none&#39; stroke-linecap=&#39;square&#39;/%3E%3C/svg%3E">
 
 <link rel="stylesheet" href="/assets/site.css">
 
@@ -18,9 +18,9 @@
 <a class="skip-link" href="#inhoud">Naar de inhoud</a>
 <header class="site-header">
 <div class="wrap header-row">
-<a class="site-name" href="/nl/"><span class="brand-first">LiveLink</span> <span class="brand-rest">Knowledge Hub</span></a>
+<a class="site-name" href="/nl/"><span class="brand-stack"><span class="brand-mark"><span class="brand-first">Lichtsturing</span><span class="brand-rest">.info</span></span><span class="brand-tagline">Kennisplatform voor professionele lichtsturing</span></span></a>
 <nav class="site-nav" aria-label="Hoofdnavigatie"><ul>
-<li><a href="/nl/begrijpen/" aria-current="true">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Systeem kiezen</a></li><li><a href="/nl/werken/">Ermee werken</a></li>
+<li><a href="/nl/begrijpen/" aria-current="true">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Oplossing kiezen</a></li><li><a href="/nl/werken/">Ermee werken</a></li>
 <li class="nav-search"><a href="/nl/zoeken/">Zoeken</a></li>
 </ul></nav>
 <button type="button" class="practice-toggle practice-toggle--header" data-practice-toggle aria-pressed="false" hidden><span class="practice-switch"></span><span class="practice-toggle-label">Oefenvragen tonen</span></button>
@@ -28,7 +28,7 @@
 <details class="nav-menu">
 <summary><span class="nav-menu-icon"></span><span class="nav-menu-label">Menu</span></summary>
 <nav class="nav-menu-panel" aria-label="Hoofdnavigatie"><ul>
-<li><a href="/nl/begrijpen/" aria-current="true">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Systeem kiezen</a></li><li><a href="/nl/werken/">Ermee werken</a></li>
+<li><a href="/nl/begrijpen/" aria-current="true">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Oplossing kiezen</a></li><li><a href="/nl/werken/">Ermee werken</a></li>
 <li class="nav-search"><a href="/nl/zoeken/">Zoeken</a></li>
 </ul><button type="button" class="practice-toggle practice-toggle--menu" data-practice-toggle aria-pressed="false" hidden><span class="practice-switch"></span><span class="practice-toggle-label">Oefenvragen tonen</span></button></nav>
 </details>
@@ -93,40 +93,41 @@
 <figure class="topology" data-module="topology" id="demo-dali-basis" data-flow-marker="fl-dali-basis">
 <figcaption class="topology-title">DALI in één schema</figcaption>
 <p class="topology-summary">Twee gescheiden verbindingen naar het armatuur: voeding en besturing.</p>
+<div class="topology-mode" role="group" aria-label="Detailniveau"><label><input type="radio" name="mode-dali-basis" value="eenvoudig" checked><span>Eenvoudig</span></label><label><input type="radio" name="mode-dali-basis" value="technisch"><span>Technisch</span></label></div>
 <div class="topology-layout">
 <div class="topology-canvas">
 
-<svg class="topology-defs" aria-hidden="true" focusable="false" width="0" height="0"><defs><symbol id="sym-dali-basis-gateway" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="12" height="10" rx="1"/><path d="M5 6.5h6M9.5 5l1.5 1.5L9.5 8M11 9.5H5M6.5 8L5 9.5 6.5 11"/></g></symbol><symbol id="sym-dali-basis-sensor" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3.5h6"/><path d="M5.5 3.5a2.5 2.5 0 0 0 5 0"/><path d="M4 9a5 5 0 0 0 8 0M2.5 11.5a7.5 7.5 0 0 0 11 0"/></g></symbol><symbol id="sym-dali-basis-armatuur" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3.5" width="12" height="2.5" rx=".5"/><path d="M5 8.5l-1.2 3.5M8 8.5V12M11 8.5l1.2 3.5"/></g></symbol><symbol id="sym-dali-basis-voeding" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M4.6 8c.9-1.9 2-1.9 3.4 0s2.5 1.9 3.4 0"/></g></symbol><marker id="fl-dali-basis" class="flow-marker" viewBox="0 0 12 12" refX="7" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M1.5 1.5L10.5 6L1.5 10.5Z"/></marker></defs></svg>
-<svg class="topology-svg topology-svg--mobiel" data-layout="mobiel" viewBox="0 0 360 296" role="img" aria-labelledby="svgt-dali-basis svgd-dali-basis" preserveAspectRatio="xMidYMin meet">
+<svg class="topology-defs" aria-hidden="true" focusable="false" width="0" height="0"><defs><symbol id="sym-dali-basis-gateway" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="12" height="8" rx="1.2"/><path d="M5.6 8h4.8M8.9 6.2L10.6 8l-1.7 1.8M7.1 6.2L5.4 8l1.7 1.8"/></g></symbol><symbol id="sym-dali-basis-sensor" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 5a3.5 3.5 0 0 1 7 0v.8h-7z"/><path d="M4.2 9a5.4 5.4 0 0 0 7.6 0M2.6 11.4a7.7 7.7 0 0 0 10.8 0"/></g></symbol><symbol id="sym-dali-basis-armatuur" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="3" width="11" height="3" rx="1"/><path d="M5.2 6.5L3 13M10.8 6.5L13 13" stroke-dasharray="1.8 1.6"/><path d="M8 6.5V13" stroke-dasharray="1.8 1.6"/></g></symbol><symbol id="sym-dali-basis-voeding" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="5.8"/><path d="M4.8 8c1-2 2.1-2 3.2 0s2.2 2 3.2 0"/></g></symbol><marker id="fl-dali-basis" class="flow-marker" viewBox="0 0 12 12" refX="7" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M1.5 1.5L10.5 6L1.5 10.5Z"/></marker></defs></svg>
+<svg class="topology-svg topology-svg--mobiel" data-layout="mobiel" viewBox="0 0 360 296" role="img" aria-labelledby="svgt-dali-basis svgd-dali-basis" preserveAspectRatio="xMidYMin meet" data-viewbox-full="0 0 360 296" data-viewbox-simple="0 2 360 180">
 <title id="svgt-dali-basis">DALI in één schema</title>
 <desc id="svgd-dali-basis">Ethernet/DALI Gateway · Sensor op de DALI-lijn · Armatuur met DALI · Netvoeding</desc>
 
 <g class="edges"><g class="edge" data-edge="dali-sensor" data-layer="dali" data-medium="bus" data-from="besturing" data-to="sensor"><title>DALI (besturing)</title><polyline class="edge-hit" points="180,56 180,92 64,92 64,124"></polyline><polyline class="edge-line edge-line--dali edge-line--m-bus" points="180,56 180,92 64,92 64,124"></polyline></g><g class="edge" data-edge="dali-a1" data-layer="dali" data-medium="bus" data-from="besturing" data-to="a1"><title>DALI (besturing)</title><polyline class="edge-hit" points="180,56 180,124"></polyline><polyline class="edge-line edge-line--dali edge-line--m-bus" points="180,56 180,124"></polyline><text class="edge-label" x="186" y="80" text-anchor="start">DALI</text></g><g class="edge" data-edge="dali-a2" data-layer="dali" data-medium="bus" data-from="besturing" data-to="a2"><title>DALI (besturing)</title><polyline class="edge-hit" points="180,56 180,92 296,92 296,124"></polyline><polyline class="edge-line edge-line--dali edge-line--m-bus" points="180,56 180,92 296,92 296,124"></polyline></g><g class="edge" data-edge="v-a1" data-layer="voeding" data-medium="voeding" data-from="voeding" data-to="a1"><title>230 V-voeding</title><polyline class="edge-hit" points="180,240 180,212 180,172"></polyline><polyline class="edge-line edge-line--voeding edge-line--m-voeding" points="180,240 180,212 180,172"></polyline><text class="edge-label" x="186" y="232" text-anchor="start">230 V</text></g><g class="edge" data-edge="v-a2" data-layer="voeding" data-medium="voeding" data-from="voeding" data-to="a2"><title>230 V-voeding</title><polyline class="edge-hit" points="180,240 180,212 296,212 296,172"></polyline><polyline class="edge-line edge-line--voeding edge-line--m-voeding" points="180,240 180,212 296,212 296,172"></polyline></g></g>
 <g class="nodes"><g class="node" data-node="besturing" data-category="gateway" data-level="systeem" data-part="part-dali-basis-ethernet-dali-gateway" data-url="/nl/systeem-kiezen/premium-topologie/#part-premium-topologie-ethernet-dali-gateway">
-<a class="node-link" href="#part-dali-basis-ethernet-dali-gateway" data-part="part-dali-basis-ethernet-dali-gateway" aria-label="Ethernet/DALI Gateway"><rect x="105" y="12" width="150" height="44" rx="4"></rect>
-<use href="#sym-dali-basis-gateway" x="115" y="26" width="16" height="16" class="node-icon"></use>
+<a class="node-link" href="#part-dali-basis-ethernet-dali-gateway" data-part="part-dali-basis-ethernet-dali-gateway" aria-label="Ethernet/DALI Gateway"><rect x="105" y="12" width="150" height="44" rx="6"></rect>
+<circle class="node-badge" cx="123" cy="34" r="11"></circle><use href="#sym-dali-basis-gateway" x="115" y="26" width="16" height="16" class="node-icon"></use>
 
-<text x="193" y="31.32" text-anchor="middle"><tspan x="193" dy="0">DALI-besturing</tspan><tspan x="193" dy="14">(gateway)</tspan></text><rect class="node-hit" x="99" y="6" width="162" height="56"></rect></a>
+<text x="194.5" y="31.32" text-anchor="middle"><tspan x="194.5" dy="0">DALI-besturing</tspan><tspan x="194.5" dy="14">(gateway)</tspan></text><rect class="node-hit" x="99" y="6" width="162" height="56"></rect></a>
 </g><g class="node" data-node="sensor" data-category="sensor" data-level="installatie" data-role="sensoren" data-part="part-dali-basis-sensor-dali" data-url="/nl/begrijpen/sensoren/">
-<a class="node-link" href="#part-dali-basis-sensor-dali" data-part="part-dali-basis-sensor-dali" aria-label="Sensor op de DALI-lijn"><rect x="12" y="124" width="104" height="48" rx="4"></rect>
-<use href="#sym-dali-basis-sensor" x="22" y="140" width="16" height="16" class="node-icon"></use>
+<a class="node-link" href="#part-dali-basis-sensor-dali" data-part="part-dali-basis-sensor-dali" aria-label="Sensor op de DALI-lijn"><rect x="12" y="124" width="104" height="48" rx="6"></rect>
+<circle class="node-badge" cx="30" cy="148" r="11"></circle><use href="#sym-dali-basis-sensor" x="22" y="140" width="16" height="16" class="node-icon"></use>
 <circle class="node-role" cx="108" cy="132" r="3"></circle>
-<text x="77" y="152.32" text-anchor="middle"><tspan x="77" dy="0">Sensor</tspan></text><rect class="node-hit" x="6" y="118" width="116" height="60"></rect></a>
+<text x="78.5" y="152.32" text-anchor="middle"><tspan x="78.5" dy="0">Sensor</tspan></text><rect class="node-hit" x="6" y="118" width="116" height="60"></rect></a>
 </g><g class="node" data-node="a1" data-category="armatuur" data-level="installatie" data-part="part-dali-basis-armatuur-dali" data-url="/nl/systeem-kiezen/premium-topologie/#part-premium-topologie-armatuur-dali">
-<a class="node-link" href="#part-dali-basis-armatuur-dali" data-part="part-dali-basis-armatuur-dali" aria-label="Armatuur met DALI"><rect x="128" y="124" width="104" height="48" rx="4"></rect>
-<use href="#sym-dali-basis-armatuur" x="138" y="140" width="16" height="16" class="node-icon"></use>
+<a class="node-link" href="#part-dali-basis-armatuur-dali" data-part="part-dali-basis-armatuur-dali" aria-label="Armatuur met DALI"><rect x="128" y="124" width="104" height="48" rx="6"></rect>
+<circle class="node-badge" cx="146" cy="148" r="11"></circle><use href="#sym-dali-basis-armatuur" x="138" y="140" width="16" height="16" class="node-icon"></use>
 
-<text x="193" y="152.32" text-anchor="middle"><tspan x="193" dy="0">Armatuur</tspan></text><rect class="node-hit" x="122" y="118" width="116" height="60"></rect></a>
+<text x="194.5" y="152.32" text-anchor="middle"><tspan x="194.5" dy="0">Armatuur</tspan></text><rect class="node-hit" x="122" y="118" width="116" height="60"></rect></a>
 </g><g class="node" data-node="a2" data-category="armatuur" data-level="installatie" data-part="part-dali-basis-armatuur-dali" data-url="/nl/systeem-kiezen/premium-topologie/#part-premium-topologie-armatuur-dali">
-<a class="node-link" href="#part-dali-basis-armatuur-dali" data-part="part-dali-basis-armatuur-dali" aria-label="Armatuur met DALI"><rect x="244" y="124" width="104" height="48" rx="4"></rect>
-<use href="#sym-dali-basis-armatuur" x="254" y="140" width="16" height="16" class="node-icon"></use>
+<a class="node-link" href="#part-dali-basis-armatuur-dali" data-part="part-dali-basis-armatuur-dali" aria-label="Armatuur met DALI"><rect x="244" y="124" width="104" height="48" rx="6"></rect>
+<circle class="node-badge" cx="262" cy="148" r="11"></circle><use href="#sym-dali-basis-armatuur" x="254" y="140" width="16" height="16" class="node-icon"></use>
 
-<text x="309" y="152.32" text-anchor="middle"><tspan x="309" dy="0">Armatuur</tspan></text><rect class="node-hit" x="238" y="118" width="116" height="60"></rect></a>
+<text x="310.5" y="152.32" text-anchor="middle"><tspan x="310.5" dy="0">Armatuur</tspan></text><rect class="node-hit" x="238" y="118" width="116" height="60"></rect></a>
 </g><g class="node" data-node="voeding" data-category="voeding" data-level="installatie" data-part="part-dali-basis-netvoeding-230v" data-url="/nl/systeem-kiezen/premium-topologie/#part-premium-topologie-netvoeding-230v">
-<a class="node-link" href="#part-dali-basis-netvoeding-230v" data-part="part-dali-basis-netvoeding-230v" aria-label="Netvoeding"><rect x="105" y="240" width="150" height="44" rx="4"></rect>
-<use href="#sym-dali-basis-voeding" x="115" y="254" width="16" height="16" class="node-icon"></use>
+<a class="node-link" href="#part-dali-basis-netvoeding-230v" data-part="part-dali-basis-netvoeding-230v" aria-label="Netvoeding"><rect x="105" y="240" width="150" height="44" rx="6"></rect>
+<circle class="node-badge" cx="123" cy="262" r="11"></circle><use href="#sym-dali-basis-voeding" x="115" y="254" width="16" height="16" class="node-icon"></use>
 
-<text x="193" y="266.32" text-anchor="middle"><tspan x="193" dy="0">230 V-voeding</tspan></text><rect class="node-hit" x="99" y="234" width="162" height="56"></rect></a>
+<text x="194.5" y="266.32" text-anchor="middle"><tspan x="194.5" dy="0">230 V-voeding</tspan></text><rect class="node-hit" x="99" y="234" width="162" height="56"></rect></a>
 </g></g>
 </svg>
 
@@ -189,16 +190,17 @@
 </figure>
 </section><section class="ladder ladder--opbouw" aria-labelledby="l-opbouw">
 <h2 id="l-opbouw">Zo is het opgebouwd</h2>
-<div class="block block--text"><p>DALI of DALI-2 bij armaturen? Control gear, de driver in het armatuur, bestaat zowel als DALI version-1- als DALI-2-product. LiveLink bestuurt control gear in de door TRILUX ondersteunde DALI-apparaattypen; LiveLink ONE toont gevonden armaturen met dat type: D voor dimbaar (DT6), TW voor Tunable White (DT8), E voor DALI-noodverlichting (DT1) en S voor een DALI-schakelactor. DALI-2 is terugwaarts compatibel ontworpen: een oudere DALI version-1-driver kan werken, maar zonder de DALI-2-functies, en de compatibiliteit controleer je per product. Bij sensoren noemt de handleiding uitdrukkelijk DALI-2-sensoren uit het TRILUX-assortiment: voor de rol van input device is DALI-2 de standaard.</p><p class="nav-hint">Wat een D4i-driver daar nog aan toevoegt, staat bij <a href="/nl/begrijpen/d4i/">D4i</a>.</p></div><aside class="block block--callout"><p>Een DALI- of DALI-2-logo zegt nog niet dat een armatuur in een bepaalde LiveLink-opbouw werkt. Bij armaturen is het concrete driverproduct leidend: controleer per armatuur de LiveLink-compatibiliteit in de TRILUX-productdocumentatie of vraag het na bij TRILUX.</p></aside><div class="block block--table"><p>DALI version-1 en DALI-2 naast elkaar:</p><div class="table-scroll"><table class="compare compare--stack"><thead><tr><th scope="col">Kenmerk</th><th scope="col">DALI version-1</th><th scope="col">DALI-2</th></tr></thead><tbody><tr><th scope="row">Control gear (drivers)</th><td data-label="DALI version-1">ja</td><td data-label="DALI-2">ja</td></tr><tr><th scope="row">Input devices en application controllers</th><td data-label="DALI version-1">geen onderdeel van de standaard</td><td data-label="DALI-2">gestandaardiseerd</td></tr><tr><th scope="row">Testen en certificering</th><td data-label="DALI version-1">oudere registratie, deels op eigen verklaring</td><td data-label="DALI-2">uitgebreidere tests, geverifieerd door de DALI Alliance</td></tr><tr><th scope="row">Samenwerking tussen fabrikanten</th><td data-label="DALI version-1">minder zekerheid</td><td data-label="DALI-2">expliciet doel van de certificering</td></tr></tbody></table></div></div><div class="block block--list"><p>Bij engineering controleren:</p><ul><li>Het aantal control gear per DALI-lijn.</li><li>Het aantal input devices en andere control devices per lijn: een aparte telling.</li><li>De busstroom van de gekozen componenten, tegen wat de busvoeding levert.</li><li>Kabellengte en spanningsval van de DALI-lijn.</li><li>De juiste busvoeding, controller of gateway.</li><li>De LiveLink-compatibiliteit per concreet product.</li><li>DALI-2-certificering per concreet product, waar dat relevant is.</li><li>DALI-adressen zijn geen functionele groepen: groepen maak je apart in de sturing.</li></ul></div>
+<details class="more more-deep"><summary>Technische uitleg</summary><div class="block block--text"><p>DALI of DALI-2 bij armaturen? Control gear, de driver in het armatuur, bestaat zowel als DALI version-1- als DALI-2-product. LiveLink bestuurt control gear in de door TRILUX ondersteunde DALI-apparaattypen; LiveLink ONE toont gevonden armaturen met dat type: D voor dimbaar (DT6), TW voor Tunable White (DT8), E voor DALI-noodverlichting (DT1) en S voor een DALI-schakelactor. DALI-2 is terugwaarts compatibel ontworpen: een oudere DALI version-1-driver kan werken, maar zonder de DALI-2-functies, en de compatibiliteit controleer je per product. Bij sensoren noemt de handleiding uitdrukkelijk DALI-2-sensoren uit het TRILUX-assortiment: voor de rol van input device is DALI-2 de standaard.</p><p class="nav-hint">Wat een D4i-driver daar nog aan toevoegt, staat bij <a href="/nl/begrijpen/d4i/">D4i</a>.</p></div><aside class="block block--callout"><p>Een DALI- of DALI-2-logo zegt nog niet dat een armatuur in een bepaalde LiveLink-opbouw werkt. Bij armaturen is het concrete driverproduct leidend: controleer per armatuur de LiveLink-compatibiliteit in de TRILUX-productdocumentatie of vraag het na bij TRILUX.</p></aside><div class="block block--table"><p>DALI version-1 en DALI-2 naast elkaar:</p><div class="table-scroll"><table class="compare compare--stack"><thead><tr><th scope="col">Kenmerk</th><th scope="col">DALI version-1</th><th scope="col">DALI-2</th></tr></thead><tbody><tr><th scope="row">Control gear (drivers)</th><td data-label="DALI version-1">ja</td><td data-label="DALI-2">ja</td></tr><tr><th scope="row">Input devices en application controllers</th><td data-label="DALI version-1">geen onderdeel van de standaard</td><td data-label="DALI-2">gestandaardiseerd</td></tr><tr><th scope="row">Testen en certificering</th><td data-label="DALI version-1">oudere registratie, deels op eigen verklaring</td><td data-label="DALI-2">uitgebreidere tests, geverifieerd door de DALI Alliance</td></tr><tr><th scope="row">Samenwerking tussen fabrikanten</th><td data-label="DALI version-1">minder zekerheid</td><td data-label="DALI-2">expliciet doel van de certificering</td></tr></tbody></table></div></div><div class="block block--list"><p>Bij engineering controleren:</p><ul><li>Het aantal control gear per DALI-lijn.</li><li>Het aantal input devices en andere control devices per lijn: een aparte telling.</li><li>De busstroom van de gekozen componenten, tegen wat de busvoeding levert.</li><li>Kabellengte en spanningsval van de DALI-lijn.</li><li>De juiste busvoeding, controller of gateway.</li><li>De LiveLink-compatibiliteit per concreet product.</li><li>DALI-2-certificering per concreet product, waar dat relevant is.</li><li>DALI-adressen zijn geen functionele groepen: groepen maak je apart in de sturing.</li></ul></div></details>
 
 
 </section><section class="ladder ladder--grenzen" aria-labelledby="l-grenzen">
-<h2 id="l-grenzen">Grenzen en aandachtspunten</h2>
+<h2 id="l-grenzen">Goed om te weten</h2>
 <ul class="limitations"><li>Niet elke sensor werkt op dezelfde manier: dat hangt af van hoe hij met de verlichting verbonden is. <span class="nav-hint">De verschillende aansluitvarianten staan bij <a href="/nl/begrijpen/sensoren/">Sensoren</a>.</span></li></ul>
 
 
 </section>
 <section class="facts" aria-labelledby="l-facts"><h2 id="l-facts">Kerngegevens</h2><dl><div><dt>Control gear per DALI-lijn (maximaal) (DALI)</dt><dd>64</dd></div><div><dt>Control devices per DALI-lijn (maximaal, aparte adresruimte) (DALI)</dt><dd>64</dd></div></dl></section>
+<div class="practice-invite"><button type="button" class="practice-toggle practice-toggle--inline" data-practice-toggle aria-pressed="false" hidden><span class="practice-switch"></span><span class="practice-toggle-label">Test jezelf</span></button></div>
 <section class="practice" id="oefenvragen" data-module="practice" aria-labelledby="l-practice" hidden>
 <h2 id="l-practice">Oefenvragen</h2>
 <p class="practice-intro">Test jezelf met een paar korte vragen. Je antwoorden worden nergens opgeslagen; alleen de keuze om oefenvragen te tonen onthoudt deze browser.</p>
@@ -227,19 +229,19 @@
 </section>
 <nav class="next-step" aria-label="Volgende stap"><a class="next-step-link" href="/nl/systeem-kiezen/systeemoverzicht/">
 <span class="next-step-label">Volgende stap</span>
-<span class="next-step-title">Welk LiveLink-systeem past?</span>
+<span class="next-step-title">Welke LiveLink-systemen zijn er?</span>
 <span class="next-step-text">Bekijk welke LiveLink-route bij jouw situatie past.</span>
 </a></nav>
 <section class="related" aria-labelledby="l-related"><h2 id="l-related">Zie ook</h2><ul class="related-list"><li><a href="/nl/begrijpen/d4i/">D4i en drivers</a></li><li><a href="/nl/begrijpen/relais/">Relais en schakelactoren</a></li></ul></section>
 </div>
-<nav class="page-toc" aria-labelledby="toc-title"><p class="page-toc-title" id="toc-title">Op deze pagina</p><ul><li><a href="#l-in-30-seconden">In 30 seconden</a></li><li><a href="#l-zo-werkt-het">Zo werkt het</a></li><li><a href="#l-interactief">Bekijk het interactief</a></li><li><a href="#l-opbouw">Zo is het opgebouwd</a></li><li><a href="#l-grenzen">Grenzen en aandachtspunten</a></li><li><a href="#l-facts">Kerngegevens</a></li><li data-practice-toc hidden><a href="#oefenvragen">Oefenvragen</a></li></ul></nav>
+<nav class="page-toc" aria-labelledby="toc-title"><p class="page-toc-title" id="toc-title">Op deze pagina</p><ul><li><a href="#l-in-30-seconden">In 30 seconden</a></li><li><a href="#l-zo-werkt-het">Zo werkt het</a></li><li><a href="#l-interactief">Bekijk het interactief</a></li><li><a href="#l-opbouw">Zo is het opgebouwd</a></li><li><a href="#l-grenzen">Goed om te weten</a></li><li><a href="#l-facts">Kerngegevens</a></li><li data-practice-toc hidden><a href="#oefenvragen">Oefenvragen</a></li></ul></nav>
 </div>
 </article>
 </main>
 <footer class="site-footer"><div class="wrap footer-inner">
-<p class="footer-text">LiveLink Knowledge Hub — lichtsturing begrijpen, een systeem kiezen en ermee werken.</p>
+<p class="footer-text">Lichtsturing.info — kennisplatform voor professionele lichtsturing. LiveLink begrijpen, een systeem kiezen en ermee werken.</p>
 <p class="footer-disclaimer">Lichtsturing.info is een onafhankelijk kennisplatform over lichtsturing. Actuele officiële fabrikantdocumentatie en projectspecificaties blijven leidend. Productnamen en merknamen behoren toe aan hun respectieve rechthebbenden.</p>
-<nav class="footer-nav" aria-label="Navigatie in de voettekst"><ul><li><a href="/nl/begrijpen/">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Systeem kiezen</a></li><li><a href="/nl/werken/">Ermee werken</a></li><li><a href="/nl/zoeken/">Zoeken</a></li></ul></nav>
+<nav class="footer-nav" aria-label="Navigatie in de voettekst"><ul><li><a href="/nl/begrijpen/">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Oplossing kiezen</a></li><li><a href="/nl/werken/">Ermee werken</a></li><li><a href="/nl/zoeken/">Zoeken</a></li></ul></nav>
 </div></footer>
 </body>
 </html>

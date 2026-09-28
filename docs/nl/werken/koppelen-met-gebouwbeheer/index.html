@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LiveLink koppelen met gebouwbeheer · LiveLink Knowledge Hub</title>
+<title>LiveLink koppelen met gebouwbeheer · Lichtsturing.info</title>
 <meta name="description" content="Welke koppelingen voor LiveLink Premium beschreven zijn, en wat ze op hoofdlijnen doen.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#ffffff">
-<link rel="icon" href="data:,">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 32 32&#39;%3E%3Crect width=&#39;32&#39; height=&#39;32&#39; rx=&#39;7&#39; fill=&#39;%23072d78&#39;/%3E%3Cpath d=&#39;M11.5 8.5v15h10&#39; stroke=&#39;%23fff&#39; stroke-width=&#39;3.6&#39; fill=&#39;none&#39; stroke-linecap=&#39;square&#39;/%3E%3C/svg%3E">
 
 <link rel="stylesheet" href="/assets/site.css">
 
@@ -18,9 +18,9 @@
 <a class="skip-link" href="#inhoud">Naar de inhoud</a>
 <header class="site-header">
 <div class="wrap header-row">
-<a class="site-name" href="/nl/"><span class="brand-first">LiveLink</span> <span class="brand-rest">Knowledge Hub</span></a>
+<a class="site-name" href="/nl/"><span class="brand-stack"><span class="brand-mark"><span class="brand-first">Lichtsturing</span><span class="brand-rest">.info</span></span><span class="brand-tagline">Kennisplatform voor professionele lichtsturing</span></span></a>
 <nav class="site-nav" aria-label="Hoofdnavigatie"><ul>
-<li><a href="/nl/begrijpen/">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Systeem kiezen</a></li><li><a href="/nl/werken/" aria-current="true">Ermee werken</a></li>
+<li><a href="/nl/begrijpen/">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Oplossing kiezen</a></li><li><a href="/nl/werken/" aria-current="true">Ermee werken</a></li>
 <li class="nav-search"><a href="/nl/zoeken/">Zoeken</a></li>
 </ul></nav>
 <button type="button" class="practice-toggle practice-toggle--header" data-practice-toggle aria-pressed="false" hidden><span class="practice-switch"></span><span class="practice-toggle-label">Oefenvragen tonen</span></button>
@@ -28,7 +28,7 @@
 <details class="nav-menu">
 <summary><span class="nav-menu-icon"></span><span class="nav-menu-label">Menu</span></summary>
 <nav class="nav-menu-panel" aria-label="Hoofdnavigatie"><ul>
-<li><a href="/nl/begrijpen/">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Systeem kiezen</a></li><li><a href="/nl/werken/" aria-current="true">Ermee werken</a></li>
+<li><a href="/nl/begrijpen/">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Oplossing kiezen</a></li><li><a href="/nl/werken/" aria-current="true">Ermee werken</a></li>
 <li class="nav-search"><a href="/nl/zoeken/">Zoeken</a></li>
 </ul><button type="button" class="practice-toggle practice-toggle--menu" data-practice-toggle aria-pressed="false" hidden><span class="practice-switch"></span><span class="practice-toggle-label">Oefenvragen tonen</span></button></nav>
 </details>
@@ -60,7 +60,7 @@
 <details class="more"><summary>Zo werkt een BACnet-koppeling</summary>
 <div class="block block--list"><p>Beschikbaar voor het gebouwbeheersysteem:</p><ul><li><strong>Groepsbesturing</strong><span class="li-sep"> — </span>helderheid en kleurtemperatuur per armaturengroep.</li><li><strong>Groepsstoring</strong><span class="li-sep"> — </span>of een armatuur in de groep een storing meldt of niet meer bereikbaar is.</li><li><strong>Scènebesturing</strong><span class="li-sep"> — </span>de lichtscènes, en een scène oproepen.</li><li><strong>Beweging per groep</strong><span class="li-sep"> — </span>of een sensor in de groep beweging ziet.</li><li><strong>DALI-lijnstatus</strong><span class="li-sep"> — </span>of een apparaat op een DALI-lijn een storing meldt.</li></ul></div><div class="block block--text"><p>De BACnet-interface zet je aan in LiveLink ONE onder Instellingen › Interfaces. Daar kies je ook welke objecten beschikbaar zijn, BACnet/IP of BACnet/SC, en de netwerkaansluiting. Zitten er meerdere LiveLink-systemen in één BACnet-netwerk, dan krijgt ieder systeem een eigen, unieke device-ID.</p><p class="nav-hint">Bedienen via een touchscreen of een LOYTEC-paneel? Zie <a href="/nl/werken/bacnet-loytec/">LiveLink Premium bedienen via BACnet en LOYTEC</a>.</p></div><div class="block block--text"><p>Met BACnet Secure Connect (BACnet/SC) is de BACnet-communicatie versleuteld. Daarvoor is in het netwerk een hub nodig, eventueel met een reservehub, en werken de apparaten met certificaten.</p></div>
 
-<p class="more-label">Grenzen en aandachtspunten</p><ul class="limitations"><li>Alleen de objecten die de handleiding noemt, zijn via BACnet beschikbaar; niet iedere instelling uit LiveLink ONE.</li></ul>
+<p class="more-label">Goed om te weten</p><ul class="limitations"><li>Alleen de objecten die de handleiding noemt, zijn via BACnet beschikbaar; niet iedere instelling uit LiveLink ONE.</li></ul>
 </details>
 </article><article class="part" id="onderdeel-knx">
 <h3>KNX</h3>
@@ -71,7 +71,7 @@
 <details class="more"><summary>Zo werkt een KNX-koppeling</summary>
 <div class="block block--list"><p>In LiveLink ONE koppel je:</p><ul><li><strong>Armaturengroepen</strong><span class="li-sep"> — </span>bedienen vanuit KNX, met helderheid en kleurtemperatuur.</li><li><strong>Bewegingssensoren</strong><span class="li-sep"> — </span>KNX leest de statuswijzigingen uit.</li><li><strong>Scènes</strong><span class="li-sep"> — </span>LiveLink-scènes oproepen vanuit KNX.</li><li><strong>Losse datapunten</strong><span class="li-sep"> — </span>bijvoorbeeld licht-, temperatuur- of vochtigheidssensoren, als ingang of als uitgang.</li></ul></div><div class="block block--text"><p>De communicatie tussen het LiveLink-systeem en de KNX-gateway is beveiligd met KNX Secure.</p></div><div class="block block--text"><p>De gateway is via IP met het LiveLink Premium-systeem verbonden en via de KNX-bus met de KNX-installatie. De KNX-kant parametreer je in ETS; daarna voeg je de gateway in LiveLink ONE toe en koppel je de datapunten.</p></div>
 
-<p class="more-label">Grenzen en aandachtspunten</p><ul class="limitations"><li>KNX biedt andere functies dan BACnet. Gebruik voor KNX alleen de datapunten en functies die de KNX-handleiding beschrijft.</li></ul>
+<p class="more-label">Goed om te weten</p><ul class="limitations"><li>KNX biedt andere functies dan BACnet. Gebruik voor KNX alleen de datapunten en functies die de KNX-handleiding beschrijft.</li></ul>
 </details>
 </article><article class="part" id="onderdeel-mqtt">
 <h3>MQTT</h3>
@@ -82,7 +82,7 @@
 <details class="more"><summary>Zo werkt de MQTT-interface</summary>
 <div class="block block--text"><p>De MQTT-interface stel je in LiveLink ONE in onder Administratorinstellingen › Interfaces. De adresgegevens krijg je van de netwerkbeheerder van het gebouwbeheersysteem. Je meldt je aan met een wachtwoord of een certificaat, kiest hoe vaak gegevens worden verstuurd en of ze gecomprimeerd worden verstuurd.</p></div>
 
-<p class="more-label">Grenzen en aandachtspunten</p><ul class="limitations"><li>Het ontvangende systeem slaat de gegevens op, analyseert en toont ze. MQTT is dus iets anders dan het configureren van LiveLink zelf.</li></ul>
+<p class="more-label">Goed om te weten</p><ul class="limitations"><li>Het ontvangende systeem slaat de gegevens op, analyseert en toont ze. MQTT is dus iets anders dan het configureren van LiveLink zelf.</li></ul>
 </details>
 </article></div>
 
@@ -93,35 +93,36 @@
 <figure class="topology" data-module="topology" id="demo-knx-koppeling">
 <figcaption class="topology-title">Zo koppel je LiveLink Premium aan KNX</figcaption>
 <p class="topology-summary">LiveLink Premium en de LiveLink KNX Gateway zijn via het netwerk verbonden; de gateway zit via de KNX-bus aan de KNX-installatie.</p>
+
 <div class="topology-layout">
 <div class="topology-canvas">
 
-<svg class="topology-defs" aria-hidden="true" focusable="false" width="0" height="0"><defs><symbol id="sym-knx-koppeling-centrale-unit" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="2.5" width="11" height="11" rx="1"/><path d="M5 6h6M5 10h6"/><circle cx="11.2" cy="4.6" r=".2"/></g></symbol><symbol id="sym-knx-koppeling-netwerk" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="5" width="13" height="6" rx="1"/><path d="M4.2 8h.6M7.2 8h.6M10.2 8h.6"/></g></symbol><symbol id="sym-knx-koppeling-gateway" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="12" height="10" rx="1"/><path d="M5 6.5h6M9.5 5l1.5 1.5L9.5 8M11 9.5H5M6.5 8L5 9.5 6.5 11"/></g></symbol><symbol id="sym-knx-koppeling-extern-systeem" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 14V5l5.5-3 5.5 3v9z"/><rect x="5.5" y="8" width="5" height="3.5" rx=".5"/></g></symbol></defs></svg>
+<svg class="topology-defs" aria-hidden="true" focusable="false" width="0" height="0"><defs><symbol id="sym-knx-koppeling-centrale-unit" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="3" width="11" height="10" rx="1.2"/><path d="M2.5 6.5h11M5 9.6h2M9 9.6h2M5.5 3V1.6M10.5 3V1.6M5.5 14.4V13M10.5 14.4V13"/></g></symbol><symbol id="sym-knx-koppeling-netwerk" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="5" width="13" height="5.5" rx="1"/><path d="M4 10.5v2M6.7 10.5v2M9.3 10.5v2M12 10.5v2M4 7.8h.01M6.7 7.8h.01M9.3 7.8h.01M12 7.8h.01"/></g></symbol><symbol id="sym-knx-koppeling-gateway" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="12" height="8" rx="1.2"/><path d="M5.6 8h4.8M8.9 6.2L10.6 8l-1.7 1.8M7.1 6.2L5.4 8l1.7 1.8"/></g></symbol><symbol id="sym-knx-koppeling-extern-systeem" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 13.5V6l5.5-3 5.5 3v7.5z"/><path d="M6 9h1.6M8.4 9H10M6 11.5h1.6M8.4 11.5H10"/></g></symbol></defs></svg>
 <svg class="topology-svg topology-svg--mobiel" data-layout="mobiel" viewBox="0 0 360 292" role="img" aria-labelledby="svgt-knx-koppeling svgd-knx-koppeling" preserveAspectRatio="xMidYMin meet">
 <title id="svgt-knx-koppeling">Zo koppel je LiveLink Premium aan KNX</title>
 <desc id="svgd-knx-koppeling">LiveLink Premium Controller · LiveLink Premium Server · Ethernet-switch · LiveLink KNX Gateway · KNX-installatie</desc>
 
 <g class="edges"><g class="edge" data-edge="eth-1" data-layer="ethernet" data-medium="netwerk" data-from="centrale" data-to="switch"><title>Ethernet/LAN</title><polyline class="edge-hit" points="180,48 180,80"></polyline><polyline class="edge-line edge-line--ethernet edge-line--m-netwerk" points="180,48 180,80"></polyline></g><g class="edge" data-edge="eth-2" data-layer="ethernet" data-medium="netwerk" data-from="switch" data-to="knxgw"><title>Ethernet/LAN</title><polyline class="edge-hit" points="180,116 180,156"></polyline><polyline class="edge-line edge-line--ethernet edge-line--m-netwerk" points="180,116 180,156"></polyline><text class="edge-label" x="188" y="142" text-anchor="start">IP</text></g><g class="edge" data-edge="knx-bus" data-layer="knx" data-medium="bus" data-from="knxgw" data-to="knx"><title>KNX-bus</title><polyline class="edge-hit" points="180,196 180,240"></polyline><polyline class="edge-line edge-line--knx edge-line--m-bus" points="180,196 180,240"></polyline><text class="edge-label" x="188" y="226" text-anchor="start">KNX-bus</text></g></g>
 <g class="nodes"><g class="node" data-node="centrale" data-category="centrale-unit" data-level="systeem" data-part="part-knx-koppeling-premium-controller" data-url="/nl/systeem-kiezen/premium-topologie/#part-premium-topologie-premium-controller">
-<a class="node-link" href="#part-knx-koppeling-premium-controller" data-part="part-knx-koppeling-premium-controller" aria-label="LiveLink Premium Controller / LiveLink Premium Server"><rect x="100" y="8" width="160" height="40" rx="4"></rect>
-<use href="#sym-knx-koppeling-centrale-unit" x="110" y="20" width="16" height="16" class="node-icon"></use>
+<a class="node-link" href="#part-knx-koppeling-premium-controller" data-part="part-knx-koppeling-premium-controller" aria-label="LiveLink Premium Controller / LiveLink Premium Server"><rect x="100" y="8" width="160" height="40" rx="6"></rect>
+<circle class="node-badge" cx="118" cy="28" r="11"></circle><use href="#sym-knx-koppeling-centrale-unit" x="110" y="20" width="16" height="16" class="node-icon"></use>
 
-<text x="193" y="25.32" text-anchor="middle"><tspan x="193" dy="0">Controller /</tspan><tspan x="193" dy="14">Server</tspan></text><rect class="node-hit" x="94" y="2" width="172" height="52"></rect></a>
+<text x="194.5" y="25.32" text-anchor="middle"><tspan x="194.5" dy="0">Controller /</tspan><tspan x="194.5" dy="14">Server</tspan></text><rect class="node-hit" x="94" y="2" width="172" height="52"></rect></a>
 </g><g class="node" data-node="switch" data-category="netwerk" data-level="systeem" data-part="part-knx-koppeling-ethernet-switch" data-url="/nl/systeem-kiezen/premium-topologie/#part-premium-topologie-ethernet-switch">
-<a class="node-link" href="#part-knx-koppeling-ethernet-switch" data-part="part-knx-koppeling-ethernet-switch" aria-label="Ethernet-switch"><rect x="110" y="80" width="140" height="36" rx="4"></rect>
-<use href="#sym-knx-koppeling-netwerk" x="120" y="90" width="16" height="16" class="node-icon"></use>
+<a class="node-link" href="#part-knx-koppeling-ethernet-switch" data-part="part-knx-koppeling-ethernet-switch" aria-label="Ethernet-switch"><rect x="110" y="80" width="140" height="36" rx="6"></rect>
+<circle class="node-badge" cx="128" cy="98" r="11"></circle><use href="#sym-knx-koppeling-netwerk" x="120" y="90" width="16" height="16" class="node-icon"></use>
 
-<text x="193" y="102.32" text-anchor="middle"><tspan x="193" dy="0">Ethernet-switch</tspan></text><rect class="node-hit" x="104" y="74" width="152" height="48"></rect></a>
+<text x="194.5" y="102.32" text-anchor="middle"><tspan x="194.5" dy="0">Ethernet-switch</tspan></text><rect class="node-hit" x="104" y="74" width="152" height="48"></rect></a>
 </g><g class="node" data-node="knxgw" data-category="gateway" data-level="systeem" data-part="part-knx-koppeling-knx-gateway">
-<a class="node-link" href="#part-knx-koppeling-knx-gateway" data-part="part-knx-koppeling-knx-gateway" aria-label="LiveLink KNX Gateway"><rect x="100" y="156" width="160" height="40" rx="4"></rect>
-<use href="#sym-knx-koppeling-gateway" x="110" y="168" width="16" height="16" class="node-icon"></use>
+<a class="node-link" href="#part-knx-koppeling-knx-gateway" data-part="part-knx-koppeling-knx-gateway" aria-label="LiveLink KNX Gateway"><rect x="100" y="156" width="160" height="40" rx="6"></rect>
+<circle class="node-badge" cx="118" cy="176" r="11"></circle><use href="#sym-knx-koppeling-gateway" x="110" y="168" width="16" height="16" class="node-icon"></use>
 
-<text x="193" y="180.32" text-anchor="middle"><tspan x="193" dy="0">KNX Gateway</tspan></text><rect class="node-hit" x="94" y="150" width="172" height="52"></rect></a>
+<text x="194.5" y="180.32" text-anchor="middle"><tspan x="194.5" dy="0">KNX Gateway</tspan></text><rect class="node-hit" x="94" y="150" width="172" height="52"></rect></a>
 </g><g class="node" data-node="knx" data-category="extern-systeem" data-level="extern" data-part="part-knx-koppeling-knx-installatie">
-<a class="node-link" href="#part-knx-koppeling-knx-installatie" data-part="part-knx-koppeling-knx-installatie" aria-label="KNX-installatie"><rect x="100" y="240" width="160" height="40" rx="4"></rect>
-<use href="#sym-knx-koppeling-extern-systeem" x="110" y="252" width="16" height="16" class="node-icon"></use>
+<a class="node-link" href="#part-knx-koppeling-knx-installatie" data-part="part-knx-koppeling-knx-installatie" aria-label="KNX-installatie"><rect x="100" y="240" width="160" height="40" rx="6"></rect>
+<circle class="node-badge" cx="118" cy="260" r="11"></circle><use href="#sym-knx-koppeling-extern-systeem" x="110" y="252" width="16" height="16" class="node-icon"></use>
 
-<text x="193" y="264.32" text-anchor="middle"><tspan x="193" dy="0">KNX-installatie</tspan></text><rect class="node-hit" x="94" y="234" width="172" height="52"></rect></a>
+<text x="194.5" y="264.32" text-anchor="middle"><tspan x="194.5" dy="0">KNX-installatie</tspan></text><rect class="node-hit" x="94" y="234" width="172" height="52"></rect></a>
 </g></g>
 </svg>
 
@@ -182,16 +183,17 @@
 </figure>
 </section><section class="ladder ladder--opbouw" aria-labelledby="l-opbouw">
 <h2 id="l-opbouw">Zo is het opgebouwd</h2>
-<div class="block block--text"><p>Ook als er nu geen koppeling komt: ontwerp groepen en scènes zo dat ze later logisch te koppelen zijn. Geef ze stabiele, herkenbare namen op functie en locatie.</p></div>
+<details class="more more-deep"><summary>Technische uitleg</summary><div class="block block--text"><p>Ook als er nu geen koppeling komt: ontwerp groepen en scènes zo dat ze later logisch te koppelen zijn. Geef ze stabiele, herkenbare namen op functie en locatie.</p></div></details>
 
 
 </section><section class="ladder ladder--grenzen" aria-labelledby="l-grenzen">
-<h2 id="l-grenzen">Grenzen en aandachtspunten</h2>
+<h2 id="l-grenzen">Goed om te weten</h2>
 <ul class="limitations"><li>De koppelingen bieden niet dezelfde functies. Kijk per koppeling in de actuele handleiding wat beschikbaar is, en neem niet aan dat wat de ene koppeling kan, ook via de andere werkt.</li></ul>
 
 
 </section>
 
+<div class="practice-invite"><button type="button" class="practice-toggle practice-toggle--inline" data-practice-toggle aria-pressed="false" hidden><span class="practice-switch"></span><span class="practice-toggle-label">Test jezelf</span></button></div>
 <section class="practice" id="oefenvragen" data-module="practice" aria-labelledby="l-practice" hidden>
 <h2 id="l-practice">Oefenvragen</h2>
 <p class="practice-intro">Test jezelf met een paar korte vragen. Je antwoorden worden nergens opgeslagen; alleen de keuze om oefenvragen te tonen onthoudt deze browser.</p>
@@ -221,14 +223,14 @@
 
 <section class="related" aria-labelledby="l-related"><h2 id="l-related">Zie ook</h2><ul class="related-list"><li><a href="/nl/werken/van-installatie-tot-overdracht/">Van installatie tot overdracht</a></li><li><a href="/nl/werken/bacnet-loytec/">LiveLink Premium bedienen via BACnet en LOYTEC</a></li></ul></section>
 </div>
-<nav class="page-toc" aria-labelledby="toc-title"><p class="page-toc-title" id="toc-title">Op deze pagina</p><ul><li><a href="#l-in-30-seconden">In 30 seconden</a></li><li><a href="#l-zo-werkt-het">Zo werkt het</a></li><li><a href="#l-interactief">Bekijk het interactief</a></li><li><a href="#l-opbouw">Zo is het opgebouwd</a></li><li><a href="#l-grenzen">Grenzen en aandachtspunten</a></li><li data-practice-toc hidden><a href="#oefenvragen">Oefenvragen</a></li></ul></nav>
+<nav class="page-toc" aria-labelledby="toc-title"><p class="page-toc-title" id="toc-title">Op deze pagina</p><ul><li><a href="#l-in-30-seconden">In 30 seconden</a></li><li><a href="#l-zo-werkt-het">Zo werkt het</a></li><li><a href="#l-interactief">Bekijk het interactief</a></li><li><a href="#l-opbouw">Zo is het opgebouwd</a></li><li><a href="#l-grenzen">Goed om te weten</a></li><li data-practice-toc hidden><a href="#oefenvragen">Oefenvragen</a></li></ul></nav>
 </div>
 </article>
 </main>
 <footer class="site-footer"><div class="wrap footer-inner">
-<p class="footer-text">LiveLink Knowledge Hub — lichtsturing begrijpen, een systeem kiezen en ermee werken.</p>
+<p class="footer-text">Lichtsturing.info — kennisplatform voor professionele lichtsturing. LiveLink begrijpen, een systeem kiezen en ermee werken.</p>
 <p class="footer-disclaimer">Lichtsturing.info is een onafhankelijk kennisplatform over lichtsturing. Actuele officiële fabrikantdocumentatie en projectspecificaties blijven leidend. Productnamen en merknamen behoren toe aan hun respectieve rechthebbenden.</p>
-<nav class="footer-nav" aria-label="Navigatie in de voettekst"><ul><li><a href="/nl/begrijpen/">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Systeem kiezen</a></li><li><a href="/nl/werken/">Ermee werken</a></li><li><a href="/nl/zoeken/">Zoeken</a></li></ul></nav>
+<nav class="footer-nav" aria-label="Navigatie in de voettekst"><ul><li><a href="/nl/begrijpen/">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Oplossing kiezen</a></li><li><a href="/nl/werken/">Ermee werken</a></li><li><a href="/nl/zoeken/">Zoeken</a></li></ul></nav>
 </div></footer>
 </body>
 </html>

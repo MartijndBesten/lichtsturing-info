@@ -36,7 +36,7 @@ export function railHtml(steps, state, ui) {
     .join('')}</ol></nav>`;
 }
 
-const choice = (q, o, checked) => `<label class="pw-choice"><input type="${q.multiple ? 'checkbox' : 'radio'}" name="${esc(q.id)}" value="${esc(o.id)}"${checked ? ' checked' : ''}><span class="pw-choice-box">${o.icon ? `<svg class="pw-choice-icon" aria-hidden="true" focusable="false"><use href="#pw-i-${esc(o.icon)}"></use></svg>` : ''}<span class="pw-choice-text"><span class="pw-choice-label">${esc(o.label)}</span>${o.hint ? `<span class="pw-choice-hint">${esc(o.hint)}</span>` : ''}</span></span></label>`;
+const choice = (q, o, checked) => `<label class="pw-choice"><input type="${q.multiple ? 'checkbox' : 'radio'}" name="${esc(q.id)}" value="${esc(o.id)}"${checked ? ' checked' : ''}><span class="pw-choice-box">${o.icon ? `<span class="pw-choice-visual" aria-hidden="true"><svg class="pw-choice-icon" focusable="false"><use href="#pw-i-${esc(o.icon)}"></use></svg></span>` : ''}<span class="pw-choice-text"><span class="pw-choice-label">${esc(o.label)}</span>${o.hint ? `<span class="pw-choice-hint">${esc(o.hint)}</span>` : ''}</span></span></label>`;
 
 const numbers = (q, values, ui) =>
   q.numbers?.length

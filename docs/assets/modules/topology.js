@@ -22,6 +22,14 @@ export function mount(el, config) {
     viewBoxes = null;
   }
   el.classList.add('is-enhanced');
+  const modes = [...el.querySelectorAll('.topology-mode input')];
+  const applyMode = () => {
+    if (viewBoxes) return;
+    const simple = modes.some((m) => m.value === 'eenvoudig' && m.checked);
+    for (const g of el.querySelectorAll('.topology-svg')) if (g.dataset.viewboxSimple) g.setAttribute('viewBox', simple ? g.dataset.viewboxSimple : g.dataset.viewboxFull);
+  };
+  for (const m of modes) m.addEventListener('change', applyMode);
+  applyMode();
   if (!compact) filter.hidden = false;
   if (viewBar) viewBar.hidden = false;
   const wide = window.matchMedia('(min-width: 64rem)');

@@ -48,6 +48,11 @@ export function mountTour(el, config, api) {
   function applyStep(i) {
     const st = steps[i];
     if (!st) return;
+    const full = el.querySelector('.topology-mode input[value="technisch"]');
+    if (full && !full.checked) {
+      full.checked = true;
+      full.dispatchEvent(new Event('change', { bubbles: true }));
+    }
     clearSelection();
     clearTourMarks();
     for (const x of [...edges, ...nodes]) x.classList.remove('is-dim');

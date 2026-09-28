@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LiveLink Premium bedienen via BACnet en LOYTEC · LiveLink Knowledge Hub</title>
+<title>LiveLink Premium bedienen via BACnet en LOYTEC · Lichtsturing.info</title>
 <meta name="description" content="Touchscreen, centraal scherm of eigen logica: zo werkt LiveLink Premium samen met BACnet-apparaten zoals LOYTEC, en waar de engineering zit.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#ffffff">
-<link rel="icon" href="data:,">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 32 32&#39;%3E%3Crect width=&#39;32&#39; height=&#39;32&#39; rx=&#39;7&#39; fill=&#39;%23072d78&#39;/%3E%3Cpath d=&#39;M11.5 8.5v15h10&#39; stroke=&#39;%23fff&#39; stroke-width=&#39;3.6&#39; fill=&#39;none&#39; stroke-linecap=&#39;square&#39;/%3E%3C/svg%3E">
 
 <link rel="stylesheet" href="/assets/site.css">
 
@@ -18,9 +18,9 @@
 <a class="skip-link" href="#inhoud">Naar de inhoud</a>
 <header class="site-header">
 <div class="wrap header-row">
-<a class="site-name" href="/nl/"><span class="brand-first">LiveLink</span> <span class="brand-rest">Knowledge Hub</span></a>
+<a class="site-name" href="/nl/"><span class="brand-stack"><span class="brand-mark"><span class="brand-first">Lichtsturing</span><span class="brand-rest">.info</span></span><span class="brand-tagline">Kennisplatform voor professionele lichtsturing</span></span></a>
 <nav class="site-nav" aria-label="Hoofdnavigatie"><ul>
-<li><a href="/nl/begrijpen/">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Systeem kiezen</a></li><li><a href="/nl/werken/" aria-current="true">Ermee werken</a></li>
+<li><a href="/nl/begrijpen/">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Oplossing kiezen</a></li><li><a href="/nl/werken/" aria-current="true">Ermee werken</a></li>
 <li class="nav-search"><a href="/nl/zoeken/">Zoeken</a></li>
 </ul></nav>
 
@@ -28,7 +28,7 @@
 <details class="nav-menu">
 <summary><span class="nav-menu-icon"></span><span class="nav-menu-label">Menu</span></summary>
 <nav class="nav-menu-panel" aria-label="Hoofdnavigatie"><ul>
-<li><a href="/nl/begrijpen/">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Systeem kiezen</a></li><li><a href="/nl/werken/" aria-current="true">Ermee werken</a></li>
+<li><a href="/nl/begrijpen/">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Oplossing kiezen</a></li><li><a href="/nl/werken/" aria-current="true">Ermee werken</a></li>
 <li class="nav-search"><a href="/nl/zoeken/">Zoeken</a></li>
 </ul></nav>
 </details>
@@ -60,7 +60,7 @@
 <details class="more"><summary>Zo werkt een BACnet-koppeling</summary>
 <div class="block block--list"><p>Beschikbaar voor het gebouwbeheersysteem:</p><ul><li><strong>Groepsbesturing</strong><span class="li-sep"> — </span>helderheid en kleurtemperatuur per armaturengroep.</li><li><strong>Groepsstoring</strong><span class="li-sep"> — </span>of een armatuur in de groep een storing meldt of niet meer bereikbaar is.</li><li><strong>Scènebesturing</strong><span class="li-sep"> — </span>de lichtscènes, en een scène oproepen.</li><li><strong>Beweging per groep</strong><span class="li-sep"> — </span>of een sensor in de groep beweging ziet.</li><li><strong>DALI-lijnstatus</strong><span class="li-sep"> — </span>of een apparaat op een DALI-lijn een storing meldt.</li></ul></div><div class="block block--text"><p>De BACnet-interface zet je aan in LiveLink ONE onder Instellingen › Interfaces. Daar kies je ook welke objecten beschikbaar zijn, BACnet/IP of BACnet/SC, en de netwerkaansluiting. Zitten er meerdere LiveLink-systemen in één BACnet-netwerk, dan krijgt ieder systeem een eigen, unieke device-ID.</p></div><div class="block block--text"><p>Met BACnet Secure Connect (BACnet/SC) is de BACnet-communicatie versleuteld. Daarvoor is in het netwerk een hub nodig, eventueel met een reservehub, en werken de apparaten met certificaten.</p></div>
 
-<p class="more-label">Grenzen en aandachtspunten</p><ul class="limitations"><li>Alleen de objecten die de handleiding noemt, zijn via BACnet beschikbaar; niet iedere instelling uit LiveLink ONE.</li></ul>
+<p class="more-label">Goed om te weten</p><ul class="limitations"><li>Alleen de objecten die de handleiding noemt, zijn via BACnet beschikbaar; niet iedere instelling uit LiveLink ONE.</li></ul>
 </details>
 </article></div>
 
@@ -71,45 +71,46 @@
 <figure class="topology" data-module="topology" id="demo-bacnet-loytec" data-flow-marker="fl-bacnet-loytec">
 <figcaption class="topology-title">LiveLink Premium bedienen via BACnet/IP en LOYTEC</figcaption>
 <p class="topology-summary">Tik op een onderdeel. LiveLink Premium is de BACnet-server; LOYTEC-apparaten en het gebouwbeheer zijn BACnet-apparaten in hetzelfde netwerk.</p>
+
 <div class="topology-layout">
 <div class="topology-canvas">
 
-<svg class="topology-defs" aria-hidden="true" focusable="false" width="0" height="0"><defs><symbol id="sym-bacnet-loytec-interface" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="5" width="7" height="6" rx="1"/><path d="M8.5 8h5M11.5 5.8L13.7 8l-2.2 2.2"/></g></symbol><symbol id="sym-bacnet-loytec-netwerk" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="5" width="13" height="6" rx="1"/><path d="M4.2 8h.6M7.2 8h.6M10.2 8h.6"/></g></symbol><symbol id="sym-bacnet-loytec-extern-systeem" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 14V5l5.5-3 5.5 3v9z"/><rect x="5.5" y="8" width="5" height="3.5" rx=".5"/></g></symbol><marker id="fl-bacnet-loytec" class="flow-marker" viewBox="0 0 12 12" refX="7" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M1.5 1.5L10.5 6L1.5 10.5Z"/></marker></defs></svg>
+<svg class="topology-defs" aria-hidden="true" focusable="false" width="0" height="0"><defs><symbol id="sym-bacnet-loytec-interface" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="5" width="7" height="6" rx="1"/><path d="M8.5 8h5M11.5 5.8L13.7 8l-2.2 2.2"/></g></symbol><symbol id="sym-bacnet-loytec-netwerk" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="1.5" y="5" width="13" height="5.5" rx="1"/><path d="M4 10.5v2M6.7 10.5v2M9.3 10.5v2M12 10.5v2M4 7.8h.01M6.7 7.8h.01M9.3 7.8h.01M12 7.8h.01"/></g></symbol><symbol id="sym-bacnet-loytec-extern-systeem" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 13.5V6l5.5-3 5.5 3v7.5z"/><path d="M6 9h1.6M8.4 9H10M6 11.5h1.6M8.4 11.5H10"/></g></symbol><marker id="fl-bacnet-loytec" class="flow-marker" viewBox="0 0 12 12" refX="7" refY="6" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M1.5 1.5L10.5 6L1.5 10.5Z"/></marker></defs></svg>
 <svg class="topology-svg topology-svg--mobiel" data-layout="mobiel" viewBox="0 0 360 312" role="img" aria-labelledby="svgt-bacnet-loytec svgd-bacnet-loytec" preserveAspectRatio="xMidYMin meet">
 <title id="svgt-bacnet-loytec">LiveLink Premium bedienen via BACnet/IP en LOYTEC</title>
 <desc id="svgd-bacnet-loytec">BACnet-interface van LiveLink Premium · Ethernet-switch · LOYTEC LIOB-590 · LOYTEC LPAD-7 · LOYTEC L-VIS · Gebouwbeheersysteem</desc>
 
 <g class="edges"><g class="edge" data-edge="eth-1" data-layer="ethernet" data-medium="netwerk" data-from="premium" data-to="switch"><title>Ethernet/LAN</title><polyline class="edge-hit" points="180,52 180,92"></polyline><polyline class="edge-line edge-line--ethernet edge-line--m-netwerk" points="180,52 180,92"></polyline></g><g class="edge" data-edge="bac-liob" data-layer="bacnet" data-medium="netwerk" data-from="switch" data-to="liob"><title>BACnet/IP via het netwerk</title><polyline class="edge-hit" points="180,128 180,152 88,152 88,178"></polyline><polyline class="edge-line edge-line--bacnet edge-line--m-netwerk" points="180,128 180,152 88,152 88,178"></polyline><text class="edge-label" x="188" y="146" text-anchor="start">BACnet/IP</text></g><g class="edge" data-edge="bac-lpad" data-layer="bacnet" data-medium="netwerk" data-from="switch" data-to="lpad"><title>BACnet/IP via het netwerk</title><polyline class="edge-hit" points="180,128 180,152 272,152 272,178"></polyline><polyline class="edge-line edge-line--bacnet edge-line--m-netwerk" points="180,128 180,152 272,152 272,178"></polyline></g><g class="edge" data-edge="bac-lvis" data-layer="bacnet" data-medium="netwerk" data-from="switch" data-to="lvis"><title>BACnet/IP via het netwerk</title><polyline class="edge-hit" points="180,128 180,152 180,241 88,241 88,260"></polyline><polyline class="edge-line edge-line--bacnet edge-line--m-netwerk" points="180,128 180,152 180,241 88,241 88,260"></polyline></g><g class="edge" data-edge="bac-gbs" data-layer="bacnet" data-medium="netwerk" data-from="switch" data-to="gbs"><title>BACnet/IP via het netwerk</title><polyline class="edge-hit" points="180,128 180,152 180,241 272,241 272,260"></polyline><polyline class="edge-line edge-line--bacnet edge-line--m-netwerk" points="180,128 180,152 180,241 272,241 272,260"></polyline></g></g>
 <g class="nodes"><g class="node" data-node="premium" data-category="interface" data-level="systeem" data-part="part-bacnet-loytec-bacnet-interface">
-<a class="node-link" href="#part-bacnet-loytec-bacnet-interface" data-part="part-bacnet-loytec-bacnet-interface" aria-label="BACnet-interface van LiveLink Premium"><rect x="90" y="8" width="180" height="44" rx="4"></rect>
-<use href="#sym-bacnet-loytec-interface" x="100" y="22" width="16" height="16" class="node-icon"></use>
+<a class="node-link" href="#part-bacnet-loytec-bacnet-interface" data-part="part-bacnet-loytec-bacnet-interface" aria-label="BACnet-interface van LiveLink Premium"><rect x="90" y="8" width="180" height="44" rx="6"></rect>
+<circle class="node-badge" cx="108" cy="30" r="11"></circle><use href="#sym-bacnet-loytec-interface" x="100" y="22" width="16" height="16" class="node-icon"></use>
 
-<text x="193" y="34.32" text-anchor="middle"><tspan x="193" dy="0">LiveLink Premium</tspan></text><rect class="node-hit" x="84" y="2" width="192" height="56"></rect></a>
+<text x="194.5" y="34.32" text-anchor="middle"><tspan x="194.5" dy="0">LiveLink Premium</tspan></text><rect class="node-hit" x="84" y="2" width="192" height="56"></rect></a>
 </g><g class="node" data-node="switch" data-category="netwerk" data-level="systeem" data-part="part-bacnet-loytec-ethernet-switch" data-url="/nl/systeem-kiezen/premium-topologie/#part-premium-topologie-ethernet-switch">
-<a class="node-link" href="#part-bacnet-loytec-ethernet-switch" data-part="part-bacnet-loytec-ethernet-switch" aria-label="Ethernet-switch"><rect x="120" y="92" width="120" height="36" rx="4"></rect>
-<use href="#sym-bacnet-loytec-netwerk" x="130" y="102" width="16" height="16" class="node-icon"></use>
+<a class="node-link" href="#part-bacnet-loytec-ethernet-switch" data-part="part-bacnet-loytec-ethernet-switch" aria-label="Ethernet-switch"><rect x="120" y="92" width="120" height="36" rx="6"></rect>
+<circle class="node-badge" cx="138" cy="110" r="11"></circle><use href="#sym-bacnet-loytec-netwerk" x="130" y="102" width="16" height="16" class="node-icon"></use>
 
-<text x="193" y="114.32" text-anchor="middle"><tspan x="193" dy="0">Switch</tspan></text><rect class="node-hit" x="114" y="86" width="132" height="48"></rect></a>
+<text x="194.5" y="114.32" text-anchor="middle"><tspan x="194.5" dy="0">Switch</tspan></text><rect class="node-hit" x="114" y="86" width="132" height="48"></rect></a>
 </g><g class="node" data-node="liob" data-category="extern-systeem" data-level="extern" data-role="logica" data-part="part-bacnet-loytec-loytec-liob-590">
-<a class="node-link" href="#part-bacnet-loytec-loytec-liob-590" data-part="part-bacnet-loytec-loytec-liob-590" aria-label="LOYTEC LIOB-590"><rect x="8" y="178" width="160" height="44" rx="4"></rect>
-<use href="#sym-bacnet-loytec-extern-systeem" x="18" y="192" width="16" height="16" class="node-icon"></use>
+<a class="node-link" href="#part-bacnet-loytec-loytec-liob-590" data-part="part-bacnet-loytec-loytec-liob-590" aria-label="LOYTEC LIOB-590"><rect x="8" y="178" width="160" height="44" rx="6"></rect>
+<circle class="node-badge" cx="26" cy="200" r="11"></circle><use href="#sym-bacnet-loytec-extern-systeem" x="18" y="192" width="16" height="16" class="node-icon"></use>
 <rect class="node-role" x="157.25" y="183.25" width="5.5" height="5.5"></rect>
-<text x="101" y="204.32" text-anchor="middle"><tspan x="101" dy="0">LIOB-590</tspan></text><rect class="node-hit" x="2" y="172" width="172" height="56"></rect></a>
+<text x="102.5" y="204.32" text-anchor="middle"><tspan x="102.5" dy="0">LIOB-590</tspan></text><rect class="node-hit" x="2" y="172" width="172" height="56"></rect></a>
 </g><g class="node" data-node="lpad" data-category="extern-systeem" data-level="extern" data-role="bedienen" data-part="part-bacnet-loytec-loytec-lpad-7">
-<a class="node-link" href="#part-bacnet-loytec-loytec-lpad-7" data-part="part-bacnet-loytec-loytec-lpad-7" aria-label="LOYTEC LPAD-7"><rect x="192" y="178" width="160" height="44" rx="4"></rect>
-<use href="#sym-bacnet-loytec-extern-systeem" x="202" y="192" width="16" height="16" class="node-icon"></use>
+<a class="node-link" href="#part-bacnet-loytec-loytec-lpad-7" data-part="part-bacnet-loytec-loytec-lpad-7" aria-label="LOYTEC LPAD-7"><rect x="192" y="178" width="160" height="44" rx="6"></rect>
+<circle class="node-badge" cx="210" cy="200" r="11"></circle><use href="#sym-bacnet-loytec-extern-systeem" x="202" y="192" width="16" height="16" class="node-icon"></use>
 <circle class="node-role" cx="344" cy="186" r="3"></circle>
-<text x="285" y="204.32" text-anchor="middle"><tspan x="285" dy="0">LPAD-7</tspan></text><rect class="node-hit" x="186" y="172" width="172" height="56"></rect></a>
+<text x="286.5" y="204.32" text-anchor="middle"><tspan x="286.5" dy="0">LPAD-7</tspan></text><rect class="node-hit" x="186" y="172" width="172" height="56"></rect></a>
 </g><g class="node" data-node="lvis" data-category="extern-systeem" data-level="extern" data-role="bedienen" data-part="part-bacnet-loytec-loytec-l-vis">
-<a class="node-link" href="#part-bacnet-loytec-loytec-l-vis" data-part="part-bacnet-loytec-loytec-l-vis" aria-label="LOYTEC L-VIS"><rect x="8" y="260" width="160" height="44" rx="4"></rect>
-<use href="#sym-bacnet-loytec-extern-systeem" x="18" y="274" width="16" height="16" class="node-icon"></use>
+<a class="node-link" href="#part-bacnet-loytec-loytec-l-vis" data-part="part-bacnet-loytec-loytec-l-vis" aria-label="LOYTEC L-VIS"><rect x="8" y="260" width="160" height="44" rx="6"></rect>
+<circle class="node-badge" cx="26" cy="282" r="11"></circle><use href="#sym-bacnet-loytec-extern-systeem" x="18" y="274" width="16" height="16" class="node-icon"></use>
 <circle class="node-role" cx="160" cy="268" r="3"></circle>
-<text x="101" y="286.32" text-anchor="middle"><tspan x="101" dy="0">L-VIS</tspan></text><rect class="node-hit" x="2" y="254" width="172" height="56"></rect></a>
+<text x="102.5" y="286.32" text-anchor="middle"><tspan x="102.5" dy="0">L-VIS</tspan></text><rect class="node-hit" x="2" y="254" width="172" height="56"></rect></a>
 </g><g class="node" data-node="gbs" data-category="extern-systeem" data-level="extern" data-part="part-bacnet-loytec-gebouwbeheersysteem">
-<a class="node-link" href="#part-bacnet-loytec-gebouwbeheersysteem" data-part="part-bacnet-loytec-gebouwbeheersysteem" aria-label="Gebouwbeheersysteem"><rect x="192" y="260" width="160" height="44" rx="4"></rect>
-<use href="#sym-bacnet-loytec-extern-systeem" x="202" y="274" width="16" height="16" class="node-icon"></use>
+<a class="node-link" href="#part-bacnet-loytec-gebouwbeheersysteem" data-part="part-bacnet-loytec-gebouwbeheersysteem" aria-label="Gebouwbeheersysteem"><rect x="192" y="260" width="160" height="44" rx="6"></rect>
+<circle class="node-badge" cx="210" cy="282" r="11"></circle><use href="#sym-bacnet-loytec-extern-systeem" x="202" y="274" width="16" height="16" class="node-icon"></use>
 
-<text x="285" y="286.32" text-anchor="middle"><tspan x="285" dy="0">Gebouwbeheer</tspan></text><rect class="node-hit" x="186" y="254" width="172" height="56"></rect></a>
+<text x="286.5" y="286.32" text-anchor="middle"><tspan x="286.5" dy="0">Gebouwbeheer</tspan></text><rect class="node-hit" x="186" y="254" width="172" height="56"></rect></a>
 </g></g>
 </svg>
 
@@ -186,20 +187,21 @@
 </figure>
 </section><section class="ladder ladder--opbouw" aria-labelledby="l-opbouw">
 <h2 id="l-opbouw">Zo is het opgebouwd</h2>
-<div class="block block--table"><p>Wie doet wat in dit patroon:</p><div class="table-scroll"><table class="compare compare--stack"><thead><tr><th scope="col">Apparaat</th><th scope="col">Rol</th><th scope="col">Wat je instelt</th></tr></thead><tbody><tr><th scope="row">LiveLink Premium</th><td data-label="Rol">BACnet-server met groepen, scènes en meldingen</td><td data-label="Wat je instelt">BACnet-interface aanzetten in LiveLink ONE</td></tr><tr><th scope="row">LOYTEC LPAD-7</th><td data-label="Rol">lokaal bedienpaneel</td><td data-label="Wat je instelt">pagina&#39;s en koppeling met de LiveLink-objecten</td></tr><tr><th scope="row">LOYTEC L-VIS</th><td data-label="Rol">centraal scherm</td><td data-label="Wat je instelt">pagina&#39;s en koppeling met de LiveLink-objecten</td></tr><tr><th scope="row">LOYTEC LIOB-590</th><td data-label="Rol">logica en in-/uitgangen</td><td data-label="Wat je instelt">ingangen, uitgangen en het programma</td></tr></tbody></table></div></div><div class="block block--text"><p>LOYTEC is een fabrikant van gebouwautomatisering, geen onderdeel van LiveLink. In Nederland levert Vedotec LOYTEC; Vedotec is gecertificeerd LOYTEC Competence Center voor de Benelux. Programmeren gebeurt met de engineeringsoftware van LOYTEC, zoals L-STUDIO.</p></div>
+<details class="more more-deep"><summary>Technische uitleg</summary><div class="block block--table"><p>Wie doet wat in dit patroon:</p><div class="table-scroll"><table class="compare compare--stack"><thead><tr><th scope="col">Apparaat</th><th scope="col">Rol</th><th scope="col">Wat je instelt</th></tr></thead><tbody><tr><th scope="row">LiveLink Premium</th><td data-label="Rol">BACnet-server met groepen, scènes en meldingen</td><td data-label="Wat je instelt">BACnet-interface aanzetten in LiveLink ONE</td></tr><tr><th scope="row">LOYTEC LPAD-7</th><td data-label="Rol">lokaal bedienpaneel</td><td data-label="Wat je instelt">pagina&#39;s en koppeling met de LiveLink-objecten</td></tr><tr><th scope="row">LOYTEC L-VIS</th><td data-label="Rol">centraal scherm</td><td data-label="Wat je instelt">pagina&#39;s en koppeling met de LiveLink-objecten</td></tr><tr><th scope="row">LOYTEC LIOB-590</th><td data-label="Rol">logica en in-/uitgangen</td><td data-label="Wat je instelt">ingangen, uitgangen en het programma</td></tr></tbody></table></div></div><div class="block block--text"><p>LOYTEC is een fabrikant van gebouwautomatisering, geen onderdeel van LiveLink. In Nederland levert Vedotec LOYTEC; Vedotec is gecertificeerd LOYTEC Competence Center voor de Benelux. Programmeren gebeurt met de engineeringsoftware van LOYTEC, zoals L-STUDIO.</p></div></details>
 
 
 </section><section class="ladder ladder--instellen" aria-labelledby="l-instellen">
 <h2 id="l-instellen">Zo stel je het in</h2>
-<div class="block block--steps"><p>Zo pak je de koppeling aan:</p><ol class="steps steps--row"><li>LiveLink eerst: groepen en scènes in LiveLink vastleggen en testen.</li><li>BACnet-interface aanzetten in LiveLink ONE: device-ID, BACnet/IP of BACnet/SC en de netwerkaansluiting.</li><li>Puntenlijst maken: welke LiveLink-objecten het LOYTEC-apparaat of het gebouwbeheer gebruikt.</li><li>Koppelen en testen: pagina&#39;s en logica in de LOYTEC-software aan die objecten koppelen, en iedere functie in de installatie testen.</li><li>Vastleggen: puntenlijst en device-ID&#39;s in de documentatie bij oplevering.</li></ol></div>
+<details class="more more-deep"><summary>Technische uitleg</summary><div class="block block--steps"><p>Zo pak je de koppeling aan:</p><ol class="steps steps--row"><li>LiveLink eerst: groepen en scènes in LiveLink vastleggen en testen.</li><li>BACnet-interface aanzetten in LiveLink ONE: device-ID, BACnet/IP of BACnet/SC en de netwerkaansluiting.</li><li>Puntenlijst maken: welke LiveLink-objecten het LOYTEC-apparaat of het gebouwbeheer gebruikt.</li><li>Koppelen en testen: pagina&#39;s en logica in de LOYTEC-software aan die objecten koppelen, en iedere functie in de installatie testen.</li><li>Vastleggen: puntenlijst en device-ID&#39;s in de documentatie bij oplevering.</li></ol></div></details>
 
 
 </section><section class="ladder ladder--grenzen" aria-labelledby="l-grenzen">
-<h2 id="l-grenzen">Grenzen en aandachtspunten</h2>
+<h2 id="l-grenzen">Goed om te weten</h2>
 <ul class="limitations"><li>LOYTEC is geen LiveLink-product en er is geen kant-en-klare koppeling (geen plug-and-play). De datapunten koppelen is projectengineering door de partij die het BACnet-apparaat programmeert.</li><li>Kies BACnet/IP of BACnet/SC in overleg met IT en de GBS-partij. BACnet/SC is versleuteld en vraagt een hub en certificaten.</li><li>Welke LOYTEC-uitvoering (bijvoorbeeld welk LPAD- of L-VIS-type) en welke BACnet-variant een project krijgt, verifieer je per project met de leverancier.</li></ul>
 
 
 </section>
+
 
 
 <nav class="next-step" aria-label="Volgende stap"><a class="next-step-link" href="/nl/werken/documentatie/">
@@ -209,14 +211,14 @@
 </a></nav>
 <section class="related" aria-labelledby="l-related"><h2 id="l-related">Zie ook</h2><ul class="related-list"><li><a href="/nl/werken/koppelen-met-gebouwbeheer/">LiveLink koppelen met gebouwbeheer</a></li></ul></section>
 </div>
-<nav class="page-toc" aria-labelledby="toc-title"><p class="page-toc-title" id="toc-title">Op deze pagina</p><ul><li><a href="#l-in-30-seconden">In 30 seconden</a></li><li><a href="#l-zo-werkt-het">Zo werkt het</a></li><li><a href="#l-interactief">Bekijk het interactief</a></li><li><a href="#l-opbouw">Zo is het opgebouwd</a></li><li><a href="#l-instellen">Zo stel je het in</a></li><li><a href="#l-grenzen">Grenzen en aandachtspunten</a></li></ul></nav>
+<nav class="page-toc" aria-labelledby="toc-title"><p class="page-toc-title" id="toc-title">Op deze pagina</p><ul><li><a href="#l-in-30-seconden">In 30 seconden</a></li><li><a href="#l-zo-werkt-het">Zo werkt het</a></li><li><a href="#l-interactief">Bekijk het interactief</a></li><li><a href="#l-opbouw">Zo is het opgebouwd</a></li><li><a href="#l-instellen">Zo stel je het in</a></li><li><a href="#l-grenzen">Goed om te weten</a></li></ul></nav>
 </div>
 </article>
 </main>
 <footer class="site-footer"><div class="wrap footer-inner">
-<p class="footer-text">LiveLink Knowledge Hub — lichtsturing begrijpen, een systeem kiezen en ermee werken.</p>
+<p class="footer-text">Lichtsturing.info — kennisplatform voor professionele lichtsturing. LiveLink begrijpen, een systeem kiezen en ermee werken.</p>
 <p class="footer-disclaimer">Lichtsturing.info is een onafhankelijk kennisplatform over lichtsturing. Actuele officiële fabrikantdocumentatie en projectspecificaties blijven leidend. Productnamen en merknamen behoren toe aan hun respectieve rechthebbenden.</p>
-<nav class="footer-nav" aria-label="Navigatie in de voettekst"><ul><li><a href="/nl/begrijpen/">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Systeem kiezen</a></li><li><a href="/nl/werken/">Ermee werken</a></li><li><a href="/nl/zoeken/">Zoeken</a></li></ul></nav>
+<nav class="footer-nav" aria-label="Navigatie in de voettekst"><ul><li><a href="/nl/begrijpen/">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Oplossing kiezen</a></li><li><a href="/nl/werken/">Ermee werken</a></li><li><a href="/nl/zoeken/">Zoeken</a></li></ul></nav>
 </div></footer>
 </body>
 </html>

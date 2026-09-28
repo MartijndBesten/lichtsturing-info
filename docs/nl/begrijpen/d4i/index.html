@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>D4i en drivers · LiveLink Knowledge Hub</title>
+<title>D4i en drivers · Lichtsturing.info</title>
 <meta name="description" content="Wat een D4i-driver extra doet ten opzichte van DALI-2, waar je het tegenkomt en wat het wel en niet betekent voor LiveLink.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#ffffff">
-<link rel="icon" href="data:,">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 32 32&#39;%3E%3Crect width=&#39;32&#39; height=&#39;32&#39; rx=&#39;7&#39; fill=&#39;%23072d78&#39;/%3E%3Cpath d=&#39;M11.5 8.5v15h10&#39; stroke=&#39;%23fff&#39; stroke-width=&#39;3.6&#39; fill=&#39;none&#39; stroke-linecap=&#39;square&#39;/%3E%3C/svg%3E">
 
 <link rel="stylesheet" href="/assets/site.css">
 
@@ -18,9 +18,9 @@
 <a class="skip-link" href="#inhoud">Naar de inhoud</a>
 <header class="site-header">
 <div class="wrap header-row">
-<a class="site-name" href="/nl/"><span class="brand-first">LiveLink</span> <span class="brand-rest">Knowledge Hub</span></a>
+<a class="site-name" href="/nl/"><span class="brand-stack"><span class="brand-mark"><span class="brand-first">Lichtsturing</span><span class="brand-rest">.info</span></span><span class="brand-tagline">Kennisplatform voor professionele lichtsturing</span></span></a>
 <nav class="site-nav" aria-label="Hoofdnavigatie"><ul>
-<li><a href="/nl/begrijpen/" aria-current="true">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Systeem kiezen</a></li><li><a href="/nl/werken/">Ermee werken</a></li>
+<li><a href="/nl/begrijpen/" aria-current="true">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Oplossing kiezen</a></li><li><a href="/nl/werken/">Ermee werken</a></li>
 <li class="nav-search"><a href="/nl/zoeken/">Zoeken</a></li>
 </ul></nav>
 
@@ -28,7 +28,7 @@
 <details class="nav-menu">
 <summary><span class="nav-menu-icon"></span><span class="nav-menu-label">Menu</span></summary>
 <nav class="nav-menu-panel" aria-label="Hoofdnavigatie"><ul>
-<li><a href="/nl/begrijpen/" aria-current="true">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Systeem kiezen</a></li><li><a href="/nl/werken/">Ermee werken</a></li>
+<li><a href="/nl/begrijpen/" aria-current="true">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Oplossing kiezen</a></li><li><a href="/nl/werken/">Ermee werken</a></li>
 <li class="nav-search"><a href="/nl/zoeken/">Zoeken</a></li>
 </ul></nav>
 </details>
@@ -45,7 +45,7 @@
 <div class="article-main">
 <section class="ladder ladder--in-30-seconden" aria-labelledby="l-in-30-seconden">
 <h2 id="l-in-30-seconden">In 30 seconden</h2>
-<div class="block block--text"><p>D4i is een uitbreiding van DALI-2 voor wat er binnen één armatuur gebeurt. Een D4i-driver kan een aangesloten sensor of communicatiemodule voeden, en bewaart op een vaste plek gegevens over de armatuur, het energieverbruik en storingen.</p></div><div class="block block--list"><ul><li>Beheer en onderhoud: gegevens van de armatuur en storingen uitlezen zonder de armatuur te openen.</li><li>Energiegegevens per armatuur voor monitoring.</li><li>Een sensor of communicatiemodule op de armatuur, zonder aparte voeding.</li></ul></div>
+<div class="block block--text"><p>D4i is een uitbreiding van DALI-2 voor wat er binnen één armatuur gebeurt. Een D4i-driver kan een aangesloten sensor of communicatiemodule voeden, en bewaart op een vaste plek gegevens over de armatuur, het energieverbruik en storingen.</p></div><details class="more more-30"><summary>Meer in het kort</summary><div class="block block--list"><ul><li>Beheer en onderhoud: gegevens van de armatuur en storingen uitlezen zonder de armatuur te openen.</li><li>Energiegegevens per armatuur voor monitoring.</li><li>Een sensor of communicatiemodule op de armatuur, zonder aparte voeding.</li></ul></div></details>
 
 
 </section><section class="ladder ladder--zo-werkt-het" aria-labelledby="l-zo-werkt-het">
@@ -67,15 +67,16 @@
 
 </section><section class="ladder ladder--opbouw" aria-labelledby="l-opbouw">
 <h2 id="l-opbouw">Zo is het opgebouwd</h2>
-<div class="block block--table"><p>Wat een D4i-driver extra heeft, volgens de DALI Alliance:</p><div class="table-scroll"><table class="compare"><thead><tr><th scope="col">Onderdeel</th><th scope="col">Wat het doet</th></tr></thead><tbody><tr><th scope="row">Busvoeding (deel 250)</th><td data-label="Wat het doet">voedt de korte DALI-bus in de armatuur, bijvoorbeeld voor een sensor of module</td></tr><tr><th scope="row">Armatuurgegevens (deel 251)</th><td data-label="Wat het doet">identificatie, nominale lichtstroom en kleur van de behuizing</td></tr><tr><th scope="row">Energie (deel 252)</th><td data-label="Wat het doet">actief vermogen en verbruikte energie</td></tr><tr><th scope="row">Diagnose (deel 253)</th><td data-label="Wat het doet">storingen en bedrijfsduur, voor onderhoud</td></tr></tbody></table></div></div><div class="block block--text"><p>Buiten zit de sensor of communicatiemodule vaak in een gestandaardiseerde Zhaga-aansluiting op de armatuur. Zhaga en D4i samen zorgen dat armatuur en module op elkaar passen: mechanisch via de aansluiting, digitaal via D4i.</p></div><div class="block block--text"><p>Bij TRILUX zijn de netwerkgeschikte buitenarmaturen (Smart Lighting Ready) D4i-gecertificeerd. Volgens TRILUX zijn ze via D4i in LiveLink Outdoor te integreren.</p></div>
+<details class="more more-deep"><summary>Technische uitleg</summary><div class="block block--table"><p>Wat een D4i-driver extra heeft, volgens de DALI Alliance:</p><div class="table-scroll"><table class="compare"><thead><tr><th scope="col">Onderdeel</th><th scope="col">Wat het doet</th></tr></thead><tbody><tr><th scope="row">Busvoeding (deel 250)</th><td data-label="Wat het doet">voedt de korte DALI-bus in de armatuur, bijvoorbeeld voor een sensor of module</td></tr><tr><th scope="row">Armatuurgegevens (deel 251)</th><td data-label="Wat het doet">identificatie, nominale lichtstroom en kleur van de behuizing</td></tr><tr><th scope="row">Energie (deel 252)</th><td data-label="Wat het doet">actief vermogen en verbruikte energie</td></tr><tr><th scope="row">Diagnose (deel 253)</th><td data-label="Wat het doet">storingen en bedrijfsduur, voor onderhoud</td></tr></tbody></table></div></div><div class="block block--text"><p>Buiten zit de sensor of communicatiemodule vaak in een gestandaardiseerde Zhaga-aansluiting op de armatuur. Zhaga en D4i samen zorgen dat armatuur en module op elkaar passen: mechanisch via de aansluiting, digitaal via D4i.</p></div><div class="block block--text"><p>Bij TRILUX zijn de netwerkgeschikte buitenarmaturen (Smart Lighting Ready) D4i-gecertificeerd. Volgens TRILUX zijn ze via D4i in LiveLink Outdoor te integreren.</p></div></details>
 
 
 </section><section class="ladder ladder--grenzen" aria-labelledby="l-grenzen">
-<h2 id="l-grenzen">Grenzen en aandachtspunten</h2>
+<h2 id="l-grenzen">Goed om te weten</h2>
 <ul class="limitations"><li>Iedere D4i-driver heeft een geïntegreerde busvoeding. Hangen er meerdere D4i-armaturen aan één DALI-lijn, controleer dan de totale busvoedingsstroom: die mag niet boven het maximum van 250 mA komen. Zou de som hoger worden, dan schakel je vóór het aansluiten één of meer van die busvoedingen uit. Het is dus een rekensom, geen regel om ze altijd uit te schakelen.</li><li>D4i-gegevens zijn geen automatische LiveLink-functie. Welke gegevens een LiveLink-systeem uit een driver leest, verschilt per systeem en versie: controleer het per project in de productdocumentatie.</li></ul>
 
 
 </section>
+
 
 
 <nav class="next-step" aria-label="Volgende stap"><a class="next-step-link" href="/nl/systeem-kiezen/armatuurkeuze/">
@@ -85,14 +86,14 @@
 </a></nav>
 <section class="related" aria-labelledby="l-related"><h2 id="l-related">Zie ook</h2><ul class="related-list"><li><a href="/nl/begrijpen/dali/">DALI</a></li></ul></section>
 </div>
-<nav class="page-toc" aria-labelledby="toc-title"><p class="page-toc-title" id="toc-title">Op deze pagina</p><ul><li><a href="#l-in-30-seconden">In 30 seconden</a></li><li><a href="#l-zo-werkt-het">Zo werkt het</a></li><li><a href="#l-opbouw">Zo is het opgebouwd</a></li><li><a href="#l-grenzen">Grenzen en aandachtspunten</a></li></ul></nav>
+<nav class="page-toc" aria-labelledby="toc-title"><p class="page-toc-title" id="toc-title">Op deze pagina</p><ul><li><a href="#l-in-30-seconden">In 30 seconden</a></li><li><a href="#l-zo-werkt-het">Zo werkt het</a></li><li><a href="#l-opbouw">Zo is het opgebouwd</a></li><li><a href="#l-grenzen">Goed om te weten</a></li></ul></nav>
 </div>
 </article>
 </main>
 <footer class="site-footer"><div class="wrap footer-inner">
-<p class="footer-text">LiveLink Knowledge Hub — lichtsturing begrijpen, een systeem kiezen en ermee werken.</p>
+<p class="footer-text">Lichtsturing.info — kennisplatform voor professionele lichtsturing. LiveLink begrijpen, een systeem kiezen en ermee werken.</p>
 <p class="footer-disclaimer">Lichtsturing.info is een onafhankelijk kennisplatform over lichtsturing. Actuele officiële fabrikantdocumentatie en projectspecificaties blijven leidend. Productnamen en merknamen behoren toe aan hun respectieve rechthebbenden.</p>
-<nav class="footer-nav" aria-label="Navigatie in de voettekst"><ul><li><a href="/nl/begrijpen/">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Systeem kiezen</a></li><li><a href="/nl/werken/">Ermee werken</a></li><li><a href="/nl/zoeken/">Zoeken</a></li></ul></nav>
+<nav class="footer-nav" aria-label="Navigatie in de voettekst"><ul><li><a href="/nl/begrijpen/">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Oplossing kiezen</a></li><li><a href="/nl/werken/">Ermee werken</a></li><li><a href="/nl/zoeken/">Zoeken</a></li></ul></nav>
 </div></footer>
 </body>
 </html>
