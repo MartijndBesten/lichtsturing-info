@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="nl" data-base="/">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Relais en schakelactoren · LiveLink Knowledge Hub</title>
+<meta name="description" content="Hoe LiveLink via de DALI-lijn iets aan- en uitschakelt dat niet dimt, en waar je bij de keuze op let.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:,">
+
+<link rel="stylesheet" href="/assets/site.css">
+
+<script type="module" src="/assets/site.js"></script>
+</head>
+<body>
+
+<a class="skip-link" href="#inhoud">Naar de inhoud</a>
+<header class="site-header">
+<div class="wrap header-row">
+<a class="site-name" href="/nl/"><span class="brand-first">LiveLink</span> <span class="brand-rest">Knowledge Hub</span></a>
+<nav class="site-nav" aria-label="Hoofdnavigatie"><ul>
+<li><a href="/nl/begrijpen/" aria-current="true">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Systeem kiezen</a></li><li><a href="/nl/werken/">Ermee werken</a></li>
+<li class="nav-search"><a href="/nl/zoeken/">Zoeken</a></li>
+</ul></nav>
+
+<a class="header-search" href="/nl/zoeken/" aria-label="Zoeken"><span class="header-search-icon"></span></a>
+<details class="nav-menu">
+<summary><span class="nav-menu-icon"></span><span class="nav-menu-label">Menu</span></summary>
+<nav class="nav-menu-panel" aria-label="Hoofdnavigatie"><ul>
+<li><a href="/nl/begrijpen/" aria-current="true">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Systeem kiezen</a></li><li><a href="/nl/werken/">Ermee werken</a></li>
+<li class="nav-search"><a href="/nl/zoeken/">Zoeken</a></li>
+</ul></nav>
+</details>
+
+</div>
+</header>
+<main id="inhoud" class="wrap" tabindex="-1">
+<nav class="breadcrumb" aria-label="Kruimelpad"><ol><li><a href="/nl/">Home</a></li><li><a href="/nl/begrijpen/">Begrijpen</a></li><li aria-current="page">Relais en schakelactoren</li></ol></nav>
+<article class="article">
+<header class="page-header"><h1>Relais en schakelactoren</h1><p class="lead">Hoe LiveLink via de DALI-lijn iets aan- en uitschakelt dat niet dimt, en waar je bij de keuze op let.</p></header>
+
+
+<div class="article-layout has-toc">
+<div class="article-main">
+<section class="ladder ladder--in-30-seconden" aria-labelledby="l-in-30-seconden">
+<h2 id="l-in-30-seconden">In 30 seconden</h2>
+<div class="block block--text"><p>Een DALI-schakelactor is een relais op de DALI-lijn. LiveLink stuurt hem aan zoals de armaturen op die lijn, maar hij dimt niet: hij schakelt wat erop is aangesloten aan of uit.</p></div><div class="block block--list"><ul><li>Een belasting die niet dimt meeschakelen met de lichtregeling, bijvoorbeeld niet-dimbare armaturen.</li><li>Schakelen vanuit dezelfde LiveLink-installatie, zonder aparte schakelklok of schakelaar.</li></ul></div>
+
+
+</section><section class="ladder ladder--zo-werkt-het" aria-labelledby="l-zo-werkt-het">
+<h2 id="l-zo-werkt-het">Zo werkt het</h2>
+<h3>DALI-schakelactor (relais)</h3><div class="block block--text"><p>Bij het zoeken op de DALI-lijn toont LiveLink ONE een schakelactor tussen de armaturen, met lettercode S. Ter vergelijking: D is dimbaar, TW is Tunable White en E is noodverlichting.</p></div><div class="block block--text"><p>In de DALI-2-standaard heet dit een schakelfunctie: voor belastingen die alleen aan of uit gaan, zoals armaturen die niet dimbaar zijn.</p></div><figure class="illustration illustration--ports" id="demo-schakelactor-principe" data-module="ports">
+<figcaption class="illustration-title">Principe: een belasting schakelen via DALI</figcaption>
+<p class="illustration-summary">Kies een aansluiting. De schakelactor krijgt zijn commando via de DALI-lijn en zet met zijn contact de fase naar de belasting aan of uit.</p>
+<svg class="illustration-svg illustration-svg--ports" viewBox="0 0 360 164" role="img" aria-labelledby="illt-schakelactor-principe illd-schakelactor-principe" preserveAspectRatio="xMidYMin meet">
+<title id="illt-schakelactor-principe">Principe: een belasting schakelen via DALI</title>
+<desc id="illd-schakelactor-principe">DALI-lijn → Schakelactor; Netvoeding → Schakelactor; Contact → Belasting (geschakelde fase)</desc>
+<g class="pt-rail" data-port="dali"><line class="ch-line ch-line--bus" x1="8" y1="16" x2="352" y2="16"></line><text class="ch-label ch-label--bus" x="352" y="11" text-anchor="end">DALI-lijn</text><line class="ch-line ch-line--bus" x1="58" y1="16" x2="58" y2="70"></line><circle class="pt-junction pt-junction--bus" cx="58" cy="16" r="3"></circle></g><g class="pt-rail" data-port="net"><line class="ch-line ch-line--voeding" x1="8" y1="40" x2="352" y2="40"></line><text class="ch-label ch-label--voeding" x="352" y="35" text-anchor="end">Netvoeding</text><line class="ch-line ch-line--voeding" x1="122" y1="40" x2="122" y2="70"></line><circle class="pt-junction pt-junction--voeding" cx="122" cy="40" r="3"></circle></g>
+<g class="pt-device"><rect x="16" y="70" width="164" height="86" rx="6"></rect><line x1="16" y1="100" x2="180" y2="100"></line><text class="pt-device-name" x="98" y="90" text-anchor="middle">Schakelactor</text></g>
+<g class="pt-row" data-port="contact"><text class="pt-klem" x="168" y="133" text-anchor="end">Contact</text><line class="ch-line ch-line--voeding" x1="180" y1="129" x2="222" y2="129"></line><circle class="pt-terminal" cx="180" cy="129" r="3.5"></circle><rect class="pt-target" x="222" y="109" width="130" height="40" rx="4"></rect><text class="pt-target-name" x="230" y="127">Belasting</text><text class="pt-wire" x="230" y="141">geschakelde fase</text></g>
+</svg>
+<ol class="illustration-steps illustration-steps--ports"><li data-port="dali" data-short="DALI-lijn"><strong class="pt-item-title">DALI-lijn</strong><span class="li-sep"> — </span><svg class="ill-key" viewBox="0 0 34 12" aria-hidden="true" focusable="false"><line class="ch-line ch-line--bus" x1="2" y1="6" x2="32" y2="6"></line></svg><span class="ch-medium">buslijn</span><span class="pt-note">Van hier krijgt de schakelactor zijn aan/uit-commando van LiveLink, net als de armaturen op dezelfde lijn.</span></li><li data-port="net" data-short="Netvoeding"><strong class="pt-item-title">Netvoeding</strong><span class="li-sep"> — </span><svg class="ill-key" viewBox="0 0 34 12" aria-hidden="true" focusable="false"><line class="ch-line ch-line--voeding" x1="2" y1="6" x2="32" y2="6"></line></svg><span class="ch-medium">voeding</span><span class="pt-note">De fase die het contact doorschakelt. Hoe de schakelactor zelf gevoed wordt, staat in de datasheet van het product.</span></li><li data-port="contact" data-short="Contact"><strong class="pt-item-title">Contact → Belasting</strong><span class="li-sep"> — </span><svg class="ill-key" viewBox="0 0 34 12" aria-hidden="true" focusable="false"><line class="ch-line ch-line--voeding" x1="2" y1="6" x2="32" y2="6"></line></svg><span class="ch-medium">geschakelde fase</span><span class="pt-note">Het relaiscontact zet de fase naar de belasting aan of uit, bijvoorbeeld naar niet-dimbare armaturen. Dimmen kan niet: alleen aan of uit.</span></li></ol>
+<script type="application/json" class="module-config">{"strings":{"choose":"Kies een aansluiting","hint":"Kies een aansluiting om alleen de uitleg daarvan te zien.","all":"Alles"}}</script>
+</figure>
+<div class="parts"><article class="part" id="onderdeel-relay-da2-ipd-eb-no-8a">
+<h3>Compact DALI-relais 8 A, maakcontact</h3>
+<div class="block block--text"><p>Een compact DALI-relais van TRILUX: het schakelt de aangesloten belasting via de DALI-lijn aan en uit, met een maakcontact van 8 A. Het dimt niet.</p></div>
+
+
+
+<details class="more"><summary>Meer over Compact DALI-relais 8 A, maakcontact</summary>
+
+<dl class="facts-inline"><div><dt>Contact</dt><dd>maakcontact (NO)</dd></div><div><dt>Nominale contactstroom</dt><dd>8 A</dd></div><div><dt>Soort belasting</dt><dd>230 V AC</dd></div></dl>
+
+</details>
+</article><article class="part" id="onderdeel-relay-da2-ipd-dinrail-nonc-8a">
+<h3>Compact DALI-relais 8 A, wisselcontact</h3>
+<div class="block block--text"><p>Een compact DALI-relais van TRILUX: het schakelt de aangesloten belasting via de DALI-lijn aan en uit, met een wisselcontact van 8 A. Het dimt niet.</p></div>
+
+
+
+<details class="more"><summary>Meer over Compact DALI-relais 8 A, wisselcontact</summary>
+
+<dl class="facts-inline"><div><dt>Contact</dt><dd>wisselcontact (NO/NC)</dd></div><div><dt>Nominale contactstroom</dt><dd>8 A</dd></div><div><dt>Soort belasting</dt><dd>230 V AC</dd></div></dl>
+
+</details>
+</article><article class="part" id="onderdeel-relay-da2-ipd-dinrail-no-16a">
+<h3>Compact DALI-relais 16 A, maakcontact</h3>
+<div class="block block--text"><p>Een compact DALI-relais van TRILUX: het schakelt de aangesloten belasting via de DALI-lijn aan en uit, met een maakcontact van 16 A. Het dimt niet.</p></div>
+
+
+
+<details class="more"><summary>Meer over Compact DALI-relais 16 A, maakcontact</summary>
+
+<dl class="facts-inline"><div><dt>Contact</dt><dd>maakcontact (NO)</dd></div><div><dt>Nominale contactstroom</dt><dd>16 A</dd></div><div><dt>Soort belasting</dt><dd>230 V AC</dd></div></dl>
+
+</details>
+</article></div>
+
+</section><section class="ladder ladder--opbouw" aria-labelledby="l-opbouw">
+<h2 id="l-opbouw">Zo is het opgebouwd</h2>
+<div class="block block--table"><p>Schakelen is niet altijd hetzelfde. Drie situaties die je in een project uit elkaar houdt:</p><div class="table-scroll"><table class="compare compare--stack"><thead><tr><th scope="col">Situatie</th><th scope="col">Wat het relais doet</th><th scope="col">Waar je op let</th></tr></thead><tbody><tr><th scope="row">Netbelasting schakelen</th><td data-label="Wat het relais doet">zet de fase naar een niet-dimbare belasting aan of uit</td><td data-label="Waar je op let">schakelvermogen en inschakelstroom uit de datasheet</td></tr><tr><th scope="row">Signaal aan een ander systeem</th><td data-label="Wat het relais doet">geeft een contact door aan bijvoorbeeld het gebouwbeheer</td><td data-label="Waar je op let">alleen met een potentiaalvrij contact volgens de datasheet</td></tr><tr><th scope="row">Geïntegreerd relais</th><td data-label="Wat het relais doet">zit in een armatuur, driver of ander apparaat</td><td data-label="Waar je op let">per product: of en hoe LiveLink het aanstuurt</td></tr></tbody></table></div></div>
+
+
+</section><section class="ladder ladder--grenzen" aria-labelledby="l-grenzen">
+<h2 id="l-grenzen">Grenzen en aandachtspunten</h2>
+<ul class="limitations"><li>Kies een schakelactor op de datasheet: schakelvermogen, inschakelstroom (bijvoorbeeld van LED-drivers), soort contact en montage verschillen per product. Deze uitleg vervangt geen elektrotechnisch ontwerp.</li></ul>
+
+
+</section>
+
+
+
+<section class="related" aria-labelledby="l-related"><h2 id="l-related">Zie ook</h2><ul class="related-list"><li><a href="/nl/begrijpen/dali/">DALI</a></li></ul></section>
+</div>
+<nav class="page-toc" aria-labelledby="toc-title"><p class="page-toc-title" id="toc-title">Op deze pagina</p><ul><li><a href="#l-in-30-seconden">In 30 seconden</a></li><li><a href="#l-zo-werkt-het">Zo werkt het</a></li><li><a href="#l-opbouw">Zo is het opgebouwd</a></li><li><a href="#l-grenzen">Grenzen en aandachtspunten</a></li></ul></nav>
+</div>
+</article>
+</main>
+<footer class="site-footer"><div class="wrap footer-inner">
+<p class="footer-text">LiveLink Knowledge Hub — lichtsturing begrijpen, een systeem kiezen en ermee werken.</p>
+<p class="footer-disclaimer">Lichtsturing.info is een onafhankelijk kennisplatform over lichtsturing. Actuele officiële fabrikantdocumentatie en projectspecificaties blijven leidend. Productnamen en merknamen behoren toe aan hun respectieve rechthebbenden.</p>
+<nav class="footer-nav" aria-label="Navigatie in de voettekst"><ul><li><a href="/nl/begrijpen/">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Systeem kiezen</a></li><li><a href="/nl/werken/">Ermee werken</a></li><li><a href="/nl/zoeken/">Zoeken</a></li></ul></nav>
+</div></footer>
+</body>
+</html>

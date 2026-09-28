@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="nl" data-base="/">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sensoren · LiveLink Knowledge Hub</title>
+<meta name="description" content="Van toepassing naar sensor: wat een sensor doet, waar hij komt en hoe hij met de verlichting verbonden is.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:,">
+
+<link rel="stylesheet" href="/assets/site.css">
+
+<script type="module" src="/assets/site.js"></script>
+</head>
+<body>
+
+<a class="skip-link" href="#inhoud">Naar de inhoud</a>
+<header class="site-header">
+<div class="wrap header-row">
+<a class="site-name" href="/nl/"><span class="brand-first">LiveLink</span> <span class="brand-rest">Knowledge Hub</span></a>
+<nav class="site-nav" aria-label="Hoofdnavigatie"><ul>
+<li><a href="/nl/begrijpen/" aria-current="true">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Systeem kiezen</a></li><li><a href="/nl/werken/">Ermee werken</a></li>
+<li class="nav-search"><a href="/nl/zoeken/">Zoeken</a></li>
+</ul></nav>
+<button type="button" class="practice-toggle practice-toggle--header" data-practice-toggle aria-pressed="false" hidden><span class="practice-switch"></span><span class="practice-toggle-label">Oefenvragen tonen</span></button>
+<a class="header-search" href="/nl/zoeken/" aria-label="Zoeken"><span class="header-search-icon"></span></a>
+<details class="nav-menu">
+<summary><span class="nav-menu-icon"></span><span class="nav-menu-label">Menu</span></summary>
+<nav class="nav-menu-panel" aria-label="Hoofdnavigatie"><ul>
+<li><a href="/nl/begrijpen/" aria-current="true">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Systeem kiezen</a></li><li><a href="/nl/werken/">Ermee werken</a></li>
+<li class="nav-search"><a href="/nl/zoeken/">Zoeken</a></li>
+</ul><button type="button" class="practice-toggle practice-toggle--menu" data-practice-toggle aria-pressed="false" hidden><span class="practice-switch"></span><span class="practice-toggle-label">Oefenvragen tonen</span></button></nav>
+</details>
+
+</div>
+</header>
+<main id="inhoud" class="wrap" tabindex="-1">
+<nav class="breadcrumb" aria-label="Kruimelpad"><ol><li><a href="/nl/">Home</a></li><li><a href="/nl/begrijpen/">Begrijpen</a></li><li aria-current="page">Sensoren</li></ol></nav>
+<article class="article">
+<header class="page-header"><h1>Sensoren</h1><p class="lead">Van toepassing naar sensor: wat een sensor doet, waar hij komt en hoe hij met de verlichting verbonden is.</p></header>
+<nav class="role-chooser" aria-labelledby="role-chooser-title"><p class="role-chooser-title" id="role-chooser-title">Welke sensorrol bedoel je?</p><p class="role-chooser-help">Vier rollen, elk met dezelfde opbouw: wat het is, wat daadwerkelijk regelt, waar je het instelt en welk systeem erbij hoort.</p><ul><li><a href="#onderdeel-sensor-switch"><span class="role-chooser-name">Schakelende sensor (Switch)</span><span class="role-chooser-text">Schakelt de netspanning naar de aangesloten verlichting zelf; geen DALI-regeling.</span></a></li><li><a href="#onderdeel-sensor-dali2-broadcast"><span class="role-chooser-name">DALI-2 Broadcast-sensor</span><span class="role-chooser-text">Schakelt en dimt de aangesloten DALI-armaturen zelf, allemaal tegelijk.</span></a></li><li><a href="#onderdeel-sensor-dali2-input-device"><span class="role-chooser-name">DALI-2 sensor (Input Device)</span><span class="role-chooser-text">Levert zijn signalen aan een bovenliggende DALI-2-besturing, zoals LiveLink.</span></a></li><li><a href="#onderdeel-sensor-bluetooth-nlc"><span class="role-chooser-name">Bluetooth NLC-sensor</span><span class="role-chooser-text">Draadloos gekoppeld via Bluetooth NLC, binnen de Hybrid-uitbreiding van LiveLink Premium.</span></a></li></ul></nav>
+
+<div class="article-layout has-toc">
+<div class="article-main">
+<section class="ladder ladder--in-30-seconden" aria-labelledby="l-in-30-seconden">
+<h2 id="l-in-30-seconden">In 30 seconden</h2>
+<div class="block block--text"><p>Een sensor laat het licht reageren op wat er in een ruimte gebeurt: of er iemand is, en hoeveel daglicht er binnenkomt. Hoeveel sensoren je nodig hebt en waar, volgt uit het gebruik van de ruimte — niet uit het aantal armaturen.</p></div>
+
+
+</section><section class="ladder ladder--zo-werkt-het" aria-labelledby="l-zo-werkt-het">
+<h2 id="l-zo-werkt-het">Zo werkt het</h2>
+<h3>Sensoren</h3><div class="block block--steps"><p>Van toepassing naar sensor:</p><ol class="steps steps--row"><li><strong>Toepassing</strong><span class="li-sep"> — </span>hoe wordt de ruimte gebruikt, en welke delen horen functioneel bij elkaar?</li><li><strong>Detectiebehoefte</strong><span class="li-sep"> — </span>moet het licht reageren op aanwezigheid of beweging, op daglicht, of op beide?</li><li><strong>Sensorprincipe en montage</strong><span class="li-sep"> — </span>welk detectiegebied is nodig, op welke montagehoogte, en waar valt het daglicht?</li><li><strong>Techniek</strong><span class="li-sep"> — </span>hoe is de sensor met de verlichting verbonden: zelfstandig schakelend, via DALI-2 of draadloos via Bluetooth NLC?</li></ol></div>
+<div class="parts"><article class="part" id="onderdeel-aanwezigheidsdetectie">
+<h3>Aanwezigheidsdetectie</h3>
+<div class="block block--text"><p>Een aanwezigheidssensor meldt of er iemand in zijn detectiegebied is. In <a href="/nl/werken/livelink-one/">LiveLink ONE</a> stel je per armaturengroep in een lichtscène in wat het licht dan doet: vanzelf aan (Volautomatisch) of pas als iemand het zelf inschakelt (Halfautomatisch). Is er niemand meer, dan bouwt het licht af: eerst de Nalooptijd, dan eventueel Basislicht, en daarna uit.</p></div>
+
+
+<p class="part-deeper"><a href="/nl/begrijpen/aanwezigheid-en-basislicht/">Lees verder: Aanwezigheid en basislicht</a></p>
+
+</article><article class="part" id="onderdeel-daglichtregeling">
+<h3>Daglichtregeling</h3>
+<div class="block block--text"><p>Eén multisensor aan het plafond meet hoeveel licht de ruimte terugkaatst. Komt er meer daglicht binnen, dan dimt de constantlichtregeling het kunstlicht terug; wordt het donkerder, dan regelt ze weer op. Zo brandt er alleen het kunstlicht dat nog nodig is.</p></div>
+
+
+<p class="part-deeper"><a href="/nl/begrijpen/daglichtregeling/">Lees verder: Daglichtregeling</a></p>
+
+</article><article class="part" id="onderdeel-sensorpositie">
+<h3>Waar komt een sensor?</h3>
+<div class="block block--text"><p>Positie en aantal sensoren volgen uit ruimtegebruik, detectiegebied, montagehoogte, daglichtzones en de gewenste functie.</p></div>
+
+
+
+<details class="more"><summary>Zo bepaal je waar een sensor komt</summary>
+<div class="block block--list"><ul><li><strong>Montagehoogte en detectiegebied</strong><span class="li-sep"> — </span>het detectiebereik hangt af van de montagehoogte en de uitvoering van de sensor; gebruik de richtwaarden uit de productinformatie van het gekozen type.</li><li><strong>Daglichtzones</strong><span class="li-sep"> — </span>licht bij de gevel regel je anders dan licht verder van het raam.</li><li><strong>Functionele zonering</strong><span class="li-sep"> — </span>sensoren werken voor armaturengroepen, niet automatisch voor één armatuur.</li></ul><p class="nav-hint">Hoe je armaturen in groepen indeelt, staat bij <a href="/nl/begrijpen/dali/#onderdeel-functionele-groepen">Functionele groepen</a>.</p></div>
+
+
+</details>
+</article></div>
+
+</section><section class="ladder ladder--opbouw" aria-labelledby="l-opbouw">
+<h2 id="l-opbouw">Zo is het opgebouwd</h2>
+<h3>Sensoren</h3><div class="block block--text"><p>Een sensor kan op vier manieren met de verlichting verbonden zijn. Iedere rol hieronder heeft dezelfde opbouw: wat het is, wat er regelt, waar je het instelt, welk systeem erbij hoort, het product en het aansluitschema.</p></div>
+<div class="parts parts--deep"><article class="part part--role" id="onderdeel-sensor-switch">
+<h3>Schakelende sensor (Switch)</h3>
+<dl class="role-card"><div class="role-card-row"><dt>Wat is dit?</dt><dd><div class="block block--text"><p>Een sensor die de netspanning (230 V) naar de aangesloten verlichting zelf schakelt: op aanwezigheid en licht, met een nalooptijd.</p></div></dd></div><div class="role-card-row"><dt>Wat regelt daadwerkelijk?</dt><dd><div class="block block--text"><p>De sensor zelf. Hij schakelt de voeding van de armaturen en stuurt geen DALI-commando&#39;s; er is geen DALI-regeling en geen DALI-adressering.</p></div></dd></div><div class="role-card-row"><dt>Waar stel je het in?</dt><dd><div class="block block--text"><p>Op de sensor zelf, zonder app: de lichtdrempel en de nalooptijd.</p></div></dd></div><div class="role-card-row"><dt>Welk systeem hoort erbij?</dt><dd><div class="block block--text"><p>Geen lichtmanagementsysteem: de sensor werkt zelfstandig in de ruimte.</p></div></dd></div><div class="role-card-row role-card-row--schema"><dt>Aansluitschema</dt><dd><figure class="illustration illustration--chain" id="demo-aansluiting-switch">
+<figcaption class="illustration-title">Zo is een Switch aangesloten</figcaption>
+<p class="illustration-summary">Schematisch: de sensor zit in de voeding van de armaturen en schakelt die zelf. Geen DALI-lijn, geen regeling erboven.</p>
+<svg class="illustration-svg illustration-svg--chain" viewBox="0 0 360 240" role="img" aria-labelledby="illt-aansluiting-switch illd-aansluiting-switch" preserveAspectRatio="xMidYMin meet">
+<title id="illt-aansluiting-switch">Zo is een Switch aangesloten</title>
+<desc id="illd-aansluiting-switch">Netvoeding — 230 V → Switch-sensor — geschakelde 230 V → Armatuur, Armatuur</desc>
+<defs><marker id="cha-aansluiting-switch-voeding" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="ch-head ch-head--voeding"></path></marker></defs>
+<path class="ch-line ch-line--voeding" d="M180 44V98" marker-end="url(#cha-aansluiting-switch-voeding)"></path><text class="ch-label ch-label--voeding" x="190" y="76">230 V</text><path class="ch-line ch-line--voeding" d="M180 140V180M94 180H266"></path><path class="ch-line ch-line--voeding" d="M94 180V194" marker-end="url(#cha-aansluiting-switch-voeding)"></path><path class="ch-line ch-line--voeding" d="M266 180V194" marker-end="url(#cha-aansluiting-switch-voeding)"></path><text class="ch-label ch-label--voeding" x="190" y="160">geschakelde 230 V</text>
+<g class="ch-node"><rect x="70" y="4" width="220" height="40" rx="4"></rect><text x="180" y="28" text-anchor="middle">Netvoeding</text></g><g class="ch-node"><rect x="70" y="100" width="220" height="40" rx="4"></rect><text x="180" y="124" text-anchor="middle">Switch-sensor</text></g><g class="ch-node"><rect x="16" y="196" width="156" height="40" rx="4"></rect><text x="94" y="220" text-anchor="middle">Armatuur</text></g><g class="ch-node"><rect x="188" y="196" width="156" height="40" rx="4"></rect><text x="266" y="220" text-anchor="middle">Armatuur</text></g>
+</svg>
+<ol class="illustration-steps illustration-steps--chain"><li><strong>Netvoeding</strong><span class="li-sep"> — </span><svg class="ill-key" viewBox="0 0 34 12" aria-hidden="true" focusable="false"><line class="ch-line ch-line--voeding" x1="2" y1="6" x2="32" y2="6"></line></svg>230 V <span class="ch-medium">(voeding)</span></li><li><strong>Switch-sensor</strong><span class="li-sep"> — </span><svg class="ill-key" viewBox="0 0 34 12" aria-hidden="true" focusable="false"><line class="ch-line ch-line--voeding" x1="2" y1="6" x2="32" y2="6"></line></svg>geschakelde 230 V <span class="ch-medium">(voeding)</span></li><li><strong>Armatuur · Armatuur</strong></li></ol>
+</figure></dd></div></dl>
+
+</article><article class="part part--role" id="onderdeel-sensor-dali2-broadcast">
+<h3>DALI-2 Broadcast-sensor</h3>
+<dl class="role-card"><div class="role-card-row"><dt>Wat is dit?</dt><dd><div class="block block--text"><p>Een sensor met een eigen DALI-uitgang: hij schakelt en dimt de aangesloten DALI-armaturen zelf, allemaal samen als één groep.</p></div></dd></div><div class="role-card-row"><dt>Wat regelt daadwerkelijk?</dt><dd><div class="block block--text"><p>De sensor zelf, met broadcast uit de DALI-standaard: één commando voor alle armaturen op zijn uitgang tegelijk, zonder adres per armatuur.</p></div></dd></div><div class="role-card-row"><dt>Waar stel je het in?</dt><dd><div class="block block--text"><p>Op de sensor zelf: de lichtdrempel en de nalooptijd.</p></div></dd></div><div class="role-card-row"><dt>Welk systeem hoort erbij?</dt><dd><div class="block block--text"><p>Geen bovenliggend systeem: de sensor stuurt zijn eigen DALI-uitgang. Dat is een andere rol dan een DALI-2 sensor (Input Device).</p></div></dd></div><div class="role-card-row role-card-row--schema"><dt>Aansluitschema</dt><dd><figure class="illustration illustration--chain" id="demo-aansluiting-broadcast">
+<figcaption class="illustration-title">Zo is een Broadcast-sensor aangesloten</figcaption>
+<p class="illustration-summary">Schematisch: de sensor stuurt via zijn DALI-uitgang alle aangesloten armaturen samen aan, met één broadcastcommando. De armaturen hebben daarnaast hun eigen netvoeding.</p>
+<svg class="illustration-svg illustration-svg--chain" viewBox="0 0 360 240" role="img" aria-labelledby="illt-aansluiting-broadcast illd-aansluiting-broadcast" preserveAspectRatio="xMidYMin meet">
+<title id="illt-aansluiting-broadcast">Zo is een Broadcast-sensor aangesloten</title>
+<desc id="illd-aansluiting-broadcast">Netvoeding — 230 V → DALI-2 Broadcast-sensor — DALI-uitgang: broadcast → Armatuur, Armatuur, Armatuur</desc>
+<defs><marker id="cha-aansluiting-broadcast-voeding" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="ch-head ch-head--voeding"></path></marker><marker id="cha-aansluiting-broadcast-bus" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="ch-head ch-head--bus"></path></marker></defs>
+<path class="ch-line ch-line--voeding" d="M180 44V98" marker-end="url(#cha-aansluiting-broadcast-voeding)"></path><text class="ch-label ch-label--voeding" x="190" y="76">230 V</text><path class="ch-line ch-line--bus" d="M180 140V180M63 180H297"></path><path class="ch-line ch-line--bus" d="M63 180V194" marker-end="url(#cha-aansluiting-broadcast-bus)"></path><path class="ch-line ch-line--bus" d="M180 180V194" marker-end="url(#cha-aansluiting-broadcast-bus)"></path><path class="ch-line ch-line--bus" d="M297 180V194" marker-end="url(#cha-aansluiting-broadcast-bus)"></path><text class="ch-label ch-label--bus" x="190" y="160">DALI-uitgang: broadcast</text>
+<g class="ch-node"><rect x="70" y="4" width="220" height="40" rx="4"></rect><text x="180" y="28" text-anchor="middle">Netvoeding</text></g><g class="ch-node"><rect x="70" y="100" width="220" height="40" rx="4"></rect><text x="180" y="124" text-anchor="middle">DALI-2 Broadcast-sensor</text></g><g class="ch-node"><rect x="10" y="196" width="106" height="40" rx="4"></rect><text x="63" y="220" text-anchor="middle">Armatuur</text></g><g class="ch-node"><rect x="127" y="196" width="106" height="40" rx="4"></rect><text x="180" y="220" text-anchor="middle">Armatuur</text></g><g class="ch-node"><rect x="244" y="196" width="106" height="40" rx="4"></rect><text x="297" y="220" text-anchor="middle">Armatuur</text></g>
+</svg>
+<ol class="illustration-steps illustration-steps--chain"><li><strong>Netvoeding</strong><span class="li-sep"> — </span><svg class="ill-key" viewBox="0 0 34 12" aria-hidden="true" focusable="false"><line class="ch-line ch-line--voeding" x1="2" y1="6" x2="32" y2="6"></line></svg>230 V <span class="ch-medium">(voeding)</span></li><li><strong>DALI-2 Broadcast-sensor</strong><span class="li-sep"> — </span><svg class="ill-key" viewBox="0 0 34 12" aria-hidden="true" focusable="false"><line class="ch-line ch-line--bus" x1="2" y1="6" x2="32" y2="6"></line></svg>DALI-uitgang: broadcast <span class="ch-medium">(buslijn)</span></li><li><strong>Armatuur · Armatuur · Armatuur</strong></li></ol>
+</figure></dd></div></dl>
+
+</article><article class="part part--role" id="onderdeel-sensor-dali2-input-device">
+<h3>DALI-2 sensor (Input Device)</h3>
+<dl class="role-card"><div class="role-card-row"><dt>Wat is dit?</dt><dd><div class="block block--text"><p>„Input Device” is de DALI-2-rol van een sensor: hij meet bijvoorbeeld aanwezigheid en licht en geeft die informatie via de DALI-lijn aan de regeling.</p></div></dd></div><div class="role-card-row"><dt>Wat regelt daadwerkelijk?</dt><dd><div class="block block--text"><p>De regeling erboven, zoals LiveLink: die beslist wat er gebeurt en stuurt de armaturen aan. De sensor stuurt de armaturen niet zelf aan.</p></div></dd></div><div class="role-card-row"><dt>Waar stel je het in?</dt><dd><div class="block block--text"><p>In <a href="/nl/werken/livelink-one/">LiveLink ONE</a>: je wijst de functies van de sensor toe aan armaturengroepen.</p></div></dd></div><div class="role-card-row"><dt>Welk systeem hoort erbij?</dt><dd><div class="block block--text"><p>LiveLink Premium: de sensor zit op een DALI-lijn van het systeem en wordt via die lijn gevoed.</p></div></dd></div><div class="role-card-row role-card-row--schema"><dt>Aansluitschema</dt><dd><figure class="illustration illustration--chain" id="demo-aansluiting-input-device">
+<figcaption class="illustration-title">Zo werkt een DALI-2 sensor (Input Device) in het systeem</figcaption>
+<p class="illustration-summary">Schematisch: sensor en armaturen zitten op dezelfde DALI-lijn. De sensor meldt, de LiveLink-regeling beslist en stuurt de armaturen aan.</p>
+<svg class="illustration-svg illustration-svg--chain" viewBox="0 0 360 240" role="img" aria-labelledby="illt-aansluiting-input-device illd-aansluiting-input-device" preserveAspectRatio="xMidYMin meet">
+<title id="illt-aansluiting-input-device">Zo werkt een DALI-2 sensor (Input Device) in het systeem</title>
+<desc id="illd-aansluiting-input-device">DALI-2 sensor (Input Device) — melding via DALI → LiveLink-regeling — commando via DALI → Armatuur, Armatuur</desc>
+<defs><marker id="cha-aansluiting-input-device-bus" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="ch-head ch-head--bus"></path></marker></defs>
+<path class="ch-line ch-line--bus" d="M180 44V98" marker-end="url(#cha-aansluiting-input-device-bus)"></path><text class="ch-label ch-label--bus" x="190" y="76">melding via DALI</text><path class="ch-line ch-line--bus" d="M180 140V180M94 180H266"></path><path class="ch-line ch-line--bus" d="M94 180V194" marker-end="url(#cha-aansluiting-input-device-bus)"></path><path class="ch-line ch-line--bus" d="M266 180V194" marker-end="url(#cha-aansluiting-input-device-bus)"></path><text class="ch-label ch-label--bus" x="190" y="160">commando via DALI</text>
+<g class="ch-node"><rect x="70" y="4" width="220" height="40" rx="4"></rect><text x="180" y="28" text-anchor="middle">DALI-2 sensor (Input Device)</text></g><g class="ch-node"><rect x="70" y="100" width="220" height="40" rx="4"></rect><text x="180" y="124" text-anchor="middle">LiveLink-regeling</text></g><g class="ch-node"><rect x="16" y="196" width="156" height="40" rx="4"></rect><text x="94" y="220" text-anchor="middle">Armatuur</text></g><g class="ch-node"><rect x="188" y="196" width="156" height="40" rx="4"></rect><text x="266" y="220" text-anchor="middle">Armatuur</text></g>
+</svg>
+<ol class="illustration-steps illustration-steps--chain"><li><strong>DALI-2 sensor (Input Device)</strong><span class="li-sep"> — </span><svg class="ill-key" viewBox="0 0 34 12" aria-hidden="true" focusable="false"><line class="ch-line ch-line--bus" x1="2" y1="6" x2="32" y2="6"></line></svg>melding via DALI <span class="ch-medium">(buslijn)</span></li><li><strong>LiveLink-regeling</strong><span class="li-sep"> — </span><svg class="ill-key" viewBox="0 0 34 12" aria-hidden="true" focusable="false"><line class="ch-line ch-line--bus" x1="2" y1="6" x2="32" y2="6"></line></svg>commando via DALI <span class="ch-medium">(buslijn)</span></li><li><strong>Armatuur · Armatuur</strong></li></ol>
+</figure></dd></div></dl>
+
+</article><article class="part part--role" id="onderdeel-sensor-bluetooth-nlc">
+<h3>Bluetooth NLC-sensor</h3>
+<dl class="role-card"><div class="role-card-row"><dt>Wat is dit?</dt><dd><div class="block block--text"><p>Een sensor die aanwezigheid en licht draadloos meldt, via <a href="/nl/begrijpen/bluetooth-nlc/">Bluetooth NLC</a>.</p><p class="nav-hint">Wat er draadloos gaat en hoe deelnemers worden toegevoegd: <a href="/nl/begrijpen/bluetooth-nlc/">Bluetooth NLC</a>.</p></div></dd></div><div class="role-card-row"><dt>Wat regelt daadwerkelijk?</dt><dd><div class="block block--text"><p>LiveLink Premium: de sensor komt via een BNLC Gateway in het systeem; wat er met zijn melding gebeurt, stel je daar in.</p></div></dd></div><div class="role-card-row"><dt>Waar stel je het in?</dt><dd><div class="block block--text"><p>In <a href="/nl/werken/livelink-one/">LiveLink ONE</a>, nadat je hem via de BNLC Gateway hebt toegevoegd.</p></div></dd></div><div class="role-card-row"><dt>Welk systeem hoort erbij?</dt><dd><div class="block block--text"><p>LiveLink Premium Hybrid, de draadloze uitbreiding van LiveLink Premium.</p></div></dd></div><div class="role-card-row role-card-row--schema"><dt>Aansluitschema</dt><dd><figure class="illustration illustration--chain" id="demo-nlc-keten">
+<figcaption class="illustration-title">Van centrale unit naar draadloze deelnemer</figcaption>
+<p class="illustration-summary">Schematisch: de centrale unit en de BNLC Gateway zijn via het netwerk verbonden; alleen het laatste stuk, naar armaturen, sensoren en drukknoppen, is draadloos. De voeding van alle onderdelen is niet getekend.</p>
+<svg class="illustration-svg illustration-svg--chain" viewBox="0 0 360 240" role="img" aria-labelledby="illt-nlc-keten illd-nlc-keten" preserveAspectRatio="xMidYMin meet">
+<title id="illt-nlc-keten">Van centrale unit naar draadloze deelnemer</title>
+<desc id="illd-nlc-keten">Centrale unit (Premium) — Ethernet/LAN → BNLC Gateway — Bluetooth NLC → Armatuur, Sensor, Drukknop</desc>
+<defs><marker id="cha-nlc-keten-netwerk" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="ch-head ch-head--netwerk"></path></marker><marker id="cha-nlc-keten-draadloos" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="ch-head ch-head--draadloos"></path></marker></defs>
+<path class="ch-line ch-line--netwerk" d="M180 44V98" marker-end="url(#cha-nlc-keten-netwerk)"></path><text class="ch-label ch-label--netwerk" x="190" y="76">Ethernet/LAN</text><path class="ch-line ch-line--draadloos" d="M180 140V180M63 180H297"></path><path class="ch-line ch-line--draadloos" d="M63 180V194" marker-end="url(#cha-nlc-keten-draadloos)"></path><path class="ch-line ch-line--draadloos" d="M180 180V194" marker-end="url(#cha-nlc-keten-draadloos)"></path><path class="ch-line ch-line--draadloos" d="M297 180V194" marker-end="url(#cha-nlc-keten-draadloos)"></path><text class="ch-label ch-label--draadloos" x="190" y="160">Bluetooth NLC</text>
+<g class="ch-node"><rect x="70" y="4" width="220" height="40" rx="4"></rect><text x="180" y="28" text-anchor="middle">Centrale unit (Premium)</text></g><g class="ch-node"><rect x="70" y="100" width="220" height="40" rx="4"></rect><text x="180" y="124" text-anchor="middle">BNLC Gateway</text></g><g class="ch-node"><rect x="10" y="196" width="106" height="40" rx="4"></rect><text x="63" y="220" text-anchor="middle">Armatuur</text></g><g class="ch-node"><rect x="127" y="196" width="106" height="40" rx="4"></rect><text x="180" y="220" text-anchor="middle">Sensor</text></g><g class="ch-node"><rect x="244" y="196" width="106" height="40" rx="4"></rect><text x="297" y="220" text-anchor="middle">Drukknop</text></g>
+</svg>
+<ol class="illustration-steps illustration-steps--chain"><li><strong>Centrale unit (Premium)</strong><span class="li-sep"> — </span><svg class="ill-key" viewBox="0 0 34 12" aria-hidden="true" focusable="false"><line class="ch-line ch-line--netwerk" x1="2" y1="6" x2="32" y2="6"></line></svg>Ethernet/LAN <span class="ch-medium">(netwerk)</span></li><li><strong>BNLC Gateway</strong><span class="li-sep"> — </span><svg class="ill-key" viewBox="0 0 34 12" aria-hidden="true" focusable="false"><line class="ch-line ch-line--draadloos" x1="2" y1="6" x2="32" y2="6"></line></svg>Bluetooth NLC <span class="ch-medium">(draadloos)</span></li><li><strong>Armatuur · Sensor · Drukknop</strong></li></ol>
+</figure></dd></div></dl>
+<details class="more"><summary>Wanneer werkt een draadloze sensor met LiveLink?</summary>
+
+<p class="more-label">Grenzen en aandachtspunten</p><ul class="limitations"><li>Of een draadloze sensor met LiveLink werkt, wordt per product vastgesteld in de actuele TRILUX-documentatie. <span class="nav-hint">De regel staat bij <a href="/nl/systeem-kiezen/premium-hybrid/">LiveLink Premium Hybrid</a>.</span></li></ul>
+</details>
+</article></div>
+
+</section><section class="ladder ladder--grenzen" aria-labelledby="l-grenzen">
+<h2 id="l-grenzen">Grenzen en aandachtspunten</h2>
+<ul class="limitations"><li>Eén sensor per armatuur is geen algemene kwaliteitsmaatstaf; het sensorontwerp volgt uit het gebruik van de ruimte.</li></ul>
+
+
+</section>
+
+<section class="practice" id="oefenvragen" data-module="practice" aria-labelledby="l-practice" hidden>
+<h2 id="l-practice">Oefenvragen</h2>
+<p class="practice-intro">Test jezelf met een paar korte vragen. Je antwoorden worden nergens opgeslagen; alleen de keuze om oefenvragen te tonen onthoudt deze browser.</p>
+<section class="training-check" data-check aria-labelledby="c-oefen-sensoren-1">
+<h3 id="c-oefen-sensoren-1">Vraag 1</h3>
+<p class="check-question">Heb je voor goede lichtsturing per armatuur een eigen sensor nodig?</p>
+<ul class="check-options"><li data-option="ja">Ja, anders reageert het licht niet goed.</li><li data-option="nee" data-correct>Nee, het sensorontwerp volgt uit het gebruik van de ruimte.</li></ul>
+<p class="check-feedback" aria-live="polite"></p>
+<details class="check-answer">
+<summary>Bekijk het antwoord</summary>
+<p class="check-right"><strong>Het juiste antwoord:</strong> Nee, het sensorontwerp volgt uit het gebruik van de ruimte.</p>
+<aside class="block block--callout"><p>Eén sensor per armatuur is geen algemene kwaliteitsmaatstaf; het sensorontwerp volgt uit het gebruik van de ruimte.</p></aside><div class="block block--text"><p>Positie en aantal sensoren volgen uit ruimtegebruik, detectiegebied, montagehoogte, daglichtzones en de gewenste functie.</p></div>
+</details>
+</section><section class="training-check" data-check aria-labelledby="c-oefen-sensoren-2">
+<h3 id="c-oefen-sensoren-2">Vraag 2</h3>
+<p class="check-question">Een sensor zit als „Input Device” op de DALI-lijn van LiveLink Premium. Stuurt hij de armaturen zelf aan?</p>
+<ul class="check-options"><li data-option="nee" data-correct>Nee: hij meldt aan de regeling erboven, zoals LiveLink; die beslist en stuurt de armaturen.</li><li data-option="ja">Ja: net als een Broadcast-sensor schakelt en dimt hij de armaturen zelf.</li></ul>
+<p class="check-feedback" aria-live="polite"></p>
+<details class="check-answer">
+<summary>Bekijk het antwoord</summary>
+<p class="check-right"><strong>Het juiste antwoord:</strong> Nee: hij meldt aan de regeling erboven, zoals LiveLink; die beslist en stuurt de armaturen.</p>
+<div class="block block--text"><p>De regeling erboven, zoals LiveLink: die beslist wat er gebeurt en stuurt de armaturen aan. De sensor stuurt de armaturen niet zelf aan.</p></div><div class="block block--text"><p>De sensor zelf, met broadcast uit de DALI-standaard: één commando voor alle armaturen op zijn uitgang tegelijk, zonder adres per armatuur.</p></div>
+</details>
+</section>
+<script type="application/json" class="module-config">{"strings":{"right":"Klopt.","wrong":"Niet helemaal."}}</script>
+</section>
+<nav class="next-step" aria-label="Volgende stap"><a class="next-step-link" href="/nl/werken/van-installatie-tot-overdracht/">
+<span class="next-step-label">Volgende stap</span>
+<span class="next-step-title">Van installatie tot overdracht</span>
+<span class="next-step-text">Zie hoe een project van installatie tot overdracht verloopt.</span>
+</a></nav>
+<section class="related" aria-labelledby="l-related"><h2 id="l-related">Zie ook</h2><ul class="related-list"><li><a href="/nl/systeem-kiezen/premium-hybrid/">LiveLink Premium Hybrid</a></li><li><a href="/nl/werken/livelink-one/">LiveLink ONE</a></li><li><a href="/nl/systeem-kiezen/livelink-swarmsens/">LiveLink SwarmSens</a></li></ul><details class="more related-more"><summary>Meer gerelateerde onderwerpen (2)</summary><ul class="related-list"><li><a href="/nl/begrijpen/lichtsturing/">Wat is lichtsturing?</a></li><li><a href="/nl/begrijpen/groepen-scenes-en-bediening/">Functionele groepen</a></li></ul></details></section>
+</div>
+<nav class="page-toc" aria-labelledby="toc-title"><p class="page-toc-title" id="toc-title">Op deze pagina</p><ul><li><a href="#l-in-30-seconden">In 30 seconden</a></li><li><a href="#l-zo-werkt-het">Zo werkt het</a></li><li><a href="#l-opbouw">Zo is het opgebouwd</a></li><li><a href="#l-grenzen">Grenzen en aandachtspunten</a></li><li data-practice-toc hidden><a href="#oefenvragen">Oefenvragen</a></li></ul></nav>
+</div>
+</article>
+</main>
+<footer class="site-footer"><div class="wrap footer-inner">
+<p class="footer-text">LiveLink Knowledge Hub — lichtsturing begrijpen, een systeem kiezen en ermee werken.</p>
+<p class="footer-disclaimer">Lichtsturing.info is een onafhankelijk kennisplatform over lichtsturing. Actuele officiële fabrikantdocumentatie en projectspecificaties blijven leidend. Productnamen en merknamen behoren toe aan hun respectieve rechthebbenden.</p>
+<nav class="footer-nav" aria-label="Navigatie in de voettekst"><ul><li><a href="/nl/begrijpen/">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Systeem kiezen</a></li><li><a href="/nl/werken/">Ermee werken</a></li><li><a href="/nl/zoeken/">Zoeken</a></li></ul></nav>
+</div></footer>
+</body>
+</html>
