@@ -1,2 +1,2 @@
 # lichtsturing-info
-Website over lichtsturing/ LiveLink
+Gegenereerde publieke distributie van lichtsturing.info. Bron en content worden elders beheerd
