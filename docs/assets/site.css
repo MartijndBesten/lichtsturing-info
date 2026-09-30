@@ -95,6 +95,7 @@ button, input { font: inherit; }
   display: inline-flex; align-items: center; gap: .3em; min-height: 44px; margin-right: auto;
   color: var(--ink); text-decoration: none; font-size: 1.0625rem; line-height: 1.2; letter-spacing: -.005em; white-space: nowrap;
 }
+.brand-badge { flex: none; width: 24px; height: 24px; border-radius: 6px; }
 .brand-first { font-weight: 700; }
 .brand-rest { font-weight: 400; color: var(--muted); }
 .brand-stack { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
@@ -430,6 +431,8 @@ details.ladder--fold { margin-top: 0; padding: 0; }
 .phase-strip a { display: grid; grid-template-columns: 2rem minmax(0, 1fr); column-gap: var(--s-3); align-items: center; min-height: 44px; padding: var(--s-2) var(--s-3); color: var(--ink); text-decoration: none; background: var(--surface); border-radius: var(--radius); counter-increment: fase; }
 .phase-strip a::before { content: counter(fase); display: inline-grid; place-items: center; width: 2rem; height: 2rem; grid-row: 1 / span 2; font-weight: 700; color: var(--on-blue); background: var(--blue); border-radius: 50%; }
 .phase-strip a:hover .phase-name { text-decoration: underline; }
+.phase-strip a[aria-current='step'] { background: var(--blue-pale); box-shadow: inset 0 0 0 1px var(--blue); }
+.phase-strip a[aria-current='step'] .phase-name { color: var(--blue); }
 .phase-name { font-weight: 650; }
 .phase-strip .phase-count { grid-column: 2; font-size: var(--fs-label); color: var(--muted); }
 .phase { margin: 0; border-top: 1px solid var(--line); }
@@ -465,6 +468,7 @@ details.ladder--fold { margin-top: 0; padding: 0; }
   color: var(--on-blue); background: var(--blue); border-radius: 50%; box-shadow: var(--shadow-1);
 }
 .part--step h3 { margin: var(--s-3) 0 var(--s-2); }
+.part--step > h3:first-child, .part--step > .step-optional:first-child { padding-left: calc(var(--s-3) + 2.25rem + var(--s-3)); min-height: 2.25rem; }
 .step-visual { position: relative; display: grid; place-items: center; aspect-ratio: var(--ratio-screen); overflow: hidden; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-card); }
 .step-visual .block--figure { margin: 0; width: 100%; height: 100%; max-width: none; }
 .step-visual .figure-link { display: block; height: 100%; }
@@ -1650,6 +1654,9 @@ details.pw-block > summary { display: flex; flex-wrap: wrap; align-items: center
   .parts.parts--workflow { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-5); }
   .phase-strip ol { grid-template-columns: repeat(7, minmax(0, 1fr)); gap: var(--s-2); }
   .phase-strip a { grid-template-columns: 1fr; row-gap: var(--s-1); align-content: start; padding: var(--s-3); }
+  .workflow-phases[data-active] .phase:not(.is-active) { display: none; }
+  .workflow-phases[data-active] .phase.is-active { border-top: 0; }
+  .workflow-phases[data-active] .phase.is-active > summary { display: none; }
   .phase-strip a::before { grid-row: auto; }
   .phase-strip .phase-count { grid-column: 1; }
   .part--step { border-top: 1px solid var(--line); }
