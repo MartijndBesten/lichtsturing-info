@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Hero preview — niet definitief · Lichtsturing.info</title>
+<link rel="preload" as="image" href="poster-start-desktop.webp" media="(min-width: 700px) and (prefers-reduced-motion: no-preference)" fetchpriority="high">
+<link rel="stylesheet" href="/assets/site.css?v=e0fa30ba">
+<link rel="stylesheet" href="hero.css">
+<style>
+  .pv-flag { margin: 0; padding: .4rem 1rem; font-size: .75rem; font-weight: 650; letter-spacing: .06em; text-align: center; color: #5a3b00; background: #ffe7a8; }
+  .pv-foot { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1.5rem; padding-top: 2rem; padding-bottom: 2.5rem; font-size: .875rem; color: var(--muted, #5a5f66); }
+  .pv-foot button { min-height: 40px; padding: 0 1rem; font: inherit; font-weight: 600; color: #fff; background: var(--navy, #0b1f4d); border: 0; border-radius: var(--radius, 4px); cursor: pointer; }
+  .pv-foot button[hidden] { display: none; }
+  .pv-foot .pv-disclaimer { flex-basis: 100%; margin: .5rem 0 0; font-size: .75rem; }
+</style>
+</head>
+<body class="page-home">
+<p class="pv-flag">Hero preview — niet definitief</p>
+<header class="site-header">
+<div class="wrap header-row">
+<a class="site-name" href="/nl/"><svg class="brand-badge" viewBox="0 0 32 32" role="presentation" focusable="false"><rect width="32" height="32" rx="7" fill="#072d78"/><rect x="6" y="8" width="15" height="4.5" rx="1.6" fill="#fff"/><path d="M8.5 12.5 18.5 12.5 23 24.5 4 24.5Z" fill="#ffd166" fill-opacity=".92"/><circle cx="25.5" cy="10.2" r="2" fill="#7fb2ff"/><path d="M22.2 6.5a4.7 4.7 0 0 1 6.6 0" fill="none" stroke="#7fb2ff" stroke-width="1.5" stroke-linecap="round"/></svg><span class="brand-stack"><span class="brand-mark"><span class="brand-first">Lichtsturing</span><span class="brand-rest">.info</span></span><span class="brand-tagline">Kennisplatform voor professionele lichtsturing</span></span></a>
+<nav class="site-nav" aria-label="Hoofdnavigatie"><ul>
+<li><a href="/nl/begrijpen/">Begrijpen</a></li><li><a href="/nl/systeem-kiezen/">Oplossing kiezen</a></li><li><a href="/nl/werken/">Aan de slag</a></li>
+<li class="nav-search"><a href="/nl/zoeken/">Zoeken</a></li>
+</ul></nav>
+</div>
+</header>
+<main>
+<section class="cine-hero" aria-labelledby="h-home">
+  <div class="cine-text">
+    <p class="cine-eyebrow">Lichtsturing.info</p>
+    <h1 id="h-home">Van één ruimte tot een compleet gebouw</h1>
+    <p class="cine-lead">Zie hoe licht reageert op mensen en daglicht — en ontdek wat bij jouw project past.</p>
+    <p class="cine-cta"><a class="home-cta" href="/nl/systeem-kiezen/start-vanuit-je-project/">Start met mijn project</a><a class="home-cta-alt" href="/nl/begrijpen/lichtsturing/">Eerst begrijpen</a></p>
+  </div>
+  <figure class="cine" data-module="hero">
+    <div class="cine-stage">
+      <picture class="cine-poster">
+        <source media="(max-width: 699px) and (prefers-reduced-motion: reduce)" srcset="poster-end-mobile.webp" width="1080" height="1350">
+        <source media="(max-width: 699px)" srcset="poster-start-mobile.webp" width="1080" height="1350">
+        <source media="(prefers-reduced-motion: reduce)" srcset="poster-end-desktop.webp" width="1920" height="1080">
+        <img src="poster-start-desktop.webp" width="1920" height="1080" fetchpriority="high" decoding="async"
+          alt="Getekende kantoorvloer met raamgevel. Iemand komt binnen, een kleine sensor in het plafond ziet de persoon en de armaturen in die zone gaan aan. Als het daglicht toeneemt, dimmen de armaturen bij het raam en blijven die dieper in de ruimte sterker.">
+      </picture>
+    </div>
+    <button type="button" class="cine-replay" data-cine="toggle" aria-pressed="false" hidden>Pauzeer</button>
+    <button type="button" class="cine-replay" data-cine="replay" hidden>Opnieuw bekijken</button>
+  </figure>
+</section>
+<div class="wrap pv-foot">
+  <span>Versie e60b2e6</span>
+  <button type="button" id="pv-replay" hidden>Opnieuw bekijken</button>
+  <a href="mobiel/">Mobiele weergave (390 px)</a>
+  <p class="pv-disclaimer">Lichtsturing.info is een onafhankelijk kennisplatform over lichtsturing. Actuele officiële fabrikantdocumentatie en projectspecificaties blijven leidend.</p>
+</div>
+</main>
+<script type="module">
+  const el = document.querySelector('[data-module="hero"]');
+  const q = new URLSearchParams(location.search);
+  const cfg = { scene: '.' };
+  if (q.get('variant') === 'mobile' || q.get('variant') === 'desktop') cfg.variant = q.get('variant');
+  import('./hero.js').then((m) => m.mount(el, cfg)).then(() => {
+    if (!el.cine) return; // verminderde beweging of geen canvas: alleen de poster
+    const b = document.getElementById('pv-replay');
+    b.hidden = false;
+    b.addEventListener('click', () => { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.querySelector('[data-cine="replay"]').click(); });
+  });
+</script>
+</body>
+</html>
