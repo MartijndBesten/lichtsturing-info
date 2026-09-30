@@ -165,7 +165,7 @@ button, input { font: inherit; }
 .footer-disclaimer { margin: var(--s-2) 0 0; max-width: 40rem; font-size: var(--fs-label); }
 .footer-credit { display: flex; flex-wrap: wrap; align-items: center; gap: .5em; margin: var(--s-2) 0 0; font-size: var(--fs-label); }
 .footer-credit-logo { display: inline-flex; align-items: center; min-height: 44px; }
-.footer-credit img { display: block; height: 22px; width: auto; }
+.footer-credit img { display: block; height: 44px; width: auto; }
 .footer-nav ul { display: flex; flex-wrap: wrap; gap: 0 var(--s-5); }
 .footer-nav a { display: inline-flex; align-items: center; min-height: 44px; color: var(--ink); text-decoration: none; font-weight: 500; }
 .footer-nav a:hover { color: var(--blue); text-decoration: underline; }
