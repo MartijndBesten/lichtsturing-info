@@ -1,4 +1,5 @@
 const base = document.documentElement.dataset.base || '/';
+const v = document.documentElement.dataset.v || '';
 
 for (const el of document.querySelectorAll('[data-module]')) {
   const name = el.dataset.module;
@@ -12,7 +13,7 @@ for (const el of document.querySelectorAll('[data-module]')) {
       config = {};
     }
   }
-  import(`${base}assets/modules/${name}.js`)
+  import(`${base}assets/modules/${name}.js${v ? `?v=${v}` : ''}`)
     .then((mod) => mod.mount(el, config))
     .catch((err) => console.error(`Module ${name} kon niet laden`, err));
 }

@@ -912,6 +912,34 @@ details.more.related-more > :not(summary) { margin-left: 0; }
 .sw-detail:empty { display: none; }
 .sw-detail { margin: var(--s-3) 0 0; padding: var(--s-3); max-width: var(--measure); background: var(--blue-pale); border-left: 3px solid var(--blue); }
 .illustration--zhaga { max-width: 40rem; }
+.illustration--horizon { max-width: 48rem; }
+.hz-stage { position: relative; margin-top: var(--s-3); overflow: hidden; background: #07153a; border-radius: var(--radius-card); }
+.hz-svg { display: block; width: 100%; height: auto; }
+.hz-svg--desktop { display: none; }
+.hz-svg text { font-family: var(--font); font-size: 11px; fill: #dfe6f3; }
+.hz-svg .hz-label { font-size: 10.5px; font-weight: 600; letter-spacing: .02em; }
+.hz-svg .hz-badge-text { font-size: 11px; font-weight: 800; fill: #07153a; }
+.hz-mesh { fill: none; stroke: #8fb4ff; stroke-opacity: .75; stroke-width: 1.6; stroke-dasharray: 5 5; }
+.hz-link { fill: none; stroke: #ffd166; stroke-opacity: .9; stroke-width: 1.8; stroke-dasharray: 2 4; stroke-linecap: round; }
+.hz-flow { fill: none; opacity: 0; }
+.hz-svg .hz-flow.edge-flow { opacity: .9; stroke: #ffd166; stroke-width: 2; stroke-dasharray: 6 8; }
+.hz-lokaal, .hz-remote, .hz-h { opacity: 0; }
+.illustration--horizon[data-mode='lokaal'] .hz-lokaal, .illustration--horizon[data-mode='remote'] .hz-remote { opacity: 1; }
+.illustration--horizon[data-head='controller'] .hz-h-controller, .illustration--horizon[data-head='motion'] .hz-h-motion, .illustration--horizon[data-head='sensor'] .hz-h-sensor { opacity: 1; }
+.hz-list { margin: var(--s-4) 0 0; padding-left: 1.25rem; max-width: var(--measure); }
+.hz-list[hidden] { display: none; }
+.hz-list li { margin-bottom: var(--s-2); }
+.hz-slr { color: var(--muted); }
+.hz-choose + .hz-choose { margin-top: var(--s-2); }
+.hz-detail .ports-detail-text + .ports-detail-text { margin-top: var(--s-2); }
+.hz-notes { margin-top: var(--s-4); }
+.illustration--apps { max-width: none; }
+.illustration--apps .app-cards { margin-top: var(--s-3); }
+.app-card--static { cursor: default; }
+.app-card--static:hover { transform: none; box-shadow: var(--shadow-1); }
+.app-card--static .app-card-title::after { content: none; }
+.app-card--static:hover .app-card-title { color: var(--ink); }
+
 .illustration-svg .zh-mast { fill: none; stroke: var(--muted); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
 .illustration-svg .zh-head { fill: var(--bg); stroke: var(--ink); stroke-width: 1.5; }
 .illustration-svg .zh-socket { fill: var(--surface-2); stroke: var(--ink); stroke-width: 1.25; stroke-dasharray: 3 2; }
@@ -1207,6 +1235,9 @@ details.check-answer > :not(summary) { margin-left: 1.75rem; }
 @media (min-width: 48rem) {
   .hero-svg--desktop { display: block; }
   .hero-svg--mobiel { display: none; }
+  .illustration--horizon { max-width: 60rem; }
+  .hz-svg--desktop { display: block; }
+  .hz-svg--mobiel { display: none; }
   :root {
     --gutter: 1.5rem;
     --header-h: 4rem;
@@ -1672,6 +1703,7 @@ details.pw-block > summary { display: flex; flex-wrap: wrap; align-items: center
   .sw-person { transition: transform .9s ease-in-out, opacity .3s ease; }
   .sw-cone { transition: fill-opacity .45s ease; }
   .zh-part { transition: opacity .45s ease, transform .45s ease; }
+  .hz-lokaal, .hz-remote, .hz-h { transition: opacity .45s ease; }
   .zh-variant { transition: opacity .3s ease; }
   .sw-radio, .ill-daylight--ray, .sec-meter { transition: opacity .45s ease; }
   .ill-cone { transition: fill-opacity .45s ease; }
