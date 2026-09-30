@@ -162,8 +162,9 @@ button, input { font: inherit; }
 .footer-inner { display: grid; gap: var(--s-4); padding-top: var(--s-6); padding-bottom: var(--s-6); }
 .footer-text { margin: 0; max-width: 34rem; }
 .footer-disclaimer { margin: var(--s-2) 0 0; max-width: 40rem; font-size: var(--fs-label); }
-.footer-credit { margin: var(--s-2) 0 0; font-size: var(--fs-label); }
-.footer-credit::before { content: ''; display: inline-block; width: .5em; height: .5em; margin-right: .5em; border-radius: 50%; background: var(--c-daylight); vertical-align: middle; }
+.footer-credit { display: flex; flex-wrap: wrap; align-items: center; gap: .5em; margin: var(--s-2) 0 0; font-size: var(--fs-label); }
+.footer-credit-logo { display: inline-flex; align-items: center; min-height: 44px; }
+.footer-credit img { display: block; height: 22px; width: auto; }
 .footer-nav ul { display: flex; flex-wrap: wrap; gap: 0 var(--s-5); }
 .footer-nav a { display: inline-flex; align-items: center; min-height: 44px; color: var(--ink); text-decoration: none; font-weight: 500; }
 .footer-nav a:hover { color: var(--blue); text-decoration: underline; }
