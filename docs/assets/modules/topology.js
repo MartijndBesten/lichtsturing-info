@@ -95,7 +95,7 @@ export function mount(el, config) {
 
   function clearSelection() {
     selected = null;
-    for (const n of nodes) n.classList.remove('is-selected');
+    for (const n of nodes) n.classList.remove('is-selected', 'is-faint');
     for (const e of edges) e.classList.remove('is-linked', 'is-faint');
     for (const p of parts) p.classList.remove('is-selected');
     if (detail) {
@@ -161,11 +161,14 @@ export function mount(el, config) {
     clearSelection();
     selected = node.dataset.node;
     for (const n of nodes) if (n.dataset.node === selected) n.classList.add('is-selected');
+    const near = new Set([selected]);
     for (const e of edges) {
       const linked = e.dataset.from === selected || e.dataset.to === selected;
       e.classList.toggle('is-linked', linked);
       e.classList.toggle('is-faint', !linked);
+      if (linked) near.add(e.dataset.from).add(e.dataset.to);
     }
+    for (const n of nodes) n.classList.toggle('is-faint', !near.has(n.dataset.node));
     for (const p of parts) {
       p.open = p.id === partId;
       p.classList.toggle('is-selected', p.id === partId);

@@ -16,3 +16,11 @@ for (const el of document.querySelectorAll('[data-module]')) {
     .then((mod) => mod.mount(el, config))
     .catch((err) => console.error(`Module ${name} kon niet laden`, err));
 }
+
+const openTarget = () => {
+  const el = location.hash.length > 1 ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null;
+  const d = el?.closest('details');
+  if (d && !d.open) d.open = true;
+};
+openTarget();
+addEventListener('hashchange', openTarget);

@@ -37,8 +37,8 @@
 <main id="inhoud" class="wrap" tabindex="-1">
 <nav class="breadcrumb" aria-label="Kruimelpad"><ol><li><a href="/nl/">Home</a></li><li><a href="/nl/begrijpen/">Begrijpen</a></li><li aria-current="page">D4i en drivers</li></ol></nav>
 <article class="article">
-<header class="page-header"><h1>D4i en drivers</h1><p class="lead">Wat een D4i-driver extra doet ten opzichte van DALI-2, waar je het tegenkomt en wat het wel en niet betekent voor LiveLink.</p></header>
-
+<header class="page-header"><div class="page-header-text"><h1>D4i en drivers</h1><p class="lead">Wat een D4i-driver extra doet ten opzichte van DALI-2, waar je het tegenkomt en wat het wel en niet betekent voor LiveLink.</p></div></header>
+<details class="page-toc-m"><summary>Op deze pagina</summary><ul><li><a href="#l-in-30-seconden">In 30 seconden</a></li><li><a href="#l-zo-werkt-het">Zo werkt het</a></li><li><a href="#l-opbouw">Zo is het opgebouwd</a></li><li><a href="#l-grenzen">Goed om te weten</a></li></ul></details>
 
 <div class="article-layout has-toc">
 <div class="article-main">
@@ -61,7 +61,7 @@
 </svg>
 <ol class="illustration-steps illustration-steps--ports"><li data-port="net" data-short="Netvoeding"><strong class="pt-item-title">Netvoeding</strong><span class="li-sep"> — </span><svg class="ill-key" viewBox="0 0 34 12" aria-hidden="true" focusable="false"><line class="ch-line ch-line--voeding" x1="2" y1="6" x2="32" y2="6"></line></svg><span class="ch-medium">voeding</span><span class="pt-note">De driver zelf wordt gevoed vanuit het net, zoals iedere LED-driver.</span></li><li data-port="led" data-short="LED"><strong class="pt-item-title">LED → LED-module</strong><span class="li-sep"> — </span><svg class="ill-key" viewBox="0 0 34 12" aria-hidden="true" focusable="false"><line class="ch-line ch-line--voeding" x1="2" y1="6" x2="32" y2="6"></line></svg><span class="ch-medium">stroom naar de LEDs</span><span class="pt-note">De driver regelt het licht van de LED-module op commando van de besturing.</span></li><li data-port="dali" data-short="DALI"><strong class="pt-item-title">DALI → Sensor of module</strong><span class="li-sep"> — </span><svg class="ill-key" viewBox="0 0 34 12" aria-hidden="true" focusable="false"><line class="ch-line ch-line--bus" x1="2" y1="6" x2="32" y2="6"></line></svg><span class="ch-medium">korte DALI-bus</span><span class="pt-note">Binnen de armatuur: de driver voedt deze bus zelf (deel 250). De sensor of communicatiemodule leest armatuur-, energie- en diagnosegegevens (delen 251 tot 253) en kan ze doorgeven.</span></li></ol>
 <script type="application/json" class="module-config">{"strings":{"choose":"Kies een aansluiting","hint":"Kies een aansluiting om alleen de uitleg daarvan te zien.","all":"Alles"}}</script>
-</figure><div class="block block--text"><p>Het verschil met gewone DALI-2: de gegevensdelen 251, 252 en 253 zijn bij DALI-2-certificering optioneel en bij een D4i-driver verplicht. Ook de geïntegreerde busvoeding (deel 250) is voor een D4i-driver verplicht. Een D4i-driver is dus ook een DALI-2-driver, maar niet andersom.</p></div>
+</figure><details class="more more-how"><summary>Meer uitleg</summary><div class="block block--text"><p>Het verschil met gewone DALI-2: de gegevensdelen 251, 252 en 253 zijn bij DALI-2-certificering optioneel en bij een D4i-driver verplicht. Ook de geïntegreerde busvoeding (deel 250) is voor een D4i-driver verplicht. Een D4i-driver is dus ook een DALI-2-driver, maar niet andersom.</p></div></details>
 
 
 </section><section class="ladder ladder--opbouw" aria-labelledby="l-opbouw">

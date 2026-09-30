@@ -36,7 +36,11 @@ export function railHtml(steps, state, ui) {
     .join('')}</ol></nav>`;
 }
 
-const choice = (q, o, checked) => `<label class="pw-choice"><input type="${q.multiple ? 'checkbox' : 'radio'}" name="${esc(q.id)}" value="${esc(o.id)}"${checked ? ' checked' : ''}><span class="pw-choice-box">${o.icon ? `<span class="pw-choice-visual" aria-hidden="true"><svg class="pw-choice-icon" focusable="false"><use href="#pw-i-${esc(o.icon)}"></use></svg></span>` : ''}<span class="pw-choice-text"><span class="pw-choice-label">${esc(o.label)}</span>${o.hint ? `<span class="pw-choice-hint">${esc(o.hint)}</span>` : ''}</span></span></label>`;
+const hasScene = (icon) => typeof document !== 'undefined' && Boolean(document.getElementById(`pw-s-${icon}`));
+const visual = (o) => (!o.icon ? '' : hasScene(o.icon)
+  ? `<span class="pw-choice-visual pw-choice-visual--scene" aria-hidden="true"><svg class="pw-choice-scene" focusable="false"><use href="#pw-s-${esc(o.icon)}"></use></svg></span>`
+  : `<span class="pw-choice-visual" aria-hidden="true"><svg class="pw-choice-icon" focusable="false"><use href="#pw-i-${esc(o.icon)}"></use></svg></span>`);
+const choice = (q, o, checked) => `<label class="pw-choice"><input type="${q.multiple ? 'checkbox' : 'radio'}" name="${esc(q.id)}" value="${esc(o.id)}"${checked ? ' checked' : ''}><span class="pw-choice-box">${visual(o)}<span class="pw-choice-text"><span class="pw-choice-label">${esc(o.label)}</span>${o.hint ? `<span class="pw-choice-hint">${esc(o.hint)}</span>` : ''}</span></span></label>`;
 
 const numbers = (q, values, ui) =>
   q.numbers?.length
