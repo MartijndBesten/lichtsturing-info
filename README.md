@@ -3,7 +3,8 @@
 Dit is de **gegenereerde publieke distributie** van de Knowledge Hub op <https://lichtsturing.info>: een onafhankelijk
 kennisplatform over lichtsturing. Actuele officiële fabrikantdocumentatie en projectspecificaties blijven leidend.
 
-- In `docs/` staat uitsluitend de statische website (HTML, CSS, JavaScript en zoekdata). Deze map wordt bij iedere
+- In `docs/` staat uitsluitend de statische website (HTML, CSS, JavaScript en zoekdata), met onder `docs/3d/` een
+  interactieve 3D-demo (eigen statische build). Deze map wordt bij iedere
   publicatie automatisch volledig vervangen; wijzig hier niets met de hand.
 - Broncode, content, bronnen en redactie worden elders beheerd. Deze repository bevat geen bronbestanden.
 - De site is een publieke preview en staat voorlopig op `noindex, nofollow` (robots.txt: `Disallow: /`): openbaar

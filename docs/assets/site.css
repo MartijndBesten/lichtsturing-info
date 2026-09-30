@@ -513,6 +513,19 @@ details.more > :not(summary) { margin-left: 1.75rem; }
 .facts dd { margin: 0; }
 .fact-value { font-variant-numeric: tabular-nums; white-space: nowrap; }
 
+.demo3d { margin-top: var(--s-7); max-width: var(--measure); display: grid; gap: var(--s-3); }
+.demo3d-link {
+  display: grid; grid-template-columns: minmax(0, 1fr) 1.5rem; column-gap: var(--s-4); row-gap: var(--s-1);
+  padding: var(--s-4) var(--s-5); min-height: 44px; text-decoration: none; color: var(--navy); background: transparent;
+  border: 1.5px solid var(--navy); border-radius: var(--radius);
+}
+.demo3d-link::after { content: '92'; grid-column: 2; grid-row: 1 / span 2; align-self: center; font-size: 1.25rem; line-height: 1; }
+.demo3d-label { grid-column: 1; font-weight: 650; }
+.demo3d-text { grid-column: 1; color: var(--muted); }
+.demo3d-link:hover .demo3d-label { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .18em; }
+.demo3d-link:focus-visible { outline-offset: 3px; }
+.demo3d-note { margin: 0; font-size: .875rem; color: var(--muted); }
+@media print { .demo3d { display: none; } }
 .next-step { margin-top: var(--s-7); max-width: var(--measure); }
 .next-step-link {
   display: grid; grid-template-columns: minmax(0, 1fr) 1.5rem; column-gap: var(--s-4); row-gap: var(--s-1);

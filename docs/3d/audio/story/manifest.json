@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "note": "Vertelling van Story Mode (V2.1). file is relatief aan audio/story/. durationSec is informatief, nooit een klok. Zonder cues: vertelling niet beschikbaar, Story werkt ongewijzigd.",
+  "locales": {
+    "nl": { "label": "Nederlands", "cues": {} }
+  }
+}
