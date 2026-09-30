@@ -15,6 +15,10 @@ export function stepsOf(model) {
 export const shown = (st, answers) => st.questions.filter((q) => visible(q, answers));
 export const missing = (st, answers) => shown(st, answers).filter((q) => !q.optional && !(answers[q.id] ?? []).length);
 export const labelOf = (q, id) => q.options.find((o) => o.id === id)?.label ?? id;
+export const autoStep = (st, answers) => {
+  const qs = shown(st, answers);
+  return qs.length === 1 && !qs[0].multiple && !qs[0].numbers?.length;
+};
 
 const stepSummary = (st, answers, ui) =>
   shown(st, answers)
@@ -58,7 +62,8 @@ export function questionHtml(q, state, ui) {
 export function stepHtml(steps, state, ui) {
   const st = steps[state.cur];
   const last = state.cur === steps.length - 1;
-  return `<div class="pw-dialog">${railHtml(steps, state, ui)}<form class="pw-step" novalidate><p class="visually-hidden">${esc(fmt(ui.step, { n: state.cur + 1, total: steps.length }))}</p>${shown(st, state.answers).map((q) => questionHtml(q, state, ui)).join('')}<div class="pw-nav"><button type="submit" class="pw-next">${esc(last ? ui.show : ui.next)}</button>${state.cur > 0 ? `<button type="button" class="pw-back" data-back>${esc(ui.back)}</button>` : ''}</div></form></div>`;
+  const auto = autoStep(st, state.answers) && !last;
+  return `<div class="pw-dialog">${railHtml(steps, state, ui)}<form class="pw-step" novalidate><p class="visually-hidden">${esc(fmt(ui.step, { n: state.cur + 1, total: steps.length }))}</p>${shown(st, state.answers).map((q) => questionHtml(q, state, ui)).join('')}<div class="pw-nav${auto ? ' pw-nav--auto' : ''}">${auto ? `<p class="pw-auto-hint">${esc(ui.autoHint)}</p>` : ''}<button type="submit" class="pw-next${auto ? ' pw-next--auto' : ''}">${esc(last ? ui.show : ui.next)}</button>${state.cur > 0 ? `<button type="button" class="pw-back" data-back>${esc(ui.back)}</button>` : ''}</div></form></div>`;
 }
 
 export function readStep(form, st, state, model) {

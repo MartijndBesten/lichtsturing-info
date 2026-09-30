@@ -6,6 +6,7 @@ const list = (items) => (items.length ? `<ul>${items.map((x) => `<li>${x}</li>`)
 const same = (a, b) => JSON.stringify(a ?? []) === JSON.stringify(b ?? []);
 const routeOf = (z) => z.result.logical[0]?.route ?? null;
 const AGAINST = ['uitsluiten', 'afraden', 'minder', 'controleren'];
+const KEY_STEPS = 4;
 
 export function snapshot(answers, project) {
   const zones = Object.fromEntries(project.zones.map((z) => [z.zone.id, z.answers]));
@@ -42,10 +43,11 @@ export function offerData(model, answers, numbers, project) {
   const open = [];
   for (const q of model.questions) {
     const a = answers[q.id] ?? [];
-    if (a.length) known.push([q.title, a.map((id) => labelOf(q, id)).join(', ')]);
+    const key = q.step <= KEY_STEPS || q.multiple;
+    if (a.length) known.push([q.title, a.map((id) => labelOf(q, id)).join(', '), key]);
     else open.push(q.title);
     for (const n of q.numbers ?? []) {
-      if (numbers[n.id]) known.push([n.label, numbers[n.id]]);
+      if (numbers[n.id]) known.push([n.label, numbers[n.id], false]);
       else open.push(n.label);
     }
   }
@@ -70,6 +72,11 @@ export function offerText(d, ui) {
 }
 
 export function offerHtml(d, ui) {
-  const sec = (title, items) => (items.length ? `<h3>${esc(title)}</h3>${list(items)}` : '');
-  return `<details class="pw-offer" id="pw-offer"><summary>${esc(ui.offer)}</summary><p class="pw-offer-intro">${esc(ui.offerIntro)}</p>${sec(ui.offerKnown, d.known.map(([k, v]) => `<span class="pw-trait-q">${esc(k)}</span> ${esc(v)}`))}${sec(ui.offerRoutes, d.routes.map(([z, r]) => `${z ? `<span class="pw-trait-q">${esc(z)}</span> ` : ''}${esc(r ?? ui.none)}`))}${sec(ui.offerOpen, d.open.map(esc))}${sec(ui.offerChecks, d.checks.map(esc))}${sec(ui.offerDeliver, d.deliver.map(esc))}<p class="pw-offer-copy"><button type="button" class="pw-back" data-copy>${esc(ui.copy)}</button> <span class="pw-copy-status" role="status"></span></p></details>`;
+  const row = ([k, v]) => `<li><span class="pw-trait-q">${esc(k)}</span> ${esc(v)}</li>`;
+  const group = (title, items, cls = '') => (items.length ? `<section class="pw-offer-group${cls ? ` ${cls}` : ''}"><h3>${esc(title)}</h3><ul>${items.join('')}</ul></section>` : '');
+  const known = [...d.known.filter(([, , key]) => key).map(row), ...d.routes.map(([z, r]) => `<li><span class="pw-trait-q">${esc(z ?? ui.offerRoutes)}</span> ${esc(r ?? ui.none)}</li>`)];
+  const open = [...d.open.map((t) => `<li>${esc(t)}</li>`), ...d.checks.map((t) => `<li>${esc(t)}</li>`)];
+  const deliver = d.deliver.map((t) => `<li>${esc(t)}</li>`);
+  const all = d.known.length ? `<details class="pw-offer-all"><summary>${esc(ui.offerAll)}</summary><ul class="pw-traits">${d.known.map(row).join('')}</ul></details>` : '';
+  return `<details class="pw-offer" id="pw-offer"><summary>${esc(ui.offer)}</summary><p class="pw-offer-intro">${esc(ui.offerIntro)}</p><div class="pw-offer-grid">${group(ui.offerKnown, known)}${group(ui.offerOpen, open, 'pw-offer-group--open')}${group(ui.offerDeliver, deliver)}</div>${all}<p class="pw-offer-copy"><button type="button" class="pw-back" data-copy>${esc(ui.copy)}</button> <span class="pw-copy-status" role="status"></span></p></details>`;
 }

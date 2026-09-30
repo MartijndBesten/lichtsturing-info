@@ -1,35 +1,21 @@
 import { esc, evaluateProject, matchScenario, mergeAnswers } from './projectwijzer-core.js';
-import { fmt, missing, railHtml, readStep, stepHtml, stepsOf } from './projectwijzer-form.js';
+import { autoStep, missing, railHtml, readStep, stepHtml, stepsOf } from './projectwijzer-form.js';
 import { changesHtml, offerData, offerHtml, offerText, snapshot } from './projectwijzer-offer.js';
-import { renderResult } from './projectwijzer-view.js';
+import { resultHtml } from './projectwijzer-result.js';
+
+const CONFIRM_MS = 2e2;
 
 export function mount(el, config) {
-  const S = config.S || {};
   const ui = config.ui || {};
+  const S = config.S || {};
   const model = config.model;
   if (!model?.questions?.length) return;
 
   const steps = stepsOf(model);
   const byId = new Map(model.questions.map((q) => [q.id, q]));
+  const motion = window.matchMedia?.('(prefers-reduced-motion: no-preference)').matches;
 
-  const state = { answers: {}, numbers: {}, cur: 0, reached: 0, phase: 'steps', forced: null, off: new Set(), zone: null, edits: {}, openTraits: null, refocus: null, prev: null };
-
-  const showZone = (id, focus) => {
-    const zones = [...el.querySelectorAll('.pw-zone')];
-    if (zones.length < 2) return;
-    const pick = zones.find((z) => z.id === `zone-${id}`) ?? zones[0];
-    state.zone = pick.id.slice(5);
-    for (const z of zones) z.hidden = z !== pick;
-    for (const a of el.querySelectorAll('.pw-plan-link')) {
-      if (a.hash === `#${pick.id}`) a.setAttribute('aria-current', 'true');
-      else a.removeAttribute('aria-current');
-    }
-    if (!focus) return;
-    const title = pick.querySelector('.pw-zone-title');
-    title?.setAttribute('tabindex', '-1');
-    title?.focus({ preventScroll: true });
-    if (pick.getBoundingClientRect().top > window.innerHeight * 0.7) pick.scrollIntoView({ block: 'start' });
-  };
+  const state = { answers: {}, numbers: {}, cur: 0, reached: 0, phase: 'steps', forced: null, off: new Set(), edits: {}, openTraits: null, refocus: null, prev: null, busy: false, arrow: false };
 
   const slug = new URLSearchParams(window.location.search).get('voorbeeld');
   const preset = slug ? model.scenarios.find((s) => s.id.split('.')[1] === slug) : null;
@@ -56,17 +42,11 @@ export function mount(el, config) {
 
   const resultView = () => {
     const { scenario, result } = project();
-    const match = scenario
-      ? `<p class="pw-match">${esc(fmt(ui.scenario, { title: scenario.title }))}${scenario.url ? ` <a href="${esc(scenario.url)}">${esc(ui.scenarioLink)}</a>` : ''}</p>`
-      : `<p class="pw-match">${esc(ui.noScenario)}</p>`;
     const toggles = scenario && scenario.zones.length > 1
-      ? `<details class="pw-zone-toggle"${state.off.size ? ' open' : ''}><summary>${esc(ui.zones)}</summary><p>${esc(ui.zonesHelp)}</p><ul>${scenario.zones.map((z) => `<li><label class="pw-toggle"><input type="checkbox" data-zone="${esc(z.id)}"${state.off.has(z.id) ? '' : ' checked'}> ${esc(z.label)}</label></li>`).join('')}</ul></details>`
+      ? `<div class="pw-zone-toggle"><p>${esc(ui.zonesHelp)}</p><ul>${scenario.zones.map((z) => `<li><label class="pw-toggle"><input type="checkbox" data-zone="${esc(z.id)}"${state.off.has(z.id) ? '' : ' checked'}> ${esc(z.label)}</label></li>`).join('')}</ul></div>`
       : '';
-    const main = result.zones.map((z) => z.result.logical[0]?.route).find(Boolean);
-    const tech = main?.tech ?? main?.url;
-    const next = `<nav class="pw-next-steps" aria-label="${esc(ui.nextSteps)}"><ul>${tech ? `<li><a href="${esc(tech)}">${esc(ui.tech)}</a></li>` : ''}${model.cta?.products ? `<li><a href="${esc(model.cta.products)}">${esc(ui.products)}</a></li>` : ''}<li><a href="#pw-offer" data-offer>${esc(ui.offer)}</a></li></ul></nav>`;
-    const profile = `<aside class="pw-profile" aria-labelledby="pw-profile-t"><p class="pw-profile-title" id="pw-profile-t">${esc(ui.profile)}</p><p class="pw-profile-help">${esc(ui.profileHelp)}</p>${rail()}</aside>`;
-    return `<div class="pw-dialog pw-dialog--result">${profile}<div class="pw-outcome"><p class="pw-eyebrow">${esc(ui.result)}</p>${changesHtml(model, state.prev, state.answers, result, ui)}${match}${toggles}${renderResult(model, result, S)}${next}${offerHtml(offerData(model, state.answers, state.numbers, result), ui)}<div class="pw-nav pw-nav--result"><button type="button" class="pw-next" data-edit>${esc(ui.edit)}</button><button type="button" class="pw-back" data-restart>${esc(ui.restart)}</button></div></div></div>`;
+    const parts = { changes: changesHtml(model, state.prev, state.answers, result, ui), rail: rail(), toggles, offer: offerHtml(offerData(model, state.answers, state.numbers, result), ui) };
+    return resultHtml({ model, result, scenario, answers: state.answers, S, ui, parts });
   };
 
   const leaveResult = () => {
@@ -75,38 +55,76 @@ export function mount(el, config) {
 
   const read = (form) => readStep(form, steps[state.cur], state, model);
 
+  const remember = (replace) => {
+    const entry = { pw: { cur: state.cur, phase: state.phase } };
+    if (replace) history.replaceState(entry, '');
+    else history.pushState(entry, '');
+  };
+  window.addEventListener('popstate', (ev) => {
+    const h = ev.state?.pw;
+    if (!h) return;
+    if (state.phase === 'result' && h.phase !== 'result') leaveResult();
+    state.cur = Math.min(h.cur, state.reached);
+    state.phase = h.phase;
+    render(true);
+  });
+
   const render = (focus) => {
+    const top = el.getBoundingClientRect().top;
     el.innerHTML = state.phase === 'result' ? resultView() : stepHtml(steps, state, ui);
     bind();
+    state.busy = false;
     if (state.phase === 'result') {
-      showZone(state.zone, false);
       const zones = project().result.zones.map((z) => z.zone).filter((z) => z.defaults?.length);
       if (zones.length > 1) {
         import('./projectwijzer-zone.js').then((m) => m.enhanceZones(el, { model, zones, S: ui, state, render }));
       }
     }
     if (!focus) return;
-    const target = state.phase === 'result' ? el.querySelector('.pw-changes') ?? el.querySelector('.pw-result h2') : el.querySelector('.pw-q-title');
+    const box = el.firstElementChild;
+    if (box && motion) {
+      box.classList.add('is-entering');
+      void box.offsetWidth; // stijl vastleggen, zodat het weghalen een CSS-overgang start (geen animatie in script)
+      box.classList.remove('is-entering');
+    }
+    const target = state.phase === 'result' ? el.querySelector('.pw-changes') ?? el.querySelector('.pw-hero-title') : el.querySelector('.pw-q-title');
     target?.setAttribute('tabindex', '-1');
-    target?.focus();
+    target?.focus({ preventScroll: true });
+    if (top < 0 || top > window.innerHeight * 0.6) el.scrollIntoView({ block: 'start' });
+  };
+
+  const advance = () => {
+    if (state.cur < steps.length - 1) {
+      state.cur += 1;
+      state.reached = Math.max(state.reached, state.cur);
+    } else {
+      state.phase = 'result';
+    }
+    render(true);
+    remember(false);
+  };
+
+  const goTo = (i) => {
+    leaveResult();
+    state.cur = i;
+    state.phase = 'steps';
+    render(true);
+    remember(false);
   };
 
   const bindRail = () => {
-    for (const b of el.querySelectorAll('[data-goto]')) {
-      b.addEventListener('click', () => {
-        leaveResult();
-        state.cur = Number(b.dataset.goto);
-        state.phase = 'steps';
-        render(true);
-      });
-    }
+    for (const b of el.querySelectorAll('[data-goto]')) b.addEventListener('click', () => goTo(Number(b.dataset.goto)));
   };
 
   const bind = () => {
     bindRail();
     const form = el.querySelector('.pw-step');
     if (form) {
-      form.addEventListener('change', () => {
+      form.addEventListener('keydown', (ev) => {
+        state.arrow = ev.key.startsWith('Arrow');
+      });
+      form.addEventListener('change', (ev) => {
+        if (state.busy) return;
         read(form);
         state.forced = null;
         for (const fs of form.querySelectorAll('.pw-q')) {
@@ -118,9 +136,15 @@ export function mount(el, config) {
           railNode.outerHTML = rail();
           bindRail();
         }
+        const input = ev.target.closest?.('input[type="radio"]');
+        if (!input || state.arrow || !autoStep(steps[state.cur], state.answers) || missing(steps[state.cur], state.answers).length) return;
+        state.busy = true;
+        input.closest('.pw-choice')?.classList.add('is-confirming');
+        setTimeout(advance, motion ? CONFIRM_MS : 0);
       });
       form.addEventListener('submit', (ev) => {
         ev.preventDefault();
+        if (state.busy) return;
         read(form);
         const open = missing(steps[state.cur], state.answers);
         if (open.length) {
@@ -128,18 +152,11 @@ export function mount(el, config) {
           form.querySelector(`[data-q="${CSS.escape(open[0].id)}"] input`)?.focus();
           return;
         }
-        if (state.cur < steps.length - 1) {
-          state.cur += 1;
-          state.reached = Math.max(state.reached, state.cur);
-        } else {
-          state.phase = 'result';
-        }
-        render(true);
+        advance();
       });
       form.querySelector('[data-back]')?.addEventListener('click', () => {
         read(form);
-        state.cur = Math.max(0, state.cur - 1);
-        render(true);
+        goTo(Math.max(0, state.cur - 1));
       });
     }
     for (const box of el.querySelectorAll('[data-zone]')) {
@@ -147,24 +164,18 @@ export function mount(el, config) {
         if (box.checked) state.off.delete(box.dataset.zone);
         else state.off.add(box.dataset.zone);
         render(false);
-        el.querySelector(`[data-zone="${CSS.escape(box.dataset.zone)}"]`)?.focus();
+        const again = el.querySelector(`[data-zone="${CSS.escape(box.dataset.zone)}"]`);
+        if (again) {
+          again.closest('details')?.setAttribute('open', '');
+          again.focus();
+        }
       });
     }
-    for (const a of el.querySelectorAll('.pw-plan-link')) {
-      a.addEventListener('click', (ev) => {
-        ev.preventDefault();
-        showZone(a.hash.slice(6), true);
-      });
-    }
-    el.querySelector('[data-edit]')?.addEventListener('click', () => {
-      leaveResult();
-      state.phase = 'steps';
-      state.cur = 0;
-      render(true);
-    });
+    el.querySelector('[data-edit]')?.addEventListener('click', () => goTo(0));
     el.querySelector('[data-restart]')?.addEventListener('click', () => {
-      Object.assign(state, { answers: {}, numbers: {}, cur: 0, reached: 0, phase: 'steps', forced: null, off: new Set(), zone: null, edits: {}, openTraits: null, prev: null });
+      Object.assign(state, { answers: {}, numbers: {}, cur: 0, reached: 0, phase: 'steps', forced: null, off: new Set(), edits: {}, openTraits: null, prev: null });
       render(true);
+      remember(false);
     });
     const offer = el.querySelector('#pw-offer');
     el.querySelector('[data-offer]')?.addEventListener('click', () => {
@@ -183,4 +194,5 @@ export function mount(el, config) {
 
   el.hidden = false;
   render(Boolean(preset));
+  remember(true);
 }
