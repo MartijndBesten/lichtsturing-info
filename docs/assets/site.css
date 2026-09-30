@@ -872,6 +872,28 @@ details.more.related-more > :not(summary) { margin-left: 0; }
 .sw-options button[aria-pressed="true"] { color: var(--on-blue); background: var(--blue); border-color: var(--blue); }
 .sw-detail:empty { display: none; }
 .sw-detail { margin: var(--s-3) 0 0; padding: var(--s-3); max-width: var(--measure); background: var(--blue-pale); border-left: 3px solid var(--blue); }
+.illustration--zhaga { max-width: 40rem; }
+.illustration-svg .zh-mast { fill: none; stroke: var(--muted); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.illustration-svg .zh-head { fill: var(--bg); stroke: var(--ink); stroke-width: 1.5; }
+.illustration-svg .zh-socket { fill: var(--surface-2); stroke: var(--ink); stroke-width: 1.25; stroke-dasharray: 3 2; }
+.illustration-svg .zh-hit { fill: transparent; stroke: none; }
+.illustration-svg .zh-label { font-size: 12.5px; font-weight: 700; }
+.illustration-svg .zh-title { font-size: 10px; fill: var(--muted); }
+.illustration-svg .zh-part { opacity: 0; transform: translateY(-10px); }
+.illustration-svg .zh-part[data-pos='bottom'] { transform: translateY(10px); }
+.illustration-svg .zh-part.is-on { opacity: 1; transform: none; }
+.illustration-svg .zh-part rect, .illustration-svg .zh-part path { fill: var(--blue-pale); stroke: var(--blue); stroke-width: 1.5; }
+.illustration-svg .zh-part circle { fill: var(--blue); stroke: none; }
+.illustration-svg .zh-part .zh-ant { fill: none; stroke-width: 1.25; }
+.illustration-svg .zh-variant.is-match .zh-head { stroke: var(--blue); stroke-width: 2.25; }
+.illustration-svg .zh-variant.is-match .zh-socket { fill: var(--blue-pale); stroke: var(--blue); stroke-dasharray: none; }
+.illustration-svg .zh-variant.is-match .zh-label { fill: var(--blue); }
+.illustration-svg .zh-variant.is-dim { opacity: .35; }
+.illustration--zhaga.is-enhanced .zh-variant { cursor: pointer; }
+.zh-choices { margin: var(--s-4) 0 0; padding-left: 1.25rem; max-width: var(--measure); }
+.zh-choices[hidden] { display: none; }
+.zh-choices li { margin-bottom: var(--s-2); }
+.zh-choice-fit { color: var(--muted); }
 .sw-notes { margin: var(--s-4) 0 0; max-width: var(--measure); }
 .sw-notes dt { font-weight: 600; }
 .sw-notes dd { margin: 0 0 var(--s-2); }
@@ -1593,6 +1615,8 @@ details.pw-block > summary { display: flex; flex-wrap: wrap; align-items: center
   .node.is-tour-dim, .edge.is-tour-dim { transition: opacity .3s ease; }
   .sw-person { transition: transform .9s ease-in-out, opacity .3s ease; }
   .sw-cone { transition: fill-opacity .45s ease; }
+  .zh-part { transition: opacity .45s ease, transform .45s ease; }
+  .zh-variant { transition: opacity .3s ease; }
   .sw-radio, .ill-daylight--ray, .sec-meter { transition: opacity .45s ease; }
   .ill-cone { transition: fill-opacity .45s ease; }
   .sec-gauge-fill { transition: transform .45s ease; }
