@@ -42,7 +42,7 @@
         <source media="(max-width: 699px)" srcset="poster-start-mobile.webp" width="1080" height="1350">
         <source media="(prefers-reduced-motion: reduce)" srcset="poster-end-desktop.webp" width="1920" height="1080">
         <img src="poster-start-desktop.webp" width="1920" height="1080" fetchpriority="high" decoding="async"
-          alt="Getekende kantoorvloer met raamgevel. Iemand komt binnen, een kleine sensor in het plafond ziet de persoon en de armaturen in die zone gaan aan. Als het daglicht toeneemt, dimmen de armaturen bij het raam en blijven die dieper in de ruimte sterker.">
+          alt="Getekende kantoorvloer met raamgevel. Iemand komt binnen, een kleine sensor in het plafond ziet de persoon en de armaturen gaan aan. De persoon gaat aan een bureau zitten en werkt. Als het daglicht toeneemt, dimmen de armaturen bij het raam het sterkst en blijven die dieper in de ruimte sterker. Zit de persoon een tijd stil, dan valt het licht terug en gaat het uit; een armbeweging zet het weer aan. Na vertrek gaat het licht na een korte wachttijd uit.">
       </picture>
     </div>
     <button type="button" class="cine-replay" data-cine="toggle" aria-pressed="false" hidden>Pauzeer</button>
@@ -50,7 +50,7 @@
   </figure>
 </section>
 <div class="wrap pv-foot">
-  <span>Versie e60b2e6</span>
+  <span>Versie ac32cfb</span>
   <button type="button" id="pv-replay" hidden>Opnieuw bekijken</button>
   <a href="mobiel/">Mobiele weergave (390 px)</a>
   <p class="pv-disclaimer">Lichtsturing.info is een onafhankelijk kennisplatform over lichtsturing. Actuele officiële fabrikantdocumentatie en projectspecificaties blijven leidend.</p>
@@ -63,8 +63,11 @@
   if (q.get('variant') === 'mobile' || q.get('variant') === 'desktop') cfg.variant = q.get('variant');
   import('./hero.js').then((m) => m.mount(el, cfg)).then(() => {
     if (!el.cine) return; // verminderde beweging of geen canvas: alleen de poster
+    // alleen na afloop zichtbaar (tijdens het afspelen is „Pauzeer” de enige bediening)
     const b = document.getElementById('pv-replay');
-    b.hidden = false;
+    const sync = () => { b.hidden = !el.classList.contains('is-done'); };
+    new MutationObserver(sync).observe(el, { attributes: true, attributeFilter: ['class'] });
+    sync();
     b.addEventListener('click', () => { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.querySelector('[data-cine="replay"]').click(); });
   });
 </script>
