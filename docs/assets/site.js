@@ -21,7 +21,10 @@ for (const el of document.querySelectorAll('[data-module]')) {
 const openTarget = () => {
   const el = location.hash.length > 1 ? document.getElementById(decodeURIComponent(location.hash.slice(1))) : null;
   const d = el?.closest('details');
-  if (d && !d.open) d.open = true;
+  if (d && !d.open) {
+    d.open = true;
+    el.scrollIntoView();
+  }
 };
 openTarget();
 addEventListener('hashchange', openTarget);
