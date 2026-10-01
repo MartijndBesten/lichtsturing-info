@@ -29,6 +29,8 @@ function filter(el) {
 function trainer(el, s, config) {
   const picks = [...el.querySelectorAll('[data-pick]')];
   const titleOf = new Map(picks.map((p) => [p.value, p.closest('label').querySelector('.compose-title').textContent]));
+  const metaOf = new Map(picks.map((p) => [p.value, [p.closest('label').querySelector('.compose-level')?.textContent, p.closest('label').querySelector('.compose-aud')?.textContent].filter(Boolean).join(' · ').replace(/\s+/g, ' ').trim()]));
+  const count = el.querySelector('[data-count]');
   const set = el.querySelector('.compose-set');
   const list = el.querySelector('[data-list]');
   const empty = el.querySelector('[data-empty]');
@@ -42,6 +44,7 @@ function trainer(el, s, config) {
   const pos = presenter.querySelector('.presenter-pos');
   const bar = presenter.querySelector('.presenter-progress span');
   const notesBtn = presenter.querySelector('[data-notes]');
+  const nextup = presenter.querySelector('.presenter-nextup');
   el.classList.add('is-enhanced');
   set.hidden = false;
   for (const b of el.querySelectorAll('[data-preset]')) b.hidden = false;
@@ -55,7 +58,12 @@ function trainer(el, s, config) {
     list.replaceChildren(...chosen.map((id, i) => {
       const li = document.createElement('li');
       const name = document.createElement('span');
+      name.className = 'compose-name';
       name.textContent = titleOf.get(id) || id;
+      const meta = document.createElement('small');
+      meta.className = 'compose-meta';
+      meta.textContent = metaOf.get(id) || '';
+      name.append(meta);
       li.append(name);
       for (const [label, act, off] of [[s.up, 'up', i === 0], [s.down, 'down', i === chosen.length - 1], [s.remove, 'remove', false]]) {
         const b = document.createElement('button');
@@ -76,6 +84,7 @@ function trainer(el, s, config) {
       return li;
     }));
     empty.hidden = chosen.length > 0;
+    if (count) count.textContent = chosen.length ? (s.count || '{n}').replace('{n}', chosen.length) : '';
     for (const b of buttons) b.disabled = chosen.length === 0;
     history.replaceState(null, '', `${location.pathname}${chosen.length ? `?les=${chosen.join(',')}` : ''}${location.hash}`);
   }
@@ -155,6 +164,11 @@ function trainer(el, s, config) {
     for (const { sl } of slides) sl.classList.toggle('is-current', sl === cur.sl);
     pos.textContent = (s.position || '{n}/{total}').replace('{n}', cur.k + 1).replace('{total}', chosen.length).replace('{lesson}', titleOf.get(cur.id) || '');
     bar.style.width = `${Math.round(((at + 1) / slides.length) * 100)}%`;
+    const nx = slides[at + 1];
+    if (nextup) {
+      const label = nx ? (nx.id !== cur.id ? titleOf.get(nx.id) || '' : nx.sl.dataset.label || '') : '';
+      nextup.textContent = nx ? (s.nextup || '{title}').replace('{title}', label) : s.end || '';
+    }
     cur.sl.scrollTop = 0;
   }
   async function open() {

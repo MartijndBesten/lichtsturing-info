@@ -25,4 +25,23 @@ export function mount(el) {
     });
   });
   show(0);
+  pick(el);
+}
+
+function pick(el) {
+  const box = el.querySelector('.cmp-pick');
+  const all = el.querySelector('.cmp-all');
+  if (!box || !all) return;
+  box.hidden = false;
+  const sys = [...box.querySelectorAll('[data-pick-sys]')];
+  const asp = [...box.querySelectorAll('[data-pick-asp]')];
+  const apply = () => {
+    const on = new Set(sys.filter((c) => c.checked).map((c) => c.dataset.pickSys));
+    const rows = new Set(asp.filter((c) => c.checked).map((c) => c.dataset.pickAsp));
+    for (const c of all.querySelectorAll('[data-sys]')) c.hidden = !on.has(c.dataset.sys);
+    for (const r of all.querySelectorAll('tr[data-aspect]')) r.hidden = !rows.has(r.dataset.aspect);
+    all.classList.toggle('is-two', on.size === 2);
+  };
+  for (const c of [...sys, ...asp]) c.addEventListener('change', apply);
+  apply();
 }

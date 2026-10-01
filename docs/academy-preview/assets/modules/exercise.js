@@ -1,6 +1,82 @@
 export function mount(el, config = {}) {
   const s = config.strings || {};
-  for (const q of el.querySelectorAll('.ex-q')) (q.dataset.answer ? selectQuestion : choiceQuestion)(q, el, s);
+  for (const q of el.querySelectorAll('.ex-q')) {
+    if (q.hasAttribute('data-seq')) sequenceQuestion(q, s);
+    else (q.dataset.answer ? selectQuestion : choiceQuestion)(q, el, s);
+  }
+  candidates(el);
+}
+
+function candidates(el) {
+  const marks = [...el.querySelectorAll('[data-candidate]')];
+  if (!marks.length) return;
+  const q = el.querySelector('.ex-q:not([data-answer]):not([data-seq])');
+  if (!q) return;
+  for (const m of marks) {
+    const btn = () => q.querySelector(`[data-option="${m.dataset.candidate}"] button`);
+    m.setAttribute('role', 'button');
+    m.tabIndex = 0;
+    m.addEventListener('click', () => btn()?.click());
+    m.addEventListener('keydown', (ev) => {
+      if (ev.key === 'Enter' || ev.key === ' ') {
+        ev.preventDefault();
+        btn()?.click();
+      }
+    });
+  }
+  q.addEventListener('click', () => {
+    const chosen = q.querySelector('.ex-options li.is-chosen');
+    for (const m of marks) {
+      m.classList.toggle('is-chosen', Boolean(chosen) && m.dataset.candidate === chosen.dataset.option);
+      m.classList.toggle('is-right', Boolean(chosen) && m.dataset.candidate === chosen.dataset.option && chosen.classList.contains('is-right'));
+    }
+  });
+}
+
+function sequenceQuestion(q, s) {
+  const ol = q.querySelector('.ex-seq');
+  const want = ol.dataset.sequence.split(' ');
+  const feedback = q.querySelector('.ex-feedback');
+  const answer = q.querySelector('.ex-answer');
+  const actions = q.querySelector('.ex-select-actions');
+  if (actions) actions.hidden = false;
+  const items = () => [...ol.children];
+  const sync = () => items().forEach((li, i, all) => {
+    li.querySelector('[data-move="up"]').disabled = i === 0;
+    li.querySelector('[data-move="down"]').disabled = i === all.length - 1;
+  });
+  for (const li of items()) {
+    for (const [dir, label] of [['up', s.up || '↑'], ['down', s.down || '↓']]) {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'arch-stepbtn ex-seq-move';
+      b.dataset.move = dir;
+      b.textContent = label;
+      b.setAttribute('aria-label', `${label}: ${li.textContent.trim()}`);
+      b.addEventListener('click', () => {
+        const sib = dir === 'up' ? li.previousElementSibling : li.nextElementSibling;
+        if (!sib) return;
+        if (dir === 'up') ol.insertBefore(li, sib);
+        else ol.insertBefore(sib, li);
+        for (const x of items()) x.classList.remove('is-right', 'is-wrong');
+        sync();
+        b.focus();
+      });
+      li.append(b);
+    }
+  }
+  sync();
+  q.querySelector('[data-check-seq]')?.addEventListener('click', () => {
+    const now = items();
+    now.forEach((li, i) => {
+      li.classList.toggle('is-right', li.dataset.id === want[i]);
+      li.classList.toggle('is-wrong', li.dataset.id !== want[i]);
+    });
+    const ok = now.every((li, i) => li.dataset.id === want[i]);
+    if (feedback) feedback.textContent = ok ? s.seqRight || '' : s.seqWrong || '';
+    q.classList.add('is-answered');
+    if (answer) answer.open = true;
+  });
 }
 
 function choiceQuestion(q, el, s) {
@@ -57,7 +133,7 @@ function selectQuestion(q, el, s) {
       const id = idOf(e);
       if (chosen.has(id)) chosen.delete(id);
       else chosen.add(id);
-      e.classList.toggle('is-selected', chosen.has(id));
+      for (const x of items) x.classList.toggle('is-selected', chosen.has(idOf(x)));
     });
   });
   q.querySelector('[data-check-select]')?.addEventListener('click', () => {

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="nl" data-base="/academy-preview/" data-v="f14599ee">
+<html lang="nl" data-base="/academy-preview/" data-v="daf9d889">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,10 +9,10 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%2032%2032&#39;%3E%3Crect%20width%3D&#39;32&#39;%20height%3D&#39;32&#39;%20rx%3D&#39;7&#39;%20fill%3D&#39;%23072d78&#39;%2F%3E%3Crect%20x%3D&#39;6&#39;%20y%3D&#39;8&#39;%20width%3D&#39;15&#39;%20height%3D&#39;4.5&#39;%20rx%3D&#39;1.6&#39;%20fill%3D&#39;%23fff&#39;%2F%3E%3Cpath%20d%3D&#39;M8.5%2012.5%2018.5%2012.5%2023%2024.5%204%2024.5Z&#39;%20fill%3D&#39;%23ffd166&#39;%20fill-opacity%3D&#39;.92&#39;%2F%3E%3Ccircle%20cx%3D&#39;25.5&#39;%20cy%3D&#39;10.2&#39;%20r%3D&#39;2&#39;%20fill%3D&#39;%237fb2ff&#39;%2F%3E%3Cpath%20d%3D&#39;M22.2%206.5a4.7%204.7%200%200%201%206.6%200&#39;%20fill%3D&#39;none&#39;%20stroke%3D&#39;%237fb2ff&#39;%20stroke-width%3D&#39;1.5&#39;%20stroke-linecap%3D&#39;round&#39;%2F%3E%3C%2Fsvg%3E">
 
-<link rel="stylesheet" href="/academy-preview/assets/site.css?v=f14599ee">
-<link rel="stylesheet" href="/academy-preview/assets/academy.css?v=f14599ee">
+<link rel="stylesheet" href="/academy-preview/assets/site.css?v=daf9d889">
+<link rel="stylesheet" href="/academy-preview/assets/academy.css?v=daf9d889">
 
-<script type="module" src="/academy-preview/assets/site.js?v=f14599ee"></script>
+<script type="module" src="/academy-preview/assets/site.js?v=daf9d889"></script>
 </head>
 <body>
 
@@ -78,8 +78,8 @@
 <p class="training-deeper"><a href="/academy-preview/nl/begrijpen/dali/">Lees de volledige uitleg: Wat is DALI?</a></p>
 <script type="application/json" class="module-config">{"mode":"checks","strings":{"right":"Klopt.","wrong":"Niet helemaal."}}</script></div>
 <template class="deck-tpl" data-lesson="van-armatuur-tot-sensor"><section class="deck" data-lesson="van-armatuur-tot-sensor" aria-label="Van armatuur tot sensor: de keten">
-<div class="slide slide--title"><p class="slide-eyebrow">Basis lichtsturing · Begrijpen</p><h2>Van armatuur tot sensor: de keten</h2><p class="slide-goal">Je kunt de keten armatuur, driver, besturing, sensor en bediening uitleggen en zeggen wie meldt, wie beslist en wie uitvoert.</p></div>
-<div class="slide slide--visual"><p class="slide-eyebrow">Van armatuur tot sensor: de keten</p><figure class="illustration illustration--busroles" id="dia-demo-dali2-rollen">
+<div class="slide slide--title" data-label="Van armatuur tot sensor: de keten"><p class="slide-eyebrow">Basis lichtsturing · Begrijpen</p><h2>Van armatuur tot sensor: de keten</h2><p class="slide-goal">Je kunt de keten armatuur, driver, besturing, sensor en bediening uitleggen en zeggen wie meldt, wie beslist en wie uitvoert.</p></div>
+<div class="slide slide--visual" data-label="Schema"><p class="slide-eyebrow">Van armatuur tot sensor: de keten</p><p class="slide-caption">Houd drie lagen uit elkaar:</p><figure class="illustration illustration--busroles" id="dia-demo-dali2-rollen">
 <figcaption class="illustration-title">Drie rollen op een DALI-2-lijn</figcaption>
 <p class="illustration-summary">Schematisch. Input devices melden, de application controller beslist, de control gear voert uit. Alle drie zitten op dezelfde DALI-lijn; alleen de armaturen hebben daarnaast hun netvoeding.</p>
 <svg class="illustration-svg" viewBox="0 0 360 262" role="img" aria-labelledby="dia-illt-dali2-rollen dia-illd-dali2-rollen" preserveAspectRatio="xMidYMin meet">
@@ -106,18 +106,19 @@
 </ul>
 <ol class="illustration-steps"><li><strong>Input devices</strong><span class="li-sep"> — </span>sensoren en drukknopinterfaces leveren informatie en gebeurtenissen: aanwezigheid, licht, een druk op de knop. Ze sturen zelf geen armaturen aan.</li><li><strong>Application controller</strong><span class="li-sep"> — </span>gebruikt die meldingen, beslist wat er moet gebeuren en stuurt de control gear aan. Bij LiveLink is dat de LiveLink-regeling, ingesteld in LiveLink ONE.</li><li><strong>Control gear</strong><span class="li-sep"> — </span>de drivers in de armaturen voeren de commando&#39;s uit: schakelen en dimmen.</li><li><strong>DALI-lijn</strong><span class="li-sep"> — </span>één lijn voor alle drie de rollen; control gear en control devices hebben elk een eigen adresruimte.</li><li><strong>Netvoeding</strong><span class="li-sep"> — </span>alleen de armaturen hangen ook aan de netvoeding; de DALI-lijn schakelt die voeding niet.</li></ol>
 </figure></div>
-<div class="slide slide--core"><p class="slide-eyebrow">Van armatuur tot sensor: de keten</p><div class="block block--list"><p>Houd drie lagen uit elkaar:</p><ul><li><strong>Lichtinstallatie</strong><span class="li-sep"> — </span>armaturen, sensoren, drukknoppen en andere inputapparaten, en DALI- of NLC-componenten.</li><li><strong>LiveLink-systeem</strong><span class="li-sep"> — </span>de centrale unit (controller of server), gateways, het netwerk en eventuele koppelingen met andere systemen.</li><li><strong>LiveLink ONE</strong><span class="li-sep"> — </span>de app waarmee het systeem wordt gevonden, opgebouwd, ingesteld, getest, bediend en gedocumenteerd.</li></ul></div></div>
-<div class="slide slide--attention"><p class="slide-eyebrow">Van armatuur tot sensor: de keten</p><p class="lesson-attention-label">Let op</p><aside class="block block--callout"><p>Niet elke sensor werkt op dezelfde manier: dat hangt af van hoe hij met de verlichting verbonden is. <span class="nav-hint">De verschillende aansluitvarianten staan bij <a href="/academy-preview/nl/begrijpen/sensoren/">Sensoren</a>.</span></p></aside></div>
+
+<div class="slide slide--attention" data-label="Let op"><p class="slide-eyebrow">Van armatuur tot sensor: de keten</p><p class="lesson-attention-label">Let op</p><ul class="slide-points"><li>Niet elke sensor werkt op dezelfde manier: dat hangt af van hoe hij met de verlichting verbonden is.</li></ul></div>
 
 
-<aside class="deck-notes" hidden><p class="deck-notes-label">Voor de trainer</p><p>Gebruik het rollenschema als rode draad voor de rest van de training: iedere keer dat een nieuw product langskomt, vraag je of het meldt, beslist of uitvoert.</p></aside>
+<aside class="deck-notes" hidden><p class="deck-notes-label">Voor de trainer</p><p>Gebruik het rollenschema als rode draad voor de rest van de training: iedere keer dat een nieuw product langskomt, vraag je of het meldt, beslist of uitvoert.</p>
+<details class="deck-deeper"><summary>Verdieping (lezen na de training)</summary><div class="training-core"><div class="block block--list"><p>Houd drie lagen uit elkaar:</p><ul><li><strong>Lichtinstallatie</strong><span class="li-sep"> — </span>armaturen, sensoren, drukknoppen en andere inputapparaten, en DALI- of NLC-componenten.</li><li><strong>LiveLink-systeem</strong><span class="li-sep"> — </span>de centrale unit (controller of server), gateways, het netwerk en eventuele koppelingen met andere systemen.</li><li><strong>LiveLink ONE</strong><span class="li-sep"> — </span>de app waarmee het systeem wordt gevonden, opgebouwd, ingesteld, getest, bediend en gedocumenteerd.</li></ul></div></div><aside class="block block--callout"><p>Niet elke sensor werkt op dezelfde manier: dat hangt af van hoe hij met de verlichting verbonden is. <span class="nav-hint">De verschillende aansluitvarianten staan bij <a href="/academy-preview/nl/begrijpen/sensoren/">Sensoren</a>.</span></p></aside></details></aside>
 </section></template>
 <details class="lesson-trainer"><summary>Voor de trainer</summary><p>Gebruik het rollenschema als rode draad voor de rest van de training: iedere keer dat een nieuw product langskomt, vraag je of het meldt, beslist of uitvoert.</p></details>
 <nav class="lesson-nav" aria-label="Waar dit onderdeel bij hoort">
 <p class="lesson-nav-path">Onderdeel 4 van 4 in <a href="/academy-preview/nl/begrijpen/academy/">Basis lichtsturing</a></p>
 <p class="lesson-nav-links"><a class="training-prev" href="/academy-preview/nl/begrijpen/academy/groepen-en-zones/">Groepen en zones</a></p>
 <p class="academy-actions"><a class="academy-button academy-button--quiet" href="/academy-preview/nl/begrijpen/training-geven/?les=van-armatuur-tot-sensor&amp;start=1">Presenteer dit onderdeel</a></p>
-<p class="lesson-used">Ook gebruikt in: <a href="/academy-preview/nl/begrijpen/academy/">Basis lichtsturing</a>, <a href="/academy-preview/nl/begrijpen/academy/techniek-basis/">Techniek basis</a></p>
+<p class="lesson-used">Ook gebruikt in: <a href="/academy-preview/nl/begrijpen/academy/">Basis lichtsturing</a>, <a href="/academy-preview/nl/begrijpen/academy/dali-en-dali-2/">DALI en DALI-2</a>, <a href="/academy-preview/nl/begrijpen/academy/techniek-basis/">Technische basis LiveLink</a></p>
 </nav>
 </article>
 </main>
