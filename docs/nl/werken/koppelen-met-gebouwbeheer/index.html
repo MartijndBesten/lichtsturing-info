@@ -1,17 +1,17 @@
 <!doctype html>
-<html lang="nl" data-base="/" data-v="7aba59aa">
+<html lang="nl" data-base="/" data-v="03ef76b0">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LiveLink koppelen met gebouwbeheer · Lichtsturing.info</title>
-<meta name="description" content="Welke koppelingen voor LiveLink Premium beschreven zijn, en wat ze op hoofdlijnen doen.">
+<meta name="description" content="BACnet, KNX en MQTT voor LiveLink Premium: wat iedere koppeling doet en hoe je groepen en scènes koppelbaar ontwerpt.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%2032%2032&#39;%3E%3Crect%20width%3D&#39;32&#39;%20height%3D&#39;32&#39;%20rx%3D&#39;7&#39;%20fill%3D&#39;%23072d78&#39;%2F%3E%3Crect%20x%3D&#39;6&#39;%20y%3D&#39;8&#39;%20width%3D&#39;15&#39;%20height%3D&#39;4.5&#39;%20rx%3D&#39;1.6&#39;%20fill%3D&#39;%23fff&#39;%2F%3E%3Cpath%20d%3D&#39;M8.5%2012.5%2018.5%2012.5%2023%2024.5%204%2024.5Z&#39;%20fill%3D&#39;%23ffd166&#39;%20fill-opacity%3D&#39;.92&#39;%2F%3E%3Ccircle%20cx%3D&#39;25.5&#39;%20cy%3D&#39;10.2&#39;%20r%3D&#39;2&#39;%20fill%3D&#39;%237fb2ff&#39;%2F%3E%3Cpath%20d%3D&#39;M22.2%206.5a4.7%204.7%200%200%201%206.6%200&#39;%20fill%3D&#39;none&#39;%20stroke%3D&#39;%237fb2ff&#39;%20stroke-width%3D&#39;1.5&#39;%20stroke-linecap%3D&#39;round&#39;%2F%3E%3C%2Fsvg%3E">
 
-<link rel="stylesheet" href="/assets/site.css?v=7aba59aa">
+<link rel="stylesheet" href="/assets/site.css?v=03ef76b0">
 
-<script type="module" src="/assets/site.js?v=7aba59aa"></script>
+<script type="module" src="/assets/site.js?v=03ef76b0"></script>
 </head>
 <body>
 
@@ -37,7 +37,7 @@
 <main id="inhoud" class="wrap" tabindex="-1">
 <nav class="breadcrumb" aria-label="Kruimelpad"><ol><li><a href="/nl/">Home</a></li><li><a href="/nl/werken/">Aan de slag</a></li><li aria-current="page">LiveLink koppelen met gebouwbeheer</li></ol></nav>
 <article class="article article--function">
-<header class="page-header"><div class="page-header-text"><p class="eyebrow">Functieprincipe</p><h1>LiveLink koppelen met gebouwbeheer</h1><p class="lead">Welke koppelingen voor LiveLink Premium beschreven zijn, en wat ze op hoofdlijnen doen.</p></div></header>
+<header class="page-header"><div class="page-header-text"><p class="eyebrow">Functieprincipe</p><h1>LiveLink koppelen met gebouwbeheer</h1><p class="lead">BACnet, KNX en MQTT voor LiveLink Premium: wat iedere koppeling doet en hoe je groepen en scènes koppelbaar ontwerpt.</p></div></header>
 <details class="page-toc-m"><summary>Op deze pagina</summary><ul><li><a href="#l-in-30-seconden">In 30 seconden</a></li><li><a href="#l-zo-werkt-het">Zo werkt het</a></li><li><a href="#l-interactief">Bekijk het interactief</a></li><li><a href="#l-opbouw">Zo is het opgebouwd</a></li><li><a href="#l-grenzen">Goed om te weten</a></li><li data-practice-toc hidden><a href="#oefenvragen">Oefenvragen</a></li></ul></details>
 
 <div class="article-layout has-toc">
@@ -57,6 +57,7 @@
 
 
 
+
 <details class="more"><summary>Zo werkt een BACnet-koppeling</summary>
 <div class="block block--list"><p>Beschikbaar voor het gebouwbeheersysteem:</p><ul><li><strong>Groepsbesturing</strong><span class="li-sep"> — </span>helderheid en kleurtemperatuur per armaturengroep.</li><li><strong>Groepsstoring</strong><span class="li-sep"> — </span>of een armatuur in de groep een storing meldt of niet meer bereikbaar is.</li><li><strong>Scènebesturing</strong><span class="li-sep"> — </span>de lichtscènes, en een scène oproepen.</li><li><strong>Beweging per groep</strong><span class="li-sep"> — </span>of een sensor in de groep beweging ziet.</li><li><strong>DALI-lijnstatus</strong><span class="li-sep"> — </span>of een apparaat op een DALI-lijn een storing meldt.</li></ul></div><div class="block block--text"><p>De BACnet-interface zet je aan in LiveLink ONE onder Instellingen › Interfaces. Daar kies je ook welke objecten beschikbaar zijn, BACnet/IP of BACnet/SC, en de netwerkaansluiting. Zitten er meerdere LiveLink-systemen in één BACnet-netwerk, dan krijgt ieder systeem een eigen, unieke device-ID.</p><p class="nav-hint">Bedienen via een touchscreen of een LOYTEC-paneel? Zie <a href="/nl/werken/bacnet-loytec/">LiveLink Premium bedienen via BACnet en LOYTEC</a>.</p></div><div class="block block--text"><p>Met BACnet Secure Connect (BACnet/SC) is de BACnet-communicatie versleuteld. Daarvoor is in het netwerk een hub nodig, eventueel met een reservehub, en werken de apparaten met certificaten.</p></div>
 
@@ -69,6 +70,7 @@
 
 
 
+
 <details class="more"><summary>Zo werkt een KNX-koppeling</summary>
 <div class="block block--list"><p>In LiveLink ONE koppel je:</p><ul><li><strong>Armaturengroepen</strong><span class="li-sep"> — </span>bedienen vanuit KNX, met helderheid en kleurtemperatuur.</li><li><strong>Bewegingssensoren</strong><span class="li-sep"> — </span>KNX leest de statuswijzigingen uit.</li><li><strong>Scènes</strong><span class="li-sep"> — </span>LiveLink-scènes oproepen vanuit KNX.</li><li><strong>Losse datapunten</strong><span class="li-sep"> — </span>bijvoorbeeld licht-, temperatuur- of vochtigheidssensoren, als ingang of als uitgang.</li></ul></div><div class="block block--text"><p>De communicatie tussen het LiveLink-systeem en de KNX-gateway is beveiligd met KNX Secure.</p></div><div class="block block--text"><p>De gateway is via IP met het LiveLink Premium-systeem verbonden en via de KNX-bus met de KNX-installatie. De KNX-kant parametreer je in ETS; daarna voeg je de gateway in LiveLink ONE toe en koppel je de datapunten.</p></div>
 
@@ -77,6 +79,7 @@
 </article><article class="part" id="onderdeel-mqtt">
 <h3>MQTT</h3>
 <div class="block block--text"><p>MQTT is een data-interface. LiveLink stuurt daarmee bedrijfsgegevens naar een lokaal gebouwbeheersysteem, bijvoorbeeld voor monitoring.</p></div>
+
 
 
 
@@ -223,8 +226,12 @@
 </section>
 <script type="application/json" class="module-config">{"strings":{"right":"Klopt.","wrong":"Niet helemaal."}}</script>
 </section>
-
-<section class="related" aria-labelledby="l-related"><h2 id="l-related">Zie ook</h2><ul class="related-list"><li><a href="/nl/werken/van-installatie-tot-overdracht/">Van installatie tot overdracht</a></li><li><a href="/nl/werken/bacnet-loytec/">LiveLink Premium bedienen via BACnet en LOYTEC</a></li><li><a href="/nl/systeem-kiezen/livelink-premium/">LiveLink Premium</a></li></ul></section>
+<nav class="next-step" aria-label="Volgende stap"><a class="next-step-link" href="/nl/werken/bacnet-loytec/">
+<span class="next-step-label">Volgende stap</span>
+<span class="next-step-title">LiveLink Premium bedienen via BACnet en LOYTEC</span>
+<span class="next-step-text">Zie in de praktijk hoe LiveLink Premium via BACnet en LOYTEC wordt bediend.</span>
+</a></nav>
+<section class="related" aria-labelledby="l-related"><h2 id="l-related">Zie ook</h2><ul class="related-list"><li><a href="/nl/werken/van-installatie-tot-overdracht/">Van installatie tot overdracht</a></li><li><a href="/nl/systeem-kiezen/livelink-premium/">LiveLink Premium</a></li></ul></section>
 </div>
 <nav class="page-toc" aria-labelledby="toc-title"><p class="page-toc-title" id="toc-title">Op deze pagina</p><ul><li><a href="#l-in-30-seconden">In 30 seconden</a></li><li><a href="#l-zo-werkt-het">Zo werkt het</a></li><li><a href="#l-interactief">Bekijk het interactief</a></li><li><a href="#l-opbouw">Zo is het opgebouwd</a></li><li><a href="#l-grenzen">Goed om te weten</a></li><li data-practice-toc hidden><a href="#oefenvragen">Oefenvragen</a></li></ul></nav>
 </div>
