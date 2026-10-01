@@ -1,0 +1,14 @@
+{
+  "generator": "livelink-knowledge-hub",
+  "target": "external-preview",
+  "guardrail": "wp1-2",
+  "locales": [
+    "nl"
+  ],
+  "pages": {
+    "nl": 37
+  },
+  "datasetHash": "ffc50ac853f61f90",
+  "audience": "external-preview",
+  "domain": "lichtsturing.info"
+}

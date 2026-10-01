@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="nl" data-base="/academy-preview/" data-v="f14599ee">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Techniek basis · Lichtsturing.info</title>
+<meta name="description" content="De technische basis voor lichtplanners en projectengineers: de keten, de DALI-bus tot en met de bekabeling, en hoe sensoren zijn aangesloten en geplaatst.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%2032%2032&#39;%3E%3Crect%20width%3D&#39;32&#39;%20height%3D&#39;32&#39;%20rx%3D&#39;7&#39;%20fill%3D&#39;%23072d78&#39;%2F%3E%3Crect%20x%3D&#39;6&#39;%20y%3D&#39;8&#39;%20width%3D&#39;15&#39;%20height%3D&#39;4.5&#39;%20rx%3D&#39;1.6&#39;%20fill%3D&#39;%23fff&#39;%2F%3E%3Cpath%20d%3D&#39;M8.5%2012.5%2018.5%2012.5%2023%2024.5%204%2024.5Z&#39;%20fill%3D&#39;%23ffd166&#39;%20fill-opacity%3D&#39;.92&#39;%2F%3E%3Ccircle%20cx%3D&#39;25.5&#39;%20cy%3D&#39;10.2&#39;%20r%3D&#39;2&#39;%20fill%3D&#39;%237fb2ff&#39;%2F%3E%3Cpath%20d%3D&#39;M22.2%206.5a4.7%204.7%200%200%201%206.6%200&#39;%20fill%3D&#39;none&#39;%20stroke%3D&#39;%237fb2ff&#39;%20stroke-width%3D&#39;1.5&#39;%20stroke-linecap%3D&#39;round&#39;%2F%3E%3C%2Fsvg%3E">
+
+<link rel="stylesheet" href="/academy-preview/assets/site.css?v=f14599ee">
+<link rel="stylesheet" href="/academy-preview/assets/academy.css?v=f14599ee">
+
+<script type="module" src="/academy-preview/assets/site.js?v=f14599ee"></script>
+</head>
+<body>
+
+<a class="skip-link" href="#inhoud">Naar de inhoud</a>
+<header class="site-header">
+<div class="wrap header-row">
+<a class="site-name" href="/academy-preview/nl/"><svg class="brand-badge" viewBox="0 0 32 32" role="presentation" focusable="false"><rect width="32" height="32" rx="7" fill="#072d78"/><rect x="6" y="8" width="15" height="4.5" rx="1.6" fill="#fff"/><path d="M8.5 12.5 18.5 12.5 23 24.5 4 24.5Z" fill="#ffd166" fill-opacity=".92"/><circle cx="25.5" cy="10.2" r="2" fill="#7fb2ff"/><path d="M22.2 6.5a4.7 4.7 0 0 1 6.6 0" fill="none" stroke="#7fb2ff" stroke-width="1.5" stroke-linecap="round"/></svg><span class="brand-stack"><span class="brand-mark"><span class="brand-first">Lichtsturing</span><span class="brand-rest">.info</span></span><span class="brand-tagline">Kennisplatform voor professionele lichtsturing</span></span></a>
+<nav class="site-nav" aria-label="Hoofdnavigatie"><ul>
+<li><a href="/academy-preview/nl/begrijpen/" aria-current="true">Begrijpen</a></li><li><a href="/academy-preview/nl/systeem-kiezen/">Oplossing kiezen</a></li><li><a href="/academy-preview/nl/werken/">Aan de slag</a></li>
+<li class="nav-search"><a href="/academy-preview/nl/zoeken/">Zoeken</a></li>
+</ul></nav>
+<a class="header-search" href="/academy-preview/nl/zoeken/" aria-label="Zoeken"><span class="header-search-icon"></span></a>
+<details class="nav-menu">
+<summary><span class="nav-menu-icon"></span><span class="nav-menu-label">Menu</span></summary>
+<nav class="nav-menu-panel" aria-label="Hoofdnavigatie"><ul>
+<li><a href="/academy-preview/nl/begrijpen/" aria-current="true">Begrijpen</a></li><li><a href="/academy-preview/nl/systeem-kiezen/">Oplossing kiezen</a></li><li><a href="/academy-preview/nl/werken/">Aan de slag</a></li>
+<li class="nav-search"><a href="/academy-preview/nl/zoeken/">Zoeken</a></li>
+</ul></nav>
+</details>
+
+</div>
+</header>
+<main id="inhoud" class="wrap" tabindex="-1">
+<nav class="breadcrumb" aria-label="Kruimelpad"><ol><li><a href="/academy-preview/nl/">Home</a></li><li><a href="/academy-preview/nl/begrijpen/">Begrijpen</a></li><li><a href="/academy-preview/nl/begrijpen/academy/">LiveLink Academy</a></li><li aria-current="page">Techniek basis</li></ol></nav>
+<article class="article article--training academy-path">
+<header class="page-header"><p class="eyebrow">Leerroute</p><h1>Techniek basis</h1><p class="lead">De technische basis voor lichtplanners en projectengineers: de keten, de DALI-bus tot en met de bekabeling, en hoe sensoren zijn aangesloten en geplaatst.</p>
+<p class="training-meta">9 onderdelen · ± 75 minuten · lichtplanners · installateurs · programmeurs</p>
+<p class="academy-actions"><a class="academy-button" href="/academy-preview/nl/begrijpen/training-geven/?les=van-armatuur-tot-sensor,wat-is-dali,dali-bus-en-busvoeding,dali-adressen,dali-groepen-en-scenes,dali-2,dali-bekabeling,sensor-aansluitvarianten,sensorplaatsing&amp;start=1">Presenteer deze module</a></p></header>
+
+<div class="training" data-module="training">
+<nav class="training-toc" aria-label="Stappen van de training"><ol><li><a href="#stap-van-armatuur-tot-sensor" data-go="1">Van armatuur tot sensor: de keten</a></li><li><a href="#stap-wat-is-dali" data-go="2">Wat is DALI?</a></li><li><a href="#stap-dali-bus-en-busvoeding" data-go="3">DALI-bus en busvoeding</a></li><li><a href="#stap-dali-adressen" data-go="4">DALI-adressen</a></li><li><a href="#stap-dali-groepen-en-scenes" data-go="5">DALI-groepen en scènes</a></li><li><a href="#stap-dali-2" data-go="6">DALI-2: wat is er anders?</a></li><li><a href="#stap-dali-bekabeling" data-go="7">DALI-bekabeling</a></li><li><a href="#stap-sensor-aansluitvarianten" data-go="8">Hoe een sensor aangesloten is</a></li><li><a href="#stap-sensorplaatsing" data-go="9">Sensorplaatsing</a></li></ol></nav>
+<div class="training-progress" hidden><div class="training-bar"><span></span></div><p class="training-progress-text visually-hidden" aria-live="polite"></p></div>
+<section class="training-step" id="stap-van-armatuur-tot-sensor" data-step="1" aria-labelledby="h-van-armatuur-tot-sensor">
+<p class="training-count">Stap 1 van 9 · <span class="level-badge level-badge--begrijpen" title="Je begrijpt waarom het zo werkt en hoe de onderdelen samenhangen."><span class="level-dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></span>Begrijpen</span> <span class="depth-badge depth-badge--basis" title="Voor iedereen.">Basis</span></p>
+<h2 id="h-van-armatuur-tot-sensor">Van armatuur tot sensor: de keten</h2>
+<div class="lesson-goal"><p class="lesson-goal-label">Na dit onderdeel</p><p>Je kunt de keten armatuur, driver, besturing, sensor en bediening uitleggen en zeggen wie meldt, wie beslist en wie uitvoert.</p></div>
+<div class="training-core lesson-core"><div class="block block--list"><p>Houd drie lagen uit elkaar:</p><ul><li><strong>Lichtinstallatie</strong><span class="li-sep"> — </span>armaturen, sensoren, drukknoppen en andere inputapparaten, en DALI- of NLC-componenten.</li><li><strong>LiveLink-systeem</strong><span class="li-sep"> — </span>de centrale unit (controller of server), gateways, het netwerk en eventuele koppelingen met andere systemen.</li><li><strong>LiveLink ONE</strong><span class="li-sep"> — </span>de app waarmee het systeem wordt gevonden, opgebouwd, ingesteld, getest, bediend en gedocumenteerd.</li></ul></div></div>
+<figure class="illustration illustration--busroles" id="demo-dali2-rollen">
+<figcaption class="illustration-title">Drie rollen op een DALI-2-lijn</figcaption>
+<p class="illustration-summary">Schematisch. Input devices melden, de application controller beslist, de control gear voert uit. Alle drie zitten op dezelfde DALI-lijn; alleen de armaturen hebben daarnaast hun netvoeding.</p>
+<svg class="illustration-svg" viewBox="0 0 360 262" role="img" aria-labelledby="illt-dali2-rollen illd-dali2-rollen" preserveAspectRatio="xMidYMin meet">
+<title id="illt-dali2-rollen">Drie rollen op een DALI-2-lijn</title>
+<desc id="illd-dali2-rollen">1. Input devices · 2. Application controller · 3. Control gear · 4. DALI-lijn · 5. Netvoeding</desc>
+<defs><marker id="brf-dali2-rollen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="br-flow-head"></path></marker></defs>
+<line class="br-bus br-bus--main" x1="14" y1="132" x2="346" y2="132"></line>
+<line class="br-bus" x1="180" y1="62" x2="180" y2="132"></line>
+<line class="br-bus" x1="51" y1="132" x2="51" y2="168"></line><line class="br-bus" x1="133" y1="132" x2="133" y2="168"></line><line class="br-bus" x1="227" y1="132" x2="227" y2="168"></line><line class="br-bus" x1="309" y1="132" x2="309" y2="168"></line>
+<path class="br-power" d="M190 236H346M227 236V202M309 236V202"></path>
+<g class="br-node br-node--controller"><rect x="100" y="18" width="160" height="44" rx="4"></rect><text x="180" y="44" text-anchor="middle">Application controller</text></g>
+<g class="br-node br-node--input"><rect x="14" y="168" width="74" height="34" rx="4"></rect><text x="51" y="189" text-anchor="middle">Sensor</text></g><g class="br-node br-node--input"><rect x="96" y="168" width="74" height="34" rx="4"></rect><text x="133" y="189" text-anchor="middle">Drukknop</text></g>
+<g class="br-node br-node--gear"><rect x="190" y="168" width="74" height="34" rx="4"></rect><text x="227" y="189" text-anchor="middle">Armatuur</text></g><g class="br-node br-node--gear"><rect x="272" y="168" width="74" height="34" rx="4"></rect><text x="309" y="189" text-anchor="middle">Armatuur</text></g>
+<path class="br-flow" d="M51 124C51 80 70 44 96 40" marker-end="url(#brf-dali2-rollen)"></path>
+<text class="br-flow-label" x="57" y="96">melding</text>
+<path class="br-flow" d="M264 40C300 44 309 80 309 124" marker-end="url(#brf-dali2-rollen)"></path>
+<text class="br-flow-label" x="303" y="96" text-anchor="end">commando</text>
+<g class="ill-num"><circle cx="92" cy="222" r="8"></circle><text x="92" y="226" text-anchor="middle">1</text></g><g class="ill-num"><circle cx="270" cy="34" r="8"></circle><text x="270" y="38" text-anchor="middle">2</text></g><g class="ill-num"><circle cx="268" cy="150" r="8"></circle><text x="268" y="154" text-anchor="middle">3</text></g><g class="ill-num"><circle cx="22" cy="116" r="8"></circle><text x="22" y="120" text-anchor="middle">4</text></g><g class="ill-num"><circle cx="182" cy="236" r="8"></circle><text x="182" y="240" text-anchor="middle">5</text></g>
+</svg>
+<ul class="illustration-legend">
+<li><svg class="ill-key" viewBox="0 0 34 12" aria-hidden="true" focusable="false"><line class="br-bus" x1="2" y1="6" x2="32" y2="6"></line></svg><span>DALI-lijn (besturing)</span></li>
+<li><svg class="ill-key" viewBox="0 0 34 12" aria-hidden="true" focusable="false"><line class="br-power" x1="2" y1="6" x2="32" y2="6"></line></svg><span>Netvoeding van de armaturen</span></li>
+<li><svg class="ill-key" viewBox="0 0 34 12" aria-hidden="true" focusable="false"><line class="br-flow" x1="2" y1="6" x2="32" y2="6"></line></svg><span>Logische stroom: geen kabel, maar wat er gebeurt</span></li>
+</ul>
+<ol class="illustration-steps"><li><strong>Input devices</strong><span class="li-sep"> — </span>sensoren en drukknopinterfaces leveren informatie en gebeurtenissen: aanwezigheid, licht, een druk op de knop. Ze sturen zelf geen armaturen aan.</li><li><strong>Application controller</strong><span class="li-sep"> — </span>gebruikt die meldingen, beslist wat er moet gebeuren en stuurt de control gear aan. Bij LiveLink is dat de LiveLink-regeling, ingesteld in LiveLink ONE.</li><li><strong>Control gear</strong><span class="li-sep"> — </span>de drivers in de armaturen voeren de commando&#39;s uit: schakelen en dimmen.</li><li><strong>DALI-lijn</strong><span class="li-sep"> — </span>één lijn voor alle drie de rollen; control gear en control devices hebben elk een eigen adresruimte.</li><li><strong>Netvoeding</strong><span class="li-sep"> — </span>alleen de armaturen hangen ook aan de netvoeding; de DALI-lijn schakelt die voeding niet.</li></ol>
+</figure>
+<div class="lesson-attention"><p class="lesson-attention-label">Let op</p><aside class="block block--callout"><p>Niet elke sensor werkt op dezelfde manier: dat hangt af van hoe hij met de verlichting verbonden is. <span class="nav-hint">De verschillende aansluitvarianten staan bij <a href="/academy-preview/nl/begrijpen/sensoren/">Sensoren</a>.</span></p></aside></div>
+
+
+
+<p class="training-deeper"><a href="/academy-preview/nl/begrijpen/dali/">Lees de volledige uitleg: Wat is DALI?</a></p>
+<p class="lesson-own"><a href="/academy-preview/nl/begrijpen/academy/van-armatuur-tot-sensor/">Dit onderdeel apart bekijken</a></p>
+<nav class="training-nav" aria-label="Door de training">
+
+<a class="training-next" href="#stap-wat-is-dali" data-go="2">Volgende: Wat is DALI?</a>
+</nav>
+</section><section class="training-step" id="stap-wat-is-dali" data-step="2" aria-labelledby="h-wat-is-dali">
+<p class="training-count">Stap 2 van 9 · <span class="level-badge level-badge--weten" title="Je weet wat het is en kunt het in eigen woorden benoemen."><span class="level-dots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></span>Weten</span> <span class="depth-badge depth-badge--basis" title="Voor iedereen.">Basis</span></p>
+<h2 id="h-wat-is-dali">Wat is DALI?</h2>
+<div class="lesson-goal"><p class="lesson-goal-label">Na dit onderdeel</p><p>Je kunt uitleggen dat DALI een aparte digitale besturingsverbinding is naast de netvoeding, en wat je eraan hebt.</p></div>
+<div class="training-core lesson-core"><div class="block block--text"><p>DALI is een digitale besturingslijn voor verlichting: twee draden waarover schakel- en dimcommando&#39;s gaan. Een armatuur met DALI heeft daarom twee verbindingen: de netvoeding (230 V) die het van stroom voorziet, en de DALI-verbinding voor het stuursignaal.</p><p>Het armatuur blijft normaal op de netspanning aangesloten. Dimmen en schakelen gebeurt via DALI, niet door de 230 V hard te schakelen.</p></div><div class="block block--list"><p>Wat heb je eraan?</p><ul><li>Digitaal schakelen en dimmen, zonder de netvoeding hard te schakelen.</li><li>Ieder apparaat krijgt een eigen adres: je stuurt armaturen los, in groepen of allemaal tegelijk aan.</li><li>Groepen en scènes zitten in de software. Een andere indeling vraagt daardoor niet vanzelf nieuwe voedingsbekabeling.</li><li>Sensoren en drukknoppen kunnen als DALI-2 input devices op dezelfde lijn als de armaturen.</li></ul></div></div>
+<figure class="topology topology--compact" data-module="topology" id="demo-stap-wat-is-dali-dali-basis">
+<figcaption class="topology-title">DALI in één schema</figcaption>
+
+
+<div class="topology-layout">
+<div class="topology-canvas">
+
+<svg class="topology-defs" aria-hidden="true" focusable="false" width="0" height="0"><defs><symbol id="sym-stap-wat-is-dali-dali-basis-gateway" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="12" height="8" rx="1.2"/><path d="M5.6 8h4.8M8.9 6.2L10.6 8l-1.7 1.8M7.1 6.2L5.4 8l1.7 1.8"/></g></symbol><symbol id="sym-stap-wat-is-dali-dali-basis-sensor" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 5a3.5 3.5 0 0 1 7 0v.8h-7z"/><path d="M4.2 9a5.4 5.4 0 0 0 7.6 0M2.6 11.4a7.7 7.7 0 0 0 10.8 0"/></g></symbol><symbol id="sym-stap-wat-is-dali-dali-basis-armatuur" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="3" width="11" height="3" rx="1"/><path d="M5.2 6.5L3 13M10.8 6.5L13 13" stroke-dasharray="1.8 1.6"/><path d="M8 6.5V13" stroke-dasharray="1.8 1.6"/></g></symbol><symbol id="sym-stap-wat-is-dali-dali-basis-voeding" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="5.8"/><path d="M4.8 8c1-2 2.1-2 3.2 0s2.2 2 3.2 0"/></g></symbol></defs></svg>
+
+<svg class="topology-svg topology-svg--mobiel" data-layout="mobiel" viewBox="0 0 360 296" role="img" aria-labelledby="svgt-stap-wat-is-dali-dali-basis svgd-stap-wat-is-dali-dali-basis" preserveAspectRatio="xMidYMin meet">
+<title id="svgt-stap-wat-is-dali-dali-basis">DALI in één schema</title>
+<desc id="svgd-stap-wat-is-dali-dali-basis">Ethernet/DALI Gateway · Sensor op de DALI-lijn · Armatuur met DALI · Netvoeding</desc>
+
+<g class="edges"><g class="edge" data-edge="dali-sensor" data-layer="dali" data-medium="bus" data-from="besturing" data-to="sensor"><polyline class="edge-line edge-line--dali edge-line--m-bus" points="180,56 180,92 64,92 64,124"></polyline></g><g class="edge" data-edge="dali-a1" data-layer="dali" data-medium="bus" data-from="besturing" data-to="a1"><polyline class="edge-line edge-line--dali edge-line--m-bus" points="180,56 180,124"></polyline><text class="edge-label" x="186" y="80" text-anchor="start">DALI</text></g><g class="edge" data-edge="dali-a2" data-layer="dali" data-medium="bus" data-from="besturing" data-to="a2"><polyline class="edge-line edge-line--dali edge-line--m-bus" points="180,56 180,92 296,92 296,124"></polyline></g><g class="edge" data-edge="v-a1" data-layer="voeding" data-medium="voeding" data-from="voeding" data-to="a1"><polyline class="edge-line edge-line--voeding edge-line--m-voeding" points="180,240 180,212 180,172"></polyline><text class="edge-label" x="186" y="232" text-anchor="start">230 V</text></g><g class="edge" data-edge="v-a2" data-layer="voeding" data-medium="voeding" data-from="voeding" data-to="a2"><polyline class="edge-line edge-line--voeding edge-line--m-voeding" points="180,240 180,212 296,212 296,172"></polyline></g></g>
+<g class="nodes"><g class="node" data-node="besturing" data-category="gateway" data-level="systeem">
+<title>Ethernet/DALI Gateway</title><rect x="105" y="12" width="150" height="44" rx="6"></rect>
+<circle class="node-badge" cx="123" cy="34" r="11"></circle><use href="#sym-stap-wat-is-dali-dali-basis-gateway" x="115" y="26" width="16" height="16" class="node-icon"></use>
+
+<text x="194.5" y="31.32" text-anchor="middle"><tspan x="194.5" dy="0">DALI-besturing</tspan><tspan x="194.5" dy="14">(gateway)</tspan></text>
+</g><g class="node" data-node="sensor" data-category="sensor" data-level="installatie" data-role="sensoren">
+<title>Sensor op de DALI-lijn</title><rect x="12" y="124" width="104" height="48" rx="6"></rect>
+<circle class="node-badge" cx="30" cy="148" r="11"></circle><use href="#sym-stap-wat-is-dali-dali-basis-sensor" x="22" y="140" width="16" height="16" class="node-icon"></use>
+<circle class="node-role" cx="108" cy="132" r="3"></circle>
+<text x="78.5" y="152.32" text-anchor="middle"><tspan x="78.5" dy="0">Sensor</tspan></text>
+</g><g class="node" data-node="a1" data-category="armatuur" data-level="installatie">
+<title>Armatuur met DALI</title><rect x="128" y="124" width="104" height="48" rx="6"></rect>
+<circle class="node-badge" cx="146" cy="148" r="11"></circle><use href="#sym-stap-wat-is-dali-dali-basis-armatuur" x="138" y="140" width="16" height="16" class="node-icon"></use>
+
+<text x="194.5" y="152.32" text-anchor="middle"><tspan x="194.5" dy="0">Armatuur</tspan></text>
+</g><g class="node" data-node="a2" data-category="armatuur" data-level="installatie">
+<title>Armatuur met DALI</title><rect x="244" y="124" width="104" height="48" rx="6"></rect>
+<circle class="node-badge" cx="262" cy="148" r="11"></circle><use href="#sym-stap-wat-is-dali-dali-basis-armatuur" x="254" y="140" width="16" height="16" class="node-icon"></use>
+
+<text x="310.5" y="152.32" text-anchor="middle"><tspan x="310.5" dy="0">Armatuur</tspan></text>
+</g><g class="node" data-node="voeding" data-category="voeding" data-level="installatie">
+<title>Netvoeding</title><rect x="105" y="240" width="150" height="44" rx="6"></rect>
+<circle class="node-badge" cx="123" cy="262" r="11"></circle><use href="#sym-stap-wat-is-dali-dali-basis-voeding" x="115" y="254" width="16" height="16" class="node-icon"></use>
+
+<text x="194.5" y="266.32" text-anchor="middle"><tspan x="194.5" dy="0">230 V-voeding</tspan></text>
+</g></g>
+</svg>
+
+
+
+<ul class="topology-legend" aria-label="Legenda">
+<li><svg class="legend-line" viewBox="0 0 28 10" aria-hidden="true"><line class="edge-line edge-line--voeding edge-line--m-voeding" x1="1" y1="5" x2="27" y2="5"></line></svg>230 V-voeding</li><li><svg class="legend-line" viewBox="0 0 28 10" aria-hidden="true"><line class="edge-line edge-line--dali edge-line--m-bus" x1="1" y1="5" x2="27" y2="5"></line></svg>DALI (besturing)</li>
+<li><svg class="legend-role" viewBox="0 0 12 12" aria-hidden="true"><circle class="node-role" cx="6" cy="6" r="3"></circle></svg>Sensoren</li>
+</ul>
+<div class="topology-filter" role="group" aria-label="Toon laag" hidden>
+<button type="button" data-layer="all" data-kind="all" aria-pressed="true">Alles</button>
+<button type="button" data-layer="voeding" data-kind="verbinding" data-text="Energie voor de armaturen; hierover gaat geen besturing." aria-pressed="false"><svg class="legend-line" viewBox="0 0 28 10" aria-hidden="true"><line class="edge-line edge-line--voeding edge-line--m-voeding" x1="1" y1="5" x2="27" y2="5"></line></svg>230 V-voeding</button><button type="button" data-layer="dali" data-kind="verbinding" data-text="Digitale besturing: commando’s naar de drivers en meldingen van sensoren." aria-pressed="false"><svg class="legend-line" viewBox="0 0 28 10" aria-hidden="true"><line class="edge-line edge-line--dali edge-line--m-bus" x1="1" y1="5" x2="27" y2="5"></line></svg>DALI (besturing)</button><button type="button" data-layer="sensoren" data-kind="rol" aria-pressed="false"><svg class="legend-role" viewBox="0 0 12 12" aria-hidden="true"><circle class="node-role" cx="6" cy="6" r="3"></circle></svg>Sensoren</button>
+</div>
+<p class="topology-status" aria-live="polite"></p>
+</div>
+
+</div>
+
+<script type="application/json" class="module-config">{"strings":{"active":"Getoond: {layer}","all":"Alles","view":"Bekijk onderdeel","close":"Sluiten","selected":"Geselecteerd: {part}. Verbindingen van dit onderdeel zijn benadrukt."}}</script>
+</figure>
+
+
+<section class="training-check" data-check aria-labelledby="c-stap-wat-is-dali">
+<h3 id="c-stap-wat-is-dali">Controlevraag</h3>
+<p class="check-question">Wat blijft bij DALI-regeling normaal permanent op de netspanning aangesloten?</p>
+<ul class="check-options"><li data-option="armatuur" data-correct>Het armatuur.</li><li data-option="sensor">Alleen de sensor.</li><li data-option="niets">Niets: dimmen en schakelen gebeurt door de netspanning aan en uit te zetten.</li></ul>
+<p class="check-feedback" aria-live="polite"></p>
+<details class="check-answer">
+<summary>Bekijk het antwoord</summary>
+<p class="check-right"><strong>Het juiste antwoord:</strong> Het armatuur.</p>
+<div class="block block--text"><p>DALI is een digitale besturingslijn voor verlichting: twee draden waarover schakel- en dimcommando&#39;s gaan. Een armatuur met DALI heeft daarom twee verbindingen: de netvoeding (230 V) die het van stroom voorziet, en de DALI-verbinding voor het stuursignaal.</p><p>Het armatuur blijft normaal op de netspanning aangesloten. Dimmen en schakelen gebeurt via DALI, niet door de 230 V hard te schakelen.</p></div>
+</details>
+</section>
+
+<p class="training-deeper"><a href="/academy-preview/nl/begrijpen/dali/">Lees de volledige uitleg: Wat is DALI?</a></p>
+<p class="lesson-own"><a href="/academy-preview/nl/begrijpen/academy/wat-is-dali/">Dit onderdeel apart bekijken</a></p>
+<nav class="training-nav" aria-label="Door de training">
+<a class="training-prev" href="#stap-van-armatuur-tot-sensor" data-go="1">Vorige</a>
+<a class="training-next" href="#stap-dali-bus-en-busvoeding" data-go="3">Volgende: DALI-bus en busvoeding</a>
+</nav>
+</section><section class="training-step" id="stap-dali-bus-en-busvoeding" data-step="3" aria-labelledby="h-dali-bus-en-busvoeding">
+<p class="training-count">Stap 3 van 9 · <span class="level-badge level-badge--begrijpen" title="Je begrijpt waarom het zo werkt en hoe de onderdelen samenhangen."><span class="level-dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></span>Begrijpen</span> <span class="depth-badge depth-badge--verdieping" title="Voor lichtplanners en techniek.">Verdieping</span></p>
+<h2 id="h-dali-bus-en-busvoeding">DALI-bus en busvoeding</h2>
+<div class="lesson-goal"><p class="lesson-goal-label">Na dit onderdeel</p><p>Je begrijpt dat alle apparaten van een lijn op dezelfde twee draden communiceren, dat die bus een eigen voeding nodig heeft en dat DALI in twee richtingen werkt.</p></div>
+<div class="training-core lesson-core"><div class="block block--text"><p>Alle DALI-apparaten van één lijn hangen aan dezelfde twee draden: de DALI-bus. Over die twee draden gaan de opdrachten én de busvoeding die nodig is om te kunnen communiceren.</p><p>Een opdracht gaat naar één apparaat (via zijn adres), naar een groep, of naar alle apparaten tegelijk (broadcast).</p></div><div class="block block--list"><p>DALI werkt in twee richtingen. Er zijn drie soorten opdrachten:</p><ul><li><strong>Besturen</strong><span class="li-sep"> — </span>bijvoorbeeld naar een lichtniveau dimmen, een scène oproepen of uitschakelen.</li><li><strong>Instellen</strong><span class="li-sep"> — </span>bijvoorbeeld de dimtijd, de waarde van een scène of de groep van een drukknop wijzigen.</li><li><strong>Bevragen</strong><span class="li-sep"> — </span>bijvoorbeeld het actuele lichtniveau opvragen, of nagaan of er een lampstoring is.</li></ul></div><div class="block block--text"><p>Zonder busvoeding geen communicatie. Alle busvoedingen op één bus samen leveren maximaal <span class="fact-value">250 mA</span>. Die stroom moet het busverbruik van alle aangesloten apparaten dekken: sommige sensoren, drukknoppen en kleine relais worden uit de bus gevoed. Een busvoeding kan een apart product zijn, of zitten in een besturing of driver.</p></div></div>
+
+<div class="lesson-attention"><p class="lesson-attention-label">Let op</p><aside class="block block--callout"><p>Tel niet alleen adressen. Ook het busverbruik van alle apparaten moet binnen de busvoeding passen, en een adres is niet altijd één armatuur. Welke grenzen een LiveLink-component per lijn heeft, staat in de actuele TRILUX-documentatie van dat component.</p></aside></div>
+
+<section class="training-check" data-check aria-labelledby="c-stap-dali-bus-en-busvoeding">
+<h3 id="c-stap-dali-bus-en-busvoeding">Controlevraag</h3>
+<p class="check-question">Een DALI-lijn is aangesloten, maar er zit geen busvoeding op. Wat gebeurt er?</p>
+<ul class="check-options"><li data-option="geen-communicatie" data-correct>Er is geen communicatie: de besturing bereikt de apparaten niet.</li><li data-option="alleen-dimmen">De armaturen schakelen nog wel, alleen dimmen werkt niet.</li><li data-option="netvoeding">Niets: de netvoeding van de armaturen voedt de bus vanzelf.</li></ul>
+<p class="check-feedback" aria-live="polite"></p>
+<details class="check-answer">
+<summary>Bekijk het antwoord</summary>
+<p class="check-right"><strong>Het juiste antwoord:</strong> Er is geen communicatie: de besturing bereikt de apparaten niet.</p>
+<div class="block block--text"><p>Zonder busvoeding geen communicatie. Alle busvoedingen op één bus samen leveren maximaal <span class="fact-value">250 mA</span>. Die stroom moet het busverbruik van alle aangesloten apparaten dekken: sommige sensoren, drukknoppen en kleine relais worden uit de bus gevoed. Een busvoeding kan een apart product zijn, of zitten in een besturing of driver.</p></div>
+</details>
+</section>
+
+
+<p class="lesson-own"><a href="/academy-preview/nl/begrijpen/academy/dali-bus-en-busvoeding/">Dit onderdeel apart bekijken</a></p>
+<nav class="training-nav" aria-label="Door de training">
+<a class="training-prev" href="#stap-wat-is-dali" data-go="2">Vorige</a>
+<a class="training-next" href="#stap-dali-adressen" data-go="4">Volgende: DALI-adressen</a>
+</nav>
+</section><section class="training-step" id="stap-dali-adressen" data-step="4" aria-labelledby="h-dali-adressen">
+<p class="training-count">Stap 4 van 9 · <span class="level-badge level-badge--begrijpen" title="Je begrijpt waarom het zo werkt en hoe de onderdelen samenhangen."><span class="level-dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></span>Begrijpen</span> <span class="depth-badge depth-badge--verdieping" title="Voor lichtplanners en techniek.">Verdieping</span></p>
+<h2 id="h-dali-adressen">DALI-adressen</h2>
+<div class="lesson-goal"><p class="lesson-goal-label">Na dit onderdeel</p><p>Je begrijpt wat een DALI-adres is, dat armaturen en sensoren elk een eigen adresruimte hebben en dat een adres nog geen functie of groep is.</p></div>
+<div class="training-core lesson-core"><div class="block block--text"><p>Per DALI-lijn zijn er twee aparte adresruimten: maximaal <span class="fact-value">64</span> control gear en daarnaast maximaal <span class="fact-value">64</span> control devices. Het zijn twee aparte tellingen, geen gezamenlijk totaal. Een adres zegt welk apparaat het is, niet wat het doet: functionele groepen maak je daarna in de sturing.</p></div><div class="block block--text"><p>Een adres is niet altijd één armatuur. Een driver met twee los regelbare uitgangen gebruikt twee adressen. Andersom kan één input device, zoals een drukknopinterface, meerdere ingangen („instances”) hebben op één adres.</p></div></div>
+
+
+<details class="training-technique"><summary>Technische verdieping</summary><div class="block block--list"><p>Zo werkt dat in LiveLink Premium:</p><ul><li><strong>Adresseren</strong><span class="li-sep"> — </span>na een DALI-zoekactie krijgen alle aangesloten componenten een DALI-adres.</li><li><strong>Herkennen</strong><span class="li-sep"> — </span>armaturen (voorschakelapparaten), sensoren en drukknopkoppelaars op de DALI-lijn worden getoond.</li><li><strong>Instellen</strong><span class="li-sep"> — </span>groepen en functies ontstaan in de sturing. Zonder die configuratie hebben drukknoppen en sensoren in LiveLink Premium nog geen functie.</li></ul></div></details>
+<section class="training-check" data-check aria-labelledby="c-stap-dali-adressen">
+<h3 id="c-stap-dali-adressen">Controlevraag</h3>
+<p class="check-question">In een schema zit een sensor op DALI-lijn A en een drukknopkoppelaar op lijn B. Is lijn A dan de sensorlijn?</p>
+<ul class="check-options"><li data-option="nee" data-correct>Nee: op een DALI-lijn zitten armaturen, sensoren en drukknopkoppelaars. De lijn bepaalt niet de soort apparaat.</li><li data-option="ja">Ja: sensoren en bediening krijgen elk een eigen DALI-lijn.</li></ul>
+<p class="check-feedback" aria-live="polite"></p>
+<details class="check-answer">
+<summary>Bekijk het antwoord</summary>
+<p class="check-right"><strong>Het juiste antwoord:</strong> Nee: op een DALI-lijn zitten armaturen, sensoren en drukknopkoppelaars. De lijn bepaalt niet de soort apparaat.</p>
+<div class="block block--text"><p>Via de gateways ziet de centrale unit alle aangesloten DALI-lijnen. Op een DALI-lijn zitten armaturen, sensoren en drukknopkoppelaars.</p></div><aside class="block block--callout"><p>Hoeveel apparaten een gateway en een DALI-lijn aankunnen, hangt af van het type: controleer het per project op de actuele productinformatie.</p></aside>
+</details>
+</section>
+
+<p class="training-deeper"><a href="/academy-preview/nl/begrijpen/dali/">Lees de volledige uitleg: Wat is DALI?</a></p>
+<p class="lesson-own"><a href="/academy-preview/nl/begrijpen/academy/dali-adressen/">Dit onderdeel apart bekijken</a></p>
+<nav class="training-nav" aria-label="Door de training">
+<a class="training-prev" href="#stap-dali-bus-en-busvoeding" data-go="3">Vorige</a>
+<a class="training-next" href="#stap-dali-groepen-en-scenes" data-go="5">Volgende: DALI-groepen en scènes</a>
+</nav>
+</section><section class="training-step" id="stap-dali-groepen-en-scenes" data-step="5" aria-labelledby="h-dali-groepen-en-scenes">
+<p class="training-count">Stap 5 van 9 · <span class="level-badge level-badge--begrijpen" title="Je begrijpt waarom het zo werkt en hoe de onderdelen samenhangen."><span class="level-dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></span>Begrijpen</span> <span class="depth-badge depth-badge--verdieping" title="Voor lichtplanners en techniek.">Verdieping</span></p>
+<h2 id="h-dali-groepen-en-scenes">DALI-groepen en scènes</h2>
+<div class="lesson-goal"><p class="lesson-goal-label">Na dit onderdeel</p><p>Je begrijpt wat de DALI-standaard per bus vastlegt aan groepen en scènes, en dat een scène in het armatuur zelf is opgeslagen.</p></div>
+<div class="training-core lesson-core"><div class="block block--table"><p>Wat de DALI-standaard per bus vastlegt:</p><div class="table-scroll"><table class="compare"><thead><tr><th scope="col">Onderdeel</th><th scope="col">Per DALI-bus</th></tr></thead><tbody><tr><th scope="row">Adressen voor control gear (drivers)</th><td data-label="Per DALI-bus"><span class="fact-value">64</span></td></tr><tr><th scope="row">Adressen voor control devices (sensoren, drukknopinterfaces, besturingen)</th><td data-label="Per DALI-bus"><span class="fact-value">64</span>, apart geteld</td></tr><tr><th scope="row">Groepen voor control gear</th><td data-label="Per DALI-bus"><span class="fact-value">16</span>; een driver kan in meerdere groepen zitten</td></tr><tr><th scope="row">Groepen voor control devices</th><td data-label="Per DALI-bus"><span class="fact-value">32</span></td></tr><tr><th scope="row">Scènes</th><td data-label="Per DALI-bus"><span class="fact-value">16</span> per control gear</td></tr></tbody></table></div></div><div class="block block--text"><p>Een scène staat in het armatuur zelf: iedere driver onthoudt per scène zijn eigen lichtniveau, of „negeren”. Eén opdracht „ga naar scène” laat daardoor alle armaturen tegelijk naar hun eigen niveau gaan.</p></div></div>
+
+
+
+<section class="training-check" data-check aria-labelledby="c-stap-dali-groepen-en-scenes">
+<h3 id="c-stap-dali-groepen-en-scenes">Controlevraag</h3>
+<p class="check-question">Waar wordt bij DALI vastgelegd welk lichtniveau een armatuur in een scène krijgt?</p>
+<ul class="check-options"><li data-option="armatuur" data-correct>In de driver van ieder armatuur zelf.</li><li data-option="drukknop">In de drukknop die de scène oproept.</li><li data-option="kabel">Nergens: de besturing stuurt ieder niveau opnieuw.</li></ul>
+<p class="check-feedback" aria-live="polite"></p>
+<details class="check-answer">
+<summary>Bekijk het antwoord</summary>
+<p class="check-right"><strong>Het juiste antwoord:</strong> In de driver van ieder armatuur zelf.</p>
+<div class="block block--text"><p>Een scène staat in het armatuur zelf: iedere driver onthoudt per scène zijn eigen lichtniveau, of „negeren”. Eén opdracht „ga naar scène” laat daardoor alle armaturen tegelijk naar hun eigen niveau gaan.</p></div>
+</details>
+</section>
+
+
+<p class="lesson-own"><a href="/academy-preview/nl/begrijpen/academy/dali-groepen-en-scenes/">Dit onderdeel apart bekijken</a></p>
+<nav class="training-nav" aria-label="Door de training">
+<a class="training-prev" href="#stap-dali-adressen" data-go="4">Vorige</a>
+<a class="training-next" href="#stap-dali-2" data-go="6">Volgende: DALI-2: wat is er anders?</a>
+</nav>
+</section><section class="training-step" id="stap-dali-2" data-step="6" aria-labelledby="h-dali-2">
+<p class="training-count">Stap 6 van 9 · <span class="level-badge level-badge--begrijpen" title="Je begrijpt waarom het zo werkt en hoe de onderdelen samenhangen."><span class="level-dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></span>Begrijpen</span> <span class="depth-badge depth-badge--basis" title="Voor iedereen.">Basis</span></p>
+<h2 id="h-dali-2">DALI-2: wat is er anders?</h2>
+<div class="lesson-goal"><p class="lesson-goal-label">Na dit onderdeel</p><p>Je kunt uitleggen wat DALI-2 toevoegt ten opzichte van DALI version-1, en waarom dat voor sensoren en drukknoppen in LiveLink belangrijk is.</p></div>
+<div class="training-core lesson-core"><div class="block block--text"><p>DALI-2 is de actuele generatie van de standaard: IEC 62386 plus de specificaties van de DALI Alliance. Het grote verschil met de oudere DALI version-1 zit niet in meer adressen. DALI version-1 ging in de praktijk vooral over control gear, de drivers in de armaturen. DALI-2 standaardiseert daarnaast de control devices: application controllers en input devices zoals sensoren en drukknoppen. En DALI-2-producten worden uitgebreider getest en door de DALI Alliance geverifieerd voordat ze gecertificeerd zijn, met als doel dat producten van verschillende fabrikanten beter samenwerken.</p></div><div class="block block--table"><p>DALI version-1 en DALI-2 naast elkaar:</p><div class="table-scroll"><table class="compare compare--stack"><thead><tr><th scope="col">Kenmerk</th><th scope="col">DALI version-1</th><th scope="col">DALI-2</th></tr></thead><tbody><tr><th scope="row">Control gear (drivers)</th><td data-label="DALI version-1">ja</td><td data-label="DALI-2">ja</td></tr><tr><th scope="row">Input devices en application controllers</th><td data-label="DALI version-1">geen onderdeel van de standaard</td><td data-label="DALI-2">gestandaardiseerd</td></tr><tr><th scope="row">Testen en certificering</th><td data-label="DALI version-1">oudere registratie, deels op eigen verklaring</td><td data-label="DALI-2">uitgebreidere tests, geverifieerd door de DALI Alliance</td></tr><tr><th scope="row">Samenwerking tussen fabrikanten</th><td data-label="DALI version-1">minder zekerheid</td><td data-label="DALI-2">expliciet doel van de certificering</td></tr></tbody></table></div></div></div>
+
+<div class="lesson-attention"><p class="lesson-attention-label">Let op</p><aside class="block block--callout"><p>Een DALI- of DALI-2-logo zegt nog niet dat een armatuur in een bepaalde LiveLink-opbouw werkt. Bij armaturen is het concrete driverproduct leidend: controleer per armatuur de LiveLink-compatibiliteit in de TRILUX-productdocumentatie of vraag het na bij TRILUX.</p></aside></div>
+<details class="training-technique"><summary>Technische verdieping</summary><div class="block block--text"><p>DALI of DALI-2 bij armaturen? Control gear, de driver in het armatuur, bestaat zowel als DALI version-1- als DALI-2-product. LiveLink bestuurt control gear in de door TRILUX ondersteunde DALI-apparaattypen; LiveLink ONE toont gevonden armaturen met dat type: D voor dimbaar (DT6), TW voor Tunable White (DT8), E voor DALI-noodverlichting (DT1) en S voor een DALI-schakelactor. DALI-2 is terugwaarts compatibel ontworpen: een oudere DALI version-1-driver kan werken, maar zonder de DALI-2-functies, en de compatibiliteit controleer je per product. Bij sensoren noemt de handleiding uitdrukkelijk DALI-2-sensoren uit het TRILUX-assortiment: voor de rol van input device is DALI-2 de standaard.</p><p class="nav-hint">Wat een D4i-driver daar nog aan toevoegt, staat bij <a href="/academy-preview/nl/begrijpen/d4i/">D4i</a>.</p></div><div class="block block--text"><p>Sensoren en drukknopkoppelaars zitten op dezelfde DALI-lijn als de armaturen. DALI-2-sensoren uit het TRILUX-assortiment worden in LiveLink ONE met hun volledige typeaanduiding en een productafbeelding getoond.</p></div></details>
+<section class="training-check" data-check aria-labelledby="c-stap-dali-2">
+<h3 id="c-stap-dali-2">Controlevraag</h3>
+<p class="check-question">Wat voegt de huidige generatie van de DALI-standaard vooral toe ten opzichte van de oudere versie?</p>
+<ul class="check-options"><li data-option="control-devices" data-correct>Ook sensoren, drukknopinterfaces en besturingen zijn gestandaardiseerd, en producten worden uitgebreider getest.</li><li data-option="meer-adressen">Veel meer adressen per lijn.</li><li data-option="draadloos">Het is de draadloze versie van DALI.</li></ul>
+<p class="check-feedback" aria-live="polite"></p>
+<details class="check-answer">
+<summary>Bekijk het antwoord</summary>
+<p class="check-right"><strong>Het juiste antwoord:</strong> Ook sensoren, drukknopinterfaces en besturingen zijn gestandaardiseerd, en producten worden uitgebreider getest.</p>
+<div class="block block--text"><p>DALI-2 is de actuele generatie van de standaard: IEC 62386 plus de specificaties van de DALI Alliance. Het grote verschil met de oudere DALI version-1 zit niet in meer adressen. DALI version-1 ging in de praktijk vooral over control gear, de drivers in de armaturen. DALI-2 standaardiseert daarnaast de control devices: application controllers en input devices zoals sensoren en drukknoppen. En DALI-2-producten worden uitgebreider getest en door de DALI Alliance geverifieerd voordat ze gecertificeerd zijn, met als doel dat producten van verschillende fabrikanten beter samenwerken.</p></div>
+</details>
+</section>
+
+<p class="training-deeper"><a href="/academy-preview/nl/begrijpen/dali/">Lees de volledige uitleg: Wat is DALI?</a></p>
+<p class="lesson-own"><a href="/academy-preview/nl/begrijpen/academy/dali-2/">Dit onderdeel apart bekijken</a></p>
+<nav class="training-nav" aria-label="Door de training">
+<a class="training-prev" href="#stap-dali-groepen-en-scenes" data-go="5">Vorige</a>
+<a class="training-next" href="#stap-dali-bekabeling" data-go="7">Volgende: DALI-bekabeling</a>
+</nav>
+</section><section class="training-step" id="stap-dali-bekabeling" data-step="7" aria-labelledby="h-dali-bekabeling">
+<p class="training-count">Stap 7 van 9 · <span class="level-badge level-badge--toepassen" title="Je kunt voor een ruimte bepalen welke functies, sensoren en opbouw nodig zijn."><span class="level-dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span>Toepassen</span> <span class="depth-badge depth-badge--verdieping" title="Voor lichtplanners en techniek.">Verdieping</span></p>
+<h2 id="h-dali-bekabeling">DALI-bekabeling</h2>
+<div class="lesson-goal"><p class="lesson-goal-label">Na dit onderdeel</p><p>Je kunt aangeven welke bekabelingsvormen bij DALI zijn toegestaan en wat je bij een ontwerp controleert voordat er geprogrammeerd wordt.</p></div>
+<div class="training-core lesson-core"><div class="block block--list"><p>Bekabeling van de DALI-bus volgens de DALI Alliance:</p><ul><li>Doorlussen, een ster of een combinatie mag; een gesloten ring niet.</li><li>Aanbevolen: kabel van 1,5 mm², met maximaal <span class="fact-value">300 m</span> tussen de twee verst uiteenliggende apparaten bij de maximale busvoeding.</li><li>De twee busdraden lopen naast elkaar.</li></ul></div></div>
+
+
+<details class="training-technique"><summary>Technische verdieping</summary><div class="block block--list"><p>Bij engineering controleren:</p><ul><li>Het aantal control gear per DALI-lijn.</li><li>Het aantal input devices en andere control devices per lijn: een aparte telling.</li><li>De busstroom van de gekozen componenten, tegen wat de busvoeding levert.</li><li>Kabellengte en spanningsval van de DALI-lijn.</li><li>De juiste busvoeding, controller of gateway.</li><li>De LiveLink-compatibiliteit per concreet product.</li><li>DALI-2-certificering per concreet product, waar dat relevant is.</li><li>DALI-adressen zijn geen functionele groepen: groepen maak je apart in de sturing.</li></ul></div></details>
+<section class="training-check" data-check aria-labelledby="c-stap-dali-bekabeling">
+<h3 id="c-stap-dali-bekabeling">Controlevraag</h3>
+<p class="check-question">Welke bekabelingsvorm is bij een DALI-bus níet toegestaan?</p>
+<ul class="check-options"><li data-option="ring" data-correct>Een gesloten ring.</li><li data-option="ster">Een ster vanuit de besturing.</li><li data-option="doorlussen">Doorlussen van apparaat naar apparaat.</li></ul>
+<p class="check-feedback" aria-live="polite"></p>
+<details class="check-answer">
+<summary>Bekijk het antwoord</summary>
+<p class="check-right"><strong>Het juiste antwoord:</strong> Een gesloten ring.</p>
+<div class="block block--list"><p>Bekabeling van de DALI-bus volgens de DALI Alliance:</p><ul><li>Doorlussen, een ster of een combinatie mag; een gesloten ring niet.</li><li>Aanbevolen: kabel van 1,5 mm², met maximaal <span class="fact-value">300 m</span> tussen de twee verst uiteenliggende apparaten bij de maximale busvoeding.</li><li>De twee busdraden lopen naast elkaar.</li></ul></div>
+</details>
+</section>
+
+
+<p class="lesson-own"><a href="/academy-preview/nl/begrijpen/academy/dali-bekabeling/">Dit onderdeel apart bekijken</a></p>
+<nav class="training-nav" aria-label="Door de training">
+<a class="training-prev" href="#stap-dali-2" data-go="6">Vorige</a>
+<a class="training-next" href="#stap-sensor-aansluitvarianten" data-go="8">Volgende: Hoe een sensor aangesloten is</a>
+</nav>
+</section><section class="training-step" id="stap-sensor-aansluitvarianten" data-step="8" aria-labelledby="h-sensor-aansluitvarianten">
+<p class="training-count">Stap 8 van 9 · <span class="level-badge level-badge--begrijpen" title="Je begrijpt waarom het zo werkt en hoe de onderdelen samenhangen."><span class="level-dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i><i></i><i></i><i></i></span>Begrijpen</span> <span class="depth-badge depth-badge--verdieping" title="Voor lichtplanners en techniek.">Verdieping</span></p>
+<h2 id="h-sensor-aansluitvarianten">Hoe een sensor aangesloten is</h2>
+<div class="lesson-goal"><p class="lesson-goal-label">Na dit onderdeel</p><p>Je begrijpt de vier manieren waarop een sensor met de verlichting verbonden kan zijn en wie in iedere variant het licht regelt.</p></div>
+<div class="training-core lesson-core"><div class="block block--text"><p>Een sensor kan op vier manieren met de verlichting verbonden zijn. Iedere rol hieronder heeft dezelfde opbouw: wat het is, wat er regelt, waar je het instelt, welk systeem erbij hoort, het product en het aansluitschema.</p></div><ul class="training-points"><li><strong>Schakelende sensor (Switch)</strong><span class="li-sep"> — </span>Schakelt de netspanning naar de aangesloten verlichting zelf; geen DALI-regeling.</li><li><strong>DALI-2 Broadcast-sensor</strong><span class="li-sep"> — </span>Schakelt en dimt de aangesloten DALI-armaturen zelf, allemaal tegelijk.</li><li><strong>DALI-2 sensor (Input Device)</strong><span class="li-sep"> — </span>Levert zijn signalen aan een bovenliggende DALI-2-besturing, zoals LiveLink.</li><li><strong>Bluetooth NLC-sensor</strong><span class="li-sep"> — </span>Draadloos gekoppeld via Bluetooth NLC, binnen de Hybrid-uitbreiding van LiveLink Premium.</li></ul></div>
+<figure class="illustration illustration--chain" id="demo-aansluiting-input-device">
+<figcaption class="illustration-title">Zo werkt een DALI-2 sensor (Input Device) in het systeem</figcaption>
+<p class="illustration-summary">Schematisch: sensor en armaturen zitten op dezelfde DALI-lijn. De sensor meldt, de LiveLink-regeling beslist en stuurt de armaturen aan.</p>
+<svg class="illustration-svg illustration-svg--chain" viewBox="0 0 360 240" role="img" aria-labelledby="illt-aansluiting-input-device illd-aansluiting-input-device" preserveAspectRatio="xMidYMin meet">
+<title id="illt-aansluiting-input-device">Zo werkt een DALI-2 sensor (Input Device) in het systeem</title>
+<desc id="illd-aansluiting-input-device">DALI-2 sensor (Input Device) — melding via DALI → LiveLink-regeling — commando via DALI → Armatuur, Armatuur</desc>
+<defs><marker id="cha-aansluiting-input-device-bus" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="ch-head ch-head--bus"></path></marker></defs>
+<path class="ch-line ch-line--bus" d="M180 44V98" marker-end="url(#cha-aansluiting-input-device-bus)"></path><text class="ch-label ch-label--bus" x="190" y="76">melding via DALI</text><path class="ch-line ch-line--bus" d="M180 140V180M94 180H266"></path><path class="ch-line ch-line--bus" d="M94 180V194" marker-end="url(#cha-aansluiting-input-device-bus)"></path><path class="ch-line ch-line--bus" d="M266 180V194" marker-end="url(#cha-aansluiting-input-device-bus)"></path><text class="ch-label ch-label--bus" x="190" y="160">commando via DALI</text>
+<g class="ch-node"><rect x="70" y="4" width="220" height="40" rx="4"></rect><text x="180" y="28" text-anchor="middle">DALI-2 sensor (Input Device)</text></g><g class="ch-node"><rect x="70" y="100" width="220" height="40" rx="4"></rect><text x="180" y="124" text-anchor="middle">LiveLink-regeling</text></g><g class="ch-node"><rect x="16" y="196" width="156" height="40" rx="4"></rect><text x="94" y="220" text-anchor="middle">Armatuur</text></g><g class="ch-node"><rect x="188" y="196" width="156" height="40" rx="4"></rect><text x="266" y="220" text-anchor="middle">Armatuur</text></g>
+</svg>
+<ol class="illustration-steps illustration-steps--chain"><li><strong>DALI-2 sensor (Input Device)</strong><span class="li-sep"> — </span><svg class="ill-key" viewBox="0 0 34 12" aria-hidden="true" focusable="false"><line class="ch-line ch-line--bus" x1="2" y1="6" x2="32" y2="6"></line></svg>melding via DALI <span class="ch-medium">(buslijn)</span></li><li><strong>LiveLink-regeling</strong><span class="li-sep"> — </span><svg class="ill-key" viewBox="0 0 34 12" aria-hidden="true" focusable="false"><line class="ch-line ch-line--bus" x1="2" y1="6" x2="32" y2="6"></line></svg>commando via DALI <span class="ch-medium">(buslijn)</span></li><li><strong>Armatuur · Armatuur</strong></li></ol>
+</figure>
+
+
+<section class="training-check" data-check aria-labelledby="c-stap-sensor-aansluitvarianten">
+<h3 id="c-stap-sensor-aansluitvarianten">Controlevraag</h3>
+<p class="check-question">Een sensor zit als „Input Device” op de DALI-lijn van LiveLink Premium. Stuurt hij de armaturen zelf aan?</p>
+<ul class="check-options"><li data-option="nee" data-correct>Nee: hij meldt aan de regeling erboven, zoals LiveLink; die beslist en stuurt de armaturen.</li><li data-option="ja">Ja: net als een Broadcast-sensor schakelt en dimt hij de armaturen zelf.</li></ul>
+<p class="check-feedback" aria-live="polite"></p>
+<details class="check-answer">
+<summary>Bekijk het antwoord</summary>
+<p class="check-right"><strong>Het juiste antwoord:</strong> Nee: hij meldt aan de regeling erboven, zoals LiveLink; die beslist en stuurt de armaturen.</p>
+<div class="block block--text"><p>De regeling erboven, zoals LiveLink: die beslist wat er gebeurt en stuurt de armaturen aan. De sensor stuurt de armaturen niet zelf aan.</p></div><div class="block block--text"><p>De sensor zelf, met broadcast uit de DALI-standaard: één commando voor alle armaturen op zijn uitgang tegelijk, zonder adres per armatuur.</p></div>
+</details>
+</section>
+
+<p class="training-deeper"><a href="/academy-preview/nl/begrijpen/sensoren/">Lees de volledige uitleg: Sensoren</a></p>
+<p class="lesson-own"><a href="/academy-preview/nl/begrijpen/academy/sensor-aansluitvarianten/">Dit onderdeel apart bekijken</a></p>
+<nav class="training-nav" aria-label="Door de training">
+<a class="training-prev" href="#stap-dali-bekabeling" data-go="7">Vorige</a>
+<a class="training-next" href="#stap-sensorplaatsing" data-go="9">Volgende: Sensorplaatsing</a>
+</nav>
+</section><section class="training-step" id="stap-sensorplaatsing" data-step="9" aria-labelledby="h-sensorplaatsing">
+<p class="training-count">Stap 9 van 9 · <span class="level-badge level-badge--toepassen" title="Je kunt voor een ruimte bepalen welke functies, sensoren en opbouw nodig zijn."><span class="level-dots" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span>Toepassen</span> <span class="depth-badge depth-badge--basis" title="Voor iedereen.">Basis</span></p>
+<h2 id="h-sensorplaatsing">Sensorplaatsing</h2>
+<div class="lesson-goal"><p class="lesson-goal-label">Na dit onderdeel</p><p>Je kunt aangeven welke factoren de positie en het aantal sensoren in een ruimte bepalen.</p></div>
+<div class="training-core lesson-core"><div class="block block--text"><p>Positie en aantal sensoren volgen uit ruimtegebruik, detectiegebied, montagehoogte, daglichtzones en de gewenste functie.</p></div><div class="block block--list"><ul><li><strong>Montagehoogte en detectiegebied</strong><span class="li-sep"> — </span>het detectiebereik hangt af van de montagehoogte en de uitvoering van de sensor; gebruik de richtwaarden uit de productinformatie van het gekozen type.</li><li><strong>Daglichtzones</strong><span class="li-sep"> — </span>licht bij de gevel regel je anders dan licht verder van het raam.</li><li><strong>Functionele zonering</strong><span class="li-sep"> — </span>sensoren werken voor armaturengroepen, niet automatisch voor één armatuur.</li></ul><p class="nav-hint">Hoe je armaturen in groepen indeelt, staat bij <a href="/academy-preview/nl/begrijpen/dali/#onderdeel-functionele-groepen">Functionele groepen</a>.</p></div></div>
+
+<div class="lesson-attention"><p class="lesson-attention-label">Let op</p><aside class="block block--callout"><p>Sensorposities en detectiegebieden volgen uit het ruimtegebruik en de montagehoogte; plan ze per ruimte.</p></aside></div>
+
+<section class="training-check" data-check aria-labelledby="c-stap-sensorplaatsing">
+<h3 id="c-stap-sensorplaatsing">Controlevraag</h3>
+<p class="check-question">Kan één aanwezigheidssensor meerdere groepen aansturen?</p>
+<ul class="check-options"><li data-option="ja" data-correct>Ja. Een sensor kun je aan meerdere groepen toewijzen; een armatuur hoort bij één groep.</li><li data-option="nee">Nee, iedere groep heeft een eigen sensor nodig.</li></ul>
+<p class="check-feedback" aria-live="polite"></p>
+<details class="check-answer">
+<summary>Bekijk het antwoord</summary>
+<p class="check-right"><strong>Het juiste antwoord:</strong> Ja. Een sensor kun je aan meerdere groepen toewijzen; een armatuur hoort bij één groep.</p>
+<div class="block block--list"><p>Drie regels die je steeds terugziet:</p><ul><li>Een armatuur hoort bij één groep.</li><li>Een sensor kan aan meerdere groepen gekoppeld zijn: per sensorfunctie kies je de armaturengroepen.</li><li>Een drukknop is geen lid van een groep. Je legt apart vast welke groepen of scènes hij bedient.</li></ul></div>
+</details>
+</section>
+
+<p class="training-deeper"><a href="/academy-preview/nl/begrijpen/sensoren/">Lees de volledige uitleg: Sensoren</a></p>
+<p class="lesson-own"><a href="/academy-preview/nl/begrijpen/academy/sensorplaatsing/">Dit onderdeel apart bekijken</a></p>
+<nav class="training-nav" aria-label="Door de training">
+<a class="training-prev" href="#stap-sensor-aansluitvarianten" data-go="8">Vorige</a>
+
+</nav>
+</section>
+<script type="application/json" class="module-config">{"strings":{"count":"Stap {n} van {total}","right":"Klopt.","wrong":"Niet helemaal."}}</script>
+</div>
+</article>
+</main>
+<footer class="site-footer"><div class="wrap footer-inner">
+<p class="footer-text">Lichtsturing.info — kennisplatform voor professionele lichtsturing. LiveLink begrijpen, een oplossing kiezen en aan de slag gaan.</p>
+<p class="footer-credit"><span>Website gemaakt door</span> <a class="footer-credit-logo" href="https://denckh.nl" target="_blank" rel="noopener"><img src="/academy-preview/assets/brand/denckh-logo-signature.svg" alt="Denckh" width="1000" height="302" loading="lazy"></a></p>
+<p class="footer-disclaimer">Lichtsturing.info is een onafhankelijk kennisplatform over lichtsturing. Actuele officiële fabrikantdocumentatie en projectspecificaties blijven leidend. Productnamen en merknamen behoren toe aan hun respectieve rechthebbenden.</p>
+<nav class="footer-nav" aria-label="Navigatie in de voettekst"><ul><li><a href="/academy-preview/nl/begrijpen/">Begrijpen</a></li><li><a href="/academy-preview/nl/systeem-kiezen/">Oplossing kiezen</a></li><li><a href="/academy-preview/nl/werken/">Aan de slag</a></li><li><a href="/academy-preview/nl/zoeken/">Zoeken</a></li></ul></nav>
+</div></footer>
+</body>
+</html>
