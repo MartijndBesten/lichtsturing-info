@@ -24,14 +24,23 @@ export function planSvg(sc, state, labels) {
   const dGap = sc.door ? 9 * s : 0;
   parts.push(`<defs><clipPath id="${clip}"><rect x="${ox}" y="${oy}" width="${w}" height="${h}"/>${sc.door && (sc.door.side === 'onder' || sc.door.side === 'boven') ? `<rect x="${X(sc.door.x)}" y="${sc.door.side === 'onder' ? r1(oy + h) : r1(oy - 30)}" width="${r1(dGap)}" height="30"/>` : ''}${sc.door && (sc.door.side === 'links' || sc.door.side === 'rechts') ? `<rect x="${sc.door.side === 'links' ? r1(ox - 30) : r1(ox + w)}" y="${Y(sc.door.y)}" width="30" height="${r1(dGap)}"/>` : ''}</clipPath></defs>`);
   parts.push(`<g clip-path="url(#${clip})">`);
-  if (pos && state.detect !== false) for (const q of [pos, ...(pos.also ?? [])]) {
-    const dx = X(q.x);
-    const dy = Y(q.y);
-    if (sc.detect.shape === 'gang') {
-      const a = r1((sc.detect.rx ?? sc.detect.r * 3) * s);
-      const b = r1(sc.detect.r * s);
-      parts.push(`<ellipse class="sn-zone sn-zone--t" cx="${dx}" cy="${dy}" rx="${sc.detect.along === 'y' ? b : a}" ry="${sc.detect.along === 'y' ? a : b}"/>`);
-    } else parts.push(`<circle class="sn-zone sn-zone--t" cx="${dx}" cy="${dy}" r="${r1(sc.detect.r * s)}"/>`);
+  if (pos && state.detect !== false) {
+    const det = pos.detect ?? sc.detect;
+    [pos, ...(pos.also ?? [])].forEach((q, i) => {
+      const dx = X(q.x);
+      const dy = Y(q.y);
+      const zone = det.shape === 'gang'
+        ? (() => {
+          const a = r1((det.rx ?? det.r * 3) * s);
+          const b = r1(det.r * s);
+          return `<ellipse class="sn-zone sn-zone--t" cx="${dx}" cy="${dy}" rx="${det.along === 'y' ? b : a}" ry="${det.along === 'y' ? a : b}"/>`;
+        })()
+        : `<circle class="sn-zone sn-zone--t" cx="${dx}" cy="${dy}" r="${r1(det.r * s)}"/>`;
+      const cell = (i === 0 ? pos.cell : q.cell) ?? null;
+      if (!cell?.length) return parts.push(zone);
+      const cid = `${clip}-c${i}`;
+      parts.push(`<defs><clipPath id="${cid}">${cell.map((c) => `<rect x="${X(c.x)}" y="${Y(c.y)}" width="${r1(c.w * s)}" height="${r1(c.h * s)}"/>`).join('')}</clipPath></defs><g clip-path="url(#${cid})">${zone}</g>`);
+    });
   }
   if (pos && state.measure && sc.measure) parts.push(`<circle class="sn-measure" cx="${X(pos.x)}" cy="${Y(pos.y)}" r="${r1(sc.measure * s)}"/>`);
   parts.push('</g>');
@@ -57,6 +66,11 @@ export function planSvg(sc, state, labels) {
     parts.push(`<rect class="sn-lum${l.group ? ` sn-lum--${esc(l.group)}` : ''}" x="${r1(X(l.x) - lw / 2)}" y="${r1(Y(l.y) - lh / 2)}" width="${r1(lw)}" height="${r1(lh)}" rx="1"/>`);
   }
   if (sc.walk?.length > 1) parts.push(`<path class="sn-route" d="M${sc.walk.map((p) => `${X(p.x)} ${Y(p.y)}`).join('L')}"/><path class="sn-route-head" d="${arrowHead(sc.walk.map((p) => ({ x: X(p.x), y: Y(p.y) })))}"/>`);
+  if (pos?.onAt && sc.walk?.length) {
+    const a = sc.walk[0];
+    const o = pos.onAt;
+    parts.push(`<path class="sn-dark" d="M${X(a.x)} ${Y(a.y)}L${X(o.x)} ${Y(o.y)}"/><g class="sn-on"><circle cx="${X(o.x)}" cy="${Y(o.y)}" r="6"/><path d="M${X(o.x)} ${r1(Y(o.y) - 6)}V${oy - 3}"/><text x="${X(o.x)}" y="${oy - 6}" text-anchor="${X(o.x) < ox + 40 ? 'start' : 'middle'}">${esc(labels.on ?? '')}</text></g>`);
+  }
   for (const p of sc.positions) {
     const cls = `sn-cand${p.id === state.pos ? ' is-on' : ''}${state.reveal && p.id === sc.answer ? ' is-answer' : ''}`;
     parts.push(state.letters
@@ -94,7 +108,8 @@ export function sectionSvg(sc, state, labels) {
   if (pos) {
     const px = X(pos.x);
     if (state.detect !== false) {
-      const half = r1((sc.detect.shape === 'gang' && sc.detect.along !== 'y' ? (sc.detect.rx ?? sc.detect.r * 3) : sc.detect.r) * s);
+      const det = pos.detect ?? sc.detect;
+      const half = r1((det.shape === 'gang' && det.along !== 'y' ? (det.rx ?? det.r * 3) : det.r) * s);
       out.push(`<rect class="sn-zone sn-zone--t" x="${r1(Math.max(ox, px - half))}" y="${F - 4}" width="${r1(Math.min(ox + w, px + half) - Math.max(ox, px - half))}" height="4"/>`);
     }
     if (state.measure && sc.measure) {

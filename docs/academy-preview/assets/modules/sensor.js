@@ -1,5 +1,6 @@
 import { chooseResult, daylightState, daylightSvg, fill, heightSvg, num, pirPath, segmentAt } from './sensor-core.js';
-import { planSvg, sectionSvg } from './sensor-plan.js';
+import * as rm from './sensor-room.js';
+import * as ex from './sensor-ex.js';
 
 function arrowKeys(container, sel, pick) {
   container.addEventListener('keydown', (ev) => {
@@ -111,62 +112,8 @@ const MODES = {
     draw();
   },
 
-  room(el, c) {
-    const ctl = el.querySelector('.sn-ctl--room');
-    ctl.hidden = false;
-    const state = { pos: c.start, ...c.overlays, uid: `${c.uid}-js` };
-    const btns = [...ctl.querySelectorAll('[data-pos]')];
-    const fbs = [...el.querySelectorAll('.sn-feedback')];
-    const draw = () => {
-      el.querySelector('[data-slot="plan"]').innerHTML = planSvg(c.scene, state, c.labels);
-      el.querySelector('[data-slot="section"]').innerHTML = sectionSvg(c.scene, state, c.labels);
-      for (const b of btns) b.setAttribute('aria-checked', String(b.dataset.pos === state.pos));
-      for (const f of fbs) f.hidden = f.dataset.pos !== state.pos;
-      for (const g of el.querySelectorAll('.sn-svg--plan .sn-cand')) {
-        g.addEventListener('click', () => {
-          state.pos = g.dataset.pos;
-          draw();
-        });
-      }
-    };
-    for (const b of btns) b.addEventListener('click', () => {
-      state.pos = b.dataset.pos;
-      draw();
-    });
-    arrowKeys(ctl.querySelector('[role="radiogroup"]'), '[data-pos]', (b) => {
-      state.pos = b.dataset.pos;
-      draw();
-    });
-    for (const cb of ctl.querySelectorAll('input[data-layer]')) cb.addEventListener('change', () => {
-      state[cb.dataset.layer] = cb.checked;
-      draw();
-    });
-    el.classList.add('is-enhanced');
-    draw();
-  },
-
-  place(el, c) {
-    for (const li of el.querySelectorAll('.sn-case')) {
-      const sc = c.scenes.find((s) => s.id === li.dataset.scene);
-      const picks = [...li.querySelectorAll('.sn-pick')];
-      const fbs = [...li.querySelectorAll('.sn-feedback')];
-      for (const b of picks) {
-        b.disabled = false;
-        b.addEventListener('click', () => {
-          const id = b.dataset.pos;
-          for (const x of picks) {
-            x.setAttribute('aria-pressed', String(x === b));
-            x.classList.toggle('is-right', x === b && id === li.dataset.answer);
-            x.classList.toggle('is-wrong', x === b && id !== li.dataset.answer);
-            x.classList.toggle('is-answer', x !== b && x.dataset.pos === li.dataset.answer);
-          }
-          for (const f of fbs) f.hidden = f.dataset.pos !== id;
-          li.querySelector('[data-slot="plan"]').innerHTML = planSvg(sc, { pos: id, detect: true, letters: true, reveal: true, uid: `${c.uid}-js` }, c.labels[sc.id]);
-        });
-      }
-      li.querySelector('.sn-answer')?.classList.add('is-enhanced');
-    }
-  },
+  room: (el, c) => rm.room(el, c),
+  place: (el, c) => rm.place(el, c),
 
   daylight(el, c) {
     const ctl = el.querySelector('.sn-ctl--day');
@@ -196,7 +143,33 @@ const MODES = {
     arrowKeys(ctl.querySelector('[role="radiogroup"]'), '[data-mode]', pick);
     range.addEventListener('input', draw);
     draw();
+    return {
+      play(id) {
+        const b = btns.find((x) => x.dataset.mode === id);
+        if (b) pick(b);
+        const last = c.levels.length - 1;
+        if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) {
+          range.value = String(last);
+          return draw();
+        }
+        let l = 1;
+        range.value = '1';
+        draw();
+        const step = () => {
+          if (l >= last) return;
+          l += 1;
+          range.value = String(l);
+          draw();
+          setTimeout(step, 900);
+        };
+        setTimeout(step, 900);
+      },
+    };
   },
+
+  sort: (el, c) => ex.sort(el, c),
+  pick: (el) => ex.pick(el),
+  spot: (el, c) => ex.spot(el, c),
 
   choose(el, c) {
     const form = el.querySelector('.sn-form');
@@ -252,5 +225,6 @@ export function mount(el, config = {}) {
   const fn = MODES[config.mode];
   if (!fn) return;
   el.classList.add('is-enhanced');
-  fn(el, config);
+  const api = fn(el, config) ?? {};
+  if (config.predict) ex.predict(el, config.predict, config.predict.strings, () => config.predict.play && api.play?.(config.predict.play));
 }

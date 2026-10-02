@@ -920,3 +920,36 @@ p.kbasis { display: table; }
   .sn-svg--day .sn-cap { font-size: 16px; }
   .sn-svg--pir .sn-person { r: 10px; }
 }
+
+.sn-goal { margin: 0 0 var(--s-2); padding: var(--s-2) var(--s-3); border-left: 4px solid var(--blue); background: var(--blue-pale); font-size: var(--fs-small); max-width: var(--measure); }
+.sn-goal-k { font-weight: 700; color: var(--blue); }
+.sn-predict { margin: var(--s-3) 0; padding: var(--s-3); border: 2px dashed var(--blue); border-radius: var(--radius-card); background: var(--bg); }
+.sn-predict-k, .sn-task-k { margin: 0 0 var(--s-1); font-size: var(--fs-label); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--blue); }
+.sn-predict-fb, .sn-sort-fb, .sn-spot-fb { font-size: var(--fs-small); margin: var(--s-1) 0 0; }
+.sn-predict-next { font-weight: 600; color: var(--ink); margin: var(--s-2) 0 0; }
+.sn.is-predicting .sn-ctl, .sn.is-predicting .sn-meters, .sn.is-predicting .sn-count, .sn.is-predicting .sn-status, .sn.is-predicting .sn-modes, .sn.is-predicting .sn-optics, .sn.is-predicting .sn-paths { display: none; }
+.sn.is-predicting .sn-canvas { opacity: .55; }
+.sn-task { margin: var(--s-2) 0; padding: var(--s-2) var(--s-3); border: 1px solid var(--line); border-left: 4px solid var(--c-flow); border-radius: 0 var(--radius) var(--radius) 0; font-size: var(--fs-small); }
+.sn-task .sn-task-k { display: inline; color: var(--c-flow); margin-right: var(--s-1); }
+.sn-found { margin: var(--s-2) 0; padding: var(--s-2) var(--s-3); border-radius: var(--radius); background: var(--ok-pale); color: var(--ok); font-weight: 700; }
+.sn-draghint { font-size: var(--fs-small); color: var(--muted); margin: 0 0 var(--s-2); }
+.sn.is-enhanced.sn--room .sn-canvas--plan { cursor: grab; touch-action: none; }
+.sn-canvas--plan.is-dragging { cursor: grabbing; }
+.sn-dark { stroke: var(--ink); stroke-width: 4; stroke-linecap: round; opacity: .35; fill: none; }
+.sn-on circle { fill: var(--light-vol); stroke: var(--c-daylight); stroke-width: 2; }
+.sn-on text { font-size: 11px; font-weight: 700; fill: var(--c-daylight); }
+.sn-on path { stroke: var(--c-daylight); stroke-width: 1.5; stroke-dasharray: 2 2; fill: none; }
+.sn-sort { list-style: none; padding: 0; margin: 0; }
+.sn-sort-item, .sn-spot { border-top: 1px solid var(--line); padding: var(--s-3) 0; }
+.sn-sort-text, .sn-spot-title { font-weight: 600; color: var(--ink); margin: 0 0 var(--s-2); }
+.sn-pick-fb { display: flex; flex-direction: column; }
+.sn-role { margin: var(--s-1) 0 0; }
+.sn-role-k { font-weight: 700; color: var(--blue); }
+.sn-spots { list-style: none; padding: 0; margin: 0; display: grid; gap: 0 var(--s-4); }
+.sn-canvas--spot .sn-svg { max-width: 18rem; }
+.sn-float { fill: var(--bg); stroke: var(--ink); stroke-width: 1.3; }
+.sn-gapline { stroke: var(--muted); stroke-dasharray: 2 3; }
+.sn-beam--wrong { fill: var(--light-vol); opacity: .8; }
+.sn-principle-small { font-size: var(--fs-small); color: var(--muted); }
+@media (min-width: 48rem) { .sn-spots { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 47.99rem) { .sn-svg--plan .sn-on text { font-size: 16px; } }
