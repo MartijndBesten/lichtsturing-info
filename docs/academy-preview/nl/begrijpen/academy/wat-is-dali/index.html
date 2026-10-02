@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="nl" data-base="/academy-preview/" data-v="76dedaea">
+<html lang="nl" data-base="/academy-preview/" data-v="612c8d56">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,10 +9,10 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%2032%2032&#39;%3E%3Crect%20width%3D&#39;32&#39;%20height%3D&#39;32&#39;%20rx%3D&#39;7&#39;%20fill%3D&#39;%23072d78&#39;%2F%3E%3Crect%20x%3D&#39;6&#39;%20y%3D&#39;8&#39;%20width%3D&#39;15&#39;%20height%3D&#39;4.5&#39;%20rx%3D&#39;1.6&#39;%20fill%3D&#39;%23fff&#39;%2F%3E%3Cpath%20d%3D&#39;M8.5%2012.5%2018.5%2012.5%2023%2024.5%204%2024.5Z&#39;%20fill%3D&#39;%23ffd166&#39;%20fill-opacity%3D&#39;.92&#39;%2F%3E%3Ccircle%20cx%3D&#39;25.5&#39;%20cy%3D&#39;10.2&#39;%20r%3D&#39;2&#39;%20fill%3D&#39;%237fb2ff&#39;%2F%3E%3Cpath%20d%3D&#39;M22.2%206.5a4.7%204.7%200%200%201%206.6%200&#39;%20fill%3D&#39;none&#39;%20stroke%3D&#39;%237fb2ff&#39;%20stroke-width%3D&#39;1.5&#39;%20stroke-linecap%3D&#39;round&#39;%2F%3E%3C%2Fsvg%3E">
 
-<link rel="stylesheet" href="/academy-preview/assets/site.css?v=76dedaea">
-<link rel="stylesheet" href="/academy-preview/assets/academy.css?v=76dedaea">
+<link rel="stylesheet" href="/academy-preview/assets/site.css?v=612c8d56">
+<link rel="stylesheet" href="/academy-preview/assets/academy.css?v=612c8d56">
 
-<script type="module" src="/academy-preview/assets/site.js?v=76dedaea"></script>
+<script type="module" src="/academy-preview/assets/site.js?v=612c8d56"></script>
 </head>
 <body>
 
@@ -44,64 +44,31 @@
 
 <div class="lesson" data-module="academy"><div class="lesson-goal"><p class="lesson-goal-label">Na dit onderdeel</p><p>Je kunt uitleggen dat DALI een aparte digitale besturingsverbinding is naast de netvoeding, en wat je eraan hebt.</p></div>
 <div class="training-core lesson-core"><div class="block block--text"><p>DALI is een digitale besturingslijn voor verlichting: twee draden waarover schakel- en dimcommando&#39;s gaan. Een armatuur met DALI heeft daarom twee verbindingen: de netvoeding (230 V) die het van stroom voorziet, en de DALI-verbinding voor het stuursignaal.</p><p>Het armatuur blijft normaal op de netspanning aangesloten. Dimmen en schakelen gebeurt via DALI, niet door de 230 V hard te schakelen.</p></div><div class="block block--list"><p>Wat heb je eraan?</p><ul><li>Digitaal schakelen en dimmen, zonder de netvoeding hard te schakelen.</li><li>Ieder apparaat krijgt een eigen adres: je stuurt armaturen los, in groepen of allemaal tegelijk aan.</li><li>Groepen en scènes zitten in de software. Een andere indeling vraagt daardoor niet vanzelf nieuwe voedingsbekabeling.</li><li>Sensoren en drukknoppen kunnen als DALI-2 input devices op dezelfde lijn als de armaturen.</li></ul></div></div>
-<figure class="topology topology--compact" data-module="topology" id="demo-les-wat-is-dali-dali-basis">
-<figcaption class="topology-title">DALI in één schema</figcaption>
+<figure class="arch" id="demo-les-wat-is-dali-dali-energie-en-besturing" data-module="architecture">
+<figcaption class="illustration-title">230 V levert energie, DALI levert besturing</figcaption>
+<p class="illustration-summary">Eén armatuur, twee verbindingen. Bouw het stap voor stap op en zie wat er verandert als de DALI-lijn erbij komt.</p>
+<div class="arch-canvas"><svg class="arch-svg arch-svg--h" viewBox="0 0 520 320" role="img" aria-labelledby="archt-les-wat-is-dali-dali-energie-en-besturing archd-les-wat-is-dali-dali-energie-en-besturing" preserveAspectRatio="xMidYMin meet">
+<title id="archt-les-wat-is-dali-dali-energie-en-besturing">230 V levert energie, DALI levert besturing</title>
+<desc id="archd-les-wat-is-dali-dali-energie-en-besturing">Netvoeding — 230 V — Armatuur met DALI-driver; Besturing met busvoeding — DALI — Armatuur met DALI-driver, Sensor</desc>
+<g class="arch-level"><rect x="0" y="6" width="520" height="100" rx="6" class="arch-band"></rect></g><g class="arch-level"><rect x="0" y="110" width="520" height="100" rx="6" class="arch-band arch-band--alt"></rect></g><g class="arch-level"><rect x="0" y="214" width="520" height="100" rx="6" class="arch-band"></rect></g>
 
+<g class="arch-link" data-link="v" data-medium="voeding" data-ends="net lamp" data-step="0"><path class="arch-hit" d="M132.5 252V188"></path><path class="ch-line ch-line--voeding" d="M132.5 252V188"></path><text class="arch-link-label arch-link-label--voeding" x="138.5" y="202">230 V</text></g>
+<g class="arch-link arch-bus" data-link="dali" data-medium="bus" data-ends="ctl lamp sensor" data-step="1"><path class="arch-hit" d="M132.5 84V136M82.5 136H370M132.5 136V148M320 136V148"></path><path class="ch-line ch-line--bus" d="M132.5 84V136M82.5 136H370M132.5 136V148M320 136V148"></path><text class="arch-link-label arch-link-label--bus" x="137.5" y="96">DALI</text></g>
+<text class="arch-level-label" x="10" y="21">Besturing</text><text class="arch-level-label arch-level-label--alt" x="10" y="125">In de ruimte</text><text class="arch-level-label" x="10" y="229">Netvoeding</text>
+<g class="arch-node arch-node--main" data-node="ctl" tabindex="-1" aria-label="Besturing met busvoeding" data-step="1"><rect x="72.5" y="44" width="120" height="40" rx="5"></rect><g class="arch-icon" transform="translate(79.5 56)" aria-hidden="true"><rect x="2.5" y="3" width="11" height="10" rx="1.2"/><path d="M2.5 6.5h11M5 9.6h2M9 9.6h2M5.5 3V1.6M10.5 3V1.6M5.5 14.4V13M10.5 14.4V13"/></g><text x="100.5" y="62"><tspan x="100.5" dy="0">Besturing met</tspan><tspan x="100.5" dy="12">busvoeding</tspan></text></g><g class="arch-node" data-node="lamp" tabindex="-1" aria-label="Armatuur met DALI-driver" data-step="0"><rect x="72.5" y="148" width="120" height="40" rx="5"></rect><g class="arch-icon" transform="translate(79.5 160)" aria-hidden="true"><rect x="2.5" y="3" width="11" height="3" rx="1"/><path d="M5.2 6.5L3 13M10.8 6.5L13 13" stroke-dasharray="1.8 1.6"/><path d="M8 6.5V13" stroke-dasharray="1.8 1.6"/></g><text x="100.5" y="166"><tspan x="100.5" dy="0">Armatuur met</tspan><tspan x="100.5" dy="12">DALI-driver</tspan></text></g><g class="arch-node" data-node="sensor" tabindex="-1" aria-label="Sensor" data-step="1"><rect x="260" y="148" width="120" height="40" rx="5"></rect><g class="arch-icon" transform="translate(267 160)" aria-hidden="true"><path d="M4.5 5a3.5 3.5 0 0 1 7 0v.8h-7z"/><path d="M4.2 9a5.4 5.4 0 0 0 7.6 0M2.6 11.4a7.7 7.7 0 0 0 10.8 0"/></g><text x="288" y="172"><tspan x="288" dy="0">Sensor</tspan></text></g><g class="arch-node" data-node="net" tabindex="-1" aria-label="Netvoeding" data-step="0"><rect x="72.5" y="252" width="120" height="40" rx="5"></rect><g class="arch-icon" transform="translate(79.5 264)" aria-hidden="true"><circle cx="8" cy="8" r="5.8"/><path d="M4.8 8c1-2 2.1-2 3.2 0s2.2 2 3.2 0"/></g><text x="100.5" y="276"><tspan x="100.5" dy="0">Netvoeding</tspan></text></g>
+</svg><svg class="arch-svg arch-svg--v" viewBox="0 0 300 334" role="img" aria-labelledby="archmt-les-wat-is-dali-dali-energie-en-besturing" preserveAspectRatio="xMidYMin meet">
+<title id="archmt-les-wat-is-dali-dali-energie-en-besturing">230 V levert energie, DALI levert besturing</title>
 
-<div class="topology-layout">
-<div class="topology-canvas">
-
-<svg class="topology-defs" aria-hidden="true" focusable="false" width="0" height="0"><defs><symbol id="sym-les-wat-is-dali-dali-basis-gateway" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="12" height="8" rx="1.2"/><path d="M5.6 8h4.8M8.9 6.2L10.6 8l-1.7 1.8M7.1 6.2L5.4 8l1.7 1.8"/></g></symbol><symbol id="sym-les-wat-is-dali-dali-basis-sensor" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 5a3.5 3.5 0 0 1 7 0v.8h-7z"/><path d="M4.2 9a5.4 5.4 0 0 0 7.6 0M2.6 11.4a7.7 7.7 0 0 0 10.8 0"/></g></symbol><symbol id="sym-les-wat-is-dali-dali-basis-armatuur" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="3" width="11" height="3" rx="1"/><path d="M5.2 6.5L3 13M10.8 6.5L13 13" stroke-dasharray="1.8 1.6"/><path d="M8 6.5V13" stroke-dasharray="1.8 1.6"/></g></symbol><symbol id="sym-les-wat-is-dali-dali-basis-voeding" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="5.8"/><path d="M4.8 8c1-2 2.1-2 3.2 0s2.2 2 3.2 0"/></g></symbol></defs></svg>
-
-<svg class="topology-svg topology-svg--mobiel" data-layout="mobiel" viewBox="0 0 360 296" role="img" aria-labelledby="svgt-les-wat-is-dali-dali-basis svgd-les-wat-is-dali-dali-basis" preserveAspectRatio="xMidYMin meet">
-<title id="svgt-les-wat-is-dali-dali-basis">DALI in één schema</title>
-<desc id="svgd-les-wat-is-dali-dali-basis">Ethernet/DALI Gateway · Sensor op de DALI-lijn · Armatuur met DALI · Netvoeding</desc>
-
-<g class="edges"><g class="edge" data-edge="dali-sensor" data-layer="dali" data-medium="bus" data-from="besturing" data-to="sensor"><polyline class="edge-line edge-line--dali edge-line--m-bus" points="180,56 180,92 64,92 64,124"></polyline></g><g class="edge" data-edge="dali-a1" data-layer="dali" data-medium="bus" data-from="besturing" data-to="a1"><polyline class="edge-line edge-line--dali edge-line--m-bus" points="180,56 180,124"></polyline><text class="edge-label" x="186" y="80" text-anchor="start">DALI</text></g><g class="edge" data-edge="dali-a2" data-layer="dali" data-medium="bus" data-from="besturing" data-to="a2"><polyline class="edge-line edge-line--dali edge-line--m-bus" points="180,56 180,92 296,92 296,124"></polyline></g><g class="edge" data-edge="v-a1" data-layer="voeding" data-medium="voeding" data-from="voeding" data-to="a1"><polyline class="edge-line edge-line--voeding edge-line--m-voeding" points="180,240 180,212 180,172"></polyline><text class="edge-label" x="186" y="232" text-anchor="start">230 V</text></g><g class="edge" data-edge="v-a2" data-layer="voeding" data-medium="voeding" data-from="voeding" data-to="a2"><polyline class="edge-line edge-line--voeding edge-line--m-voeding" points="180,240 180,212 296,212 296,172"></polyline></g></g>
-<g class="nodes"><g class="node" data-node="besturing" data-category="gateway" data-level="systeem">
-<title>Ethernet/DALI Gateway</title><rect x="105" y="12" width="150" height="44" rx="6"></rect>
-<circle class="node-badge" cx="123" cy="34" r="11"></circle><use href="#sym-les-wat-is-dali-dali-basis-gateway" x="115" y="26" width="16" height="16" class="node-icon"></use>
-
-<text x="194.5" y="31.32" text-anchor="middle"><tspan x="194.5" dy="0">DALI-besturing</tspan><tspan x="194.5" dy="14">(gateway)</tspan></text>
-</g><g class="node" data-node="sensor" data-category="sensor" data-level="installatie" data-role="sensoren">
-<title>Sensor op de DALI-lijn</title><rect x="12" y="124" width="104" height="48" rx="6"></rect>
-<circle class="node-badge" cx="30" cy="148" r="11"></circle><use href="#sym-les-wat-is-dali-dali-basis-sensor" x="22" y="140" width="16" height="16" class="node-icon"></use>
-<circle class="node-role" cx="108" cy="132" r="3"></circle>
-<text x="78.5" y="152.32" text-anchor="middle"><tspan x="78.5" dy="0">Sensor</tspan></text>
-</g><g class="node" data-node="a1" data-category="armatuur" data-level="installatie">
-<title>Armatuur met DALI</title><rect x="128" y="124" width="104" height="48" rx="6"></rect>
-<circle class="node-badge" cx="146" cy="148" r="11"></circle><use href="#sym-les-wat-is-dali-dali-basis-armatuur" x="138" y="140" width="16" height="16" class="node-icon"></use>
-
-<text x="194.5" y="152.32" text-anchor="middle"><tspan x="194.5" dy="0">Armatuur</tspan></text>
-</g><g class="node" data-node="a2" data-category="armatuur" data-level="installatie">
-<title>Armatuur met DALI</title><rect x="244" y="124" width="104" height="48" rx="6"></rect>
-<circle class="node-badge" cx="262" cy="148" r="11"></circle><use href="#sym-les-wat-is-dali-dali-basis-armatuur" x="254" y="140" width="16" height="16" class="node-icon"></use>
-
-<text x="310.5" y="152.32" text-anchor="middle"><tspan x="310.5" dy="0">Armatuur</tspan></text>
-</g><g class="node" data-node="voeding" data-category="voeding" data-level="installatie">
-<title>Netvoeding</title><rect x="105" y="240" width="150" height="44" rx="6"></rect>
-<circle class="node-badge" cx="123" cy="262" r="11"></circle><use href="#sym-les-wat-is-dali-dali-basis-voeding" x="115" y="254" width="16" height="16" class="node-icon"></use>
-
-<text x="194.5" y="266.32" text-anchor="middle"><tspan x="194.5" dy="0">230 V-voeding</tspan></text>
-</g></g>
-</svg>
-
-
-
-<ul class="topology-legend" aria-label="Legenda">
-<li><svg class="legend-line" viewBox="0 0 28 10" aria-hidden="true"><line class="edge-line edge-line--voeding edge-line--m-voeding" x1="1" y1="5" x2="27" y2="5"></line></svg>230 V-voeding</li><li><svg class="legend-line" viewBox="0 0 28 10" aria-hidden="true"><line class="edge-line edge-line--dali edge-line--m-bus" x1="1" y1="5" x2="27" y2="5"></line></svg>DALI (besturing)</li>
-<li><svg class="legend-role" viewBox="0 0 12 12" aria-hidden="true"><circle class="node-role" cx="6" cy="6" r="3"></circle></svg>Sensoren</li>
-</ul>
-<div class="topology-filter" role="group" aria-label="Toon laag" hidden>
-<button type="button" data-layer="all" data-kind="all" aria-pressed="true">Alles</button>
-<button type="button" data-layer="voeding" data-kind="verbinding" data-text="Energie voor de armaturen; hierover gaat geen besturing." aria-pressed="false"><svg class="legend-line" viewBox="0 0 28 10" aria-hidden="true"><line class="edge-line edge-line--voeding edge-line--m-voeding" x1="1" y1="5" x2="27" y2="5"></line></svg>230 V-voeding</button><button type="button" data-layer="dali" data-kind="verbinding" data-text="Digitale besturing: commando’s naar de drivers en meldingen van sensoren." aria-pressed="false"><svg class="legend-line" viewBox="0 0 28 10" aria-hidden="true"><line class="edge-line edge-line--dali edge-line--m-bus" x1="1" y1="5" x2="27" y2="5"></line></svg>DALI (besturing)</button><button type="button" data-layer="sensoren" data-kind="rol" aria-pressed="false"><svg class="legend-role" viewBox="0 0 12 12" aria-hidden="true"><circle class="node-role" cx="6" cy="6" r="3"></circle></svg>Sensoren</button>
-</div>
-<p class="topology-status" aria-live="polite"></p>
-</div>
-
-</div>
-
-<script type="application/json" class="module-config">{"strings":{"active":"Getoond: {layer}","all":"Alles","view":"Bekijk onderdeel","close":"Sluiten","selected":"Geselecteerd: {part}. Verbindingen van dit onderdeel zijn benadrukt."}}</script>
+<g class="arch-link arch-bus" data-link="dali" data-medium="bus" data-ends="ctl lamp sensor" data-step="1"><path class="arch-hit" d="M16 76V286M16 134H32M16 286H32"></path><path class="ch-line ch-line--bus" d="M16 76V286M16 134H32M16 286H32"></path><text class="arch-link-label arch-link-label--bus" x="32" y="109">DALI</text></g>
+<g class="arch-link" data-link="v" data-medium="voeding" data-ends="net lamp" data-step="0"><path class="arch-hit" d="M40 152V210H49"></path><path class="ch-line ch-line--voeding" d="M40 152V210H49"></path><text class="arch-link-label arch-link-label--voeding" x="49" y="185">230 V</text></g>
+<text class="arch-level-label arch-level-label--v" x="292" y="19" text-anchor="end">Besturing</text><text class="arch-level-label arch-level-label--v" x="292" y="95" text-anchor="end">In de ruimte</text><text class="arch-level-label arch-level-label--v" x="292" y="171" text-anchor="end">Netvoeding</text><text class="arch-level-label arch-level-label--v" x="292" y="247" text-anchor="end">In de ruimte</text>
+<g class="arch-node arch-node--main" data-node="ctl" tabindex="-1" aria-label="Besturing met busvoeding" data-step="1"><rect x="8" y="40" width="284" height="36" rx="5"></rect><g class="arch-icon" transform="translate(15 50)" aria-hidden="true"><rect x="2.5" y="3" width="11" height="10" rx="1.2"/><path d="M2.5 6.5h11M5 9.6h2M9 9.6h2M5.5 3V1.6M10.5 3V1.6M5.5 14.4V13M10.5 14.4V13"/></g><text x="36" y="62">Besturing met busvoeding</text></g><g class="arch-node" data-node="lamp" tabindex="-1" aria-label="Armatuur met DALI-driver" data-step="0"><rect x="32" y="116" width="260" height="36" rx="5"></rect><g class="arch-icon" transform="translate(39 126)" aria-hidden="true"><rect x="2.5" y="3" width="11" height="3" rx="1"/><path d="M5.2 6.5L3 13M10.8 6.5L13 13" stroke-dasharray="1.8 1.6"/><path d="M8 6.5V13" stroke-dasharray="1.8 1.6"/></g><text x="60" y="138">Armatuur met DALI-driver</text></g><g class="arch-node" data-node="net" tabindex="-1" aria-label="Netvoeding" data-step="0"><rect x="49" y="192" width="243" height="36" rx="5"></rect><g class="arch-icon" transform="translate(56 202)" aria-hidden="true"><circle cx="8" cy="8" r="5.8"/><path d="M4.8 8c1-2 2.1-2 3.2 0s2.2 2 3.2 0"/></g><text x="77" y="214">Netvoeding</text></g><g class="arch-node" data-node="sensor" tabindex="-1" aria-label="Sensor" data-step="1"><rect x="32" y="268" width="260" height="36" rx="5"></rect><g class="arch-icon" transform="translate(39 278)" aria-hidden="true"><path d="M4.5 5a3.5 3.5 0 0 1 7 0v.8h-7z"/><path d="M4.2 9a5.4 5.4 0 0 0 7.6 0M2.6 11.4a7.7 7.7 0 0 0 10.8 0"/></g><text x="60" y="290">Sensor</text></g>
+</svg></div>
+<ul class="arch-legend"><li><button type="button" class="arch-key" data-medium="voeding" aria-pressed="false" disabled><svg class="ill-key" viewBox="0 0 34 12" aria-hidden="true" focusable="false"><line class="ch-line ch-line--voeding" x1="2" y1="6" x2="32" y2="6"></line></svg><span>230 V</span></button></li><li><button type="button" class="arch-key" data-medium="bus" aria-pressed="false" disabled><svg class="ill-key" viewBox="0 0 34 12" aria-hidden="true" focusable="false"><line class="ch-line ch-line--bus" x1="2" y1="6" x2="32" y2="6"></line></svg><span>DALI</span></button></li></ul>
+<p class="arch-busnote">Een bus staat voor één lijn met al zijn deelnemers, niet voor de kabelroute of de volgorde waarin ze zijn aangesloten. Hoe de kabel in het gebouw loopt, is een aparte keuze bij de installatie.</p>
+<div class="arch-steps"><ol><li data-step-text="0"><strong>Alleen 230 V</strong> — Het armatuur heeft energie, maar er is geen stuurverbinding: het kan geen opdracht krijgen om te dimmen, een scène op te roepen of in een groep mee te doen.</li><li data-step-text="1"><strong>230 V + DALI</strong> — Nu zit het armatuur ook op een DALI-lijn. Over die twee draden gaan opdrachten (dimmen, schakelen, een scène oproepen) en vragen (welk niveau, is er een storing). Een sensor op dezelfde lijn meldt wat hij ziet.</li><li data-step-text="2"><strong>Wat veranderde er?</strong> — De energie komt nog steeds via 230 V; de DALI-lijn voedt het armatuur niet. DALI voegt de besturing toe: adresseren, groeperen, dimmen en terugmelden.</li></ol></div>
+<dl class="arch-parts"><div class="arch-part" data-nodes="ctl"><dt>Besturing met busvoeding</dt><dd>Stuurt opdrachten over de DALI-lijn en levert de busvoeding voor de communicatie. Bij LiveLink is dat bijvoorbeeld een controller of een Ethernet/DALI Gateway.</dd></div><div class="arch-part" data-nodes="lamp"><dt>Armatuur met DALI</dt><dd>Armatuur dat via een DALI-lijn wordt aangestuurd.</dd></div><div class="arch-part" data-nodes="sensor"><dt>Sensor op de DALI-lijn</dt><dd>Detecteert aanwezigheid en/of meet licht, en geeft dat door aan de sturing.</dd></div><div class="arch-part" data-nodes="net"><dt>Netvoeding</dt><dd>De voeding van de armaturen; staat los van de besturing.</dd></div></dl>
+<script type="application/json" class="module-config">{"strings":{"start":"Bouw stap voor stap op","all":"Alles tonen","step":"Stap {n} van {total}","prev":"Vorige stap","next":"Volgende stap"}}</script>
 </figure>
 
 
@@ -118,67 +85,34 @@
 </section>
 
 <p class="training-deeper"><a href="/academy-preview/nl/begrijpen/dali/">Lees de volledige uitleg: Wat is DALI?</a></p>
-<script type="application/json" class="module-config">{"mode":"checks","strings":{"right":"Klopt.","wrong":"Niet helemaal."},"progress":{"module":"dali-en-dali-2","lesson":"wat-is-dali","lessons":["wat-is-dali","dali-bus-en-busvoeding","van-armatuur-tot-sensor","dali-adressen","dali-groepen-en-scenes","dali-2","sensor-aansluitvarianten","dali-bekabeling","installatie-controleren"],"title":"Wat is DALI?"}}</script></div>
+<script type="application/json" class="module-config">{"mode":"checks","strings":{"right":"Klopt.","wrong":"Niet helemaal."},"progress":{"module":"dali-en-dali-2","lesson":"wat-is-dali","lessons":["wat-is-dali","licht-en-regelinstallatie","wat-zit-er-op-een-dali-lijn","dali-adressen","dali-groepen-en-scenes","dali-bekabeling","dali-bus-en-busvoeding","wat-gebeurt-er-op-de-dali-bus","dali-2","wanneer-is-een-dali-lijn-vol","dali-zonder-livelink","dali-in-livelink","van-armatuur-tot-sensor","sensor-aansluitvarianten","installatie-controleren"],"title":"Wat is DALI?"}}</script></div>
 <template class="deck-tpl" data-lesson="wat-is-dali"><section class="deck" data-lesson="wat-is-dali" aria-label="Wat is DALI?">
 <div class="slide slide--title" data-label="Wat is DALI?"><p class="slide-eyebrow">DALI en DALI-2 · Weten</p><h2>Wat is DALI?</h2><p class="slide-goal">Je kunt uitleggen dat DALI een aparte digitale besturingsverbinding is naast de netvoeding, en wat je eraan hebt.</p></div>
-<div class="slide slide--visual" data-label="Schema"><p class="slide-eyebrow">Wat is DALI?</p><p class="slide-caption">DALI: twee draden voor het stuursignaal, los van de netvoeding.</p><figure class="topology topology--compact" data-module="topology" id="dia-demo-dia-wat-is-dali-dali-basis">
-<figcaption class="topology-title">DALI in één schema</figcaption>
+<div class="slide slide--visual" data-label="Schema"><p class="slide-eyebrow">Wat is DALI?</p><p class="slide-caption">DALI: twee draden voor het stuursignaal, los van de netvoeding.</p><figure class="arch" id="dia-demo-dia-wat-is-dali-dali-energie-en-besturing" data-module="architecture">
+<figcaption class="illustration-title">230 V levert energie, DALI levert besturing</figcaption>
+<p class="illustration-summary">Eén armatuur, twee verbindingen. Bouw het stap voor stap op en zie wat er verandert als de DALI-lijn erbij komt.</p>
+<div class="arch-canvas"><svg class="arch-svg arch-svg--h" viewBox="0 0 520 320" role="img" aria-labelledby="dia-archt-dia-wat-is-dali-dali-energie-en-besturing dia-archd-dia-wat-is-dali-dali-energie-en-besturing" preserveAspectRatio="xMidYMin meet">
+<title id="dia-archt-dia-wat-is-dali-dali-energie-en-besturing">230 V levert energie, DALI levert besturing</title>
+<desc id="dia-archd-dia-wat-is-dali-dali-energie-en-besturing">Netvoeding — 230 V — Armatuur met DALI-driver; Besturing met busvoeding — DALI — Armatuur met DALI-driver, Sensor</desc>
+<g class="arch-level"><rect x="0" y="6" width="520" height="100" rx="6" class="arch-band"></rect></g><g class="arch-level"><rect x="0" y="110" width="520" height="100" rx="6" class="arch-band arch-band--alt"></rect></g><g class="arch-level"><rect x="0" y="214" width="520" height="100" rx="6" class="arch-band"></rect></g>
 
+<g class="arch-link" data-link="v" data-medium="voeding" data-ends="net lamp" data-step="0"><path class="arch-hit" d="M132.5 252V188"></path><path class="ch-line ch-line--voeding" d="M132.5 252V188"></path><text class="arch-link-label arch-link-label--voeding" x="138.5" y="202">230 V</text></g>
+<g class="arch-link arch-bus" data-link="dali" data-medium="bus" data-ends="ctl lamp sensor" data-step="1"><path class="arch-hit" d="M132.5 84V136M82.5 136H370M132.5 136V148M320 136V148"></path><path class="ch-line ch-line--bus" d="M132.5 84V136M82.5 136H370M132.5 136V148M320 136V148"></path><text class="arch-link-label arch-link-label--bus" x="137.5" y="96">DALI</text></g>
+<text class="arch-level-label" x="10" y="21">Besturing</text><text class="arch-level-label arch-level-label--alt" x="10" y="125">In de ruimte</text><text class="arch-level-label" x="10" y="229">Netvoeding</text>
+<g class="arch-node arch-node--main" data-node="ctl" tabindex="-1" aria-label="Besturing met busvoeding" data-step="1"><rect x="72.5" y="44" width="120" height="40" rx="5"></rect><g class="arch-icon" transform="translate(79.5 56)" aria-hidden="true"><rect x="2.5" y="3" width="11" height="10" rx="1.2"/><path d="M2.5 6.5h11M5 9.6h2M9 9.6h2M5.5 3V1.6M10.5 3V1.6M5.5 14.4V13M10.5 14.4V13"/></g><text x="100.5" y="62"><tspan x="100.5" dy="0">Besturing met</tspan><tspan x="100.5" dy="12">busvoeding</tspan></text></g><g class="arch-node" data-node="lamp" tabindex="-1" aria-label="Armatuur met DALI-driver" data-step="0"><rect x="72.5" y="148" width="120" height="40" rx="5"></rect><g class="arch-icon" transform="translate(79.5 160)" aria-hidden="true"><rect x="2.5" y="3" width="11" height="3" rx="1"/><path d="M5.2 6.5L3 13M10.8 6.5L13 13" stroke-dasharray="1.8 1.6"/><path d="M8 6.5V13" stroke-dasharray="1.8 1.6"/></g><text x="100.5" y="166"><tspan x="100.5" dy="0">Armatuur met</tspan><tspan x="100.5" dy="12">DALI-driver</tspan></text></g><g class="arch-node" data-node="sensor" tabindex="-1" aria-label="Sensor" data-step="1"><rect x="260" y="148" width="120" height="40" rx="5"></rect><g class="arch-icon" transform="translate(267 160)" aria-hidden="true"><path d="M4.5 5a3.5 3.5 0 0 1 7 0v.8h-7z"/><path d="M4.2 9a5.4 5.4 0 0 0 7.6 0M2.6 11.4a7.7 7.7 0 0 0 10.8 0"/></g><text x="288" y="172"><tspan x="288" dy="0">Sensor</tspan></text></g><g class="arch-node" data-node="net" tabindex="-1" aria-label="Netvoeding" data-step="0"><rect x="72.5" y="252" width="120" height="40" rx="5"></rect><g class="arch-icon" transform="translate(79.5 264)" aria-hidden="true"><circle cx="8" cy="8" r="5.8"/><path d="M4.8 8c1-2 2.1-2 3.2 0s2.2 2 3.2 0"/></g><text x="100.5" y="276"><tspan x="100.5" dy="0">Netvoeding</tspan></text></g>
+</svg><svg class="arch-svg arch-svg--v" viewBox="0 0 300 334" role="img" aria-labelledby="dia-archmt-dia-wat-is-dali-dali-energie-en-besturing" preserveAspectRatio="xMidYMin meet">
+<title id="dia-archmt-dia-wat-is-dali-dali-energie-en-besturing">230 V levert energie, DALI levert besturing</title>
 
-<div class="topology-layout">
-<div class="topology-canvas">
-
-<svg class="topology-defs" aria-hidden="true" focusable="false" width="0" height="0"><defs><symbol id="dia-sym-dia-wat-is-dali-dali-basis-gateway" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="12" height="8" rx="1.2"/><path d="M5.6 8h4.8M8.9 6.2L10.6 8l-1.7 1.8M7.1 6.2L5.4 8l1.7 1.8"/></g></symbol><symbol id="dia-sym-dia-wat-is-dali-dali-basis-sensor" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 5a3.5 3.5 0 0 1 7 0v.8h-7z"/><path d="M4.2 9a5.4 5.4 0 0 0 7.6 0M2.6 11.4a7.7 7.7 0 0 0 10.8 0"/></g></symbol><symbol id="dia-sym-dia-wat-is-dali-dali-basis-armatuur" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="3" width="11" height="3" rx="1"/><path d="M5.2 6.5L3 13M10.8 6.5L13 13" stroke-dasharray="1.8 1.6"/><path d="M8 6.5V13" stroke-dasharray="1.8 1.6"/></g></symbol><symbol id="dia-sym-dia-wat-is-dali-dali-basis-voeding" viewBox="0 0 16 16"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="5.8"/><path d="M4.8 8c1-2 2.1-2 3.2 0s2.2 2 3.2 0"/></g></symbol></defs></svg>
-
-<svg class="topology-svg topology-svg--mobiel" data-layout="mobiel" viewBox="0 0 360 296" role="img" aria-labelledby="dia-svgt-dia-wat-is-dali-dali-basis dia-svgd-dia-wat-is-dali-dali-basis" preserveAspectRatio="xMidYMin meet">
-<title id="dia-svgt-dia-wat-is-dali-dali-basis">DALI in één schema</title>
-<desc id="dia-svgd-dia-wat-is-dali-dali-basis">Ethernet/DALI Gateway · Sensor op de DALI-lijn · Armatuur met DALI · Netvoeding</desc>
-
-<g class="edges"><g class="edge" data-edge="dali-sensor" data-layer="dali" data-medium="bus" data-from="besturing" data-to="sensor"><polyline class="edge-line edge-line--dali edge-line--m-bus" points="180,56 180,92 64,92 64,124"></polyline></g><g class="edge" data-edge="dali-a1" data-layer="dali" data-medium="bus" data-from="besturing" data-to="a1"><polyline class="edge-line edge-line--dali edge-line--m-bus" points="180,56 180,124"></polyline><text class="edge-label" x="186" y="80" text-anchor="start">DALI</text></g><g class="edge" data-edge="dali-a2" data-layer="dali" data-medium="bus" data-from="besturing" data-to="a2"><polyline class="edge-line edge-line--dali edge-line--m-bus" points="180,56 180,92 296,92 296,124"></polyline></g><g class="edge" data-edge="v-a1" data-layer="voeding" data-medium="voeding" data-from="voeding" data-to="a1"><polyline class="edge-line edge-line--voeding edge-line--m-voeding" points="180,240 180,212 180,172"></polyline><text class="edge-label" x="186" y="232" text-anchor="start">230 V</text></g><g class="edge" data-edge="v-a2" data-layer="voeding" data-medium="voeding" data-from="voeding" data-to="a2"><polyline class="edge-line edge-line--voeding edge-line--m-voeding" points="180,240 180,212 296,212 296,172"></polyline></g></g>
-<g class="nodes"><g class="node" data-node="besturing" data-category="gateway" data-level="systeem">
-<title>Ethernet/DALI Gateway</title><rect x="105" y="12" width="150" height="44" rx="6"></rect>
-<circle class="node-badge" cx="123" cy="34" r="11"></circle><use href="#dia-sym-dia-wat-is-dali-dali-basis-gateway" x="115" y="26" width="16" height="16" class="node-icon"></use>
-
-<text x="194.5" y="31.32" text-anchor="middle"><tspan x="194.5" dy="0">DALI-besturing</tspan><tspan x="194.5" dy="14">(gateway)</tspan></text>
-</g><g class="node" data-node="sensor" data-category="sensor" data-level="installatie" data-role="sensoren">
-<title>Sensor op de DALI-lijn</title><rect x="12" y="124" width="104" height="48" rx="6"></rect>
-<circle class="node-badge" cx="30" cy="148" r="11"></circle><use href="#dia-sym-dia-wat-is-dali-dali-basis-sensor" x="22" y="140" width="16" height="16" class="node-icon"></use>
-<circle class="node-role" cx="108" cy="132" r="3"></circle>
-<text x="78.5" y="152.32" text-anchor="middle"><tspan x="78.5" dy="0">Sensor</tspan></text>
-</g><g class="node" data-node="a1" data-category="armatuur" data-level="installatie">
-<title>Armatuur met DALI</title><rect x="128" y="124" width="104" height="48" rx="6"></rect>
-<circle class="node-badge" cx="146" cy="148" r="11"></circle><use href="#dia-sym-dia-wat-is-dali-dali-basis-armatuur" x="138" y="140" width="16" height="16" class="node-icon"></use>
-
-<text x="194.5" y="152.32" text-anchor="middle"><tspan x="194.5" dy="0">Armatuur</tspan></text>
-</g><g class="node" data-node="a2" data-category="armatuur" data-level="installatie">
-<title>Armatuur met DALI</title><rect x="244" y="124" width="104" height="48" rx="6"></rect>
-<circle class="node-badge" cx="262" cy="148" r="11"></circle><use href="#dia-sym-dia-wat-is-dali-dali-basis-armatuur" x="254" y="140" width="16" height="16" class="node-icon"></use>
-
-<text x="310.5" y="152.32" text-anchor="middle"><tspan x="310.5" dy="0">Armatuur</tspan></text>
-</g><g class="node" data-node="voeding" data-category="voeding" data-level="installatie">
-<title>Netvoeding</title><rect x="105" y="240" width="150" height="44" rx="6"></rect>
-<circle class="node-badge" cx="123" cy="262" r="11"></circle><use href="#dia-sym-dia-wat-is-dali-dali-basis-voeding" x="115" y="254" width="16" height="16" class="node-icon"></use>
-
-<text x="194.5" y="266.32" text-anchor="middle"><tspan x="194.5" dy="0">230 V-voeding</tspan></text>
-</g></g>
-</svg>
-
-
-
-<ul class="topology-legend" aria-label="Legenda">
-<li><svg class="legend-line" viewBox="0 0 28 10" aria-hidden="true"><line class="edge-line edge-line--voeding edge-line--m-voeding" x1="1" y1="5" x2="27" y2="5"></line></svg>230 V-voeding</li><li><svg class="legend-line" viewBox="0 0 28 10" aria-hidden="true"><line class="edge-line edge-line--dali edge-line--m-bus" x1="1" y1="5" x2="27" y2="5"></line></svg>DALI (besturing)</li>
-<li><svg class="legend-role" viewBox="0 0 12 12" aria-hidden="true"><circle class="node-role" cx="6" cy="6" r="3"></circle></svg>Sensoren</li>
-</ul>
-<div class="topology-filter" role="group" aria-label="Toon laag" hidden>
-<button type="button" data-layer="all" data-kind="all" aria-pressed="true">Alles</button>
-<button type="button" data-layer="voeding" data-kind="verbinding" data-text="Energie voor de armaturen; hierover gaat geen besturing." aria-pressed="false"><svg class="legend-line" viewBox="0 0 28 10" aria-hidden="true"><line class="edge-line edge-line--voeding edge-line--m-voeding" x1="1" y1="5" x2="27" y2="5"></line></svg>230 V-voeding</button><button type="button" data-layer="dali" data-kind="verbinding" data-text="Digitale besturing: commando’s naar de drivers en meldingen van sensoren." aria-pressed="false"><svg class="legend-line" viewBox="0 0 28 10" aria-hidden="true"><line class="edge-line edge-line--dali edge-line--m-bus" x1="1" y1="5" x2="27" y2="5"></line></svg>DALI (besturing)</button><button type="button" data-layer="sensoren" data-kind="rol" aria-pressed="false"><svg class="legend-role" viewBox="0 0 12 12" aria-hidden="true"><circle class="node-role" cx="6" cy="6" r="3"></circle></svg>Sensoren</button>
-</div>
-<p class="topology-status" aria-live="polite"></p>
-</div>
-
-</div>
-
-<script type="application/json" class="module-config">{"strings":{"active":"Getoond: {layer}","all":"Alles","view":"Bekijk onderdeel","close":"Sluiten","selected":"Geselecteerd: {part}. Verbindingen van dit onderdeel zijn benadrukt."}}</script>
+<g class="arch-link arch-bus" data-link="dali" data-medium="bus" data-ends="ctl lamp sensor" data-step="1"><path class="arch-hit" d="M16 76V286M16 134H32M16 286H32"></path><path class="ch-line ch-line--bus" d="M16 76V286M16 134H32M16 286H32"></path><text class="arch-link-label arch-link-label--bus" x="32" y="109">DALI</text></g>
+<g class="arch-link" data-link="v" data-medium="voeding" data-ends="net lamp" data-step="0"><path class="arch-hit" d="M40 152V210H49"></path><path class="ch-line ch-line--voeding" d="M40 152V210H49"></path><text class="arch-link-label arch-link-label--voeding" x="49" y="185">230 V</text></g>
+<text class="arch-level-label arch-level-label--v" x="292" y="19" text-anchor="end">Besturing</text><text class="arch-level-label arch-level-label--v" x="292" y="95" text-anchor="end">In de ruimte</text><text class="arch-level-label arch-level-label--v" x="292" y="171" text-anchor="end">Netvoeding</text><text class="arch-level-label arch-level-label--v" x="292" y="247" text-anchor="end">In de ruimte</text>
+<g class="arch-node arch-node--main" data-node="ctl" tabindex="-1" aria-label="Besturing met busvoeding" data-step="1"><rect x="8" y="40" width="284" height="36" rx="5"></rect><g class="arch-icon" transform="translate(15 50)" aria-hidden="true"><rect x="2.5" y="3" width="11" height="10" rx="1.2"/><path d="M2.5 6.5h11M5 9.6h2M9 9.6h2M5.5 3V1.6M10.5 3V1.6M5.5 14.4V13M10.5 14.4V13"/></g><text x="36" y="62">Besturing met busvoeding</text></g><g class="arch-node" data-node="lamp" tabindex="-1" aria-label="Armatuur met DALI-driver" data-step="0"><rect x="32" y="116" width="260" height="36" rx="5"></rect><g class="arch-icon" transform="translate(39 126)" aria-hidden="true"><rect x="2.5" y="3" width="11" height="3" rx="1"/><path d="M5.2 6.5L3 13M10.8 6.5L13 13" stroke-dasharray="1.8 1.6"/><path d="M8 6.5V13" stroke-dasharray="1.8 1.6"/></g><text x="60" y="138">Armatuur met DALI-driver</text></g><g class="arch-node" data-node="net" tabindex="-1" aria-label="Netvoeding" data-step="0"><rect x="49" y="192" width="243" height="36" rx="5"></rect><g class="arch-icon" transform="translate(56 202)" aria-hidden="true"><circle cx="8" cy="8" r="5.8"/><path d="M4.8 8c1-2 2.1-2 3.2 0s2.2 2 3.2 0"/></g><text x="77" y="214">Netvoeding</text></g><g class="arch-node" data-node="sensor" tabindex="-1" aria-label="Sensor" data-step="1"><rect x="32" y="268" width="260" height="36" rx="5"></rect><g class="arch-icon" transform="translate(39 278)" aria-hidden="true"><path d="M4.5 5a3.5 3.5 0 0 1 7 0v.8h-7z"/><path d="M4.2 9a5.4 5.4 0 0 0 7.6 0M2.6 11.4a7.7 7.7 0 0 0 10.8 0"/></g><text x="60" y="290">Sensor</text></g>
+</svg></div>
+<ul class="arch-legend"><li><button type="button" class="arch-key" data-medium="voeding" aria-pressed="false" disabled><svg class="ill-key" viewBox="0 0 34 12" aria-hidden="true" focusable="false"><line class="ch-line ch-line--voeding" x1="2" y1="6" x2="32" y2="6"></line></svg><span>230 V</span></button></li><li><button type="button" class="arch-key" data-medium="bus" aria-pressed="false" disabled><svg class="ill-key" viewBox="0 0 34 12" aria-hidden="true" focusable="false"><line class="ch-line ch-line--bus" x1="2" y1="6" x2="32" y2="6"></line></svg><span>DALI</span></button></li></ul>
+<p class="arch-busnote">Een bus staat voor één lijn met al zijn deelnemers, niet voor de kabelroute of de volgorde waarin ze zijn aangesloten. Hoe de kabel in het gebouw loopt, is een aparte keuze bij de installatie.</p>
+<div class="arch-steps"><ol><li data-step-text="0"><strong>Alleen 230 V</strong> — Het armatuur heeft energie, maar er is geen stuurverbinding: het kan geen opdracht krijgen om te dimmen, een scène op te roepen of in een groep mee te doen.</li><li data-step-text="1"><strong>230 V + DALI</strong> — Nu zit het armatuur ook op een DALI-lijn. Over die twee draden gaan opdrachten (dimmen, schakelen, een scène oproepen) en vragen (welk niveau, is er een storing). Een sensor op dezelfde lijn meldt wat hij ziet.</li><li data-step-text="2"><strong>Wat veranderde er?</strong> — De energie komt nog steeds via 230 V; de DALI-lijn voedt het armatuur niet. DALI voegt de besturing toe: adresseren, groeperen, dimmen en terugmelden.</li></ol></div>
+<dl class="arch-parts"><div class="arch-part" data-nodes="ctl"><dt>Besturing met busvoeding</dt><dd>Stuurt opdrachten over de DALI-lijn en levert de busvoeding voor de communicatie. Bij LiveLink is dat bijvoorbeeld een controller of een Ethernet/DALI Gateway.</dd></div><div class="arch-part" data-nodes="lamp"><dt>Armatuur met DALI</dt><dd>Armatuur dat via een DALI-lijn wordt aangestuurd.</dd></div><div class="arch-part" data-nodes="sensor"><dt>Sensor op de DALI-lijn</dt><dd>Detecteert aanwezigheid en/of meet licht, en geeft dat door aan de sturing.</dd></div><div class="arch-part" data-nodes="net"><dt>Netvoeding</dt><dd>De voeding van de armaturen; staat los van de besturing.</dd></div></dl>
+<script type="application/json" class="module-config">{"strings":{"start":"Bouw stap voor stap op","all":"Alles tonen","step":"Stap {n} van {total}","prev":"Vorige stap","next":"Volgende stap"}}</script>
 </figure></div>
 <div class="slide slide--message" data-label="Kern"><p class="slide-eyebrow">Wat is DALI?</p><p class="slide-message">DALI: twee draden voor het stuursignaal, los van de netvoeding.</p><ul class="slide-points"><li>Ieder apparaat een eigen adres</li><li>Los, in groepen of allemaal tegelijk aansturen</li><li>Groepen en scènes: in software, niet in bekabeling</li></ul></div>
 
@@ -194,13 +128,13 @@
 </details>
 </section></div>
 
-<aside class="deck-notes" hidden><p class="deck-notes-label">Voor de trainer</p><p>Laat eerst het schema zien met alleen de netvoeding, en zet dan de DALI-verbinding aan. Het verschil tussen energie en besturing is de kern van dit onderdeel.</p>
+<aside class="deck-notes" hidden><p class="deck-notes-label">Voor de trainer</p><p>Speel het schema stap voor stap af: eerst alleen de netvoeding, dan de DALI-lijn erbij. Vraag de groep bij iedere stap wat er nu kan. De kern: de netvoeding levert energie, DALI levert besturing.</p>
 <details class="deck-deeper"><summary>Verdieping (lezen na de training)</summary><div class="training-core"><div class="block block--text"><p>DALI is een digitale besturingslijn voor verlichting: twee draden waarover schakel- en dimcommando&#39;s gaan. Een armatuur met DALI heeft daarom twee verbindingen: de netvoeding (230 V) die het van stroom voorziet, en de DALI-verbinding voor het stuursignaal.</p><p>Het armatuur blijft normaal op de netspanning aangesloten. Dimmen en schakelen gebeurt via DALI, niet door de 230 V hard te schakelen.</p></div><div class="block block--list"><p>Wat heb je eraan?</p><ul><li>Digitaal schakelen en dimmen, zonder de netvoeding hard te schakelen.</li><li>Ieder apparaat krijgt een eigen adres: je stuurt armaturen los, in groepen of allemaal tegelijk aan.</li><li>Groepen en scènes zitten in de software. Een andere indeling vraagt daardoor niet vanzelf nieuwe voedingsbekabeling.</li><li>Sensoren en drukknoppen kunnen als DALI-2 input devices op dezelfde lijn als de armaturen.</li></ul></div></div></details></aside>
 </section></template>
-<details class="lesson-trainer"><summary>Voor de trainer</summary><p>Laat eerst het schema zien met alleen de netvoeding, en zet dan de DALI-verbinding aan. Het verschil tussen energie en besturing is de kern van dit onderdeel.</p></details>
+<details class="lesson-trainer"><summary>Voor de trainer</summary><p>Speel het schema stap voor stap af: eerst alleen de netvoeding, dan de DALI-lijn erbij. Vraag de groep bij iedere stap wat er nu kan. De kern: de netvoeding levert energie, DALI levert besturing.</p></details>
 <nav class="lesson-nav" aria-label="Waar dit onderdeel bij hoort">
-<p class="lesson-nav-path">Onderdeel 1 van 9 in <a href="/academy-preview/nl/begrijpen/academy/dali-en-dali-2/">DALI en DALI-2</a></p>
-<p class="lesson-nav-links academy-stepnav training-nav"><a class="training-prev" href="/academy-preview/nl/begrijpen/academy/dali-en-dali-2/">Naar het module-overzicht</a><a class="training-next" href="/academy-preview/nl/begrijpen/academy/dali-bus-en-busvoeding/" data-next-lesson>Volgende: DALI-bus en busvoeding</a></p>
+<p class="lesson-nav-path">Onderdeel 1 van 15 in <a href="/academy-preview/nl/begrijpen/academy/dali-en-dali-2/">DALI en DALI-2</a></p>
+<p class="lesson-nav-links academy-stepnav training-nav"><a class="training-prev" href="/academy-preview/nl/begrijpen/academy/dali-en-dali-2/">Naar het module-overzicht</a><a class="training-next" href="/academy-preview/nl/begrijpen/academy/licht-en-regelinstallatie/" data-next-lesson>Volgende: Een DALI-driver is nog geen lichtregeling</a></p>
 <p class="academy-actions"><a class="academy-button academy-button--quiet" href="/academy-preview/nl/begrijpen/training-geven/?les=wat-is-dali&amp;start=1">Presenteer dit onderdeel</a></p>
 <p class="lesson-used">Ook gebruikt in: <a href="/academy-preview/nl/begrijpen/academy/dali-en-dali-2/">DALI en DALI-2</a>, <a href="/academy-preview/nl/begrijpen/academy/livelink-basis-sales/">LiveLink basis voor sales</a>, <a href="/academy-preview/nl/begrijpen/academy/techniek-basis/">Technische basis LiveLink</a>, <a href="/academy-preview/nl/begrijpen/academy/dali-basis/">DALI basis</a></p>
 </nav>
