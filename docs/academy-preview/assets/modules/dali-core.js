@@ -189,7 +189,7 @@ ${pct == null ? '' : `<div class="dl-meter" aria-hidden="true"><span class="dl-m
     cwhy = c.status === 'over' ? s.current_over : c.status === 'controleren' ? s.current_over_upper : c.unknownCount ? fill(s.current_unknown, { list: names }) : c.status === 'grens' ? s.current_grens : s.current_ok;
   }
   if (c.unknownCount && !c.supply && state.items.length) cwhy = `${cwhy} ${fill(s.current_unknown, { list: names })}`;
-  out.push(row({ key: 'current', title: s.current_title, status: c.status, ratio: c.supply ? c.known / c.supply.value : null, partial: c.unknownCount > 0 && c.supply, value: cvalue, why: `${cwhy} ${s.current_gear}` }));
+  out.push(row({ key: 'current', title: s.current_title, status: c.status, ratio: c.supply ? c.known / c.supply.value : null, partial: c.unknownCount > 0 && c.supply, value: cvalue, why: `${cwhy} ${s.current_gear}${ev.parts.some((q) => q.type.space === 'device' && q.type.current) ? ` ${s.current_device}` : ''}` }));
   out.push(row({ key: 'length', basis: src.length ? 'product' : 'protocol', title: s.length_title, status: 'info', value: src.length ? fill(s.length_product, { value: unit(src.length), product: src.label }) : fill(s.length_ref, { value: unit(model.protocol.distance), section: unit(model.protocol.section) }), why: s.length_why }));
   return `<ul class="dl-rows">${out.join('')}</ul>`;
 }
