@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="nl" data-base="/academy-preview/" data-v="df30a8b6">
+<html lang="nl" data-base="/academy-preview/" data-v="ac36627a">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,9 +9,9 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%2032%2032&#39;%3E%3Crect%20width%3D&#39;32&#39;%20height%3D&#39;32&#39;%20rx%3D&#39;7&#39;%20fill%3D&#39;%23072d78&#39;%2F%3E%3Crect%20x%3D&#39;6&#39;%20y%3D&#39;8&#39;%20width%3D&#39;15&#39;%20height%3D&#39;4.5&#39;%20rx%3D&#39;1.6&#39;%20fill%3D&#39;%23fff&#39;%2F%3E%3Cpath%20d%3D&#39;M8.5%2012.5%2018.5%2012.5%2023%2024.5%204%2024.5Z&#39;%20fill%3D&#39;%23ffd166&#39;%20fill-opacity%3D&#39;.92&#39;%2F%3E%3Ccircle%20cx%3D&#39;25.5&#39;%20cy%3D&#39;10.2&#39;%20r%3D&#39;2&#39;%20fill%3D&#39;%237fb2ff&#39;%2F%3E%3Cpath%20d%3D&#39;M22.2%206.5a4.7%204.7%200%200%201%206.6%200&#39;%20fill%3D&#39;none&#39;%20stroke%3D&#39;%237fb2ff&#39;%20stroke-width%3D&#39;1.5&#39;%20stroke-linecap%3D&#39;round&#39;%2F%3E%3C%2Fsvg%3E">
 
-<link rel="stylesheet" href="/academy-preview/assets/site.css?v=df30a8b6">
+<link rel="stylesheet" href="/academy-preview/assets/site.css?v=ac36627a">
 
-<script type="module" src="/academy-preview/assets/site.js?v=df30a8b6"></script>
+<script type="module" src="/academy-preview/assets/site.js?v=ac36627a"></script>
 </head>
 <body>
 
@@ -71,7 +71,7 @@
 
 <figure class="topology" data-module="topology" id="demo-bacnet-loytec" data-flow-marker="fl-bacnet-loytec">
 <figcaption class="topology-title">LiveLink Premium bedienen via BACnet/IP en LOYTEC</figcaption>
-<p class="topology-summary">Tik op een onderdeel. LiveLink Premium is de BACnet-server; LOYTEC-apparaten en het gebouwbeheer zijn BACnet-apparaten in hetzelfde netwerk.</p>
+<p class="topology-summary">Tik op een onderdeel. LiveLink Premium is de BACnet-server; het gebouwbeheersysteem en de LOYTEC-apparaten zijn BACnet/IP-deelnemers op hetzelfde IP-netwerk, ieder met een eigen aansluiting op de switch. De LOYTEC-apparaten zijn voorbeelden van zulke deelnemers: projectengineering, geen TRILUX-product.</p>
 <div class="topology-toolbar"><div class="topology-size" role="group" aria-label="Weergavegrootte"><label><input type="radio" name="size-bacnet-loytec" value="compact" checked><span>Compact</span></label><label><input type="radio" name="size-bacnet-loytec" value="groot"><span>Groot</span></label></div></div>
 <div class="topology-layout">
 <div class="topology-canvas">
@@ -124,7 +124,7 @@
 <span class="tour-count" aria-live="polite"></span>
 </div>
 <div class="tour-now" aria-live="polite" hidden></div>
-<ol class="tour-steps" aria-label="Alle stappen van de uitleg"><li data-step="server" data-nodes="premium"><strong class="tour-step-title">LiveLink Premium als BACnet-server</strong> <span class="tour-step-text">LiveLink Premium stelt zijn groepen, scènes en meldingen beschikbaar als BACnet-objecten.</span></li><li data-step="netwerk" data-nodes="premium switch liob lpad lvis gbs"><strong class="tour-step-title">Eén netwerk, logische koppelingen</strong> <span class="tour-step-text">BACnet/IP is een logische koppeling over hetzelfde netwerk; de armaturen blijven aan LiveLink.</span></li><li data-step="lpad" data-nodes="lpad switch premium" data-edges="bac-lpad eth-1" data-back="bac-lpad eth-1"><strong class="tour-step-title">Een scène oproepen vanaf het LPAD-7</strong> <span class="tour-step-text">Het LPAD-7 aan de wand roept met een BACnet-bericht een LiveLink-scène op.</span></li><li data-step="liob" data-nodes="liob switch premium" data-edges="bac-liob eth-1" data-back="bac-liob eth-1"><strong class="tour-step-title">Logica met de LIOB-590</strong> <span class="tour-step-text">Een contact op de LIOB-590 kan een scène oproepen, met logica uit de LOYTEC-software.</span></li><li data-step="lvis" data-nodes="premium switch lvis" data-edges="eth-1 bac-lvis" data-flow="eth-1 bac-lvis"><strong class="tour-step-title">Meldingen op het centrale scherm</strong> <span class="tour-step-text">LiveLink geeft storingen en beweging door; het L-VIS-scherm toont ze, bijvoorbeeld voor de technische dienst.</span></li><li data-step="gbs" data-nodes="premium switch gbs" data-edges="eth-1 bac-gbs" data-flow="eth-1 bac-gbs"><strong class="tour-step-title">Ook het gebouwbeheer</strong> <span class="tour-step-text">Het gebouwbeheer gebruikt dezelfde BACnet-objecten; wie wat bedient, spreek je per project af.</span></li></ol>
+<ol class="tour-steps" aria-label="Alle stappen van de uitleg"><li data-step="server" data-nodes="premium"><strong class="tour-step-title">LiveLink Premium als BACnet-server</strong> <span class="tour-step-text">LiveLink Premium stelt zijn groepen, scènes en meldingen beschikbaar als BACnet-objecten.</span></li><li data-step="netwerk" data-nodes="premium switch liob lpad lvis gbs"><strong class="tour-step-title">Eén netwerk, logische koppelingen</strong> <span class="tour-step-text">BACnet/IP loopt over hetzelfde IP-netwerk: ieder apparaat hangt met een eigen aansluiting aan de switch.</span></li><li data-step="lpad" data-nodes="lpad switch premium" data-edges="bac-lpad eth-1" data-back="bac-lpad eth-1"><strong class="tour-step-title">Een scène oproepen vanaf het LPAD-7</strong> <span class="tour-step-text">Het LPAD-7 aan de wand roept met een BACnet-bericht een LiveLink-scène op.</span></li><li data-step="liob" data-nodes="liob switch premium" data-edges="bac-liob eth-1" data-back="bac-liob eth-1"><strong class="tour-step-title">Logica met de LIOB-590</strong> <span class="tour-step-text">Een contact op de LIOB-590 kan een scène oproepen, met logica uit de LOYTEC-software.</span></li><li data-step="lvis" data-nodes="premium switch lvis" data-edges="eth-1 bac-lvis" data-flow="eth-1 bac-lvis"><strong class="tour-step-title">Meldingen op het centrale scherm</strong> <span class="tour-step-text">LiveLink geeft storingen en beweging door; het L-VIS-scherm toont ze, bijvoorbeeld voor de technische dienst.</span></li><li data-step="gbs" data-nodes="premium switch gbs" data-edges="eth-1 bac-gbs" data-flow="eth-1 bac-gbs"><strong class="tour-step-title">Ook het gebouwbeheer</strong> <span class="tour-step-text">Het gebouwbeheer gebruikt dezelfde BACnet-objecten; wie wat bedient, spreek je per project af.</span></li></ol>
 </div>
 <div class="topology-detail" hidden></div>
 <ul class="topology-legend" aria-label="Legenda">
@@ -133,7 +133,7 @@
 </ul>
 <div class="topology-filter" role="group" aria-label="Toon laag" hidden>
 <button type="button" data-layer="all" data-kind="all" aria-pressed="true">Alles</button>
-<button type="button" data-layer="ethernet" data-kind="verbinding" data-text="De netwerkkabel van LiveLink Premium naar de switch." aria-pressed="false"><svg class="legend-line" viewBox="0 0 28 10" aria-hidden="true"><line class="edge-line edge-line--ethernet edge-line--m-netwerk" x1="1" y1="5" x2="27" y2="5"></line></svg>Ethernet/LAN</button><button type="button" data-layer="bacnet" data-kind="verbinding" data-text="BACnet/IP: een logische koppeling over het netwerk, geen DALI-lijn. De armaturen blijven aan LiveLink." aria-pressed="false"><svg class="legend-line" viewBox="0 0 28 10" aria-hidden="true"><line class="edge-line edge-line--bacnet edge-line--m-netwerk" x1="1" y1="5" x2="27" y2="5"></line></svg>BACnet/IP via het netwerk</button><button type="button" data-layer="bedienen" data-kind="rol" aria-pressed="false"><svg class="legend-role" viewBox="0 0 12 12" aria-hidden="true"><circle class="node-role" cx="6" cy="6" r="3"></circle></svg>Bedienen en visualiseren</button><button type="button" data-layer="logica" data-kind="rol" aria-pressed="false"><svg class="legend-role" viewBox="0 0 12 12" aria-hidden="true"><rect class="node-role" x="3.25" y="3.25" width="5.5" height="5.5"></rect></svg>Logica en in-/uitgangen</button>
+<button type="button" data-layer="ethernet" data-kind="verbinding" data-text="Fysiek: de netwerkkabel van LiveLink Premium naar de switch. Ieder BACnet-apparaat krijgt zo&#39;n eigen netwerkaansluiting (ster vanaf de switch, niet doorgelust)." aria-pressed="false"><svg class="legend-line" viewBox="0 0 28 10" aria-hidden="true"><line class="edge-line edge-line--ethernet edge-line--m-netwerk" x1="1" y1="5" x2="27" y2="5"></line></svg>Ethernet/LAN</button><button type="button" data-layer="bacnet" data-kind="verbinding" data-text="Protocol: BACnet/IP is een logische koppeling over het IP-netwerk, geen DALI-lijn. De lijnen vanaf de switch zijn ieder een eigen netwerkaansluiting; de armaturen blijven aan LiveLink." aria-pressed="false"><svg class="legend-line" viewBox="0 0 28 10" aria-hidden="true"><line class="edge-line edge-line--bacnet edge-line--m-netwerk" x1="1" y1="5" x2="27" y2="5"></line></svg>BACnet/IP via het netwerk</button><button type="button" data-layer="bedienen" data-kind="rol" aria-pressed="false"><svg class="legend-role" viewBox="0 0 12 12" aria-hidden="true"><circle class="node-role" cx="6" cy="6" r="3"></circle></svg>Bedienen en visualiseren</button><button type="button" data-layer="logica" data-kind="rol" aria-pressed="false"><svg class="legend-role" viewBox="0 0 12 12" aria-hidden="true"><rect class="node-role" x="3.25" y="3.25" width="5.5" height="5.5"></rect></svg>Logica en in-/uitgangen</button>
 </div>
 <p class="topology-status" aria-live="polite"></p>
 </div>
@@ -150,7 +150,7 @@
 <summary><svg class="part-icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><use href="#sym-bacnet-loytec-netwerk"></use></svg><span>Ethernet-switch</span></summary>
 <dl>
 <dt>Wat is dit?</dt><dd><p>Centraal knooppunt van Ethernet/LAN tussen de centrale unit en de gateways.</p></dd>
-<dt>Wat doet het?</dt><dd><div class="block block--text"><p>Controller of Server en iedere gateway krijgen een eigen aansluiting op de centrale switch. LiveLink Premium-componenten worden niet onderling doorgelust via hun Ethernet-poorten.</p></div></dd>
+<dt>Wat doet het?</dt><dd><div class="block block--text"><p>Controller of Server en iedere gateway krijgen een eigen aansluiting op de centrale switch; LiveLink Premium-componenten worden niet onderling doorgelust via hun Ethernet-poorten. Dat is een TRILUX NL-ontwerpuitgangspunt: de officiële documentatie beschrijft de opbouw via een switch en spreekt zich over doorlussen niet uit.</p></div></dd>
 <dt>Wat is hiervoor nodig?</dt><dd><div class="block block--list"><ul><li>Een netwerkpoort voor de centrale unit en voor iedere gateway, plus eventuele koppeling tussen switches.</li><li>Afstemming met IT over het netwerk, zeker bij grotere projecten.</li></ul></div></dd>
 </dl>
 </details><details class="topology-part" id="part-bacnet-loytec-loytec-liob-590" data-ref="component.loytec-liob-590">

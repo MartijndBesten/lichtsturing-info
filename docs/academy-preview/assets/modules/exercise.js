@@ -1,9 +1,11 @@
 import { showFeedback } from './check.js';
+import { buildQuestion } from './exercise-build.js';
 
 export function mount(el, config = {}) {
   const s = config.strings || {};
   for (const q of el.querySelectorAll('.ex-q')) {
-    if (q.hasAttribute('data-seq')) sequenceQuestion(q, s);
+    if (q.hasAttribute('data-build')) buildQuestion(q, el, s);
+    else if (q.hasAttribute('data-seq')) sequenceQuestion(q, s);
     else (q.dataset.answer ? selectQuestion : choiceQuestion)(q, el, s);
   }
   candidates(el);
@@ -135,19 +137,28 @@ function selectQuestion(q, el, s) {
       const id = idOf(e);
       if (chosen.has(id)) chosen.delete(id);
       else chosen.add(id);
-      for (const x of items) x.classList.toggle('is-selected', chosen.has(idOf(x)));
+      for (const x of items) {
+        x.classList.toggle('is-selected', chosen.has(idOf(x)));
+        x.classList.remove('is-right', 'is-wrong', 'is-answer');
+      }
     });
   });
   q.querySelector('[data-check-select]')?.addEventListener('click', () => {
     const ok = chosen.size === want.size && [...chosen].every((id) => want.has(id));
-    for (const e of items) e.classList.toggle('is-answer', want.has(idOf(e)));
+    for (const e of items) {
+      const w = want.has(idOf(e));
+      const c = chosen.has(idOf(e));
+      e.classList.toggle('is-right', w && c);
+      e.classList.toggle('is-wrong', c && !w);
+      e.classList.toggle('is-answer', w && !c);
+    }
     q.classList.add('is-answered');
     showFeedback(feedback, { right: ok, label: ok ? s.right : s.wrong, text: ok ? s.selRight : s.selWrong });
     if (answer) answer.open = true;
   });
   q.querySelector('[data-reset-select]')?.addEventListener('click', () => {
     chosen.clear();
-    for (const e of items) e.classList.remove('is-selected', 'is-answer');
+    for (const e of items) e.classList.remove('is-selected', 'is-answer', 'is-right', 'is-wrong');
     showFeedback(feedback, {});
     activate();
   });

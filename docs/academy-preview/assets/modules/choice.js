@@ -38,7 +38,8 @@ ${reasons(r, a, ['controleren', 'minder']) ? `<p class="choice-sub">${esc(s.chec
     out.innerHTML = `${logical ? card(logical, a, 'choice-route--main', s.logical) : `<p class="choice-note">${esc(s.none || '')}</p>`}
 ${alts.map((r) => card(r, a, 'choice-route--alt', s.also)).join('')}
 ${patterns.length ? `<section class="choice-patterns"><p class="choice-sub">${esc(s.patterns || '')}</p><ul>${patterns.map((p) => `<li>${p.url ? `<a href="${esc(p.url)}">${esc(p.title)}</a>` : esc(p.title)}${p.summary ? ` — ${partsHtml(p.summary)}` : ''}</li>`).join('')}</ul></section>` : ''}
-${less.length ? `<details class="choice-less"><summary>${esc(s.less || '')}</summary>${less.map((x) => `<p><strong>${esc(x.r.title)}</strong></p><ul>${x.why}</ul>`).join('')}</details>` : ''}`;
+${less.length ? `<details class="choice-less"><summary>${esc(s.less || '')}</summary>${less.map((x) => `<p><strong>${esc(x.r.title)}</strong></p><ul>${x.why}</ul>`).join('')}</details>` : ''}
+<p class="choice-outro">${esc(s.outro || '')}</p>`;
     out.focus?.();
   });
   form.addEventListener('reset', () => {
