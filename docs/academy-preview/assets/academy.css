@@ -309,6 +309,8 @@ a.academy-card:hover, a.academy-card:focus-visible { border-color: var(--blue); 
 @keyframes arch-pulse { 50% { opacity: .25; } }
 @media (prefers-reduced-motion: reduce) { .arch-node.is-answer rect, .arch-link.is-answer .ch-line { animation: none; } }
 .ex-q.is-selecting .ex-select-hint { color: var(--blue); font-weight: 600; }
+.arch-bus .ch-line { stroke-width: 2.5; }
+.arch-busnote { margin: var(--s-1) 0 var(--s-3); font-size: var(--fs-small); color: var(--muted); }
 .arch-slot rect { fill: var(--blue-pale); stroke: var(--blue); stroke-width: 1.5; stroke-dasharray: 5 3; }
 .arch-slot text { fill: var(--blue); font-weight: 700; font-size: 13px; }
 .arch-slot.is-filled rect { fill: var(--bg); stroke-dasharray: none; }
