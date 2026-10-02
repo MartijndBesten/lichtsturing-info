@@ -18,9 +18,26 @@ export function wireCheck(check, strings = {}) {
         other.classList.toggle('is-right', other === li && right);
         other.classList.toggle('is-wrong', other === li && !right);
       }
-      if (feedback) feedback.textContent = right ? strings.right || '' : strings.wrong || '';
+      showFeedback(feedback, { right, label: right ? strings.right : strings.wrong });
       check.classList.toggle('is-answered', true);
       if (answer) answer.open = true;
     });
   }
+}
+
+export function showFeedback(el, { right = null, label = '', qual = '', text = '' } = {}) {
+  if (!el) return;
+  const part = (cls, value) => {
+    const span = document.createElement('span');
+    span.className = cls;
+    span.textContent = value;
+    return span;
+  };
+  const parts = [];
+  if (label) parts.push(part('fb-label', label));
+  if (qual) parts.push(part('fb-qual', qual));
+  if (text) parts.push(part('fb-text', text));
+  el.replaceChildren(...parts);
+  el.classList.toggle('is-right', right === true);
+  el.classList.toggle('is-wrong', right === false);
 }

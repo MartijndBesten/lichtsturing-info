@@ -9,12 +9,22 @@ export function mount(el, config = {}) {
   el.classList.add('is-enhanced');
 
   let current = null;
+  let stepParts = null;
+  const syncParts = () => {
+    for (const p of parts) {
+      const ids = p.dataset.nodes.split(' ');
+      p.hidden = current ? !ids.includes(current) : stepParts ? !ids.some((id) => stepParts.has(id)) : false;
+    }
+  };
   function pick(id) {
     current = current === id ? null : id;
     for (const n of nodes) n.classList.toggle('is-picked', n.dataset.node === current);
-    for (const p of parts) p.hidden = Boolean(current) && !p.dataset.nodes.split(' ').includes(current);
     el.classList.toggle('has-pick', Boolean(current));
+    syncParts();
   }
+  const clearPick = () => {
+    if (current) pick(current);
+  };
   for (const v of svgs) {
     const own = [...v.querySelectorAll('.arch-node')];
     own.forEach((n, i) => roving(n, i, own));
@@ -65,11 +75,19 @@ export function mount(el, config = {}) {
     const pos = Object.assign(document.createElement('span'), { className: 'arch-steppos' });
     pos.setAttribute('aria-live', 'polite');
     const start = Object.assign(document.createElement('button'), { type: 'button', className: 'arch-stepbtn arch-stepbtn--start', textContent: s.start || '' });
-    start.addEventListener('click', () => show(0));
+    let stepping = false;
+    start.addEventListener('click', () => {
+      stepping = true;
+      show(0);
+    });
     bar.append(start, prev, pos, next, all);
     el.querySelector('.arch-steps')?.before(bar);
     const show = (i) => {
       at = Math.max(0, Math.min(stepItems.length - 1, i));
+      clearPick();
+      stepParts = stepping ? new Set(stepped.filter((e) => Number(e.dataset.step) === at && e.dataset.node).map((e) => e.dataset.node)) : null;
+      el.classList.toggle('is-stepping', stepping);
+      syncParts();
       for (const e of stepped) e.classList.toggle('is-later', Number(e.dataset.step) > at);
       for (const e of stepped) e.classList.toggle('is-new', Number(e.dataset.step) === at && at > 0);
       stepItems.forEach((li, k) => li.classList.toggle('is-current', k === at));
@@ -79,7 +97,10 @@ export function mount(el, config = {}) {
     };
     prev.addEventListener('click', () => show(at - 1));
     next.addEventListener('click', () => show(at + 1));
-    all.addEventListener('click', () => show(stepItems.length - 1));
+    all.addEventListener('click', () => {
+      stepping = false;
+      show(stepItems.length - 1);
+    });
     el.archStep = show;
     show(stepItems.length - 1);
   }

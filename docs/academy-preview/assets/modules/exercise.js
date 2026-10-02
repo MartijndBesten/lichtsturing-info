@@ -1,3 +1,5 @@
+import { showFeedback } from './check.js';
+
 export function mount(el, config = {}) {
   const s = config.strings || {};
   for (const q of el.querySelectorAll('.ex-q')) {
@@ -73,7 +75,7 @@ function sequenceQuestion(q, s) {
       li.classList.toggle('is-wrong', li.dataset.id !== want[i]);
     });
     const ok = now.every((li, i) => li.dataset.id === want[i]);
-    if (feedback) feedback.textContent = ok ? s.seqRight || '' : s.seqWrong || '';
+    showFeedback(feedback, { right: ok, label: ok ? s.right : s.wrong, text: ok ? s.seqRight : s.seqWrong });
     q.classList.add('is-answered');
     if (answer) answer.open = true;
   });
@@ -99,7 +101,7 @@ function choiceQuestion(q, el, s) {
         o.classList.toggle('is-wrong', o === li && !right);
       }
       const why = q.querySelector(`[data-why="${li.dataset.option}"]`);
-      if (feedback) feedback.textContent = `${right ? s.right || '' : s.wrong || ''} ${why ? why.textContent.replace(why.querySelector('strong')?.textContent ?? '', '').trim() : ''}`.trim();
+      showFeedback(feedback, { right, label: right ? s.right : s.wrong, qual: right ? s.qualRight : '', text: why?.querySelector('.ex-why-text')?.textContent.trim() ?? '' });
       for (const w of q.querySelectorAll('[data-why]')) w.classList.toggle('is-chosen', w === why);
       q.classList.add('is-answered');
       if (answer) answer.open = true;
@@ -140,13 +142,13 @@ function selectQuestion(q, el, s) {
     const ok = chosen.size === want.size && [...chosen].every((id) => want.has(id));
     for (const e of items) e.classList.toggle('is-answer', want.has(idOf(e)));
     q.classList.add('is-answered');
-    if (feedback) feedback.textContent = ok ? s.selRight || '' : s.selWrong || '';
+    showFeedback(feedback, { right: ok, label: ok ? s.right : s.wrong, text: ok ? s.selRight : s.selWrong });
     if (answer) answer.open = true;
   });
   q.querySelector('[data-reset-select]')?.addEventListener('click', () => {
     chosen.clear();
     for (const e of items) e.classList.remove('is-selected', 'is-answer');
-    if (feedback) feedback.textContent = '';
+    showFeedback(feedback, {});
     activate();
   });
   if (q === el.querySelector('.ex-q[data-answer]')) activate();

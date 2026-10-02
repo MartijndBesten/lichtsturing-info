@@ -3,7 +3,11 @@ import { wireCheck } from './check.js';
 export function mount(el, config) {
   const s = config.strings || {};
   for (const check of el.querySelectorAll('[data-check]')) wireCheck(check, s);
-  if (config.mode === 'filter') filter(el);
+  if (config.mode === 'filter') {
+    filter(el);
+    import('./progress.js').then((pg) => pg.homeProgress(s)).catch(() => {});
+  }
+  if (config.mode === 'checks' && config.progress) import('./progress.js').then((pg) => pg.lessonProgress(config.progress)).catch(() => {});
   if (config.mode === 'trainer') trainer(el, s, config);
 }
 
