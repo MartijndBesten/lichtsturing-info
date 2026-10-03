@@ -133,9 +133,9 @@ a.academy-card:hover, a.academy-card:focus-visible { border-color: var(--blue); 
 .slide .training-check h3 { font-size: .6em; }
 .slide .check-question { font-size: 1.2em; font-weight: 600; color: var(--ink); }
 .slide .check-option { font-size: 1em; }
-.deck-notes { position: absolute; left: 0; right: 0; bottom: 0; max-height: 40%; overflow: auto; padding: var(--s-3) clamp(1.5rem, 6vw, 8rem); background: var(--navy); color: var(--on-dark); font-size: var(--fs-body); line-height: 1.5; z-index: 2; }
+.deck-notes { position: absolute; left: 0; right: 0; bottom: 0; max-height: 40%; overflow: auto; padding: var(--s-3) clamp(1.5rem, 6vw, 8rem); background: var(--surface); color: var(--ink); border-top: 4px solid var(--navy); box-shadow: 0 -2px 8px rgba(0, 0, 0, .12); font-size: var(--fs-body); line-height: 1.5; z-index: 2; }
 .deck-notes[hidden] { display: none; }
-.deck-notes .deck-notes-label { color: var(--on-dark-muted); }
+.deck-notes .deck-notes-label { color: var(--muted); }
 .deck-notes p { max-width: 60rem; margin: 0 0 var(--s-1); }
 .presenter-progress { height: 4px; background: var(--surface-2); }
 .presenter-progress span { display: block; height: 100%; width: 0; background: var(--blue); transition: width var(--dur) var(--ease); }
@@ -207,8 +207,6 @@ a.academy-card:hover, a.academy-card:focus-visible { border-color: var(--blue); 
 .deck-deeper summary { font-weight: 600; cursor: pointer; }
 .presenter-nextup { font-size: var(--fs-small); color: var(--muted); margin: 0; padding: 0 var(--s-5); }
 .slide-caption { font-size: 1.15em; font-weight: 700; color: var(--ink); max-width: 46rem; margin: 0 0 var(--s-2); }
-.deck-notes .deck-deeper { color: var(--on-dark); }
-.deck-notes .deck-deeper a { color: var(--on-dark); }
 
 @media (prefers-reduced-motion: reduce) { .presenter-progress span { transition: none; } }
 @media (max-width: 40rem) {
@@ -828,16 +826,17 @@ p.kbasis { display: table; }
 .sn-fb-title { font-weight: 600; color: var(--ink); }
 .sn-verdict { display: inline-block; padding: 0 .45rem; border-radius: 999px; font-size: .6875rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: #fff; margin-right: var(--s-1); }
 .sn-verdict--goed { background: var(--ok); }
-.sn-verdict--let-op { background: var(--c-daylight); }
+.sn-verdict--let-op { background: #7d5310; }
 .sn-verdict--niet { background: var(--warn); }
 .sn-aspects { list-style: none; padding: 0; margin: var(--s-1) 0 0; }
 .sn-asp { display: grid; grid-template-columns: 1.4rem 1fr; column-gap: var(--s-1); margin: 0 0 var(--s-1); }
 .sn-asp-i { grid-row: span 2; width: 1.2rem; height: 1.2rem; display: grid; place-items: center; border-radius: 50%; font-size: .7rem; font-weight: 700; color: #fff; }
 .sn-asp--goed .sn-asp-i { background: var(--ok); }
-.sn-asp--let-op .sn-asp-i { background: var(--c-daylight); }
+.sn-asp--let-op .sn-asp-i { background: #7d5310; }
 .sn-asp--niet .sn-asp-i { background: var(--warn); }
 .sn-asp-k { font-weight: 700; color: var(--ink); }
 .sn.is-enhanced.sn--room .sn-feedback[hidden] { display: none; }
+.sn [hidden], .ct [hidden], .ex-feedback[hidden], .check-feedback[hidden], .ex-answer[hidden], .check-answer[hidden] { display: none !important; }
 .sn-cases { list-style: none; padding: 0; margin: 0; }
 .sn-case { border-top: 1px solid var(--line); padding: var(--s-4) 0; }
 .sn-case-title { margin: 0 0 var(--s-2); font-size: var(--fs-body); }
@@ -944,6 +943,8 @@ p.kbasis { display: table; }
 .sn-sort-text, .sn-spot-title { font-weight: 600; color: var(--ink); margin: 0 0 var(--s-2); }
 .sn-pick-fb { display: flex; flex-direction: column; }
 .sn-role { margin: var(--s-1) 0 0; }
+.sn-more { margin-top: var(--s-1); }
+.sn-more summary { cursor: pointer; color: var(--blue); font-weight: 600; }
 .sn-role-k { font-weight: 700; color: var(--blue); }
 .sn-spots { list-style: none; padding: 0; margin: 0; display: grid; gap: 0 var(--s-4); }
 .sn-canvas--spot .sn-svg { max-width: 18rem; }
@@ -1133,3 +1134,30 @@ p.kbasis { display: table; }
 }
 @media (prefers-reduced-motion: reduce) { .ct-row, .ct-lum, .ct-lane { transition: none; } .ct-zone.is-flash { animation: none; } }
 @media print { .ct-tabs, .ct-press, .ct-seq-ctl, .ct-lanes-ctl, .ct-reset, .ct-task-actions { display: none !important; } .ct.is-enhanced .ct-panel, .ct--sequence.is-enhanced .ct-step { display: block !important; } }
+
+.ct-src-notes > summary { cursor: pointer; color: var(--blue); }
+.sn-zones { list-style: none; display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-1); padding: 0; margin: var(--s-2) 0; }
+.sn-zone { display: grid; gap: 2px; min-width: 7.5rem; padding: var(--s-1) var(--s-2); border: 1.5px solid var(--line-strong); border-radius: var(--radius); background: var(--bg); }
+.sn-zone.is-occ { border-color: var(--c-detect); background: var(--detect-pale); }
+.sn-zone-k { font-weight: 700; color: var(--ink); }
+.sn-zone-p { font-size: var(--fs-small); color: var(--ink); }
+.sn-zone-p--leeg { color: var(--muted); }
+.sn-zlink { font-size: var(--fs-small); font-weight: 600; color: var(--ink); }
+.ct-task-auto { margin: var(--s-2) 0 var(--s-3); padding: var(--s-2) var(--s-3); border-left: 4px solid var(--blue); background: var(--surface); border-radius: 0 var(--radius) var(--radius) 0; }
+.ct-task-auto label { display: grid; gap: var(--s-1); }
+.ct-task-auto select { width: 100%; max-width: 100%; font: inherit; padding: .35rem .5rem; }
+.ct-row-want { margin: var(--s-1) 0; font-weight: 600; color: var(--ink); }
+.ct-row .ct-task-fb { margin: var(--s-1) 0; font-size: var(--fs-small); }
+.ct-task-actions { margin: var(--s-3) 0; }
+.ct--wiring .ct-result { margin: var(--s-2) 0 var(--s-3); }
+@media (max-width: 40rem) {
+  .ct--wiring.is-enhanced .ct-result { position: sticky; top: 0; z-index: 3; background: var(--bg); padding: var(--s-1) 0; border-bottom: 1px solid var(--line); }
+  .ct--wiring.is-enhanced .ct-result-k { display: none; }
+  .ct--wiring.is-enhanced .ct-canvas--room { padding: 2px; }
+  .ct--wiring.is-enhanced .ct-canvas--room svg { max-height: 7.5rem; width: auto; max-width: 100%; margin: 0 auto; }
+  .ct--wiring.is-enhanced .ct-status, .ct--wiring.is-enhanced .ct-what { font-size: var(--fs-small); margin: 2px 0; }
+}
+@media (max-width: 40rem) {
+  .ct--sources .ct-src-grid { display: flex; flex-direction: column; }
+  .ct--sources .ct-zone { order: -1; top: 0; z-index: 3; margin-bottom: var(--s-2); }
+}

@@ -61,10 +61,7 @@ export function pick(el) {
       b.addEventListener('click', () => {
         mark(btns, b, li.dataset.answer, 'pos');
         box.hidden = false;
-        for (const f of box.querySelectorAll('.sn-feedback')) {
-          f.hidden = f.dataset.opt !== b.dataset.pos && f.dataset.opt !== li.dataset.answer;
-          f.style.order = f.dataset.opt === b.dataset.pos ? '0' : '1';
-        }
+        for (const f of box.querySelectorAll('.sn-feedback')) f.hidden = f.dataset.opt !== b.dataset.pos;
       });
     }
   }

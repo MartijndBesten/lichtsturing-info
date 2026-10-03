@@ -90,24 +90,31 @@ const MODES = {
         sel.dispatchEvent(new Event('change'));
       }
       what.hidden = true;
-      for (const li of el.querySelectorAll('.ct-task-rows > li')) li.querySelector('.ct-task-fb').hidden = true;
+      for (const fb of el.querySelectorAll('.ct-task-fb')) fb.hidden = true;
       draw();
     });
     if (c.task) {
       el.querySelector('.ct-task-actions').hidden = false;
-      for (const d of el.querySelectorAll('.ct-task .ct-answer')) d.hidden = true;
-      el.querySelector('.ct-task [data-act="check"]').addEventListener('click', () => {
+      for (const d of el.querySelectorAll('.ct-answer')) d.hidden = true;
+      const auto = el.querySelector('.ct-auto');
+      if (auto) auto.disabled = false;
+      const say = (box, w) => {
+        const fb = box.querySelector('.ct-task-fb');
+        fb.hidden = false;
+        const k = fb.querySelector('[data-slot="k"]');
+        k.textContent = w.kind ? `${w.kind === 'werkt' ? '✓' : '!'} ${c.strings.feedback[w.kind]}` : `! ${c.strings.chooseFirst}`;
+        fbClass(k, w.kind ?? 'systeem');
+        fb.querySelector('[data-slot="why"]').textContent = w.why;
+      };
+      const none = { kind: null, why: '' };
+      el.querySelector('.ct-task-actions [data-act="check"]').addEventListener('click', () => {
+        if (c.auto && auto) {
+          const got = auto.value;
+          say(el.querySelector('.ct-task-auto'), !got ? none : got === c.auto.answer ? { kind: 'werkt', why: c.auto.why } : { kind: 'systeem', why: c.auto.wrong.find((x) => x.opt === got)?.why ?? '' });
+        }
         for (const r of c.task) {
-          const li = el.querySelector(`.ct-task-rows > li[data-input="${r.input}"]`);
-          const fb = li.querySelector('.ct-task-fb');
           const got = assign[r.input];
-          const w = got === r.answer ? { kind: 'werkt', why: r.why } : r.wrong.find((x) => x.fn === got) ?? r.otherwise;
-          fb.hidden = false;
-          const k = fb.querySelector('[data-slot="k"]');
-          k.textContent = c.strings.feedback[w.kind];
-          fbClass(k, w.kind);
-          fb.querySelector('[data-slot="why"]').textContent = w.why;
-          li.querySelector('.ct-answer').hidden = got === r.answer;
+          say(el.querySelector(`.ct-row[data-input="${r.input}"]`), got === r.answer ? { kind: 'werkt', why: r.why } : fns.get(got)?.kind === 'inactief' ? none : r.wrong.find((x) => x.fn === got) ?? r.otherwise);
         }
       });
     }

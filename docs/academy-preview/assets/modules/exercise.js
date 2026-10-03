@@ -1,9 +1,10 @@
-import { showFeedback } from './check.js';
+import { showFeedback, hideMore, showMore } from './check.js';
 import { buildQuestion } from './exercise-build.js';
 
 export function mount(el, config = {}) {
   const s = config.strings || {};
   for (const q of el.querySelectorAll('.ex-q')) {
+    hideMore(q.querySelector('.ex-answer'));
     if (q.hasAttribute('data-build')) buildQuestion(q, el, s);
     else if (q.hasAttribute('data-seq')) sequenceQuestion(q, s);
     else (q.dataset.answer ? selectQuestion : choiceQuestion)(q, el, s);
@@ -79,7 +80,7 @@ function sequenceQuestion(q, s) {
     const ok = now.every((li, i) => li.dataset.id === want[i]);
     showFeedback(feedback, { right: ok, label: ok ? s.right : s.wrong, text: ok ? s.seqRight : s.seqWrong });
     q.classList.add('is-answered');
-    if (answer) answer.open = true;
+    showMore(answer, s.more);
   });
 }
 
@@ -106,7 +107,7 @@ function choiceQuestion(q, el, s) {
       showFeedback(feedback, { right, label: right ? s.right : s.wrong, qual: right ? s.qualRight : '', text: why?.querySelector('.ex-why-text')?.textContent.trim() ?? '' });
       for (const w of q.querySelectorAll('[data-why]')) w.classList.toggle('is-chosen', w === why);
       q.classList.add('is-answered');
-      if (answer) answer.open = true;
+      showMore(answer, s.more);
     });
   }
 }
@@ -154,7 +155,7 @@ function selectQuestion(q, el, s) {
     }
     q.classList.add('is-answered');
     showFeedback(feedback, { right: ok, label: ok ? s.right : s.wrong, text: ok ? s.selRight : s.selWrong });
-    if (answer) answer.open = true;
+    showMore(answer, s.more);
   });
   q.querySelector('[data-reset-select]')?.addEventListener('click', () => {
     chosen.clear();

@@ -1,4 +1,4 @@
-import { showFeedback } from './check.js';
+import { showFeedback, showMore } from './check.js';
 
 export function buildQuestion(q, el, s) {
   const fig = el.querySelector('.arch');
@@ -117,7 +117,7 @@ export function buildQuestion(q, el, s) {
     setPlace(null);
     showFeedback(feedback, { right: ok, label: ok ? s.right : s.wrong, text: ok ? s.buildRight : filled ? s.buildWrong : s.buildIncomplete });
     q.classList.add('is-answered');
-    if (answer) answer.open = true;
+    showMore(answer, s.more);
   });
   q.querySelector('[data-reset-build]')?.addEventListener('click', () => {
     for (const sel of selects) {

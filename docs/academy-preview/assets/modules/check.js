@@ -2,6 +2,8 @@ export function wireCheck(check, strings = {}) {
   const feedback = check.querySelector('.check-feedback');
   const answer = check.querySelector('.check-answer');
   const options = [...check.querySelectorAll('.check-options li')];
+  const right0 = check.querySelector('.check-options li[data-correct]')?.textContent.trim() ?? '';
+  hideMore(answer);
   for (const li of options) {
     const btn = document.createElement('button');
     btn.type = 'button';
@@ -18,11 +20,21 @@ export function wireCheck(check, strings = {}) {
         other.classList.toggle('is-right', other === li && right);
         other.classList.toggle('is-wrong', other === li && !right);
       }
-      showFeedback(feedback, { right, label: right ? strings.right : strings.wrong });
+      showFeedback(feedback, { right, label: right ? strings.right : strings.wrong, text: right ? '' : `${strings.rightIs || ''} ${right0}`.trim() });
       check.classList.toggle('is-answered', true);
-      if (answer) answer.open = true;
+      showMore(answer, strings.more);
     });
   }
+}
+
+export function hideMore(details) {
+  if (details) details.hidden = true;
+}
+export function showMore(details, label) {
+  if (!details) return;
+  details.hidden = false;
+  const sum = details.querySelector('summary');
+  if (sum && label) sum.textContent = label;
 }
 
 export function showFeedback(el, { right = null, label = '', qual = '', text = '' } = {}) {
