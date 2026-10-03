@@ -23,10 +23,12 @@ export function prepare(entries) {
   return entries.map((e) => ({
     ...e,
     _t: norm(e.t),
+    _tw: words(e.t).join(' '),
     _s: norm(e.s),
     _k: norm(e.k),
     _x: norm(e.x),
     _kw: String(e.k || '').split(' · ').filter(Boolean),
+    _n: (e.n ?? []).map((n) => words(n).join(' ')),
   }));
 }
 
@@ -46,9 +48,15 @@ function score(e, q) {
   if (q.phrase && (e._t.includes(q.phrase) || (e.o && e._k.includes(q.phrase)))) total += 15;
   else if (q.phrase && e._k.includes(q.phrase)) total += 10;
   else if (q.core.includes(' ') && (e._t.includes(q.core) || e._k.includes(q.core))) total += 8;
-  if (e._t === q.phrase) total += 10;
+  if (e._tw === q.phrase || (e.r && e._n.includes(q.phrase))) total += 10;
   return total;
 }
+
+const named = (e, q) => q.required.every((w) => hit(e._t, w) || e._n.some((n) => hit(n, w)));
+
+const MAX_NAMED_SOURCES = 3;
+
+const ownPlace = (r, q) => ((r.entry.r || r.entry.p) && named(r.entry, q) ? 1 : 0);
 
 function via(e, q) {
   if (q.required.every((w) => hit(e._t, w))) return null;
@@ -68,10 +76,11 @@ function via(e, q) {
 export function search(prepared, query, { limit = 12 } = {}) {
   const q = parseQuery(query);
   if (!q.required.length) return [];
-  return prepared
-    .map((e) => ({ entry: e, score: score(e, q) }))
-    .filter((r) => r.score > 0)
-    .sort((a, b) => b.score - a.score)
+  const found = prepared.map((e) => ({ entry: e, score: score(e, q) })).filter((r) => r.score > 0);
+  const sources = found.filter((r) => r.entry.r && named(r.entry, q)).length;
+  const concrete = sources > 0 && sources <= MAX_NAMED_SOURCES;
+  return found
+    .sort((a, b) => b.score - a.score || (concrete ? ownPlace(b, q) - ownPlace(a, q) : 0))
     .slice(0, limit)
     .map((r) => ({ ...r, via: via(r.entry, q) }));
 }
