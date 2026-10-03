@@ -1,49 +1,62 @@
-const KEY = 'lichtsturing-academy-voortgang';
-const empty = () => ({ v: 1, lessons: {}, modules: {}, last: null });
+import { createProgress } from './academy-progress.js';
+import { localAdapter } from './progress-local.js';
+
+const LAST = 'lichtsturing-academy-laatst';
+const progress = () => createProgress({ adapter: localAdapter(), context: 'learner' });
+const slug = (id) => id.split('.')[1];
+
+function readLast() {
+  try {
+    const l = JSON.parse(localStorage.getItem(LAST) || 'null');
+    if (l && typeof l.module === 'string' && typeof l.url === 'string' && l.url.startsWith('/')) return l;
+    const v1 = JSON.parse(localStorage.getItem('lichtsturing-academy-voortgang') || 'null'); // overname uit v1
+    return v1?.last?.url?.startsWith('/') ? v1.last : null;
+  } catch {
+    return null;
+  }
+}
+function writeLast(l) {
+  try {
+    if (l) localStorage.setItem(LAST, JSON.stringify(l));
+    else localStorage.removeItem(LAST);
+  } catch {
+  }
+}
 
 export function read() {
+  let s;
   try {
-    const d = JSON.parse(localStorage.getItem(KEY) || 'null');
-    return d && d.v === 1 ? { ...empty(), ...d } : empty();
+    s = localAdapter().read();
   } catch {
-    return empty();
+    s = { objects: {}, modules: {} };
   }
+  const lessons = {};
+  for (const [id, o] of Object.entries(s.objects)) if (id.startsWith('lesson.') && o.state === 'completed') lessons[slug(id)] = true;
+  const modules = {};
+  for (const [id, m] of Object.entries(s.modules)) if (id.startsWith('learning_path.') && m.completedAt) modules[slug(id)] = { done: true };
+  return { v: 1, lessons, modules, last: readLast() };
 }
 
-function write(d) {
-  try {
-    localStorage.setItem(KEY, JSON.stringify(d));
-    return true;
-  } catch {
-    return false;
-  }
-}
-
-export function markLesson(slug) {
-  const d = read();
-  d.lessons[slug] = true;
-  write(d);
+export function markLesson(s) {
+  progress().completeLearningObject(`lesson.${s}`);
 }
 
 export function setLast(module, url, title) {
-  const d = read();
-  d.last = { module, url, title };
-  write(d);
+  writeLast({ module, url, title });
 }
 
 export function finishModule(module) {
-  const d = read();
-  d.modules[module] = { done: true };
-  if (d.last?.module === module) d.last = null;
-  write(d);
+  progress().completeModule(`learning_path.${module}`);
+  if (readLast()?.module === module) writeLast(null);
 }
 
 export function resetModule(module, lessons) {
-  const d = read();
-  delete d.modules[module];
-  for (const l of lessons) delete d.lessons[l];
-  if (d.last?.module === module) d.last = null;
-  write(d);
+  const p = progress();
+  p.resetModule(`learning_path.${module}`);
+  localAdapter().update((s) => {
+    for (const l of lessons) delete s.objects[`lesson.${l}`];
+  });
+  if (readLast()?.module === module) writeLast(null);
 }
 
 export function status(d, module, lessons) {
@@ -78,10 +91,10 @@ export function homeProgress(s) {
 
 export function lessonProgress(p) {
   if (!read().modules[p.module]?.done) setLast(p.module, location.pathname, p.title);
+  progress().startLearningObject(`lesson.${p.lesson}`);
   document.querySelector('[data-next-lesson]')?.addEventListener('click', () => markLesson(p.lesson));
   document.querySelector('[data-finish-lesson]')?.addEventListener('click', () => {
     markLesson(p.lesson);
     finishModule(p.module);
   });
 }
-
