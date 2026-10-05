@@ -75,3 +75,15 @@
 .kbasis--ontwerp { color: var(--c-relatie); }
 .kbasis--praktijk { color: var(--warn); }
 .kbasis--voorbeeld { color: var(--muted); border-style: dashed; }
+
+.pf-film { border-bottom: 1px solid var(--line); }
+.pf-film-inner { display: grid; gap: var(--s-5); padding-top: var(--s-7); padding-bottom: var(--s-7); }
+.pf-film-text h2 { margin: 0 0 var(--s-3); color: var(--navy); }
+.pf-film-text p { margin: 0 0 var(--s-3); max-width: 34rem; }
+.pf-film-links { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-4); }
+.pf-film-links a { font-weight: 600; }
+.pf-film .home-film { grid-area: auto; min-width: 0; } /* film-hero.css plaatst de film in het raster van de vroegere hero (grid-area: film) */
+@media (min-width: 64rem) {
+  .pf-film-inner { grid-template-columns: minmax(16rem, 22rem) minmax(0, 1fr); align-items: center; column-gap: var(--s-8); }
+}
+
