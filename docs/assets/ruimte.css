@@ -80,12 +80,14 @@
   .rs-sensor.is-ping .rs-ring { animation: rs-ping 1.6s ease-out 2; }
   .rs-sensor.is-ping .rs-ring--1 { animation-delay: .2s; }
   .rs-sensor.is-ping .rs-ring--2 { animation-delay: .4s; }
-  .rs-sig.is-active { animation: rs-flow 1.2s linear 3; }
+  .rs-sig.is-active { animation: rs-flow-first 2.4s linear 2; }
+  .rs-sig[data-leg='uit'].is-active { animation-name: rs-flow-second; }
 }
 @media (prefers-reduced-motion: reduce) {
   .rs-sensor.is-ping .rs-ring--0 { opacity: .8; }
 }
 @keyframes rs-ping { 0% { opacity: .9; transform: scale(.6); } 100% { opacity: 0; transform: scale(1.25); } }
-@keyframes rs-flow { from { stroke-dashoffset: 44; } to { stroke-dashoffset: 0; } }
+@keyframes rs-flow-first { 0% { opacity: 1; stroke-dashoffset: 44; } 50% { opacity: 1; stroke-dashoffset: 0; } 51%, 100% { opacity: 0; } }
+@keyframes rs-flow-second { 0%, 49% { opacity: 0; } 50% { opacity: 1; stroke-dashoffset: 44; } 100% { opacity: 1; stroke-dashoffset: 0; } }
 .rs-ring { transform-box: fill-box; transform-origin: center; }
 @media (max-width: 40rem) { .rs-phases button { min-height: 22px; padding: 0; font-size: 0; } }
