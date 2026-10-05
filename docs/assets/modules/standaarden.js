@@ -1,5 +1,5 @@
 const STEP_MS = 5200;
-const DIM = { dali: ['nlc', 'gateway'], 'dali-2': ['nlc', 'gateway'], d4i: ['nlc', 'gateway'], nlc: ['dali', 'dali-2', 'd4i'], gateway: [] };
+const DIM = { dali: ['nlc', 'gateway'], 'dali-2': ['nlc', 'gateway'], d4i: ['nlc', 'gateway'], 'dali-plus': ['nlc', 'gateway'], nlc: ['dali', 'dali-2', 'd4i', 'dali-plus'], gateway: [] };
 
 export function mount(el, config = {}) {
   const $ = (s) => el.querySelector(s);

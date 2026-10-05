@@ -19,6 +19,13 @@
 .sd-area--d4i { fill: #c9e6e1; stroke: var(--sd-dali); }
 .sd-area--nlc { fill: #f1edf9; stroke: var(--sd-nlc); }
 .sd-area--gw { fill: #fff; stroke: var(--c-relatie); stroke-dasharray: 4 3; }
+.sd-area--plus { fill: #fff; stroke: var(--sd-dali); stroke-dasharray: 6 3; }
+.sd-set[data-item='dali-plus'] .sd-name { font-size: 15px; }
+.sd-set[data-item='dali-plus'] .sd-tag { font-size: 10.5px; }
+.sd-set[data-item='dali-plus'] .sd-radio { stroke: var(--sd-dali); }
+.sd-plus-dot { fill: var(--sd-dali); }
+.sd-bridge { fill: none; stroke: var(--sd-dali); stroke-width: 1.5; stroke-dasharray: 3 3; }
+.sd-card[data-item='dali-plus'] { border-left-style: dashed; }
 .sd-name { font-size: 19px; font-weight: 700; fill: var(--ink); }
 .sd-set[data-item='gateway'] .sd-name { font-size: 13px; }
 .sd-tag { font-size: 11.5px; fill: var(--muted); }
@@ -43,7 +50,7 @@
 .sd-flow { fill: none; stroke: var(--sd-flow); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 10 600; opacity: 0; }
 .sd-set { cursor: pointer; }
 .sd-set.is-focus > .sd-area { stroke-width: 3; }
-.sd-set.is-focus[data-item='gateway'] > .sd-area { stroke: var(--sd-flow); stroke-dasharray: none; }
+.sd-set.is-focus[data-item='gateway'] > .sd-area, .sd-set.is-focus[data-item='dali-plus'] > .sd-area { stroke: var(--sd-flow); stroke-dasharray: none; }
 .sd-set.is-dim { opacity: .38; }
 .sd-badge { opacity: 0; pointer-events: none; }
 .sd-badge.is-on { opacity: 1; }
@@ -120,7 +127,7 @@ td[data-sup='nee'] .sd-sup, .sd-legend [data-sup='nee'] { color: var(--muted); }
   .sd-run[data-focus='d4i'] .sd-chip { animation: sd-rise .9s var(--ease) both; }
   .sd-run[data-focus='d4i'] .sd-chip[data-part='1'] { animation-delay: .3s; }
   .sd-run[data-focus='d4i'] .sd-chip[data-part='2'] { animation-delay: .6s; }
-  .sd-run[data-focus='nlc'] .sd-prof, .sd-run[data-focus='gateway'] .sd-radio { animation: sd-pulse 1.2s var(--ease) 2; }
+  .sd-run[data-focus='nlc'] .sd-prof, .sd-run[data-focus='gateway'] .sd-set[data-item='gateway'] .sd-radio, .sd-run[data-focus='dali-plus'] .sd-set[data-item='dali-plus'] .sd-radio, .sd-run[data-focus='dali-plus'] .sd-bridge { animation: sd-pulse 1.2s var(--ease) 2; }
   .sd-run[data-focus='nlc'] .sd-prof[data-part='1'], .sd-run[data-focus='nlc'] .sd-prof[data-part='4'] { animation-delay: .15s; }
   .sd-run[data-focus='nlc'] .sd-prof[data-part='2'], .sd-run[data-focus='nlc'] .sd-prof[data-part='5'] { animation-delay: .3s; }
   @keyframes sd-signal { 0% { opacity: 1; stroke-dashoffset: 0; } 85% { opacity: 1; } 100% { opacity: 0; stroke-dashoffset: -600; } }
