@@ -23,10 +23,13 @@ export function prepare(entries) {
   return entries.map((e) => ({
     ...e,
     _t: norm(e.t),
+    _tw: words(e.t).join(' '),
     _s: norm(e.s),
     _k: norm(e.k),
     _x: norm(e.x),
     _kw: String(e.k || '').split(' · ').filter(Boolean),
+    _n: (e.n ?? []).map((n) => words(n).join(' ')),
+    _f: (e.f ?? []).map((n) => words(n).join(' ')),
   }));
 }
 
@@ -34,10 +37,11 @@ const whole = (field, w) => new RegExp(`(^|[^a-z0-9])${w}([^a-z0-9]|$)`).test(fi
 const hit = (field, w) => (w.length <= 2 ? whole(field, w) : variants(w).some((v) => field.includes(v)));
 
 function score(e, q) {
+  if (e.fo && !e._f.some((n) => q.required.every((w) => hit(n, w)))) return 0;
   let total = 0;
   let matched = 0;
   for (const w of q.required) {
-    const s = (hit(e._t, w) ? 5 : 0) || (hit(e._k, w) ? 3 : 0) || (hit(e._s, w) ? 2 : 0) || (hit(e._x, w) ? 1 : 0);
+    const s = (hit(e._t, w) ? 5 : 0) || (hit(e._k, w) ? 3 : 0) || (hit(e._s, w) ? 2 : 0) || (e._f.some((n) => hit(n, w)) ? 2 : 0) || (hit(e._x, w) ? 1 : 0);
     if (s) matched += 1;
     total += s;
   }
@@ -46,12 +50,21 @@ function score(e, q) {
   if (q.phrase && (e._t.includes(q.phrase) || (e.o && e._k.includes(q.phrase)))) total += 15;
   else if (q.phrase && e._k.includes(q.phrase)) total += 10;
   else if (q.core.includes(' ') && (e._t.includes(q.core) || e._k.includes(q.core))) total += 8;
-  if (e._t === q.phrase) total += 10;
+  if (e._tw === q.phrase || (e.r && e._n.includes(q.phrase))) total += 10;
+  else if (e._f.includes(q.phrase)) total += 6;
   return total;
 }
 
+const named = (e, q) => q.required.every((w) => hit(e._t, w) || e._n.some((n) => hit(n, w)));
+
+const MAX_NAMED_SOURCES = 3;
+
+const ownPlace = (r, q) => ((r.entry.r || r.entry.p) && named(r.entry, q) ? 1 : 0);
+
 function via(e, q) {
   if (q.required.every((w) => hit(e._t, w))) return null;
+  const former = (e.f ?? []).find((n, i) => q.required.every((w) => hit(e._f[i], w)));
+  if (former && !q.required.every((w) => hit(e._k, w))) return former;
   let best = null;
   let bestCount = 0;
   for (const k of e._kw) {
@@ -68,10 +81,11 @@ function via(e, q) {
 export function search(prepared, query, { limit = 12 } = {}) {
   const q = parseQuery(query);
   if (!q.required.length) return [];
-  return prepared
-    .map((e) => ({ entry: e, score: score(e, q) }))
-    .filter((r) => r.score > 0)
-    .sort((a, b) => b.score - a.score)
+  const found = prepared.map((e) => ({ entry: e, score: score(e, q) })).filter((r) => r.score > 0);
+  const sources = found.filter((r) => r.entry.r && named(r.entry, q)).length;
+  const concrete = sources > 0 && sources <= MAX_NAMED_SOURCES;
+  return found
+    .sort((a, b) => b.score - a.score || (concrete ? ownPlace(b, q) - ownPlace(a, q) : 0))
     .slice(0, limit)
     .map((r) => ({ ...r, via: via(r.entry, q) }));
 }

@@ -1,14 +1,14 @@
 {
   "generator": "livelink-knowledge-hub",
-  "target": "external-preview",
+  "target": "kennisplatform",
   "guardrail": "wp1-2",
   "locales": [
     "nl"
   ],
   "pages": {
-    "nl": 35
+    "nl": 32
   },
-  "datasetHash": "780bfe52588a1e36",
-  "audience": "external-preview",
+  "datasetHash": "0d4466180f5d828a",
+  "audience": "kennisplatform",
   "domain": "lichtsturing.info"
 }
