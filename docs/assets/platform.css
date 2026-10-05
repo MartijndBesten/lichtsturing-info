@@ -189,4 +189,9 @@
 @media (min-width: 64rem) {
   .pf-film-inner { grid-template-columns: minmax(16rem, 22rem) minmax(0, 1fr); align-items: center; column-gap: var(--s-8); }
 }
-
+.academy-deep { margin-top: var(--s-7); max-width: var(--measure); padding: var(--s-4) var(--s-5); background: var(--surface); border-left: 4px solid var(--navy); border-radius: var(--radius-card); }
+.academy-deep h2 { margin: 0 0 var(--s-2); font-size: var(--fs-h4, 1.1rem); }
+.academy-deep p { margin: 0; }
+.academy-deep-list { display: flex; flex-wrap: wrap; gap: var(--s-2); margin: var(--s-3) 0; padding: 0; list-style: none; }
+.academy-deep-list li { padding: .25em .75em; font-size: var(--fs-small); font-weight: 600; background: var(--bg); border: 1px solid var(--line-strong); border-radius: 999px; }
+.academy-deep-more { font-size: var(--fs-small); }
