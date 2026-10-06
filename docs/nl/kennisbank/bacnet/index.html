@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="nl" data-base="/" data-v="151c1eab">
+<html lang="nl" data-base="/" data-v="f67c944b">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +16,7 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%2032%2032&#39;%3E%3Crect%20width%3D&#39;32&#39;%20height%3D&#39;32&#39;%20rx%3D&#39;7&#39;%20fill%3D&#39;%23072d78&#39;%2F%3E%3Crect%20x%3D&#39;6&#39;%20y%3D&#39;8&#39;%20width%3D&#39;15&#39;%20height%3D&#39;4.5&#39;%20rx%3D&#39;1.6&#39;%20fill%3D&#39;%23fff&#39;%2F%3E%3Cpath%20d%3D&#39;M8.5%2012.5%2018.5%2012.5%2023%2024.5%204%2024.5Z&#39;%20fill%3D&#39;%23ffd166&#39;%20fill-opacity%3D&#39;.92&#39;%2F%3E%3Ccircle%20cx%3D&#39;25.5&#39;%20cy%3D&#39;10.2&#39;%20r%3D&#39;2&#39;%20fill%3D&#39;%237fb2ff&#39;%2F%3E%3Cpath%20d%3D&#39;M22.2%206.5a4.7%204.7%200%200%201%206.6%200&#39;%20fill%3D&#39;none&#39;%20stroke%3D&#39;%237fb2ff&#39;%20stroke-width%3D&#39;1.5&#39;%20stroke-linecap%3D&#39;round&#39;%2F%3E%3C%2Fsvg%3E">
 
-<link rel="stylesheet" href="/assets/site.css?v=151c1eab">
+<link rel="stylesheet" href="/assets/site.css?v=f67c944b">
 <link rel="stylesheet" href="/assets/platform.css?v=c6b18ead">
 
 
@@ -64,7 +64,7 @@
 
 </section><section class="ladder ladder--opbouw" aria-labelledby="l-opbouw">
 <h2 id="l-opbouw">Zo is het opgebouwd</h2>
-<details class="more more-deep"><summary>Technische uitleg</summary><div class="block block--text"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>BACnet kan over verschillende netwerken lopen. In gebouwen kom je vooral BACnet/IP tegen, over het gewone IP-netwerk. BACnet Secure Connect (BACnet/SC) is een nieuwere vorm die de communicatie beveiligt volgens gangbare IT-praktijk; die vraagt extra inrichting, zoals certificaten. Kies de variant samen met IT en de partij die het gebouwbeheer levert.</p></div><div class="block block--text"><p>Ieder BACnet-apparaat heeft een device-ID dat binnen het BACnet-netwerk uniek moet zijn. Zitten er meerdere lichtsystemen of gateways in hetzelfde BACnet-netwerk, maak die ID’s dan bewust uniek en leg ze vast.</p></div><div class="block block--text"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>Objecten die je via BACnet kunt aansturen, hebben vaak een prioriteitenlijst met 16 niveaus (Priority_Array). Een opdracht op een hogere prioriteit, dus een lager nummer, wint, totdat die opdracht wordt vrijgegeven. Staat er op geen enkel niveau een opdracht, dan geldt een vaste standaardwaarde. Spreek per project af op welke prioriteit het gebouwbeheer schrijft, zodat duidelijk is wie wint: de lichtregeling, de gebruiker of het gebouwbeheer.</p></div></details>
+<details class="more more-deep"><summary>Technische uitleg</summary><div class="block block--text"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>BACnet kan over verschillende netwerken lopen. In gebouwen kom je vooral BACnet/IP tegen, over het gewone IP-netwerk; dat protocol heeft zelf geen TLS-versleuteling. BACnet Secure Connect (BACnet/SC, sinds 2019 onderdeel van de standaard) voegt een beveiligde verbinding toe: TLS 1.3 met wederzijdse authenticatie via certificaten, in een opbouw met een centrale hub. De certificaten maak en beheer je in het project, en oudere segmenten achter een SC-netwerk zijn niet vanzelf beveiligd. Kies de variant samen met IT en de partij die het gebouwbeheer levert.</p></div><div class="block block--text"><p>Ieder BACnet-apparaat heeft een device-ID dat binnen het BACnet-netwerk uniek moet zijn. Zitten er meerdere lichtsystemen of gateways in hetzelfde BACnet-netwerk, maak die ID’s dan bewust uniek en leg ze vast.</p></div><div class="block block--text"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>Objecten die je via BACnet kunt aansturen, hebben vaak een prioriteitenlijst met 16 niveaus (Priority_Array). Een opdracht op een hogere prioriteit, dus een lager nummer, wint, totdat die opdracht wordt vrijgegeven. Staat er op geen enkel niveau een opdracht, dan geldt een vaste standaardwaarde. Spreek per project af op welke prioriteit het gebouwbeheer schrijft, zodat duidelijk is wie wint: de lichtregeling, de gebruiker of het gebouwbeheer.</p></div></details>
 
 
 </section><section class="ladder ladder--instellen" aria-labelledby="l-instellen">
@@ -87,7 +87,7 @@
 <span class="next-step-title">Koppelen met gebouwbeheer</span>
 <span class="next-step-text">Hoe lichtsturing en gebouwbeheer samenwerken.</span>
 </a></nav>
-<section class="related" aria-labelledby="l-related"><h2 id="l-related">Zie ook</h2><ul class="related-list"><li><a href="/nl/kennisbank/gateways/">Gateways</a></li><li><a href="/nl/kennisbank/netwerken-en-ip/">Netwerken en IP</a></li></ul></section>
+<section class="related" aria-labelledby="l-related"><h2 id="l-related">Zie ook</h2><ul class="related-list"><li><a href="/nl/kennisbank/gateways/">Gateways</a></li><li><a href="/nl/kennisbank/netwerken-en-ip/">Netwerken, IP en beveiliging</a></li></ul></section>
 </div>
 <nav class="page-toc" aria-labelledby="toc-title"><p class="page-toc-title" id="toc-title">Op deze pagina</p><ul><li><a href="#l-in-30-seconden">In 30 seconden</a></li><li><a href="#l-zo-werkt-het">Zo werkt het</a></li><li><a href="#l-opbouw">Zo is het opgebouwd</a></li><li><a href="#l-instellen">In de praktijk</a></li><li><a href="#l-grenzen">Goed om te weten</a></li></ul></nav>
 </div>

@@ -1,25 +1,26 @@
 <!doctype html>
-<html lang="nl" data-base="/" data-v="151c1eab">
+<html lang="nl" data-base="/" data-v="f67c944b">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Netwerken en IP · Lichtsturing.info</title>
-<meta name="description" content="Wanneer lichtsturing een IP-netwerk gebruikt, het verschil tussen voeding, bus en netwerk, en de afspraken met IT.">
+<title>Netwerken, IP en beveiliging · Lichtsturing.info</title>
+<meta name="description" content="Wanneer lichtsturing een IP-netwerk gebruikt, de afspraken met IT, en hoe je het netwerk en de toegang beveiligt: scheiding, toegang op afstand, BACnet/SC en KNX Secure.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://lichtsturing.info/nl/kennisbank/netwerken-en-ip/">
 <meta property="og:site_name" content="Lichtsturing.info">
 <meta property="og:locale" content="nl_NL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Netwerken en IP · Lichtsturing.info">
-<meta property="og:description" content="Wanneer lichtsturing een IP-netwerk gebruikt, het verschil tussen voeding, bus en netwerk, en de afspraken met IT.">
+<meta property="og:title" content="Netwerken, IP en beveiliging · Lichtsturing.info">
+<meta property="og:description" content="Wanneer lichtsturing een IP-netwerk gebruikt, de afspraken met IT, en hoe je het netwerk en de toegang beveiligt: scheiding, toegang op afstand, BACnet/SC en KNX Secure.">
 <meta property="og:url" content="https://lichtsturing.info/nl/kennisbank/netwerken-en-ip/">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%2032%2032&#39;%3E%3Crect%20width%3D&#39;32&#39;%20height%3D&#39;32&#39;%20rx%3D&#39;7&#39;%20fill%3D&#39;%23072d78&#39;%2F%3E%3Crect%20x%3D&#39;6&#39;%20y%3D&#39;8&#39;%20width%3D&#39;15&#39;%20height%3D&#39;4.5&#39;%20rx%3D&#39;1.6&#39;%20fill%3D&#39;%23fff&#39;%2F%3E%3Cpath%20d%3D&#39;M8.5%2012.5%2018.5%2012.5%2023%2024.5%204%2024.5Z&#39;%20fill%3D&#39;%23ffd166&#39;%20fill-opacity%3D&#39;.92&#39;%2F%3E%3Ccircle%20cx%3D&#39;25.5&#39;%20cy%3D&#39;10.2&#39;%20r%3D&#39;2&#39;%20fill%3D&#39;%237fb2ff&#39;%2F%3E%3Cpath%20d%3D&#39;M22.2%206.5a4.7%204.7%200%200%201%206.6%200&#39;%20fill%3D&#39;none&#39;%20stroke%3D&#39;%237fb2ff&#39;%20stroke-width%3D&#39;1.5&#39;%20stroke-linecap%3D&#39;round&#39;%2F%3E%3C%2Fsvg%3E">
 
-<link rel="stylesheet" href="/assets/site.css?v=151c1eab">
+<link rel="stylesheet" href="/assets/site.css?v=f67c944b">
 <link rel="stylesheet" href="/assets/platform.css?v=c6b18ead">
+<link rel="stylesheet" href="/assets/tools.css?v=c2bd20ba">
 
-
+<script type="module" src="/assets/site.js?v=f67c944b"></script>
 </head>
 <body>
 
@@ -43,12 +44,12 @@
 </div>
 </header>
 <main id="inhoud" class="wrap" tabindex="-1">
-<nav class="breadcrumb" aria-label="Kruimelpad"><ol><li><a href="/nl/">Home</a></li><li><a href="/nl/kennisbank/">Kennisbank</a></li><li aria-current="page">Netwerken en IP</li></ol></nav>
+<nav class="breadcrumb" aria-label="Kruimelpad"><ol><li><a href="/nl/">Home</a></li><li><a href="/nl/kennisbank/">Kennisbank</a></li><li aria-current="page">Netwerken, IP en beveiliging</li></ol></nav>
 <article class="article">
-<header class="page-header"><div class="page-header-text"><h1>Netwerken en IP</h1><p class="lead">Wanneer lichtsturing een IP-netwerk gebruikt, het verschil tussen voeding, bus en netwerk, en de afspraken met IT.</p></div></header>
+<header class="page-header"><div class="page-header-text"><h1>Netwerken, IP en beveiliging</h1><p class="lead">Wanneer lichtsturing een IP-netwerk gebruikt, de afspraken met IT, en hoe je het netwerk en de toegang beveiligt: scheiding, toegang op afstand, BACnet/SC en KNX Secure.</p></div></header>
 <nav class="ll-strip" aria-label="Plaats in de leerlijn"><a href="/nl/kennisbank/van-drukknop-tot-lichtmanagement/#niveau-lms"><span class="ll-dots" aria-hidden="true"><span class="ll-dot" data-cat="bediening">0</span><span class="ll-dot" data-cat="regeling">1</span><span class="ll-dot" data-cat="regeling">2</span><span class="ll-dot" data-cat="regeling">3</span><span class="ll-dot" data-cat="automatisering">4</span><span class="ll-dot" data-cat="automatisering">5</span><span class="ll-dot" data-cat="automatisering">6</span><span class="ll-dot is-on" data-cat="lichtmanagement">7</span><span class="ll-dot" data-cat="lichtmanagement">8</span><span class="ll-dot is-on" data-cat="lichtmanagement">9</span><span class="ll-dot is-on" data-cat="gebouwintegratie">10</span></span><span class="ll-text">In de leerlijn van drukknop tot lichtmanagement: niveau 7, 9–10</span></a></nav>
 
-<details class="page-toc-m"><summary>Op deze pagina</summary><ul><li><a href="#l-in-30-seconden">In 30 seconden</a></li><li><a href="#l-zo-werkt-het">Zo werkt het</a></li><li><a href="#l-opbouw">Zo is het opgebouwd</a></li><li><a href="#l-instellen">In de praktijk</a></li><li><a href="#l-grenzen">Goed om te weten</a></li></ul></details>
+<details class="page-toc-m"><summary>Op deze pagina</summary><ul><li><a href="#l-in-30-seconden">In 30 seconden</a></li><li><a href="#l-zo-werkt-het">Zo werkt het</a></li><li><a href="#l-interactief">Bekijk het interactief</a></li><li><a href="#l-opbouw">Zo is het opgebouwd</a></li><li><a href="#l-instellen">In de praktijk</a></li><li><a href="#l-grenzen">Goed om te weten</a></li></ul></details>
 
 <div class="article-layout has-toc">
 <div class="article-main">
@@ -59,9 +60,61 @@
 
 </section><section class="ladder ladder--zo-werkt-het" aria-labelledby="l-zo-werkt-het">
 <h2 id="l-zo-werkt-het">Zo werkt het</h2>
-<div class="block block--list"><p class="kbasis kbasis--ontwerp" title="Algemeen werkingsprincipe of ontwerpregel: geen eis uit een norm en geen productgrens.">Principe</p><p>Drie soorten verbindingen die je uit elkaar houdt:</p><ul><li><strong>Voeding</strong><span class="li-sep"> — </span>de netvoeding van armaturen en apparaten.</li><li><strong>Bus</strong><span class="li-sep"> — </span>de stuurlijn binnen een deel van de installatie, zoals de DALI-bus.</li><li><strong>Netwerk</strong><span class="li-sep"> — </span>het IP-netwerk tussen besturingen, gateways en andere systemen.</li></ul></div><details class="more more-how"><summary>Meer uitleg</summary><div class="block block--text"><p class="kbasis kbasis--ontwerp" title="Algemeen werkingsprincipe of ontwerpregel: geen eis uit een norm en geen productgrens.">Principe</p><p>Een lichtregelsysteem kan een eigen, afgescheiden netwerk hebben, of worden opgenomen in het netwerk van het gebouw of het bedrijf. Dat is een projectkeuze die je samen met de IT-afdeling maakt: welk netwerkdeel, welke adressen, wie beheert wat.</p></div></details>
+<h3>Netwerken en IP</h3><div class="block block--list"><p class="kbasis kbasis--ontwerp" title="Algemeen werkingsprincipe of ontwerpregel: geen eis uit een norm en geen productgrens.">Principe</p><p>Drie soorten verbindingen die je uit elkaar houdt:</p><ul><li><strong>Voeding</strong><span class="li-sep"> — </span>de netvoeding van armaturen en apparaten.</li><li><strong>Bus</strong><span class="li-sep"> — </span>de stuurlijn binnen een deel van de installatie, zoals de DALI-bus.</li><li><strong>Netwerk</strong><span class="li-sep"> — </span>het IP-netwerk tussen besturingen, gateways en andere systemen.</li></ul></div><details class="more more-how"><summary>Meer uitleg</summary><div class="block block--text"><p class="kbasis kbasis--ontwerp" title="Algemeen werkingsprincipe of ontwerpregel: geen eis uit een norm en geen productgrens.">Principe</p><p>Een lichtregelsysteem kan een eigen, afgescheiden netwerk hebben, of worden opgenomen in het netwerk van het gebouw of het bedrijf. Dat is een projectkeuze die je samen met de IT-afdeling maakt: welk netwerkdeel, welke adressen, wie beheert wat.</p></div></details>
+<div class="parts"><article class="part" id="onderdeel-cybersecurity">
+<h3>Beveiliging van lichtsturing (cybersecurity)</h3>
+<div class="block block--text"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>Een lichtregeling met een netwerk is operationele technologie (OT), net als een gebouwbeheersysteem: ze bestuurt iets fysieks. Geen enkel protocol maakt een installatie vanzelf veilig.</p></div>
 
 
+
+
+
+<details class="more"><summary>Meer over Beveiliging van lichtsturing (cybersecurity)</summary>
+<div class="block block--text"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>Beveiliging zit in drie dingen samen: de mechanismen in het systeem, de inrichting van het netwerk en het beheer.</p></div><div class="block block--list"><p class="kbasis kbasis--ontwerp" title="Algemeen werkingsprincipe of ontwerpregel: geen eis uit een norm en geen productgrens.">Principe</p><p>Wat het NCSC adviseert voor OT, toegepast op lichtsturing:</p><ul><li>Scheid het netwerk van de lichtsturing (OT) van het kantoornetwerk (IT), bijvoorbeeld met VLAN’s en een firewall, en laat alleen noodzakelijk verkeer toe.</li><li>Maak de installatie niet rechtstreeks bereikbaar vanaf internet. Toegang op afstand loopt via een beheerde route, met meerfactorauthenticatie, een versleutelde verbinding en een logboek.</li><li>Wijzig standaardwachtwoorden en geef iedere gebruiker alleen de rechten die nodig zijn.</li><li>Regel updates: controleer de echtheid van een update bij de leverancier, test, en leg vast wie bijwerkt.</li><li>Maak back-ups van de configuratie en het projectbestand, ook buiten het systeem zelf.</li></ul></div><div class="block block--table"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>Wat protocollen zelf doen, en wat niet:</p><div class="table-scroll"><table class="compare compare--stack"><thead><tr><th scope="col">Protocol</th><th scope="col">Wat het doet</th><th scope="col">Waar je op let</th></tr></thead><tbody><tr><th scope="row">BACnet/IP</th><td data-label="Wat het doet">geen TLS-versleuteling in het protocol zelf</td><td data-label="Waar je op let">beveilig via de inrichting van het netwerk: scheiding, firewall, beheerde toegang</td></tr><tr><th scope="row">BACnet/SC</th><td data-label="Wat het doet">verbindingen via TLS 1.3 met wederzijdse authenticatie door certificaten</td><td data-label="Waar je op let">certificaten maken en beheren is een taak voor het project; oudere segmenten erachter zijn niet vanzelf beveiligd</td></tr><tr><th scope="row">KNX IP Secure</th><td data-label="Wat het doet">versleutelt de KNX-communicatie op het IP-netwerk</td><td data-label="Waar je op let">de lijnen erachter (zoals twisted pair) blijven onversleuteld</td></tr><tr><th scope="row">KNX Data Secure</th><td data-label="Wat het doet">beveiligt berichten van apparaat tot apparaat, op ieder medium, per groepsadres</td><td data-label="Waar je op let">alle betrokken apparaten moeten het ondersteunen; beveiligd en onbeveiligd op hetzelfde groepsadres kan niet</td></tr><tr><th scope="row">Bluetooth Mesh (en NLC)</th><td data-label="Wat het doet">beveiliging is verplicht: berichten versleuteld en geauthenticeerd, met netwerk- en applicatiesleutels</td><td data-label="Waar je op let">de sleutels en het toevoegen van apparaten (provisioning) moeten goed beheerd worden</td></tr></tbody></table></div></div><div class="block block--text"><p class="kbasis kbasis--ontwerp" title="Algemeen werkingsprincipe of ontwerpregel: geen eis uit een norm en geen productgrens.">Principe</p><p>Lokaal of cloud: bij een lokaal systeem blijven regeling en gegevens in het gebouw; bij een clouddienst lopen beheer of gegevens via internet. Beide kan. Leg vast welke functies blijven werken zonder internet, waar de gegevens staan en wie toegang heeft.</p></div><div class="block block--text"><p class="kbasis kbasis--ontwerp" title="Algemeen werkingsprincipe of ontwerpregel: geen eis uit een norm en geen productgrens.">Principe</p><p>Vaste IP-adressen of DHCP is een projectkeuze, geen norm: spreek het af met de IT-beheerder. Hangt de lichtsturing af van DHCP of DNS uit het kantoornetwerk, dan hangt ze ook af van dat netwerk.</p></div><div class="block block--text"><p class="kbasis kbasis--ontwerp" title="Algemeen werkingsprincipe of ontwerpregel: geen eis uit een norm en geen productgrens.">Principe</p><p>Leg vast wie het netwerk, de lichtsturing en de koppelingen beheert, en wie bij een update of een incident wat doet. Ook als het beheer is uitbesteed, blijft de eigenaar verantwoordelijk.</p></div><div class="block block--text"><p class="kbasis kbasis--wet" title="Volgt uit wet- of regelgeving, zoals het Besluit bouwwerken leefomgeving; bron: de overheid. Of een eis voor jouw gebouw geldt, hangt af van de situatie.">Wettelijke eis</p><p>De Cyberbeveiligingswet (de Nederlandse uitwerking van NIS2) geldt sinds 15 augustus 2026 voor organisaties op basis van hun sector en omvang, niet voor een techniek. Valt een organisatie eronder, dan gaat haar zorgplicht over de netwerk- en informatiesystemen die zij gebruikt. Of de lichtsturing daar voor jouw organisatie onder valt, laat je vaststellen.</p></div>
+
+<p class="more-label">Goed om te weten</p><ul class="limitations"><li>Een beveiligingsmechanisme beschermt alleen als het is ingeschakeld en goed beheerd. Laat de inrichting van het netwerk projectspecifiek ontwerpen en controleren, samen met IT.</li></ul>
+</details>
+</article><article class="part" id="onderdeel-knx-secure">
+<h3>KNX Secure: IP Secure en Data Secure</h3>
+<div class="block block--text"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>KNX kent twee beveiligingsmechanismen. KNX IP Secure beveiligt de KNX-communicatie op het IP-netwerk. KNX Data Secure beveiligt berichten van apparaat tot apparaat, op ieder medium. Ze lossen verschillende dingen op en kunnen samen worden gebruikt.</p></div>
+
+
+
+
+
+<details class="more"><summary>Meer over KNX Secure: IP Secure en Data Secure</summary>
+<div class="block block--list"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>Het verschil:</p><ul><li><strong>IP Secure</strong><span class="li-sep"> — </span>versleutelt de communicatie op het IP-netwerk, bijvoorbeeld de backbone. Lijnen erachter blijven onversleuteld; bestaande apparaten daar kunnen blijven.</li><li><strong>Data Secure</strong><span class="li-sep"> — </span>beveiligt berichten per groepsadres, van apparaat tot apparaat, ook op twisted pair en RF. Alle betrokken apparaten moeten het ondersteunen.</li></ul></div><div class="block block--text"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>De sleutels worden beheerd in het configuratieprogramma ETS. Een project met KNX Secure heeft altijd een projectwachtwoord, en op één groepsadres kun je beveiligd en onbeveiligd niet mengen. Bewaar het project en het wachtwoord zorgvuldig.</p></div>
+
+
+</details>
+</article></div>
+
+</section><section class="ladder ladder--interactief" aria-labelledby="l-interactief">
+<h2 id="l-interactief">Bekijk het interactief</h2>
+
+
+<figure class="sg" id="demo-netwerk-segment" data-module="segment" data-state="plat">
+<figcaption class="illustration-title">Drie manieren om het netwerk in te richten</figcaption>
+<p class="illustration-summary">Kies een opbouw en zie wat er verandert: alles in één netwerk, gescheiden netwerken, of toegang op afstand via een beheerde route.</p>
+<div class="sg-pick" role="group" aria-label="Opbouw" hidden><button type="button" class="sg-btn" data-s="plat" aria-pressed="true">Alles in één netwerk</button><button type="button" class="sg-btn" data-s="gescheiden" aria-pressed="">Gescheiden netwerken</button><button type="button" class="sg-btn" data-s="afstand" aria-pressed="">Toegang op afstand</button></div>
+<div class="sg-stage"><svg class="sg-svg" viewBox="0 0 360 200" role="img" aria-label="Internet, firewall, beheerde toegang, het kantoornetwerk en het netwerk van de lichtsturing">
+<rect class="sg-cloud" x="8" y="10" width="86" height="36" rx="18"/><text class="sg-t" x="51" y="32">Internet</text>
+<rect class="sg-fw" x="138" y="12" width="74" height="32" rx="5"/><text class="sg-t" x="175" y="32">Firewall</text>
+<rect class="sg-jump" x="252" y="12" width="100" height="32" rx="5"/><text class="sg-t sg-t--s" x="302" y="32">Beheerde toegang</text>
+<rect class="sg-one" x="8" y="70" width="344" height="122" rx="10"/>
+<rect class="sg-it" x="14" y="76" width="150" height="110" rx="8"/><text class="sg-t sg-t--s sg-lab" x="89" y="94">Kantoornetwerk (IT)</text>
+<rect class="sg-ot" x="196" y="76" width="150" height="110" rx="8"/><text class="sg-t sg-t--s sg-lab" x="271" y="94">Lichtsturing (OT)</text>
+<rect class="sg-dev" x="40" y="118" width="98" height="30" rx="5"/><text class="sg-t sg-t--s" x="89" y="137">Werkplekken</text>
+<rect class="sg-dev sg-ctrl" x="222" y="118" width="98" height="30" rx="5"/><text class="sg-t sg-t--s" x="271" y="137">Besturingen</text>
+<path class="sg-l sg-l--open" d="M51 46 V104 H271 V118"/>
+<path class="sg-l sg-l--fw" d="M175 44 V131 M164 131 H222"/>
+<path class="sg-l sg-l--remote" d="M94 28 H138 M212 28 H252 M302 44 V118"/>
+<text class="sg-t sg-t--s sg-warn" x="140" y="62">rechtstreeks bereikbaar</text>
+<text class="sg-t sg-t--s sg-ok" x="296" y="64">MFA, versleuteld, gelogd</text>
+</svg></div>
+<ol class="sg-list"><li class="sg-item" data-s="plat"><strong>Alles in één netwerk</strong> Werkplekken en lichtsturing zitten in hetzelfde netwerk, en de besturing is rechtstreeks vanaf internet bereikbaar. Dit is de situatie die het NCSC afraadt.</li><li class="sg-item" data-s="gescheiden"><strong>Gescheiden netwerken</strong> De lichtsturing heeft een eigen netwerkdeel, bijvoorbeeld een VLAN. Een firewall laat alleen het verkeer door dat nodig is, zoals een koppeling met het gebouwbeheer.</li><li class="sg-item" data-s="afstand"><strong>Toegang op afstand</strong> Beheer op afstand loopt via een beheerde route, met meerfactorauthenticatie, een versleutelde verbinding en een logboek. De besturing zelf is niet rechtstreeks vanaf internet bereikbaar.</li></ol>
+<script type="application/json" class="module-config">{"strings":{}}</script>
+</figure>
 </section><section class="ladder ladder--opbouw" aria-labelledby="l-opbouw">
 <h2 id="l-opbouw">Zo is het opgebouwd</h2>
 <details class="more more-deep"><summary>Technische uitleg</summary><div class="block block--list"><p class="kbasis kbasis--praktijk" title="Werkwijze uit de praktijk: geen eis uit een norm en geen productgrens.">Praktijkregel</p><p>Toegang tot het systeem is een apart onderwerp:</p><ul><li><strong>Inregelen</strong><span class="li-sep"> — </span>voor de inbedrijfstelling is vaak tijdelijk een eigen toegang nodig, bijvoorbeeld een tijdelijk accesspoint. Dat hoort niet bij de opgeleverde installatie.</li><li><strong>Blijvende toegang</strong><span class="li-sep"> — </span>voor beheer na oplevering: via het netwerk van de klant, met afspraken over wie erbij mag.</li><li><strong>Internet</strong><span class="li-sep"> — </span>voor de lichtregeling zelf is het meestal niet nodig, wel voor bijvoorbeeld updates, beheer op afstand of de tijd via het netwerk. Leg vast waarvoor het nodig is.</li></ul></div></details>
@@ -89,7 +142,7 @@
 </a></nav>
 <section class="related" aria-labelledby="l-related"><h2 id="l-related">Zie ook</h2><ul class="related-list"><li><a href="/nl/kennisbank/bacnet/">BACnet</a></li><li><a href="/nl/praktijk/afspraken-en-demarcatie/">Afspraken en demarcatie</a></li></ul></section>
 </div>
-<nav class="page-toc" aria-labelledby="toc-title"><p class="page-toc-title" id="toc-title">Op deze pagina</p><ul><li><a href="#l-in-30-seconden">In 30 seconden</a></li><li><a href="#l-zo-werkt-het">Zo werkt het</a></li><li><a href="#l-opbouw">Zo is het opgebouwd</a></li><li><a href="#l-instellen">In de praktijk</a></li><li><a href="#l-grenzen">Goed om te weten</a></li></ul></nav>
+<nav class="page-toc" aria-labelledby="toc-title"><p class="page-toc-title" id="toc-title">Op deze pagina</p><ul><li><a href="#l-in-30-seconden">In 30 seconden</a></li><li><a href="#l-zo-werkt-het">Zo werkt het</a></li><li><a href="#l-interactief">Bekijk het interactief</a></li><li><a href="#l-opbouw">Zo is het opgebouwd</a></li><li><a href="#l-instellen">In de praktijk</a></li><li><a href="#l-grenzen">Goed om te weten</a></li></ul></nav>
 </div>
 </article>
 </main>

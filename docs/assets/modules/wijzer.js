@@ -70,7 +70,7 @@ export function mount(el, config = {}) {
     }
     let shown = 0;
     for (const g of m.groups) {
-      const hits = m.results.filter((r) => r.group === g.id && ok(r.when));
+      const hits = m.results.filter((r) => r.group === g.id && ok(r.when) && (!(r.anyOf || []).length || r.anyOf.some((c) => c.any.includes(answers[c.q]))));
       const keep = new Set((g.pick === 'first' ? hits.slice(0, 1) : hits).map((r) => r.id));
       for (const r of m.results.filter((x) => x.group === g.id)) cards.get(r.id).hidden = !keep.has(r.id);
       groups.get(g.id).hidden = keep.size === 0;
