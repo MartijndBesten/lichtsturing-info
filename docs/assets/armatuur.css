@@ -7,7 +7,7 @@
 .am-btn[aria-pressed="true"], .am-part[aria-pressed="true"] { border-color: var(--navy); background: var(--navy); color: var(--on-dark); }
 .am-part-name { font-weight: 600; }
 .am-canvas { padding: var(--s-2); border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); }
-.am-svg { display: block; width: 100%; max-width: 40rem; height: auto; margin: 0 auto; font-family: var(--font); }
+.am-svg { display: block; width: 100%; max-width: 46rem; height: auto; margin: 0 auto; font-family: var(--font); }
 .am-housing { fill: var(--bg); stroke: var(--line-strong); stroke-width: 2; }
 .am-note { font-size: 11px; fill: var(--muted); }
 .am-module rect { fill: var(--bg); stroke: var(--c-dali); stroke-width: 2; }
@@ -32,7 +32,14 @@
 .am-out:empty { display: none; }
 .am-out { margin-top: var(--s-2); padding: var(--s-2) var(--s-3); border-left: 3px solid var(--c-dali); background: var(--surface); }
 .am-out p { margin: 0 0 var(--s-1); }
-@media (max-width: 40rem) { .am-note, .am-module-label, .am-driver-label, .am-slot text { font-size: 16px; } .am-slot .am-slot-name { display: none; } }
+.am-canvas { container: am-canvas / inline-size; }
+@container am-canvas (max-width: 44rem) { .am-slot .am-slot-name { display: none; } }
+.am-key { color: var(--text); }
+@container am-canvas (max-width: 32.75rem) {
+  .am-svg .am-note, .am-svg .am-module-label, .am-svg .am-driver-label, .am-slot .am-slot-name { display: none; }
+  .am-slot text { font-size: 19px; dominant-baseline: central; }
+  .am-key { display: flex; }
+}
 @media (prefers-reduced-motion: no-preference) {
   .am-slot rect, .am-bus { transition: stroke var(--dur) var(--ease), stroke-width var(--dur) var(--ease); }
 }

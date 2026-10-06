@@ -32,8 +32,8 @@ export function mount(el, config = {}) {
   function paint() {
     el.dataset.driver = driver;
     for (const p of config.parts) $(`.am-slot[data-part="${p.id}"]`).classList.toggle('is-optional', !must(p));
-    $('.am-driver-label').textContent = config.drivers.find((d) => d.id === driver).label;
-    $('.am-module-label').textContent = config.modules.find((m) => m.id === mod).short;
+    for (const n of $$('.am-driver-label, .am-key-driver')) n.textContent = config.drivers.find((d) => d.id === driver).label;
+    for (const n of $$('.am-module-label, .am-key-module')) n.textContent = config.modules.find((m) => m.id === mod).short;
     el.classList.remove('is-reading', 'is-read');
     unpick();
   }

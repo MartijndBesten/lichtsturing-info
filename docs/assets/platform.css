@@ -245,6 +245,11 @@
 .sig .sig-svg--v text { font-size: 12.5px; }
 .vd .vd-svg { max-height: none; }
 .vd .vd-label { font-size: 9.5px; }
+.illustration--ports { container: ports / inline-size; }
+@container ports (max-width: 26rem) {
+  .illustration-svg--ports .pt-wire { display: none; }
+  .illustration-svg--ports .pt-klem, .illustration-svg--ports .pt-target-name, .illustration-svg--ports .ch-label { font-size: 14px; }
+}
 .vd-voeding rect { fill: var(--bg); stroke: var(--c-voeding); stroke-width: 1.4; }
 .vd-voeding .arch-icon { stroke: var(--c-voeding); fill: none; stroke-width: 1.3; }
 

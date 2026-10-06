@@ -74,7 +74,7 @@
 .ib-groups td { text-align: center; }
 .ib-sw { display: inline-block; width: 1.4rem; height: .8rem; margin-right: var(--s-1); border: 2.5px solid var(--blue); border-radius: 3px; vertical-align: middle; }
 .ib-sw.is-g1 { border-color: var(--c-flow); border-style: dashed; }
-@media (max-width: 40rem) { .ib-lum-label, .ib-tag, .ib-note { font-size: 13px; } .ib-steps { display: grid; grid-template-columns: 1fr 1fr; } }
+@media (max-width: 40rem) { .ib-lum-label, .ib-tag, .ib-note { font-size: 14.5px; } .ib-steps { display: grid; grid-template-columns: 1fr 1fr; } }
 .ib-groups input, .ib-fn input { width: 1.25rem; height: 1.25rem; accent-color: var(--blue); }
 .ib-fn { display: grid; gap: var(--s-2); margin: var(--s-2) 0; padding: var(--s-2) var(--s-3); border: 1px solid var(--line); border-radius: var(--radius); }
 .ib-fn legend { font-weight: 700; padding: 0 var(--s-1); }
