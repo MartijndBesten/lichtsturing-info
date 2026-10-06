@@ -5,7 +5,7 @@
 .am-choice-label { flex-basis: 100%; font-weight: 700; font-size: var(--fs-small); }
 .am-btn, .am-part { min-height: 2.75rem; padding: var(--s-1) var(--s-3); border: 1px solid var(--line-strong); border-radius: var(--radius); background: var(--bg); color: var(--navy); font: inherit; font-size: var(--fs-small); font-weight: 600; cursor: pointer; }
 .am-btn[aria-pressed="true"], .am-part[aria-pressed="true"] { border-color: var(--navy); background: var(--navy); color: var(--on-dark); }
-.am-part:disabled { cursor: default; color: var(--ink); background: transparent; border-color: transparent; padding-left: 0; }
+.am-part-name { font-weight: 600; }
 .am-canvas { padding: var(--s-2); border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); }
 .am-svg { display: block; width: 100%; max-width: 40rem; height: auto; margin: 0 auto; font-family: var(--font); }
 .am-housing { fill: var(--bg); stroke: var(--line-strong); stroke-width: 2; }
@@ -23,15 +23,16 @@
 .am-led { fill: #f5c542; }
 .am-light { fill: rgba(255, 214, 102, .22); }
 .am-packet { fill: var(--c-dali); opacity: 0; }
-.am.is-reading .am-packet { opacity: 1; }
+.am.is-reading .am-packet.is-go { opacity: 1; }
 .am.is-read .am-bus { stroke-width: 4; }
 .am-parts { list-style: none; display: grid; gap: var(--s-1); margin: var(--s-3) 0 0; padding: 0; }
 .am-parts li { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-1) var(--s-2); font-size: var(--fs-small); }
 .am-status { color: var(--muted); }
 .am-actions { margin: var(--s-3) 0 0; }
+.am-out:empty { display: none; }
 .am-out { margin-top: var(--s-2); padding: var(--s-2) var(--s-3); border-left: 3px solid var(--c-dali); background: var(--surface); }
 .am-out p { margin: 0 0 var(--s-1); }
-@media (max-width: 40rem) { .am-note, .am-module-label, .am-driver-label { font-size: 13px; } .am-slot text { font-size: 12px; } .am-slot .am-slot-name { font-size: 10px; } }
+@media (max-width: 40rem) { .am-note, .am-module-label, .am-driver-label, .am-slot text { font-size: 16px; } .am-slot .am-slot-name { display: none; } }
 @media (prefers-reduced-motion: no-preference) {
   .am-slot rect, .am-bus { transition: stroke var(--dur) var(--ease), stroke-width var(--dur) var(--ease); }
 }

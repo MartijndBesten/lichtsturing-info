@@ -11,9 +11,23 @@ export function mount(el, config = {}) {
   $('.am-controls').hidden = false;
   $('.am-actions').hidden = false;
   const must = (p) => p.mandatory.includes(driver);
+  const power = config.parts.find((p) => p.power);
+  const data = config.parts.filter((p) => !p.power);
   const show = (lines) => {
-    out.hidden = false;
-    out.replaceChildren(...lines.map((t) => Object.assign(document.createElement('p'), { textContent: t })));
+    out.replaceChildren();
+    setTimeout(() => out.replaceChildren(...lines.map((t) => Object.assign(document.createElement('p'), { textContent: t }))), 30);
+  };
+  for (const li of $$('.am-parts li')) {
+    const name = li.querySelector('.am-part-name');
+    const b = Object.assign(document.createElement('button'), { type: 'button', className: 'am-part' });
+    b.dataset.part = li.dataset.part;
+    b.setAttribute('aria-pressed', 'false');
+    b.append(...name.childNodes);
+    name.replaceWith(b);
+  }
+  const unpick = () => {
+    for (const b of $$('.am-part')) b.setAttribute('aria-pressed', 'false');
+    for (const g of $$('.am-slot')) g.classList.remove('is-picked');
   };
   function paint() {
     el.dataset.driver = driver;
@@ -21,6 +35,7 @@ export function mount(el, config = {}) {
     $('.am-driver-label').textContent = config.drivers.find((d) => d.id === driver).label;
     $('.am-module-label').textContent = config.modules.find((m) => m.id === mod).short;
     el.classList.remove('is-reading', 'is-read');
+    unpick();
   }
   const press = (sel, attr, value) => {
     for (const b of $$(sel)) b.setAttribute('aria-pressed', String(b.dataset[attr] === value));
@@ -30,7 +45,7 @@ export function mount(el, config = {}) {
       driver = b.dataset.driver;
       press('[data-driver]', 'driver', driver);
       paint();
-      out.hidden = true;
+      show([]);
     });
   }
   for (const b of $$('[data-mod]')) {
@@ -38,11 +53,10 @@ export function mount(el, config = {}) {
       mod = b.dataset.mod;
       press('[data-mod]', 'mod', mod);
       paint();
-      out.hidden = true;
+      show([]);
     });
   }
   for (const b of $$('.am-part')) {
-    b.disabled = false;
     b.addEventListener('click', () => {
       const p = config.parts.find((x) => x.id === b.dataset.part);
       press('.am-part', 'part', p.id);
@@ -52,21 +66,24 @@ export function mount(el, config = {}) {
   }
   $('.am-read').addEventListener('click', () => {
     const m = config.modules.find((x) => x.id === mod);
-    const data = config.parts.slice(1);
     const lines = [];
     if (!m.reads) lines.push(s.readSensor);
     else {
-      lines.push(data.every(must) ? s.readD4i : s.readDali2);
-      lines.push(data.map((p) => `${p.id} ${p.label}`).join(' · '));
+      const sure = data.filter(must);
+      const maybe = data.filter((p) => !must(p));
+      lines.push(maybe.length ? s.readDali2 : s.readD4i);
+      if (sure.length) lines.push(sure.map((p) => `${p.id} ${p.label}`).join(' · '));
+      if (maybe.length) lines.push(`${s.ifPresent} ${maybe.map((p) => `${p.id} ${p.label}`).join(' · ')}`);
       clearTimeout(timer);
       el.classList.add('is-read');
-      if (!calm.matches) {
+      for (const c of $$('.am-packet')) c.classList.toggle('is-go', sure.some((p) => p.id === c.dataset.part));
+      if (!calm.matches && sure.length) {
         el.classList.add('is-reading');
-        for (const a of $$('.am-packet animateMotion')) a.beginElement();
+        for (const c of $$('.am-packet.is-go')) c.querySelector('animateMotion').beginElement();
         timer = setTimeout(() => el.classList.remove('is-reading'), 1600);
       }
     }
-    lines.push(must(config.parts[0]) ? s.powerOwn : s.powerSeparate);
+    if (power) lines.push(must(power) ? s.powerOwn : s.powerSeparate);
     show(lines);
   });
   paint();
