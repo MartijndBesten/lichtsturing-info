@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="nl" data-base="/" data-v="87e3b0d1">
+<html lang="nl" data-base="/" data-v="75750ee5">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,11 +16,11 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%2032%2032&#39;%3E%3Crect%20width%3D&#39;32&#39;%20height%3D&#39;32&#39;%20rx%3D&#39;7&#39;%20fill%3D&#39;%23072d78&#39;%2F%3E%3Crect%20x%3D&#39;6&#39;%20y%3D&#39;8&#39;%20width%3D&#39;15&#39;%20height%3D&#39;4.5&#39;%20rx%3D&#39;1.6&#39;%20fill%3D&#39;%23fff&#39;%2F%3E%3Cpath%20d%3D&#39;M8.5%2012.5%2018.5%2012.5%2023%2024.5%204%2024.5Z&#39;%20fill%3D&#39;%23ffd166&#39;%20fill-opacity%3D&#39;.92&#39;%2F%3E%3Ccircle%20cx%3D&#39;25.5&#39;%20cy%3D&#39;10.2&#39;%20r%3D&#39;2&#39;%20fill%3D&#39;%237fb2ff&#39;%2F%3E%3Cpath%20d%3D&#39;M22.2%206.5a4.7%204.7%200%200%201%206.6%200&#39;%20fill%3D&#39;none&#39;%20stroke%3D&#39;%237fb2ff&#39;%20stroke-width%3D&#39;1.5&#39;%20stroke-linecap%3D&#39;round&#39;%2F%3E%3C%2Fsvg%3E">
 
-<link rel="stylesheet" href="/assets/site.css?v=87e3b0d1">
+<link rel="stylesheet" href="/assets/site.css?v=75750ee5">
 <link rel="stylesheet" href="/assets/platform.css?v=53d3ec15">
-<link rel="stylesheet" href="/assets/stappen.css?v=7b10d2b4">
+<link rel="stylesheet" href="/assets/stappen.css?v=0b80ede7">
 
-<script type="module" src="/assets/site.js?v=87e3b0d1"></script>
+<script type="module" src="/assets/site.js?v=75750ee5"></script>
 </head>
 <body>
 
@@ -63,14 +63,14 @@
 <h3>Storingen zoeken</h3><div class="block block--steps"><p class="kbasis kbasis--ontwerp" title="Algemeen werkingsprincipe of ontwerpregel: geen eis uit een norm en geen productgrens.">Principe</p><p>Controleer in deze volgorde:</p><ol class="steps steps--long"><li><strong>Fysieke installatie</strong><span class="li-sep"> — </span>voeding, bekabeling, montage, sensorpositie.</li><li><strong>Verbinding</strong><span class="li-sep"> — </span>is de bus onder spanning en zijn besturing, gateways en bussen bereikbaar?</li><li><strong>Adressering en plaats</strong><span class="li-sep"> — </span>hoort ieder apparaat in de configuratie bij het juiste fysieke apparaat?</li><li><strong>Groep</strong><span class="li-sep"> — </span>zijn armaturen, sensoren en knoppen aan de juiste groepen gekoppeld?</li><li><strong>Actieve lichtsituatie en functie</strong><span class="li-sep"> — </span>welke scène of stand is actief, en welke functies staan daarin aan?</li><li><strong>Instelling</strong><span class="li-sep"> — </span>kloppen nalooptijden, basislicht en streefwaarde?</li><li><strong>Koppeling</strong><span class="li-sep"> — </span>stuurt een tijdschema, automatisering of gebouwbeheer de groep aan?</li><li><strong>Test ter plaatse</strong><span class="li-sep"> — </span>met echte beweging en genoeg tijd.</li></ol></div><details class="more more-how"><summary>Meer uitleg</summary><div class="block block--text"><p>Veel meldingen hebben een eenvoudige oorzaak: een nalooptijd die nog loopt, een sensor die beweging ziet die je niet verwacht, een andere lichtsituatie die actief is, of een apparaat dat in de configuratie op een andere plek staat dan in het gebouw.</p></div></details>
 <div class="parts"><article class="part" id="onderdeel-licht-blijft-aan">
 <h3>Het licht blijft aan</h3>
-<div class="block block--text"><p>Meestal ziet een sensor nog beweging, loopt er nog een nalooptijd, houdt een naburige zone de groep op basislicht, of roept een tijdschema of koppeling een lichtsituatie op.</p></div>
+<div class="block block--text"><p>Meestal ziet een sensor nog beweging, loopt er nog een nalooptijd, houdt een naburige zone de groep op basislicht, of roept een tijdschema of koppeling een lichtsituatie op. Controleer eerst de bus: zonder busspanning gaan DALI-drivers naar hun storingsniveau.</p></div>
 
 
 
 
 
 <details class="more"><summary>Zo zoek je het uit</summary>
-<div class="block block--steps"><p>Controleer:</p><ol class="steps steps--long"><li><strong>Fysiek</strong><span class="li-sep"> — </span>ziet de sensor beweging die je niet verwacht, bijvoorbeeld door een deur of van een warmtebron?</li><li><strong>Groep</strong><span class="li-sep"> — </span>aan welke groepen is de sensor gekoppeld?</li><li><strong>Functie</strong><span class="li-sep"> — </span>staat de aanwezigheidsregeling voor deze groep aan in de actieve lichtsituatie?</li><li><strong>Naburige zones</strong><span class="li-sep"> — </span>is er iemand in een zone die met deze groep is gekoppeld?</li><li><strong>Instelling</strong><span class="li-sep"> — </span>wacht de nalooptijd en de nalooptijd van het basislicht volledig af.</li><li><strong>Koppeling</strong><span class="li-sep"> — </span>roept een tijdschema, automatisering of gebouwbeheer een lichtsituatie op?</li><li><strong>Test</strong><span class="li-sep"> — </span>test opnieuw met een lege ruimte.</li></ol></div>
+<div class="block block--steps"><p>Controleer:</p><ol class="steps steps--long"><li><strong>Verbinding</strong><span class="li-sep"> — </span>staat de bus onder spanning? Valt de busspanning weg, dan gaat een DALI-driver naar zijn storingsniveau. Af fabriek is dat vrijwel vol licht, en dan blijft het licht aan, wat de sensor ook meldt.</li><li><strong>Fysiek</strong><span class="li-sep"> — </span>ziet de sensor beweging die je niet verwacht, bijvoorbeeld door een deur of van een warmtebron?</li><li><strong>Groep</strong><span class="li-sep"> — </span>aan welke groepen is de sensor gekoppeld?</li><li><strong>Functie</strong><span class="li-sep"> — </span>staat de aanwezigheidsregeling voor deze groep aan in de actieve lichtsituatie?</li><li><strong>Naburige zones</strong><span class="li-sep"> — </span>is er iemand in een zone die met deze groep is gekoppeld?</li><li><strong>Instelling</strong><span class="li-sep"> — </span>wacht de nalooptijd en de nalooptijd van het basislicht volledig af.</li><li><strong>Koppeling</strong><span class="li-sep"> — </span>roept een tijdschema, automatisering of gebouwbeheer een lichtsituatie op?</li><li><strong>Test</strong><span class="li-sep"> — </span>test opnieuw met een lege ruimte.</li></ol></div>
 
 
 </details>
@@ -169,7 +169,7 @@
 <p class="dg-more"><a href="#onderdeel-licht-gaat-niet-aan">Meer over: Het licht gaat niet aan</a></p>
 </section><section class="dg-path" data-p="licht-blijft-aan">
 <h4 class="dg-title">Het licht blijft aan</h4>
-<ol class="dg-steps"><li class="dg-step" data-i="0" tabindex="-1">Fysiek — ziet de sensor beweging die je niet verwacht, bijvoorbeeld door een deur of van een warmtebron?</li><li class="dg-step" data-i="1" tabindex="-1">Groep — aan welke groepen is de sensor gekoppeld?</li><li class="dg-step" data-i="2" tabindex="-1">Functie — staat de aanwezigheidsregeling voor deze groep aan in de actieve lichtsituatie?</li><li class="dg-step" data-i="3" tabindex="-1">Naburige zones — is er iemand in een zone die met deze groep is gekoppeld?</li><li class="dg-step" data-i="4" tabindex="-1">Instelling — wacht de nalooptijd en de nalooptijd van het basislicht volledig af.</li><li class="dg-step" data-i="5" tabindex="-1">Koppeling — roept een tijdschema, automatisering of gebouwbeheer een lichtsituatie op?</li><li class="dg-step" data-i="6" tabindex="-1">Test — test opnieuw met een lege ruimte.</li></ol>
+<ol class="dg-steps"><li class="dg-step" data-i="0" tabindex="-1">Verbinding — staat de bus onder spanning? Valt de busspanning weg, dan gaat een DALI-driver naar zijn storingsniveau. Af fabriek is dat vrijwel vol licht, en dan blijft het licht aan, wat de sensor ook meldt.</li><li class="dg-step" data-i="1" tabindex="-1">Fysiek — ziet de sensor beweging die je niet verwacht, bijvoorbeeld door een deur of van een warmtebron?</li><li class="dg-step" data-i="2" tabindex="-1">Groep — aan welke groepen is de sensor gekoppeld?</li><li class="dg-step" data-i="3" tabindex="-1">Functie — staat de aanwezigheidsregeling voor deze groep aan in de actieve lichtsituatie?</li><li class="dg-step" data-i="4" tabindex="-1">Naburige zones — is er iemand in een zone die met deze groep is gekoppeld?</li><li class="dg-step" data-i="5" tabindex="-1">Instelling — wacht de nalooptijd en de nalooptijd van het basislicht volledig af.</li><li class="dg-step" data-i="6" tabindex="-1">Koppeling — roept een tijdschema, automatisering of gebouwbeheer een lichtsituatie op?</li><li class="dg-step" data-i="7" tabindex="-1">Test — test opnieuw met een lege ruimte.</li></ol>
 <p class="dg-end" tabindex="-1" hidden>Alles in orde en het probleem blijft? Kijk naar de veelvoorkomende oorzaken en test opnieuw, met echte beweging en genoeg tijd.</p>
 <p class="dg-more"><a href="#onderdeel-licht-blijft-aan">Meer over: Het licht blijft aan</a></p>
 </section><section class="dg-path" data-p="sensor-reageert-niet">

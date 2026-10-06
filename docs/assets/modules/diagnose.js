@@ -40,7 +40,9 @@ export function mount(el, config = {}) {
       pos.textContent = (s.pos || '').replace('{n}', String(at + 1)).replace('{total}', String(steps.length));
       act.append(pos, button(s.ok, 'ok', () => { at++; show(true); }), button(s.nok, 'nok', () => {
         steps[at].classList.add('is-hit');
-        act.replaceChildren(Object.assign(document.createElement('strong'), { className: 'dg-hit', textContent: s.hit }), button(s.again, 'again', () => { at = 0; show(true); }));
+        const again = button(s.again, 'again', () => { at = 0; show(true); });
+        act.replaceChildren(Object.assign(document.createElement('strong'), { className: 'dg-hit', textContent: s.hit }), again);
+        again.focus(); // de knop met de focus is net vervangen: geef de focus aan „Opnieuw”
         say(s.hit);
       }));
       steps[at].append(act);
