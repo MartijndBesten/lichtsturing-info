@@ -239,3 +239,7 @@
 .dali .dali-svg--v .dali-addr { font-size: 11px; }
 .vd-voeding rect { fill: var(--bg); stroke: var(--c-voeding); stroke-width: 1.4; }
 .vd-voeding .arch-icon { stroke: var(--c-voeding); fill: none; stroke-width: 1.3; }
+
+
+.ix-key { display: none; flex-wrap: wrap; gap: var(--s-2) var(--s-4); margin: var(--s-3) 0 0; padding: 0; list-style: none; font-size: 1rem; line-height: 1.4; }
+.ix-key-icon { width: 1.3em; height: 1.3em; margin-right: .45em; vertical-align: -.3em; }

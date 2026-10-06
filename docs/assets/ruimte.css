@@ -3,7 +3,7 @@
 .rs-title { font-size: var(--fs-h3); font-weight: 700; line-height: 1.25; }
 .rs-summary { font-size: var(--fs-small); color: var(--on-dark-soft); max-width: 60ch; }
 .rs-summary p { margin: 0; }
-.rs-stage { position: relative; }
+.rs-stage { position: relative; container: rs-stage / inline-size; }
 .rs-svg { display: block; width: 100%; height: auto; border-radius: 8px; background: #0b1530; }
 .rs-actor { transform-box: view-box; transform-origin: 0 0; }
 .rs-pose { display: none; }
@@ -39,6 +39,11 @@
 .rs:has(.rs-ob[open]):has(.rs-ob [value='voeding']:checked):has(.rs-ob [value='ingebouwd']:checked) .rs-psu-badge,
 .rs:has(.rs-ob[open]):has(.rs-ob [value='apart']:checked):has(.rs-ob [value='voeding']:checked):has(.rs-ob [value='los']:checked) .rs-buspsu,
 .rs:has(.rs-ob[open]):has(.rs-ob [value='sensor']:checked):has(.rs-ob [value='voeding']:checked):has(.rs-ob [value='los']:checked) .rs-buspsu2 { display: inline; }
+@container rs-stage (max-width: 41.5rem) {
+  .rs-svg .rs-tl, .rs-svg .rs-box-label { display: none !important; }
+  .rs-key { display: flex; }
+}
+.rs-key { color: var(--on-dark); }
 @media (max-width: 64rem) { .rs:has(.rs-ob[open]) .rs-stage { position: sticky; top: 0; z-index: 2; padding-bottom: var(--s-2); background: var(--navy); } }
 .rs-ob { margin-top: var(--s-4); border-top: 1px solid rgba(255, 255, 255, .16); padding-top: var(--s-3); }
 .rs-ob > summary { min-height: 40px; display: flex; align-items: center; gap: .5em; font-weight: 700; cursor: pointer; color: var(--on-dark); }
