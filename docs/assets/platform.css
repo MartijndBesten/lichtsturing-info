@@ -258,3 +258,19 @@
 .ix-key { display: none; flex-wrap: wrap; gap: var(--s-2) var(--s-4); margin: var(--s-3) 0 0; padding: 0; list-style: none; font-size: 1rem; line-height: 1.4; }
 .ix-key-icon { width: 1.3em; height: 1.3em; margin-right: .45em; vertical-align: -.3em; }
 figure[data-module] { margin-inline: 0; }
+
+.ix-flow { display: flex; flex-wrap: wrap; gap: var(--s-2); margin: var(--s-3) 0 0; padding: 0; list-style: none; font-size: var(--fs-label); font-weight: 600; }
+.ix-flow li { display: inline-flex; align-items: center; padding: .3em .7em; color: var(--muted); border: 1px solid var(--line-strong); border-radius: 999px; }
+.ix-flow li + li::before { content: '\2192'; margin-right: .4em; }
+.ix-flow li.is-on { color: var(--ink); border-color: var(--ink); }
+.ix-flow li[data-ix='signaal'].is-on { color: #fff; background: var(--c-flow); border-color: var(--c-flow); }
+.ix-flow li[data-ix='beslist'].is-on { color: #fff; background: var(--navy); border-color: var(--navy); }
+.ix-flow li[data-ix='effect'].is-on { color: var(--ink); background: var(--light-vol); border-color: #d9a300; }
+.dali.ix-signal .ch-line--bus { stroke: var(--c-flow); }
+.dali.ix-decide .dali-p[data-kind='armatuur'] rect { stroke: var(--navy); stroke-width: 2.5; }
+.dali:not([data-mode='scene']) .dali-p[data-kind='armatuur'].is-on rect { fill: var(--light-vol); stroke: #b8791a; }
+@media (prefers-reduced-motion: no-preference) {
+  .ix-flow li { transition: background-color .2s ease, color .2s ease, border-color .2s ease; }
+  .dali.ix-signal .ch-line--bus { animation: ix-bus .45s linear; }
+}
+@keyframes ix-bus { from { stroke-dashoffset: 30; } to { stroke-dashoffset: 0; } }

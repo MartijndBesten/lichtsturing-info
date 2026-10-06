@@ -8,7 +8,16 @@ export function mount(el, config = {}) {
   const scenes = config.scenes || {};
   el.classList.add('is-enhanced');
   el.querySelector('.dali-modes').hidden = false;
+  const flow = config.ix ? [...el.querySelectorAll('.ix-flow li')] : [];
+  let timers = [];
+  const stopFlow = () => {
+    timers.forEach(clearTimeout);
+    timers = [];
+    el.classList.remove('ix-signal', 'ix-decide');
+    for (const li of flow) li.classList.remove('is-on');
+  };
   const clear = () => {
+    stopFlow();
     for (const p of parts) {
       p.classList.remove('is-on', 'is-off');
       p.style.removeProperty('--lvl');
@@ -36,19 +45,26 @@ export function mount(el, config = {}) {
       if (c.dataset.b) on = (id) => el.querySelector(`.dali-p[data-p="${id}"]`).dataset.kind === 'armatuur';
       if (c.dataset.p) on = (id) => id === c.dataset.p;
       if (c.dataset.g) on = (id) => (groups[c.dataset.g] || []).includes(id);
-      if (c.dataset.s) {
-        const lv = scenes[c.dataset.s] || {};
-        on = (id) => id in lv;
+      const lv = c.dataset.s ? scenes[c.dataset.s] || {} : null;
+      if (lv) on = (id) => id in lv;
+      const apply = () => {
         for (const p of parts) {
-          if (!(p.dataset.p in lv)) continue;
-          p.style.setProperty('--lvl', String(lv[p.dataset.p] / 100));
-          p.querySelector('.dali-level').textContent = `${lv[p.dataset.p]} %`;
+          if (lv && p.dataset.p in lv) {
+            p.style.setProperty('--lvl', String(lv[p.dataset.p] / 100));
+            p.querySelector('.dali-level').textContent = `${lv[p.dataset.p]} %`;
+          }
+          p.classList.toggle('is-on', on(p.dataset.p));
+          p.classList.toggle('is-off', !on(p.dataset.p));
         }
-      }
-      for (const p of parts) {
-        p.classList.toggle('is-on', on(p.dataset.p));
-        p.classList.toggle('is-off', !on(p.dataset.p));
-      }
+      };
+      if (!flow.length) return apply();
+      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const phases = [() => {}, () => el.classList.add('ix-signal'), () => el.classList.replace('ix-signal', 'ix-decide'), () => { el.classList.remove('ix-decide'); apply(); }];
+      phases.forEach((fn, k) => {
+        const go = () => { flow[k]?.classList.add('is-on'); fn(); };
+        if (reduce) go();
+        else timers.push(setTimeout(go, k * 450));
+      });
     });
   }
   mode(modes[0].dataset.mode);

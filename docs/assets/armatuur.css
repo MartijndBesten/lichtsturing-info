@@ -22,7 +22,9 @@
 .am-slot.is-picked rect { stroke: var(--navy); stroke-width: 3; }
 .am-led { fill: #f5c542; }
 .am-light { fill: rgba(255, 214, 102, .22); }
-.am-packet { fill: var(--c-dali); opacity: 0; }
+.am-packet { fill: var(--c-flow); opacity: 0; }
+.am.ix-ask .am-bus { stroke: var(--c-flow); }
+.am-slot.is-answer rect { stroke: var(--navy); stroke-width: 3; }
 .am.is-reading .am-packet.is-go { opacity: 1; }
 .am.is-read .am-bus { stroke-width: 4; }
 .am-parts { list-style: none; display: grid; gap: var(--s-1); margin: var(--s-3) 0 0; padding: 0; }
