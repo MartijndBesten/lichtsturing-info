@@ -239,6 +239,12 @@
 .dali .dali-svg--v .dali-p-label, .dali .dali-svg--v .dali-ctl text { font-size: 12px; }
 .dali .dali-svg--v .dali-addr { font-size: 10.5px; }
 .dali .dali-svg--v .arch-link-label { font-size: 10px; }
+.sig { container: sig / inline-size; }
+@container sig (max-width: 47rem) { .sig .sig-svg--h { display: none; } .sig .sig-svg--v { display: block; max-width: 26rem; } }
+@container sig (min-width: 47rem) { .sig .sig-svg--h { display: block; } .sig .sig-svg--v { display: none; } }
+.sig .sig-svg--v text { font-size: 12.5px; }
+.vd .vd-svg { max-height: none; }
+.vd .vd-label { font-size: 9.5px; }
 .vd-voeding rect { fill: var(--bg); stroke: var(--c-voeding); stroke-width: 1.4; }
 .vd-voeding .arch-icon { stroke: var(--c-voeding); fill: none; stroke-width: 1.3; }
 
