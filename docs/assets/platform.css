@@ -245,6 +245,7 @@
 .sig .sig-svg--v text { font-size: 12.5px; }
 .vd .vd-svg { max-height: none; }
 .vd .vd-label { font-size: 9.5px; }
+.vd .vd-cases { grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr)); }
 .illustration--ports { container: ports / inline-size; }
 @container ports (max-width: 26rem) {
   .illustration-svg--ports .pt-wire { display: none; }
