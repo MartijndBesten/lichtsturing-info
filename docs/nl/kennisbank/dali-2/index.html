@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="nl" data-base="/" data-v="6cc84183">
+<html lang="nl" data-base="/" data-v="dc760661">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,11 +16,12 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%2032%2032&#39;%3E%3Crect%20width%3D&#39;32&#39;%20height%3D&#39;32&#39;%20rx%3D&#39;7&#39;%20fill%3D&#39;%23072d78&#39;%2F%3E%3Crect%20x%3D&#39;6&#39;%20y%3D&#39;8&#39;%20width%3D&#39;15&#39;%20height%3D&#39;4.5&#39;%20rx%3D&#39;1.6&#39;%20fill%3D&#39;%23fff&#39;%2F%3E%3Cpath%20d%3D&#39;M8.5%2012.5%2018.5%2012.5%2023%2024.5%204%2024.5Z&#39;%20fill%3D&#39;%23ffd166&#39;%20fill-opacity%3D&#39;.92&#39;%2F%3E%3Ccircle%20cx%3D&#39;25.5&#39;%20cy%3D&#39;10.2&#39;%20r%3D&#39;2&#39;%20fill%3D&#39;%237fb2ff&#39;%2F%3E%3Cpath%20d%3D&#39;M22.2%206.5a4.7%204.7%200%200%201%206.6%200&#39;%20fill%3D&#39;none&#39;%20stroke%3D&#39;%237fb2ff&#39;%20stroke-width%3D&#39;1.5&#39;%20stroke-linecap%3D&#39;round&#39;%2F%3E%3C%2Fsvg%3E">
 
-<link rel="stylesheet" href="/assets/site.css?v=6cc84183">
-<link rel="stylesheet" href="/assets/platform.css?v=ee2bd866">
+<link rel="stylesheet" href="/assets/site.css?v=dc760661">
+<link rel="stylesheet" href="/assets/platform.css?v=53d3ec15">
 <link rel="stylesheet" href="/assets/standaarden.css?v=41b9484a">
+<link rel="stylesheet" href="/assets/widgets.css?v=8dab6978">
 
-<script type="module" src="/assets/site.js?v=6cc84183"></script>
+<script type="module" src="/assets/site.js?v=dc760661"></script>
 </head>
 <body>
 
@@ -136,7 +137,7 @@
 <details class="sd-aspects"><summary>Vergelijking op hoofdlijnen</summary><div class="sd-table-wrap"><table class="sd-table"><thead><tr><th scope="col"></th><th scope="col">DALI</th><th scope="col">DALI-2</th><th scope="col">D4i</th><th scope="col">Bluetooth NLC</th></tr></thead><tbody><tr><th scope="row">Verbinding</th><td data-col="DALI">twee draden: de DALI-bus</td><td data-col="DALI-2">dezelfde twee draden</td><td data-col="D4i">DALI-bus, vooral binnen de armatuur</td><td data-col="Bluetooth NLC">radio: Bluetooth LE en Bluetooth Mesh</td></tr><tr><th scope="row">Wat ligt vast</th><td data-col="DALI">drivers en hun opdrachten</td><td data-col="DALI-2">ook sensoren, knoppen, besturingen en busvoedingen</td><td data-col="D4i">busvoeding in de driver en de gegevensdelen 251 tot 253</td><td data-col="Bluetooth NLC">wat iedere soort apparaat doet (zes profielen)</td></tr><tr><th scope="row">Wie legt het vast</th><td data-col="DALI">IEC (IEC 62386) en de DALI Alliance</td><td data-col="DALI-2">IEC en de DALI Alliance</td><td data-col="D4i">DALI Alliance</td><td data-col="Bluetooth NLC">Bluetooth SIG</td></tr><tr><th scope="row">Borging</th><td data-col="DALI">nieuwe registraties voor DALI version-1 zijn gesloten</td><td data-col="DALI-2">certificering; staat in de productdatabase van de DALI Alliance</td><td data-col="D4i">certificering bovenop DALI-2; ook in de productdatabase</td><td data-col="Bluetooth NLC">profielspecificaties, versie 1.0 (2023)</td></tr></tbody></table></div></details>
 <script type="application/json" class="module-config">{"id":"interactive_demo.dali-familie","start":"dali-2","strings":{"play":"Speel af","pause":"Pauze","step":"Stap {current} van {total}"}}</script>
 </figure></div>
-<details class="page-toc-m"><summary>Op deze pagina</summary><ul><li><a href="#l-in-30-seconden">In 30 seconden</a></li><li><a href="#l-zo-werkt-het">Zo werkt het</a></li><li><a href="#l-opbouw">Zo is het opgebouwd</a></li><li><a href="#l-grenzen">Goed om te weten</a></li><li><a href="#l-facts">Kerngegevens</a></li></ul></details>
+<details class="page-toc-m"><summary>Op deze pagina</summary><ul><li><a href="#l-in-30-seconden">In 30 seconden</a></li><li><a href="#l-zo-werkt-het">Zo werkt het</a></li><li><a href="#l-interactief">Bekijk het interactief</a></li><li><a href="#l-opbouw">Zo is het opgebouwd</a></li><li><a href="#l-grenzen">Goed om te weten</a></li><li><a href="#l-facts">Kerngegevens</a></li></ul></details>
 
 <div class="article-layout has-toc">
 <div class="article-main">
@@ -176,6 +177,45 @@
 </details>
 </article></div>
 
+</section><section class="ladder ladder--interactief" aria-labelledby="l-interactief">
+<h2 id="l-interactief">Bekijk het interactief</h2>
+
+
+<figure class="sig" id="demo-dali-2-signaal" data-module="signal" data-telegram="0" data-active="gear bus">
+<figcaption class="illustration-title">Van melding tot licht: wat gebeurt er op de bus?</figcaption>
+<p class="illustration-summary">Een sensor met besturing in één product, stap voor stap. Wie meldt, wie beslist en wat gaat er over de bus? Let op de busspanning: die zegt niets over het lichtniveau.</p>
+<div class="arch-canvas sig-canvas"><svg class="sig-svg sig-svg--h" viewBox="0 0 560 250" role="img" aria-labelledby="sigt-dali-2-signaal" preserveAspectRatio="xMidYMin meet">
+<title id="sigt-dali-2-signaal">Van melding tot licht: wat gebeurt er op de bus?</title>
+<g class="sig-frame"><rect x="10" y="14" width="200" height="136" rx="6"></rect><text x="200" y="144" text-anchor="end">Sensor met besturing</text></g>
+<g class="sig-box" data-role="input"><rect x="24" y="26" width="172" height="40" rx="5"></rect><g class="arch-icon" transform="translate(32 38)" aria-hidden="true"><path d="M4.5 5a3.5 3.5 0 0 1 7 0v.8h-7z"/><path d="M4.2 9a5.4 5.4 0 0 0 7.6 0M2.6 11.4a7.7 7.7 0 0 0 10.8 0"/></g><text x="56" y="50">Input device (sensor)</text></g>
+<g class="sig-event" data-role="event"><path d="M110 66V84"></path><path class="sig-head" d="M106 80L110 86L114 80"></path><text x="118" y="80">melding (intern)</text></g>
+<g class="sig-box" data-role="controller"><rect x="24" y="88" width="172" height="40" rx="5"></rect><g class="arch-icon" transform="translate(32 100)" aria-hidden="true"><rect x="2.5" y="3" width="11" height="10" rx="1.2"/><path d="M2.5 6.5h11M5 9.6h2M9 9.6h2M5.5 3V1.6M10.5 3V1.6M5.5 14.4V13M10.5 14.4V13"/></g><text x="56" y="112">Application controller</text></g>
+<g class="sig-bus" data-role="bus"><path class="ch-line ch-line--bus" d="M110 150V188H460V140"></path><text class="arch-link-label arch-link-label--bus" x="116" y="182">DALI-bus</text>
+<path class="sig-wave" d="M218 170H226V160H244V170H262V160H280V160H298V170H316V160H334V170H352V170H370V170H378" pathLength="1"></path><text class="sig-bit" x="235" y="156" text-anchor="middle">1</text><text class="sig-bit" x="253" y="156" text-anchor="middle">0</text><text class="sig-bit" x="271" y="156" text-anchor="middle">1</text><text class="sig-bit" x="289" y="156" text-anchor="middle">1</text><text class="sig-bit" x="307" y="156" text-anchor="middle">0</text><text class="sig-bit" x="325" y="156" text-anchor="middle">1</text><text class="sig-bit" x="343" y="156" text-anchor="middle">0</text><text class="sig-bit" x="361" y="156" text-anchor="middle">0</text>
+</g>
+<g class="sig-frame sig-frame--lum"><rect x="372" y="14" width="176" height="126" rx="6"></rect><text x="540" y="30" text-anchor="end">Armatuur</text></g>
+<g class="sig-lamp" data-role="lamp"><path class="sig-glow" d="M402 50H518L536 86H384Z"></path><rect class="sig-bar" x="398" y="40" width="124" height="10" rx="2"></rect><text class="sig-level" x="460" y="74" text-anchor="middle"></text></g>
+<g class="sig-box" data-role="gear"><rect x="384" y="94" width="152" height="40" rx="5"></rect><text x="460" y="118" text-anchor="middle">Driver (control gear)</text></g>
+<g class="sig-supply"><path class="ch-line ch-line--voeding" d="M520 134V244"></path><text class="arch-link-label arch-link-label--voeding" x="514" y="236" text-anchor="end">Netspanning</text></g>
+</svg><svg class="sig-svg sig-svg--v" viewBox="0 0 320 480" role="img" aria-labelledby="sigtv-dali-2-signaal" preserveAspectRatio="xMidYMin meet">
+<title id="sigtv-dali-2-signaal">Van melding tot licht: wat gebeurt er op de bus?</title>
+<g class="sig-frame"><rect x="8" y="8" width="304" height="152" rx="6"></rect><text x="302" y="152" text-anchor="end">Sensor met besturing</text></g>
+<g class="sig-box" data-role="input"><rect x="20" y="20" width="280" height="40" rx="5"></rect><g class="arch-icon" transform="translate(28 32)" aria-hidden="true"><path d="M4.5 5a3.5 3.5 0 0 1 7 0v.8h-7z"/><path d="M4.2 9a5.4 5.4 0 0 0 7.6 0M2.6 11.4a7.7 7.7 0 0 0 10.8 0"/></g><text x="52" y="44">Input device (sensor)</text></g>
+<g class="sig-event" data-role="event"><path d="M160 60V80"></path><path class="sig-head" d="M156 76L160 82L164 76"></path><text x="168" y="76">melding (intern)</text></g>
+<g class="sig-box" data-role="controller"><rect x="20" y="86" width="280" height="40" rx="5"></rect><g class="arch-icon" transform="translate(28 98)" aria-hidden="true"><rect x="2.5" y="3" width="11" height="10" rx="1.2"/><path d="M2.5 6.5h11M5 9.6h2M9 9.6h2M5.5 3V1.6M10.5 3V1.6M5.5 14.4V13M10.5 14.4V13"/></g><text x="52" y="110">Application controller</text></g>
+<g class="sig-bus" data-role="bus"><path class="ch-line ch-line--bus" d="M40 160V416H56"></path><text class="arch-link-label arch-link-label--bus" x="46" y="180">DALI-bus</text>
+<path class="sig-wave" d="M76 250H84V240H102V250H120V240H138V240H156V250H174V240H192V250H210V250H228V250H236" pathLength="1"></path><text class="sig-bit" x="93" y="236" text-anchor="middle">1</text><text class="sig-bit" x="111" y="236" text-anchor="middle">0</text><text class="sig-bit" x="129" y="236" text-anchor="middle">1</text><text class="sig-bit" x="147" y="236" text-anchor="middle">1</text><text class="sig-bit" x="165" y="236" text-anchor="middle">0</text><text class="sig-bit" x="183" y="236" text-anchor="middle">1</text><text class="sig-bit" x="201" y="236" text-anchor="middle">0</text><text class="sig-bit" x="219" y="236" text-anchor="middle">0</text></g>
+<g class="sig-frame sig-frame--lum"><rect x="8" y="296" width="304" height="156" rx="6"></rect><text x="302" y="312" text-anchor="end">Armatuur</text></g>
+<g class="sig-lamp" data-role="lamp"><path class="sig-glow" d="M104 332H216L232 368H88Z"></path><rect class="sig-bar" x="100" y="322" width="120" height="10" rx="2"></rect><text class="sig-level" x="160" y="356" text-anchor="middle"></text></g>
+<g class="sig-box" data-role="gear"><rect x="56" y="396" width="200" height="40" rx="5"></rect><text x="156" y="420" text-anchor="middle">Driver (control gear)</text></g>
+<g class="sig-supply"><path class="ch-line ch-line--voeding" d="M236 436V478"></path><text class="arch-link-label arch-link-label--voeding" x="242" y="472">Netspanning</text></g>
+</svg></div>
+<p class="sig-status" aria-live="polite"><span class="sig-state sig-state--rest">In rust: typisch 16 V</span><span class="sig-state sig-state--busy">Telegram: kort een digitaal patroon, daarna weer in rust</span></p>
+<p class="sig-bitsnote"><span class="kbasis kbasis--voorbeeld">Voorbeeld</span> Schematisch voorbeeld van enen en nullen, geen echte codering.</p>
+<div class="sig-bar-ctl" hidden><button type="button" class="arch-stepbtn" data-act="prev">Vorige stap</button><span class="arch-steppos" aria-live="polite"></span><button type="button" class="arch-stepbtn" data-act="next">Volgende stap</button><button type="button" class="arch-stepbtn" data-act="again">Opnieuw</button></div>
+<ol class="sig-steps" aria-label="Stappen"><li data-i="0"><strong>Bus in rust</strong> — Er gaat geen opdracht over de bus. De busspanning is typisch <span class="fact-value">16 V</span>; het armatuur blijft op zijn huidige niveau.</li><li data-i="1"><strong>De sensor ziet iemand</strong> — Het input device ziet beweging en maakt er een melding van. Het stuurt het licht niet zelf aan.</li><li data-i="2"><strong>De besturing beslist</strong> — De application controller in hetzelfde product bepaalt wat er gebeurt, bijvoorbeeld: licht naar het aanwezigheidsniveau. Zit de besturing in een ander product, dan gaat de melding eerst als bericht over de bus.</li><li data-i="3"><strong>Een digitaal telegram</strong> — Over dezelfde twee draden gaat een digitaal telegram: enen en nullen. Er komt geen hogere of lagere stuurspanning op de bus.</li><li data-i="4"><strong>De driver voert uit</strong> — De driver ontvangt de opdracht en dimt naar het nieuwe niveau. Daarna is de bus weer in rust. Het lichtniveau stond in de opdracht, niet in de busspanning.</li></ol>
+<script type="application/json" class="module-config">{"steps":[{"active":["bus"],"telegram":false,"level":10},{"active":["input","event"],"telegram":false,"level":null},{"active":["controller"],"telegram":false,"level":null},{"active":["controller","bus"],"telegram":true,"level":null},{"active":["gear","bus"],"telegram":false,"level":80}],"strings":{"pos":"Stap {n} van {total}","level":"licht {n} %"}}</script>
+</figure>
 </section><section class="ladder ladder--opbouw" aria-labelledby="l-opbouw">
 <h2 id="l-opbouw">Zo is het opgebouwd</h2>
 <details class="more more-deep"><summary>Technische uitleg</summary><div class="block block--table"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>DALI-2 en DALI version-1 samen in één systeem, volgens de DALI Alliance:</p><div class="table-scroll"><table class="compare"><thead><tr><th scope="col">Situatie</th><th scope="col">Wat je kunt verwachten</th></tr></thead><tbody><tr><th scope="row">DALI-2-drivers in een ouder systeem</th><td data-label="Wat je kunt verwachten">geen problemen verwacht: DALI-2 is ontworpen voor terugwaartse compatibiliteit</td></tr><tr><th scope="row">DALI version-1-drivers met een DALI-2-besturing</th><td data-label="Wat je kunt verwachten">werkt naar verwachting, maar zonder de nieuwe DALI-2-functies; controleer of de driver met succes is getest</td></tr><tr><th scope="row">Busvoeding zonder DALI-2-certificering</th><td data-label="Wat je kunt verwachten">geen zekerheid dat die werkt: voor DALI-2 bestonden er geen tests voor busvoedingen</td></tr><tr><th scope="row">Control devices zonder DALI-2-certificering</th><td data-label="Wat je kunt verwachten">geen standaard en geen tests; vraag de fabrikant naar de compatibiliteit</td></tr></tbody></table></div></div><div class="block block--text"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>De application controller is het „brein” van een DALI-2-systeem: hij gebruikt informatie uit iedere bron, neemt beslissingen en stuurt opdrachten naar de control gear. Er bestaan single-master- en multi-master-varianten. Van een single-master mag er maar één op de bus zijn; alleen multi-masters kunnen met meer op één bus, en alleen zij reageren op meldingen van losse sensoren en knoppen. Een gateway naar een extern netwerk zit vaak in de application controller.</p></div><div class="block block--text"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>Kleursturing staat in deel 209. Daarin zitten drie manieren om kleur te regelen: kleurtemperatuur (tunable white), tot zes kleurkanalen (RGBWAF) en xy-coördinaten. Kleur en lichtniveau zijn los van elkaar te regelen. Een scène in een driver met kleursturing bewaart ook de kleur.</p></div><div class="block block--text"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>Deel 202 gaat over control gear voor noodverlichting met een eigen accu in of bij het armatuur. Het kent twee tests die met een opdracht of automatisch worden gestart: een korte functietest en een duurtest van de accu.</p></div></details>
@@ -201,7 +241,7 @@
 </a></nav>
 <section class="related" aria-labelledby="l-related"><h2 id="l-related">Zie ook</h2><ul class="related-list"><li><a href="/nl/kennisbank/dali/">DALI</a></li><li><a href="/nl/kennisbank/handbediening/">Handbediening</a></li></ul></section>
 </div>
-<nav class="page-toc" aria-labelledby="toc-title"><p class="page-toc-title" id="toc-title">Op deze pagina</p><ul><li><a href="#l-in-30-seconden">In 30 seconden</a></li><li><a href="#l-zo-werkt-het">Zo werkt het</a></li><li><a href="#l-opbouw">Zo is het opgebouwd</a></li><li><a href="#l-grenzen">Goed om te weten</a></li><li><a href="#l-facts">Kerngegevens</a></li></ul></nav>
+<nav class="page-toc" aria-labelledby="toc-title"><p class="page-toc-title" id="toc-title">Op deze pagina</p><ul><li><a href="#l-in-30-seconden">In 30 seconden</a></li><li><a href="#l-zo-werkt-het">Zo werkt het</a></li><li><a href="#l-interactief">Bekijk het interactief</a></li><li><a href="#l-opbouw">Zo is het opgebouwd</a></li><li><a href="#l-grenzen">Goed om te weten</a></li><li><a href="#l-facts">Kerngegevens</a></li></ul></nav>
 </div>
 </article>
 </main>

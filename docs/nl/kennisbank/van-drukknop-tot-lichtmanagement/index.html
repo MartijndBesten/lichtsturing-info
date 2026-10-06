@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="nl" data-base="/" data-v="6cc84183">
+<html lang="nl" data-base="/" data-v="dc760661">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,11 +16,12 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%2032%2032&#39;%3E%3Crect%20width%3D&#39;32&#39;%20height%3D&#39;32&#39;%20rx%3D&#39;7&#39;%20fill%3D&#39;%23072d78&#39;%2F%3E%3Crect%20x%3D&#39;6&#39;%20y%3D&#39;8&#39;%20width%3D&#39;15&#39;%20height%3D&#39;4.5&#39;%20rx%3D&#39;1.6&#39;%20fill%3D&#39;%23fff&#39;%2F%3E%3Cpath%20d%3D&#39;M8.5%2012.5%2018.5%2012.5%2023%2024.5%204%2024.5Z&#39;%20fill%3D&#39;%23ffd166&#39;%20fill-opacity%3D&#39;.92&#39;%2F%3E%3Ccircle%20cx%3D&#39;25.5&#39;%20cy%3D&#39;10.2&#39;%20r%3D&#39;2&#39;%20fill%3D&#39;%237fb2ff&#39;%2F%3E%3Cpath%20d%3D&#39;M22.2%206.5a4.7%204.7%200%200%201%206.6%200&#39;%20fill%3D&#39;none&#39;%20stroke%3D&#39;%237fb2ff&#39;%20stroke-width%3D&#39;1.5&#39;%20stroke-linecap%3D&#39;round&#39;%2F%3E%3C%2Fsvg%3E">
 
-<link rel="stylesheet" href="/assets/site.css?v=6cc84183">
-<link rel="stylesheet" href="/assets/platform.css?v=ee2bd866">
+<link rel="stylesheet" href="/assets/site.css?v=dc760661">
+<link rel="stylesheet" href="/assets/platform.css?v=53d3ec15">
 <link rel="stylesheet" href="/assets/ladder.css?v=4fc4a317">
+<link rel="stylesheet" href="/assets/widgets.css?v=8dab6978">
 
-<script type="module" src="/assets/site.js?v=6cc84183"></script>
+<script type="module" src="/assets/site.js?v=dc760661"></script>
 </head>
 <body>
 
@@ -246,6 +247,52 @@
 </details>
 </article></div>
 
+</section><section class="ladder ladder--interactief" aria-labelledby="l-interactief">
+<h2 id="l-interactief">Bekijk het interactief</h2>
+
+
+<figure class="vd" id="demo-opbouw-werkt-dit" data-module="verdict">
+<figcaption class="illustration-title">Werkt dit? Vijf opstellingen beoordelen</figcaption>
+<p class="illustration-summary">Vijf kleine opstellingen uit de leerlijn. Kies per opstelling of ze werkt; daarna zie je het principe.</p>
+<p class="vd-note">Schematisch: de lijnen tonen welke apparaten samen op één bus of stuurdraad zitten, niet de kabelroute. De netvoeding van de drivers is weggelaten.</p>
+<ol class="vd-cases"><li class="vd-case" data-case="input-device" data-answer="nee">
+<h4 class="vd-title"><span class="vd-n">1</span> Een sensor die alleen input device is, een busvoeding en drie drivers</h4>
+<svg class="vd-svg" viewBox="0 0 200 120" role="img" aria-label="Een sensor die alleen input device is, een busvoeding en drie drivers"><path class="ch-line ch-line--bus" d="M26 60L72 60M72 60L112 60M112 60L148 60M148 60L184 60"></path><g class="vd-voeding"><rect x="9" y="50" width="34" height="20" rx="3"></rect><g class="arch-icon" transform="translate(18 52)" aria-hidden="true"><circle cx="8" cy="8" r="5.8"/><path d="M4.8 8c1-2 2.1-2 3.2 0s2.2 2 3.2 0"/></g></g><rect class="vd-p" x="64" y="52" width="16" height="16" rx="3"></rect><rect class="vd-p" x="104" y="52" width="16" height="16" rx="3"></rect><rect class="vd-p" x="140" y="52" width="16" height="16" rx="3"></rect><rect class="vd-p" x="176" y="52" width="16" height="16" rx="3"></rect><text class="vd-label" x="26" y="90" text-anchor="middle">busvoeding</text><text class="vd-label" x="72" y="30" text-anchor="middle">sensor:</text><text class="vd-label" x="72" y="42" text-anchor="middle">alleen input device</text><text class="vd-label" x="148" y="90" text-anchor="middle">drivers</text></svg>
+<p class="vd-q">Werkt dit?</p>
+<p class="vd-options" role="group" aria-label="Werkt dit?"><button type="button" class="vd-opt" data-opt="ja" aria-pressed="false" disabled>Werkt</button><button type="button" class="vd-opt" data-opt="nee" aria-pressed="false" disabled>Werkt niet</button></p>
+<div class="vd-feedback" aria-live="polite" hidden></div>
+<details class="vd-answer"><summary>Bekijk het antwoord</summary><p class="vd-right"><strong>Antwoord: Werkt niet.</strong> De sensor meldt alleen wat hij ziet. Er is geen application controller die de drivers een opdracht geeft, dus het licht reageert niet op de sensor.</p><p class="vd-principle"><span class="kbasis kbasis--protocol">Norm</span> Een input device levert informatie: een sensor meldt beweging of een lichtwaarde, een drukknopinterface meldt een druk. Een input device stuurt de drivers niet zelf aan. Voor een werkende DALI-2-regeling moet er ergens een application controller zijn die de meldingen gebruikt en de opdrachten geeft.</p></details>
+</li><li class="vd-case" data-case="draairegelaar" data-answer="ja">
+<h4 class="vd-title"><span class="vd-n">2</span> Een draairegelaar met besturing en busvoeding in één, en drie drivers</h4>
+<svg class="vd-svg" viewBox="0 0 200 120" role="img" aria-label="Een draairegelaar met besturing en busvoeding in één, en drie drivers"><path class="ch-line ch-line--bus" d="M34 60L100 60M100 60L142 60M142 60L184 60"></path><g class="vd-bron"><rect x="17" y="50" width="34" height="20" rx="3"></rect><g class="arch-icon" transform="translate(26 52)" aria-hidden="true"><rect x="2.5" y="3" width="11" height="10" rx="1.2"/><path d="M2.5 6.5h11M5 9.6h2M9 9.6h2M5.5 3V1.6M10.5 3V1.6M5.5 14.4V13M10.5 14.4V13"/></g></g><rect class="vd-p" x="92" y="52" width="16" height="16" rx="3"></rect><rect class="vd-p" x="134" y="52" width="16" height="16" rx="3"></rect><rect class="vd-p" x="176" y="52" width="16" height="16" rx="3"></rect><text class="vd-label" x="34" y="36" text-anchor="middle">draairegelaar</text><text class="vd-label" x="8" y="90" text-anchor="start">besturing + busvoeding</text><text class="vd-label" x="142" y="90" text-anchor="middle">drivers</text></svg>
+<p class="vd-q">Werkt dit?</p>
+<p class="vd-options" role="group" aria-label="Werkt dit?"><button type="button" class="vd-opt" data-opt="ja" aria-pressed="false" disabled>Werkt</button><button type="button" class="vd-opt" data-opt="nee" aria-pressed="false" disabled>Werkt niet</button></p>
+<div class="vd-feedback" aria-live="polite" hidden></div>
+<details class="vd-answer"><summary>Bekijk het antwoord</summary><p class="vd-right"><strong>Antwoord: Werkt.</strong> De draairegelaar is hier zelf de application controller en voedt ook de bus. In deze opstelling stuurt hij alle drivers tegelijk (broadcast); adressen zijn daarvoor niet nodig.</p><p class="vd-principle"><span class="kbasis kbasis--protocol">Norm</span> Een application controller gebruikt informatie van input devices, neemt beslissingen en stuurt opdrachten naar de control gear, zoals de drivers. Alleen een application controller geeft opdrachten aan control gear. Hij kan een eigen product zijn, of zitten in een wandregelaar, een sensor of een lichtmanagementsysteem.</p></details>
+</li><li class="vd-case" data-case="twee-single" data-answer="nee">
+<h4 class="vd-title"><span class="vd-n">3</span> Twee besturingen op één bus, allebei single-master</h4>
+<svg class="vd-svg" viewBox="0 0 200 120" role="img" aria-label="Twee besturingen op één bus, allebei single-master"><path class="ch-line ch-line--bus" d="M30 30L76 30M76 30L76 62M76 62L116 62M116 62L150 62M150 62L184 62M30 94L76 94M76 94L76 62"></path><g class="vd-bron"><rect x="13" y="20" width="34" height="20" rx="3"></rect><g class="arch-icon" transform="translate(22 22)" aria-hidden="true"><rect x="2.5" y="3" width="11" height="10" rx="1.2"/><path d="M2.5 6.5h11M5 9.6h2M9 9.6h2M5.5 3V1.6M10.5 3V1.6M5.5 14.4V13M10.5 14.4V13"/></g></g><g class="vd-bron"><rect x="13" y="84" width="34" height="20" rx="3"></rect><g class="arch-icon" transform="translate(22 86)" aria-hidden="true"><rect x="2.5" y="3" width="11" height="10" rx="1.2"/><path d="M2.5 6.5h11M5 9.6h2M9 9.6h2M5.5 3V1.6M10.5 3V1.6M5.5 14.4V13M10.5 14.4V13"/></g></g><circle class="vd-knoop" cx="76" cy="62" r="3"></circle><rect class="vd-p" x="108" y="54" width="16" height="16" rx="3"></rect><rect class="vd-p" x="142" y="54" width="16" height="16" rx="3"></rect><rect class="vd-p" x="176" y="54" width="16" height="16" rx="3"></rect><text class="vd-label" x="30" y="14" text-anchor="middle">single-master</text><text class="vd-label" x="30" y="116" text-anchor="middle">single-master</text><text class="vd-label" x="150" y="86" text-anchor="middle">drivers</text></svg>
+<p class="vd-q">Mag dit?</p>
+<p class="vd-options" role="group" aria-label="Mag dit?"><button type="button" class="vd-opt" data-opt="ja" aria-pressed="false" disabled>Mag</button><button type="button" class="vd-opt" data-opt="nee" aria-pressed="false" disabled>Mag niet</button></p>
+<div class="vd-feedback" aria-live="polite" hidden></div>
+<details class="vd-answer"><summary>Bekijk het antwoord</summary><p class="vd-right"><strong>Antwoord: Mag niet.</strong> Van een single-master mag er maar één op de bus zijn. Wil je twee besturingen op dezelfde bus, dan moeten ze allebei multi-master zijn en samenwerken.</p><p class="vd-principle"><span class="kbasis kbasis--protocol">Norm</span> Er zijn single-masters en multi-masters. Van een single-master mag er maar één op de bus zijn; meerdere multi-masters kunnen dezelfde bus delen. Dat zegt niets over hoe groot een systeem is: ook een single-master kan een groot systeem besturen. Wat een product is, staat in de datasheet.</p></details>
+</li><li class="vd-case" data-case="broadcast-zones" data-answer="nee">
+<h4 class="vd-title"><span class="vd-n">4</span> Een sensor met besturing en één broadcast-uitgang: raamzijde en gangzijde apart regelen</h4>
+<svg class="vd-svg" viewBox="0 0 200 120" role="img" aria-label="Een sensor met besturing en één broadcast-uitgang: raamzijde en gangzijde apart regelen"><path class="ch-line ch-line--bus" d="M26 60L78 60M78 60L108 60M108 60L154 60M154 60L184 60"></path><g class="vd-bron"><rect x="9" y="50" width="34" height="20" rx="3"></rect><g class="arch-icon" transform="translate(18 52)" aria-hidden="true"><rect x="2.5" y="3" width="11" height="10" rx="1.2"/><path d="M2.5 6.5h11M5 9.6h2M9 9.6h2M5.5 3V1.6M10.5 3V1.6M5.5 14.4V13M10.5 14.4V13"/></g></g><rect class="vd-p" x="70" y="52" width="16" height="16" rx="3"></rect><rect class="vd-p" x="100" y="52" width="16" height="16" rx="3"></rect><rect class="vd-p" x="146" y="52" width="16" height="16" rx="3"></rect><rect class="vd-p" x="176" y="52" width="16" height="16" rx="3"></rect><text class="vd-label" x="26" y="36" text-anchor="middle">sensor</text><text class="vd-label" x="6" y="90" text-anchor="start">+ besturing</text><text class="vd-label" x="93" y="90" text-anchor="middle">raamzijde</text><text class="vd-label" x="169" y="90" text-anchor="middle">gangzijde</text><text class="vd-label" x="131" y="40" text-anchor="middle">broadcast</text></svg>
+<p class="vd-q">Werkt dit?</p>
+<p class="vd-options" role="group" aria-label="Werkt dit?"><button type="button" class="vd-opt" data-opt="ja" aria-pressed="false" disabled>Werkt</button><button type="button" class="vd-opt" data-opt="nee" aria-pressed="false" disabled>Werkt niet</button></p>
+<div class="vd-feedback" aria-live="polite" hidden></div>
+<details class="vd-answer"><summary>Bekijk het antwoord</summary><p class="vd-right"><strong>Antwoord: Werkt niet.</strong> Op die uitgang krijgen alle drivers dezelfde opdracht. Voor twee zones heb je een besturing nodig die met adressen en groepen werkt, of een aparte uitgang per zone.</p><p class="vd-principle"><span class="kbasis kbasis--protocol">Norm</span> Nieuwe DALI-apparaten reageren uit de doos op broadcast: een opdracht aan alle apparaten tegelijk. Zonder adressen werkt een bus dan als één groep: alle armaturen gaan samen naar hetzelfde niveau, ongeveer zoals bij 1–10 V. Wil je armaturen apart of in groepen regelen, of per armatuur iets opvragen, zoals een lampstoring, dan krijgen ze eerst een adres.</p></details>
+</li><li class="vd-case" data-case="drukknop-mengen" data-answer="nee">
+<h4 class="vd-title"><span class="vd-n">5</span> Eén drukknop dimt drivers van twee verschillende typen</h4>
+<svg class="vd-svg" viewBox="0 0 200 120" role="img" aria-label="Eén drukknop dimt drivers van twee verschillende typen"><path class="ch-line ch-line--voeding" d="M26 60L92 60M92 60L136 60M136 60L180 60"></path><rect class="vd-p" x="18" y="52" width="16" height="16" rx="3"></rect><rect class="vd-p" x="84" y="52" width="16" height="16" rx="3"></rect><rect class="vd-p" x="128" y="52" width="16" height="16" rx="3"></rect><rect class="vd-p" x="172" y="52" width="16" height="16" rx="3"></rect><text class="vd-label" x="26" y="90" text-anchor="middle">drukknop</text><text class="vd-label" x="58" y="46" text-anchor="middle">stuurdraad</text><text class="vd-label" x="92" y="90" text-anchor="middle">type A</text><text class="vd-label" x="136" y="90" text-anchor="middle">type A</text><text class="vd-label" x="180" y="90" text-anchor="middle">type B</text></svg>
+<p class="vd-q">Werkt dit?</p>
+<p class="vd-options" role="group" aria-label="Werkt dit?"><button type="button" class="vd-opt" data-opt="ja" aria-pressed="false" disabled>Werkt</button><button type="button" class="vd-opt" data-opt="nee" aria-pressed="false" disabled>Werkt niet</button></p>
+<div class="vd-feedback" aria-live="polite" hidden></div>
+<details class="vd-answer"><summary>Bekijk het antwoord</summary><p class="vd-right"><strong>Antwoord: Werkt niet.</strong> Drukknopdimmen is geen norm: iedere fabrikant heeft een eigen functie, met eigen tijden en eigen gedrag. Fabrikanten noemen „geen verschillende typen drivers op dezelfde drukknop” als grens.</p><p class="vd-principle"><span class="kbasis kbasis--ontwerp">Principe</span> Geen verschillende typen drivers op dezelfde drukknop.</p></details>
+</li></ol>
+<script type="application/json" class="module-config">{"strings":{"right":"Goed.","wrong":"Niet goed — kijk naar het principe.","again":"Probeer een ander antwoord"}}</script>
+</figure>
 </section>
 
 

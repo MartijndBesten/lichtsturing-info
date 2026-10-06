@@ -231,3 +231,11 @@
 .ll-dot.is-on { color: #fff; background: var(--cat); border-color: var(--cat); }
 .ll-text { font-size: var(--fs-small); font-weight: 600; }
 .ll-text::after { content: '\00a0\2192'; }
+
+.dali .dali-svg--v { display: none; }
+@media (max-width: 40rem) { .dali .dali-svg--h { display: none; } .dali .dali-svg--v { display: block; max-width: 24rem; } }
+.dali[data-mode="broadcast"] .dali-addr { opacity: .35; }
+.dali .dali-svg--v .dali-p-label, .dali .dali-svg--v .dali-ctl text { font-size: 13px; }
+.dali .dali-svg--v .dali-addr { font-size: 11px; }
+.vd-voeding rect { fill: var(--bg); stroke: var(--c-voeding); stroke-width: 1.4; }
+.vd-voeding .arch-icon { stroke: var(--c-voeding); fill: none; stroke-width: 1.3; }
