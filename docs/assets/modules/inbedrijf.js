@@ -64,6 +64,18 @@ export function mount(el, config = {}) {
       say('.ib-state--fn', fnOk() ? s.functionOk : s.functionOpen, fnOk());
     });
   }
+  const place = (id) => el.querySelector(`.ib-place[data-l="${id}"]`).textContent;
+  for (const b of $$('.ib-check')) {
+    b.disabled = false;
+    b.addEventListener('click', () => {
+      for (const x of $$('.ib-check')) x.setAttribute('aria-pressed', String(x === b));
+      const g = b.dataset.g;
+      paint(Object.fromEntries(ids.map((id) => [id, state.group[id] === g ? 'on' : 'off'])));
+      const off = ids.filter((id) => lum[id].group === g && state.group[id] !== g).map((id) => `${place(id)}: ${s.checkOff}`);
+      const on = ids.filter((id) => lum[id].group !== g && state.group[id] === g).map((id) => `${place(id)}: ${s.checkOn}`);
+      say('.ib-state--check', on.length || off.length ? `${s.checkWrong} ${[...on, ...off].join(' · ')}` : s.checkOk, !on.length && !off.length);
+    });
+  }
   let present = false;
   let day = false;
   function test() {
@@ -78,7 +90,7 @@ export function mount(el, config = {}) {
     el.classList.toggle('is-day', day);
     const want = (id) => (present && config.sensor.groups.includes(lum[id].group) ? (day && config.sensor.daylight.includes(lum[id].group) ? 'dim' : 'on') : 'off');
     const ok = ids.every((id) => light[id] === want(id));
-    const msg = ids.filter((id) => light[id] !== want(id)).map((id) => `${el.querySelector(`.ib-place[data-l="${id}"]`).textContent}: ${s[`test${want(id) === 'on' ? 'On' : want(id) === 'dim' ? 'Dim' : 'Off'}`]}`);
+    const msg = ids.filter((id) => light[id] !== want(id)).map((id) => `${place(id)}: ${s[`test${want(id) === 'on' ? 'On' : want(id) === 'dim' ? 'Dim' : 'Off'}`]}`);
     say('.ib-state--test', ok ? s.testOk : msg.join(' · '), ok);
   }
   for (const b of $$('.ib-test')) {
@@ -100,6 +112,7 @@ export function mount(el, config = {}) {
     }
     for (const p of panels) p.hidden = p.dataset.step !== id;
     for (const x of $$('.ib-lum')) x.classList.remove('is-blink');
+    for (const x of $$('.ib-check')) x.setAttribute('aria-pressed', 'false');
     if (id === 'testen') test();
     else paint();
   }

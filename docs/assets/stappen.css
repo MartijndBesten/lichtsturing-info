@@ -58,7 +58,9 @@
 .ib.is-enhanced .ib-panel-title { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 .ib-panel { margin-top: var(--s-3); }
 .ib-text { margin: 0 0 var(--s-2); }
-.ib-act { display: flex; flex-wrap: wrap; gap: var(--s-2); margin: var(--s-2) 0; }
+.ib-act { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2); margin: var(--s-2) 0; }
+.ib-act-label { flex-basis: 100%; font-weight: 600; font-size: var(--fs-small); }
+.ib-check[aria-pressed="true"] { border-color: var(--navy); }
 .ib-found { list-style: none; display: flex; flex-wrap: wrap; gap: var(--s-2); margin: var(--s-2) 0; padding: 0; }
 .ib-locate { list-style: none; display: grid; gap: var(--s-2); margin: var(--s-2) 0; padding: 0; }
 .ib-found li { padding: var(--s-1) var(--s-3); border: 1px dashed var(--line-strong); border-radius: var(--radius); font-size: var(--fs-small); }
