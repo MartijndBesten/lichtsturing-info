@@ -48,7 +48,30 @@
 <article class="article">
 <header class="page-header"><div class="page-header-text"><h1>DALI-verdieping: kleur, noodverlichting en meer</h1><p class="lead">Device types (DT1, DT6, DT8), kleur en kleurtemperatuur, noodverlichting die zichzelf test, sensoren en knoppen in DALI-2, en hoeveel er op één bus past.</p></div></header>
 <nav class="ll-strip" aria-label="Plaats in de leerlijn"><a href="/nl/kennisbank/van-drukknop-tot-lichtmanagement/#niveau-systeem"><span class="ll-dots" aria-hidden="true"><span class="ll-dot" data-cat="bediening">0</span><span class="ll-dot" data-cat="regeling">1</span><span class="ll-dot" data-cat="regeling">2</span><span class="ll-dot" data-cat="regeling">3</span><span class="ll-dot" data-cat="automatisering">4</span><span class="ll-dot" data-cat="automatisering">5</span><span class="ll-dot is-on" data-cat="automatisering">6</span><span class="ll-dot is-on" data-cat="lichtmanagement">7</span><span class="ll-dot" data-cat="lichtmanagement">8</span><span class="ll-dot" data-cat="lichtmanagement">9</span><span class="ll-dot" data-cat="gebouwintegratie">10</span></span><span class="ll-text">In de leerlijn van drukknop tot lichtmanagement: niveau 6–7</span></a></nav>
-
+<div class="page-showcase"><figure class="kl" id="demo-dali-kleur" data-module="kleur" data-mode="dt8" data-level="100" data-tc="neutraal">
+<figcaption class="illustration-title">Eén adres: niveau, en bij DT8 ook kleurtemperatuur</figcaption>
+<p class="illustration-summary">Kies DT6 of DT8 en stuur het armatuur. Bij DT6 regel je alleen het niveau; bij DT8 met hetzelfde adres ook warm of koel wit.</p>
+<div class="kl-modes" role="group" aria-label="Soort driver" hidden><button type="button" class="kl-mode" data-m="dt6" aria-pressed="">DT6: één uitgang</button><button type="button" class="kl-mode" data-m="dt8" aria-pressed="true">DT8: kleurtemperatuur</button></div>
+<div class="kl-stage"><svg class="kl-svg" viewBox="0 0 360 170" role="img" aria-label="Besturing, bus, driver met één adres en een armatuur met warm en koel wit">
+<rect class="kl-box" x="8" y="20" width="78" height="40" rx="6"/><text class="kl-t" x="47" y="44">Besturing</text>
+<path class="kl-bus" d="M86 40 H170"/><text class="kl-t kl-t--s" x="128" y="32">DALI-bus</text>
+<rect class="kl-box kl-driver" x="170" y="20" width="96" height="40" rx="6"/><text class="kl-t" x="218" y="38">Driver</text><text class="kl-t kl-t--s kl-addr" x="218" y="53">één adres</text>
+<path class="kl-wire kl-wire--w" d="M200 60 V84"/><path class="kl-wire kl-wire--c" d="M236 60 V84"/>
+<rect class="kl-lum" x="150" y="84" width="136" height="16" rx="4"/>
+<rect class="kl-led kl-led--w" x="160" y="88" width="54" height="8" rx="2"/><rect class="kl-led kl-led--c" x="222" y="88" width="54" height="8" rx="2"/><rect class="kl-led kl-led--one" x="160" y="88" width="116" height="8" rx="2"/>
+<path class="kl-beam" d="M156 100 L120 162 H316 L280 100 Z"/>
+<text class="kl-t kl-t--s kl-lw" x="187" y="116">warm wit</text><text class="kl-t kl-t--s kl-lc" x="249" y="116">koel wit</text><text class="kl-t kl-t--s kl-lo" x="218" y="116">één uitgang</text>
+</svg></div>
+<ol class="ix-flow" aria-hidden="true"><li data-ix="doe">Je kiest</li><li data-ix="signaal">Opdracht naar één adres</li><li data-ix="beslist" data-alt="Driver zet zijn ene uitgang">Driver mengt warm en koel wit</li><li data-ix="effect">Licht verandert</li></ol>
+<div class="kl-controls" hidden>
+<div class="kl-row" role="group" aria-label="Niveau"><span class="kl-rl">Niveau</span><button type="button" class="kl-btn" data-level="25" aria-pressed="false">25 %</button><button type="button" class="kl-btn" data-level="50" aria-pressed="false">50 %</button><button type="button" class="kl-btn" data-level="100" aria-pressed="false">100 %</button></div>
+<div class="kl-row kl-row--tc" role="group" aria-label="Kleurtemperatuur"><span class="kl-rl">Kleurtemperatuur</span><button type="button" class="kl-btn" data-tc="warm" aria-pressed="false">warm wit</button><button type="button" class="kl-btn" data-tc="neutraal" aria-pressed="false">neutraal</button><button type="button" class="kl-btn" data-tc="koel" aria-pressed="false">koel wit</button></div>
+<p class="kl-note6">Een DT6-driver heeft één uitgang: alleen het niveau is te regelen.</p>
+</div>
+<p class="kl-state" aria-live="polite"></p>
+<ul class="kl-key"><li>DT6: één adres, één uitgang, alleen het niveau.</li><li>DT8: één adres, twee of meer uitgangen: niveau en kleurtemperatuur (of kleur) los of samen.</li><li>De besturing vraagt een kleurtemperatuur; de driver bepaalt de menging.</li></ul>
+<script type="application/json" class="module-config">{"strings":{"state":"{mode} · niveau {level} % · {tc}","dt6":"DT6: één uitgang","dt8":"DT8: kleurtemperatuur","tc":{"warm":"warm wit","neutraal":"neutraal","koel":"koel wit"}}}</script>
+</figure></div>
 <details class="page-toc-m"><summary>Op deze pagina</summary><ul><li><a href="#l-in-30-seconden">In 30 seconden</a></li><li><a href="#l-zo-werkt-het">Zo werkt het</a></li><li><a href="#l-interactief">Bekijk het interactief</a></li><li><a href="#l-opbouw">Zo is het opgebouwd</a></li></ul></details>
 
 <div class="article-layout has-toc">
@@ -119,30 +142,7 @@
 <h2 id="l-interactief">Bekijk het interactief</h2>
 
 
-<figure class="kl" id="demo-dali-kleur" data-module="kleur" data-mode="dt8" data-level="100" data-tc="neutraal">
-<figcaption class="illustration-title">Eén adres: niveau, en bij DT8 ook kleurtemperatuur</figcaption>
-<p class="illustration-summary">Kies DT6 of DT8 en stuur het armatuur. Bij DT6 regel je alleen het niveau; bij DT8 met hetzelfde adres ook warm of koel wit.</p>
-<div class="kl-modes" role="group" aria-label="Soort driver" hidden><button type="button" class="kl-mode" data-m="dt6" aria-pressed="">DT6: één uitgang</button><button type="button" class="kl-mode" data-m="dt8" aria-pressed="true">DT8: kleurtemperatuur</button></div>
-<div class="kl-stage"><svg class="kl-svg" viewBox="0 0 360 170" role="img" aria-label="Besturing, bus, driver met één adres en een armatuur met warm en koel wit">
-<rect class="kl-box" x="8" y="20" width="78" height="40" rx="6"/><text class="kl-t" x="47" y="44">Besturing</text>
-<path class="kl-bus" d="M86 40 H170"/><text class="kl-t kl-t--s" x="128" y="32">DALI-bus</text>
-<rect class="kl-box kl-driver" x="170" y="20" width="96" height="40" rx="6"/><text class="kl-t" x="218" y="38">Driver</text><text class="kl-t kl-t--s kl-addr" x="218" y="53">één adres</text>
-<path class="kl-wire kl-wire--w" d="M200 60 V84"/><path class="kl-wire kl-wire--c" d="M236 60 V84"/>
-<rect class="kl-lum" x="150" y="84" width="136" height="16" rx="4"/>
-<rect class="kl-led kl-led--w" x="160" y="88" width="54" height="8" rx="2"/><rect class="kl-led kl-led--c" x="222" y="88" width="54" height="8" rx="2"/><rect class="kl-led kl-led--one" x="160" y="88" width="116" height="8" rx="2"/>
-<path class="kl-beam" d="M156 100 L120 162 H316 L280 100 Z"/>
-<text class="kl-t kl-t--s kl-lw" x="187" y="116">warm wit</text><text class="kl-t kl-t--s kl-lc" x="249" y="116">koel wit</text><text class="kl-t kl-t--s kl-lo" x="218" y="116">één uitgang</text>
-</svg></div>
-<ol class="ix-flow" aria-hidden="true"><li data-ix="doe">Je kiest</li><li data-ix="signaal">Opdracht naar één adres</li><li data-ix="beslist" data-alt="Driver zet zijn ene uitgang">Driver mengt warm en koel wit</li><li data-ix="effect">Licht verandert</li></ol>
-<div class="kl-controls" hidden>
-<div class="kl-row" role="group" aria-label="Niveau"><span class="kl-rl">Niveau</span><button type="button" class="kl-btn" data-level="25" aria-pressed="false">25 %</button><button type="button" class="kl-btn" data-level="50" aria-pressed="false">50 %</button><button type="button" class="kl-btn" data-level="100" aria-pressed="false">100 %</button></div>
-<div class="kl-row kl-row--tc" role="group" aria-label="Kleurtemperatuur"><span class="kl-rl">Kleurtemperatuur</span><button type="button" class="kl-btn" data-tc="warm" aria-pressed="false">warm wit</button><button type="button" class="kl-btn" data-tc="neutraal" aria-pressed="false">neutraal</button><button type="button" class="kl-btn" data-tc="koel" aria-pressed="false">koel wit</button></div>
-<p class="kl-note6">Een DT6-driver heeft één uitgang: alleen het niveau is te regelen.</p>
-</div>
-<p class="kl-state" aria-live="polite"></p>
-<ul class="kl-key"><li>DT6: één adres, één uitgang, alleen het niveau.</li><li>DT8: één adres, twee of meer uitgangen: niveau en kleurtemperatuur (of kleur) los of samen.</li><li>De besturing vraagt een kleurtemperatuur; de driver bepaalt de menging.</li></ul>
-<script type="application/json" class="module-config">{"strings":{"state":"{mode} · niveau {level} % · {tc}","dt6":"DT6: één uitgang","dt8":"DT8: kleurtemperatuur","tc":{"warm":"warm wit","neutraal":"neutraal","koel":"koel wit"}}}</script>
-</figure><figure class="nd" id="demo-dali-nood" data-module="nood" data-state="normaal">
+<figure class="nd" id="demo-dali-nood" data-module="nood" data-state="normaal">
 <figcaption class="illustration-title">Een noodarmatuur met DALI: bedrijf, uitval en tests</figcaption>
 <p class="illustration-summary">Kies een toestand. Alleen een test of het opvragen van het resultaat gaat over de bus; bij netuitval schakelt de driver zelf over.</p>
 <div class="nd-pick" role="group" aria-label="Toestand" hidden><button type="button" class="nd-btn" data-s="normaal" aria-pressed="true">Normaal bedrijf</button><button type="button" class="nd-btn" data-s="uitval" aria-pressed="">Netuitval</button><button type="button" class="nd-btn" data-s="functietest" aria-pressed="">Functietest</button><button type="button" class="nd-btn" data-s="duurtest" aria-pressed="">Duurtest</button><button type="button" class="nd-btn" data-s="opvragen" aria-pressed="">Resultaat opvragen</button></div>

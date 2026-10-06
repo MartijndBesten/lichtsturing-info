@@ -48,28 +48,9 @@
 <article class="article">
 <header class="page-header"><div class="page-header-text"><h1>Wat past bij mijn project?</h1><p class="lead">Een merkonafhankelijke keuzehulp: negen korte vragen, één per stap, en een richting voor de opbouw van de lichtsturing.</p></div></header>
 
-
-<details class="page-toc-m"><summary>Op deze pagina</summary><ul><li><a href="#l-in-30-seconden">In 30 seconden</a></li><li><a href="#l-zo-werkt-het">Zo werkt het</a></li><li><a href="#l-interactief">Bekijk het interactief</a></li></ul></details>
-
-<div class="article-layout has-toc">
-<div class="article-main">
-<section class="ladder ladder--in-30-seconden" aria-labelledby="l-in-30-seconden">
-<h2 id="l-in-30-seconden">In 30 seconden</h2>
-<div class="block block--text"><p class="kbasis kbasis--ontwerp" title="Algemeen werkingsprincipe of ontwerpregel: geen eis uit een norm en geen productgrens.">Principe</p><p>Welke opbouw past, hangt af van het project: kan er een stuurkabel komen, hoe groot is het, wil je centraal beheren, en moet er gekoppeld worden? Beantwoord de vragen één voor één.</p></div><details class="more more-30"><summary>Meer in het kort</summary><div class="block block--text"><p class="kbasis kbasis--ontwerp" title="Algemeen werkingsprincipe of ontwerpregel: geen eis uit een norm en geen productgrens.">Principe</p><p>Je krijgt een richting, geen productkeuze.</p></div></details>
-
-
-</section><section class="ladder ladder--zo-werkt-het" aria-labelledby="l-zo-werkt-het">
-<h2 id="l-zo-werkt-het">Zo werkt het</h2>
-<aside class="block block--callout"><p class="kbasis kbasis--ontwerp" title="Algemeen werkingsprincipe of ontwerpregel: geen eis uit een norm en geen productgrens.">Principe</p><p>Eenvoudig, centraal, bedraad, draadloos en hybride zijn geen kwaliteitsniveaus. De beste opbouw is de eenvoudigste die doet wat het project vraagt.</p></aside>
-
-
-</section><section class="ladder ladder--interactief" aria-labelledby="l-interactief">
-<h2 id="l-interactief">Bekijk het interactief</h2>
-
-
-<figure class="wz" id="demo-keuzehulp" data-module="wijzer">
-<figcaption class="illustration-title">Wat past bij mijn project?</figcaption>
-<p class="illustration-summary">Negen korte vragen, één per stap. Je krijgt een richting voor de opbouw, met waarom, waar je op let en wat je nog moet weten. Geen merk en geen product.</p>
+<div class="page-showcase"><figure class="wz" id="demo-keuzehulp" data-module="wijzer">
+<figcaption class="illustration-title">Negen vragen, één per stap</figcaption>
+<p class="illustration-summary">Je krijgt een richting voor de opbouw, met waarom, waar je op let en wat je nog moet weten. Geen merk en geen product.</p>
 <div class="wz-run" hidden>
 <div class="wz-top"><p class="wz-pos"></p><button type="button" class="wz-back" hidden>Vorige vraag</button></div>
 <fieldset class="wz-q" data-q="bouw" hidden><legend class="wz-qt" tabindex="-1">Gaat het om nieuwbouw of renovatie?</legend>
@@ -210,7 +191,21 @@
 <p class="wz-disc">Een eerste richting op basis van je antwoorden: geen ontwerp, geen productadvies en geen garantie. Het ontwerp volgt uit het werkelijke gebruik van de ruimtes en wordt projectspecifiek uitgewerkt en getest.</p>
 <p class="wz-live visually-hidden" aria-live="polite"></p>
 <script type="application/json" class="module-config">{"strings":{"pos":"Vraag {n} van {total}","done":"Wat past bij je antwoorden","again":"Opnieuw beginnen","back":"Vorige vraag","change":"Wijzig"},"model":{"questions":[{"id":"bouw","when":[]},{"id":"kabel","when":[]},{"id":"schaal","when":[]},{"id":"beheer","when":[]},{"id":"monitoring","when":[]},{"id":"gbs","when":[]},{"id":"indeling","when":[]},{"id":"uitbreiden","when":[]},{"id":"zelfstandig","when":[]}],"groups":[{"id":"richting","pick":"first"},{"id":"aanvulling","pick":"all"}],"results":[{"id":"hybride","group":"richting","when":[{"q":"kabel","any":["deels"]}],"anyOf":[]},{"id":"draadloos-centraal","group":"richting","when":[{"q":"kabel","any":["nee"]}],"anyOf":[{"q":"beheer","any":["centraal"]},{"q":"schaal","any":["verdieping","gebouw"]},{"q":"monitoring","any":["ja"]}]},{"id":"draadloos-lokaal","group":"richting","when":[{"q":"kabel","any":["nee"]}],"anyOf":[]},{"id":"lms","group":"richting","when":[{"q":"kabel","any":["ja"]}],"anyOf":[{"q":"beheer","any":["centraal"]},{"q":"schaal","any":["gebouw"]},{"q":"monitoring","any":["ja"]}]},{"id":"geadresseerd","group":"richting","when":[{"q":"kabel","any":["ja"]}],"anyOf":[{"q":"schaal","any":["verdieping"]},{"q":"indeling","any":["ja"]},{"q":"uitbreiden","any":["ja"]},{"q":"gbs","any":["ja"]}]},{"id":"lokaal","group":"richting","when":[{"q":"kabel","any":["ja"]}],"anyOf":[]},{"id":"gbs","group":"aanvulling","when":[{"q":"gbs","any":["ja"]}],"anyOf":[]},{"id":"gbs-onbekend","group":"aanvulling","when":[{"q":"gbs","any":["onbekend"]}],"anyOf":[]},{"id":"regelgeving","group":"aanvulling","when":[{"q":"schaal","any":["verdieping","gebouw"]}],"anyOf":[]},{"id":"zelfstandig","group":"aanvulling","when":[{"q":"zelfstandig","any":["ja"]}],"anyOf":[]},{"id":"monitoring","group":"aanvulling","when":[{"q":"monitoring","any":["ja"]}],"anyOf":[]},{"id":"indeling","group":"aanvulling","when":[{"q":"indeling","any":["ja"]}],"anyOf":[]},{"id":"uitbreiden","group":"aanvulling","when":[{"q":"uitbreiden","any":["ja"]}],"anyOf":[]},{"id":"renovatie","group":"aanvulling","when":[{"q":"bouw","any":["renovatie"]}],"anyOf":[]}]}}</script>
-</figure>
+</figure></div>
+
+
+<div class="article-layout">
+<div class="article-main">
+<section class="ladder ladder--in-30-seconden" aria-labelledby="l-in-30-seconden">
+<h2 id="l-in-30-seconden">In 30 seconden</h2>
+<div class="block block--text"><p class="kbasis kbasis--ontwerp" title="Algemeen werkingsprincipe of ontwerpregel: geen eis uit een norm en geen productgrens.">Principe</p><p>Welke opbouw past, hangt af van het project: kan er een stuurkabel komen, hoe groot is het, wil je centraal beheren, en moet er gekoppeld worden? Beantwoord de vragen één voor één.</p></div><details class="more more-30"><summary>Meer in het kort</summary><div class="block block--text"><p class="kbasis kbasis--ontwerp" title="Algemeen werkingsprincipe of ontwerpregel: geen eis uit een norm en geen productgrens.">Principe</p><p>Je krijgt een richting, geen productkeuze.</p></div></details>
+
+
+</section><section class="ladder ladder--zo-werkt-het" aria-labelledby="l-zo-werkt-het">
+<h2 id="l-zo-werkt-het">Zo werkt het</h2>
+<aside class="block block--callout"><p class="kbasis kbasis--ontwerp" title="Algemeen werkingsprincipe of ontwerpregel: geen eis uit een norm en geen productgrens.">Principe</p><p>Eenvoudig, centraal, bedraad, draadloos en hybride zijn geen kwaliteitsniveaus. De beste opbouw is de eenvoudigste die doet wat het project vraagt.</p></aside>
+
+
 </section>
 
 
@@ -223,7 +218,7 @@
 </a></nav>
 <section class="related" aria-labelledby="l-related"><h2 id="l-related">Zie ook</h2><ul class="related-list"><li><a href="/nl/kennisbank/bedraad-of-draadloos/">Bedraad of draadloos?</a></li><li><a href="/nl/praktijk/keuzes-en-afwegingen/">Keuzes en afwegingen</a></li></ul></section>
 </div>
-<nav class="page-toc" aria-labelledby="toc-title"><p class="page-toc-title" id="toc-title">Op deze pagina</p><ul><li><a href="#l-in-30-seconden">In 30 seconden</a></li><li><a href="#l-zo-werkt-het">Zo werkt het</a></li><li><a href="#l-interactief">Bekijk het interactief</a></li></ul></nav>
+
 </div>
 </article>
 </main>
