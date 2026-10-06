@@ -58,6 +58,9 @@
 .rs:has(.rs-ob [value='sensor']:checked) .rs-ob-text[data-k='apart'], .rs:has(.rs-ob [value='broadcast']:checked) .rs-ob-text[data-k='groepen'] { display: none; }
 .rs-ob-psu, .rs-ob-psutext { display: none; }
 .rs:has(.rs-ob [value='voeding']:checked) .rs-ob-psu, .rs:has(.rs-ob [value='voeding']:checked) .rs-ob-psutext { display: block; }
+.rs-more { margin: var(--s-3) 0 0; font-size: var(--fs-small); font-weight: 700; }
+.rs-more a { color: var(--light-vol); }
+.rs-more a::after { content: ' →'; }
 .rs-ob-deep { margin-top: var(--s-3); font-size: var(--fs-small); color: var(--on-dark-soft); }
 .rs-ob-deep summary { font-weight: 600; cursor: pointer; color: var(--on-dark); }
 .rs-ob-deep ul { margin: var(--s-2) 0 0; padding-left: 1.1em; display: grid; gap: var(--s-1); }
