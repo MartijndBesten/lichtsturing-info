@@ -8,7 +8,7 @@
 .dg-sym:has(input:checked) { background: var(--navy); border-color: var(--navy); color: var(--on-dark); }
 .dg-sym:has(input:focus-visible) { outline: 2px solid var(--blue); outline-offset: 2px; }
 .dg-title { margin: var(--s-4) 0 var(--s-2); }
-.dg-links { columns: 2 14rem; margin: var(--s-2) 0; padding-left: 1.2rem; }
+.dg:not(.is-enhanced) { display: none; }
 .dg.is-enhanced .dg-title { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 .dg-steps { margin: 0; padding-left: 1.6rem; }
 .dg-step { margin: 0 0 var(--s-2); padding: var(--s-2) var(--s-3); border-left: 3px solid var(--line); }

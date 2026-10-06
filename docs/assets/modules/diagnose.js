@@ -5,7 +5,6 @@ export function mount(el, config = {}) {
   const live = el.querySelector('.dg-live');
   el.classList.add('is-enhanced');
   pick.hidden = false;
-  el.querySelector('.dg-links').hidden = true;
   const say = (text) => {
     live.textContent = '';
     setTimeout(() => { live.textContent = text; }, 30);
