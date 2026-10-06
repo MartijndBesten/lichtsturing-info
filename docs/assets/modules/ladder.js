@@ -2,6 +2,7 @@
 const reduce = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const LV = { uit: 0, min: 0.18, basis: 0.24, laag: 0.3, gedimd: 0.55, vol: 1 };
 const ACTS = {
+  switch: ['schakel'],
   pushdim: ['kort', 'lang'],
   rotary: ['drukken', 'draai'],
   sensor: ['binnen', 'weg', 'day'],
@@ -9,9 +10,11 @@ const ACTS = {
   systeem: ['binnen', 'weg', 'knop', 'day'],
   lms: ['binnen', 'weg', 'scene', 'tijd', 'storing', 'day'],
   draadloos: ['binnen', 'weg', 'knop'],
+  hybride: ['binnen', 'weg', 'knop'],
+  gebouw: ['binnen', 'melden', 'storing', 'gbs'],
 };
-const MANUAL = ['pushdim', 'rotary'];
-const VIA_CTRL = ['systeem', 'lms'];
+const MANUAL = ['switch', 'pushdim', 'rotary'];
+const VIA_CTRL = ['systeem', 'lms', 'gebouw'];
 
 export function mount(el, config) {
   const s = config.strings || {};
@@ -25,19 +28,16 @@ export function mount(el, config) {
   const dark = q('.ld-dark');
   const actor = q('.rs-actor');
   const sensor = q('.rs-sensor');
+  const radios = [...el.querySelectorAll('.ld-levels input')];
   const pos = config.positions || {};
   let st = {};
   let timers = [];
 
   const later = (ms, fn) => timers.push(setTimeout(fn, ms));
-  const level = () => el.querySelector('.ld-levels input:checked')?.value;
+  const level = () => radios.find((r) => r.checked)?.value;
   const section = () => el.querySelector(`.ld-level[data-lv="${level()}"]`);
   const kind = () => section()?.querySelector('.ld-actions')?.dataset.kind || '';
-  const mode = () => (el.querySelector('.ld-mode [value="hybride"]:checked') ? 'hybride' : 'draadloos');
-  const visible = (sel) => qa(sel).filter((n) => {
-    const h = n.closest('[data-on]');
-    return h && h.dataset.on.split(' ').includes(level()) && (!h.dataset.mode || h.dataset.mode === mode());
-  });
+  const visible = (sel) => qa(sel).filter((n) => (n.closest('[data-on]')?.dataset.on || '').split(' ').includes(level()));
   const status = (key) => {
     const out = section()?.querySelector('.ld-status');
     if (out) out.textContent = s[key] || '';
@@ -48,6 +48,10 @@ export function mount(el, config) {
     void node.getBoundingClientRect();
     node.classList.add(cls);
   };
+  const flag = (sel, ms) => visible(sel).forEach((n) => {
+    n.classList.add('is-on');
+    if (ms) later(ms, () => n.classList.remove('is-on'));
+  });
 
   function paint() {
     const day = st.day;
@@ -86,25 +90,24 @@ export function mount(el, config) {
       later(2600, () => qa(`.ld-sig[data-sig="${name}"]`).forEach((p) => p.classList.remove('is-active')));
     });
   }
-  function busy() {
-    for (const c of visible('.rs-ctrl')) {
+  function busy(delay) {
+    later(delay, () => visible('.rs-ctrl').forEach((c) => {
       c.classList.add('is-busy');
       later(1600, () => c.classList.remove('is-busy'));
-    }
+    }));
   }
   function send(src) {
     const k = kind();
-    if (k === 'pushdim') return flash('w230'), 300;
+    if (k === 'switch' || k === 'pushdim') return flash('w230'), 300;
     if (k === 'rotary') return flash('draai'), 300;
-    if (k === 'sensor' || k === 'broadcast') return flash(src === 'knop' ? 'draai' : 'sensor'), 400;
-    if (k === 'draadloos') {
-      const arcs = visible('.ld-arcs');
-      arcs.forEach((a, i) => later(i * 90, () => restart(a, 'is-ping')));
-      if (mode() === 'hybride') flash('gw', 500);
+    if (k === 'sensor' || k === 'broadcast') return flash('sensor'), 400;
+    if (k === 'draadloos' || k === 'hybride') {
+      visible('.ld-arcs').forEach((a, i) => later(i * 90, () => restart(a, 'is-ping')));
+      if (k === 'hybride') flash('gw', 500);
       return 500;
     }
     if (src !== 'ctrl') flash(src === 'knop' ? 'meld-knop' : 'meld-sensor');
-    later(src === 'ctrl' ? 0 : 900, busy);
+    busy(src === 'ctrl' ? 0 : 900);
     flash('opdracht', src === 'ctrl' ? 0 : 1100);
     return src === 'ctrl' ? 500 : 1500;
   }
@@ -119,13 +122,16 @@ export function mount(el, config) {
       later(700, () => c.classList.remove('is-pressed'));
     }
   }
+  const toggle = () => {
+    press();
+    st.on = !st.on;
+    apply('knop', () => both(st.on ? st.lvl : LV.uit), st.on ? 'aan' : 'uit');
+  };
 
   const act = {
-    kort() {
-      press();
-      st.on = !st.on;
-      apply('knop', () => both(st.on ? st.lvl : LV.uit), st.on ? 'aan' : 'uit');
-    },
+    schakel: toggle,
+    kort: toggle,
+    drukken: toggle,
     lang() {
       press();
       if (!st.on) {
@@ -139,11 +145,6 @@ export function mount(el, config) {
       st.dir = -st.dir;
       apply('knop', () => both(st.lvl), up ? 'dimOp' : 'dimAf');
     },
-    drukken() {
-      press();
-      st.on = !st.on;
-      apply('knop', () => both(st.on ? st.lvl : LV.uit), st.on ? 'aan' : 'uit');
-    },
     draai(v, done) {
       st.lvl = Math.max(0.12, v / 100);
       st.on = true;
@@ -153,9 +154,8 @@ export function mount(el, config) {
     },
     binnen() {
       st.gen++;
-      st.present = true;
       place('binnen');
-      if (kind() !== 'draadloos') restart(sensor, 'is-ping');
+      if (!['draadloos', 'hybride'].includes(kind())) restart(sensor, 'is-ping');
       apply('sensor', () => {
         st.auto = true;
         both(LV.vol);
@@ -163,7 +163,6 @@ export function mount(el, config) {
     },
     weg() {
       const g = ++st.gen;
-      st.present = false;
       place('buiten');
       status('nalooptijd');
       const via = VIA_CTRL.includes(kind());
@@ -174,11 +173,11 @@ export function mount(el, config) {
     knop() {
       press();
       st.gen++;
-      const on = Math.max(st.a, st.b) > 0;
+      const lit = Math.max(st.a, st.b) > 0;
       apply('knop', () => {
-        st.auto = !on;
-        both(on ? LV.uit : LV.vol);
-      }, on ? 'uit' : 'aan');
+        st.auto = !lit;
+        both(lit ? LV.uit : LV.vol);
+      }, lit ? 'uit' : 'aan');
     },
     scene() {
       press();
@@ -191,32 +190,46 @@ export function mount(el, config) {
     },
     tijd() {
       const g = ++st.gen;
-      status('tijdschema');
       apply('ctrl', () => both(LV.basis), 'tijdschema');
       later(3500, () => g === st.gen && apply('ctrl', () => both(LV.uit), 'uit'));
     },
     storing() {
-      const fault = visible('.ld-fault')[0];
-      const alert = visible('.ld-gbs-alert')[0];
-      fault?.classList.add('is-on');
+      const gbs = kind() === 'gebouw';
+      flag('.ld-fault', 9000);
       flash('storing');
       flash('net', 1200);
-      later(2200, () => {
-        alert?.classList.add('is-on');
-        status('storingGemeld');
+      if (gbs) flash('gbs', 2400);
+      later(gbs ? 3400 : 2200, () => {
+        visible('.ld-alert').forEach((n) => n.classList.add('is-on'));
+        status(gbs ? 'storingGbs' : 'storingGemeld');
       });
-      later(9000, () => {
-        fault?.classList.remove('is-on');
-        alert?.classList.remove('is-on');
+      later(9000, () => qa('.ld-alert').forEach((n) => n.classList.remove('is-on')));
+    },
+    melden() {
+      busy(0);
+      flash('net', 200);
+      flash('gbs', 1400);
+      later(2400, () => {
+        flag('.ld-gbs-on', 4000);
+        status('statusGbs');
       });
+    },
+    gbs() {
+      st.gen++;
+      flash('gbs-terug');
+      flash('net-terug', 1100);
+      later(2200, () => apply('ctrl', () => {
+        st.auto = false;
+        both(LV.basis);
+      }, 'opdrachtGbs'));
     },
     day(v, done) {
       st.day = v / 100;
       paint();
       if (done && st.auto && Math.max(st.a, st.b) >= LV.gedimd) {
-        const k = kind();
-        flash(VIA_CTRL.includes(k) ? 'meld-sensor' : k === 'draadloos' ? '' : 'sensor');
-        if (VIA_CTRL.includes(k)) flash('opdracht', 1100);
+        const via = VIA_CTRL.includes(kind());
+        flash(via ? 'meld-sensor' : 'sensor');
+        if (via) flash('opdracht', 1100);
       }
     },
   };
@@ -245,7 +258,7 @@ export function mount(el, config) {
         b.type = 'button';
         b.className = 'ld-btn';
         b.textContent = s[a] || a;
-        b.addEventListener('click', act[a]);
+        b.addEventListener('click', () => act[a]());
         box.append(b);
       }
     }
@@ -262,7 +275,7 @@ export function mount(el, config) {
     qa('.is-active, .is-ping, .is-on, .is-busy, .is-pressed').forEach((n) => n.classList.remove('is-active', 'is-ping', 'is-on', 'is-busy', 'is-pressed'));
     const k = kind();
     const manual = MANUAL.includes(k);
-    st = { on: manual, lvl: LV.vol, dir: -1, day: 0, present: manual, auto: false, broadcast: k === 'broadcast', gen: 0, a: manual ? LV.vol : LV.uit, b: manual ? LV.vol : LV.uit };
+    st = { on: manual, lvl: LV.vol, dir: -1, day: 0, auto: false, broadcast: k === 'broadcast', gen: 0, a: manual ? LV.vol : LV.uit, b: manual ? LV.vol : LV.uit };
     const sec = section();
     if (sec) {
       build(sec, k);
@@ -272,9 +285,42 @@ export function mount(el, config) {
     paint();
     status(manual ? 'aan' : 'leeg');
   }
+  const choose = (lv) => {
+    const r = radios.find((x) => x.value === lv);
+    if (!r) return;
+    r.checked = true;
+    reset();
+  };
 
-  el.querySelector('.ld-levels')?.addEventListener('change', reset);
-  el.querySelector('.ld-mode')?.addEventListener('change', () => kind() === 'draadloos' && reset());
+  const cur = el.querySelector('.ld-current');
+  if (cur) {
+    const step = (d) => {
+      const i = radios.findIndex((r) => r.checked) + d;
+      if (radios[i]) choose(radios[i].value);
+    };
+    const btn = (d, label, txt) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'ld-step';
+      b.setAttribute('aria-label', label);
+      b.textContent = txt;
+      b.addEventListener('click', () => step(d));
+      return b;
+    };
+    cur.prepend(btn(-1, s.prev || '', '‹'));
+    cur.append(btn(1, s.next || '', '›'));
+  }
+
+  el.querySelector('.ld-levels')?.addEventListener('change', () => {
+    reset();
+    history.replaceState(null, '', `#niveau-${level()}`);
+  });
   el.classList.add('ld-ready');
-  reset();
+  const fromHash = () => {
+    const m = /^#niveau-([a-z-]+)$/.exec(location.hash);
+    return m && radios.some((r) => r.value === m[1]) ? m[1] : null;
+  };
+  window.addEventListener('hashchange', () => fromHash() && choose(fromHash()));
+  if (fromHash()) choose(fromHash());
+  else reset();
 }

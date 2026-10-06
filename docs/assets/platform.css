@@ -196,3 +196,38 @@
 .academy-deep-list { display: flex; flex-wrap: wrap; gap: var(--s-2); margin: var(--s-3) 0; padding: 0; list-style: none; }
 .academy-deep-list li { padding: .25em .75em; font-size: var(--fs-small); font-weight: 600; background: var(--bg); border: 1px solid var(--line-strong); border-radius: 999px; }
 .academy-deep-more { font-size: var(--fs-small); }
+
+.pf-ladder, .ll-strip { --c-bediening: #8a94a6; --c-regeling: #d99a12; --c-automatisering: #2563c9; --c-lichtmanagement: #7454d4; --c-gebouwintegratie: #1f8f86; }
+.pf-ladder [data-cat='bediening'], .ll-strip [data-cat='bediening'] { --cat: var(--c-bediening); }
+.pf-ladder [data-cat='regeling'], .ll-strip [data-cat='regeling'] { --cat: var(--c-regeling); }
+.pf-ladder [data-cat='automatisering'], .ll-strip [data-cat='automatisering'] { --cat: var(--c-automatisering); }
+.pf-ladder [data-cat='lichtmanagement'], .ll-strip [data-cat='lichtmanagement'] { --cat: var(--c-lichtmanagement); }
+.pf-ladder [data-cat='gebouwintegratie'], .ll-strip [data-cat='gebouwintegratie'] { --cat: var(--c-gebouwintegratie); }
+.pf-ladder { display: grid; gap: var(--s-4); padding: var(--s-5) var(--s-4); background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+.pf-ladder-text h2 { margin: 0 0 var(--s-2); }
+.pf-ladder-text p { max-width: var(--measure); margin: 0; color: var(--text); }
+.pf-ladder-text .pf-more { margin-top: var(--s-3); font-weight: 700; }
+.pf-ladder-steps { display: grid; grid-template-columns: repeat(11, minmax(0, 1fr)); align-items: end; gap: 3px; margin: 0; padding: 0; list-style: none; }
+.pf-ladder-steps a { display: flex; flex-direction: column; justify-content: flex-start; height: calc(2.4rem + var(--i) * .5rem); padding: 4px 2px; color: var(--ink); text-decoration: none; background: var(--bg); border: 1px solid var(--line); border-top: 5px solid var(--cat); border-radius: 6px; }
+.pf-ladder-steps a:hover { border-color: var(--cat); }
+.pf-ladder-steps a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.pf-ladder-nr { font-weight: 800; text-align: center; }
+.pf-ladder-name { display: none; font-size: var(--fs-label); font-weight: 600; line-height: 1.2; hyphens: auto; overflow-wrap: break-word; }
+.pf-ladder-cats { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-3); margin: 0; padding: 0; list-style: none; font-size: var(--fs-small); color: var(--muted); }
+.pf-ladder-cats li { display: inline-flex; align-items: center; gap: .4em; }
+.pf-ladder-cats li::before { content: ''; width: .8em; height: .8em; border-radius: 2px; background: var(--cat); }
+@media (min-width: 64rem) {
+  .pf-ladder { padding: var(--s-6); }
+  .pf-ladder-steps a { height: calc(4rem + var(--i) * .7rem); padding: 6px 6px; }
+  .pf-ladder-nr { text-align: left; }
+  .pf-ladder-name { display: block; }
+}
+.ll-strip { margin: var(--s-3) 0 var(--s-4); }
+.ll-strip a { display: inline-flex; flex-wrap: wrap; align-items: center; gap: var(--s-2) var(--s-3); padding: var(--s-2) var(--s-3); color: var(--ink); text-decoration: none; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.ll-strip a:hover { border-color: var(--line-strong); }
+.ll-strip a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.ll-dots { display: inline-flex; gap: 2px; }
+.ll-dot { display: inline-grid; place-items: center; width: 1.25rem; height: 1.25rem; font-size: .68rem; font-weight: 700; color: var(--muted); background: var(--bg); border: 1px solid var(--line); border-bottom: 3px solid var(--line); border-radius: 3px; }
+.ll-dot.is-on { color: #fff; background: var(--cat); border-color: var(--cat); }
+.ll-text { font-size: var(--fs-small); font-weight: 600; }
+.ll-text::after { content: '\00a0\2192'; }
