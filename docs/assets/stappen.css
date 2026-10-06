@@ -1,4 +1,6 @@
 
+.dg [hidden], .ib [hidden] { display: none !important; }
+
 .dg-pick { border: 0; padding: 0; margin: var(--s-3) 0; display: flex; flex-wrap: wrap; gap: var(--s-2); }
 .dg-pick legend { font-weight: 700; padding: 0; margin-bottom: var(--s-2); }
 .dg-sym { position: relative; display: inline-flex; align-items: center; min-height: 2.75rem; padding: var(--s-1) var(--s-3); border: 1px solid var(--line-strong); border-radius: 999px; background: var(--bg); font-size: var(--fs-small); font-weight: 600; color: var(--navy); cursor: pointer; }
@@ -6,6 +8,7 @@
 .dg-sym:has(input:checked) { background: var(--navy); border-color: var(--navy); color: var(--on-dark); }
 .dg-sym:has(input:focus-visible) { outline: 2px solid var(--blue); outline-offset: 2px; }
 .dg-title { margin: var(--s-4) 0 var(--s-2); }
+.dg-links { columns: 2 14rem; margin: var(--s-2) 0; padding-left: 1.2rem; }
 .dg.is-enhanced .dg-title { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 .dg-steps { margin: 0; padding-left: 1.6rem; }
 .dg-step { margin: 0 0 var(--s-2); padding: var(--s-2) var(--s-3); border-left: 3px solid var(--line); }

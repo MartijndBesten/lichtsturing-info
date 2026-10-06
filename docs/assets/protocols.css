@@ -1,4 +1,5 @@
 .pk { margin: var(--s-5) 0; }
+.pk [hidden] { display: none !important; }
 .pk [data-group="pro"] { --g: var(--c-nlc); }
 .pk [data-group="gebouw"] { --g: var(--c-detect); }
 .pk [data-group="buiten"] { --g: var(--c-daylight); }
@@ -22,6 +23,9 @@
 .pk-card { padding: var(--s-3) var(--s-4); border: 1px solid var(--line); border-left: 4px solid var(--g); border-radius: var(--radius-card); background: var(--bg); }
 .pk-card:focus { outline: none; }
 .pk-card-title { margin: 0 0 var(--s-1); }
+.pk-alt { display: block; font-size: var(--fs-small); font-weight: 400; color: var(--muted); }
+.pk-more { margin-top: var(--s-2); min-height: 2.5rem; padding: .3rem .85rem; border: 1px dashed var(--g); border-radius: 999px; background: var(--bg); color: var(--ink); font: inherit; font-size: var(--fs-small); font-weight: 600; cursor: pointer; }
+.pk-badges[hidden] + .pk-more { margin-top: 0; }
 .pk-layer { display: flex; align-items: center; gap: .35rem; margin: 0 0 var(--s-2); font-size: var(--fs-small); color: var(--muted); }
 .pk-text { margin: 0 0 var(--s-2); }
 .pk-rel { margin: 0 0 var(--s-1); font-size: var(--fs-small); }

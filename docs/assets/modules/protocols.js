@@ -1,4 +1,5 @@
-export function mount(el) {
+export function mount(el, config = {}) {
+  const s = config.strings || {};
   const cards = [...el.querySelectorAll('.pk-card')];
   const badges = [...el.querySelectorAll('.pk-badge')];
   const box = el.querySelector('.pk-cards');
@@ -13,9 +14,26 @@ export function mount(el) {
     b.setAttribute('role', 'button');
     b.setAttribute('aria-pressed', 'false');
   }
+  const fold = (list, btn, shut) => {
+    list.hidden = shut;
+    btn.setAttribute('aria-expanded', String(!shut));
+    btn.textContent = shut ? (s.show || '').replace('{n}', String(list.children.length)) : s.hide;
+  };
+  if (config.open) {
+    for (const g of el.querySelectorAll('.pk-group')) {
+      if (config.open.includes(g.dataset.group)) continue;
+      const list = g.querySelector('.pk-badges');
+      const btn = Object.assign(document.createElement('button'), { type: 'button', className: 'pk-more' });
+      btn.addEventListener('click', () => fold(list, btn, !list.hidden));
+      g.append(btn);
+      fold(list, btn, true);
+    }
+  }
   function pick(id, focus) {
     const card = cards.find((c) => c.dataset.id === id);
     if (!card) return;
+    const list = badges.find((b) => b.dataset.pick === id)?.closest('.pk-badges');
+    if (list?.hidden) fold(list, list.parentElement.querySelector('.pk-more'), false);
     const related = new Set([...card.querySelectorAll('[data-pick]')].map((a) => a.dataset.pick));
     for (const c of cards) c.hidden = c !== card;
     for (const b of badges) {
