@@ -162,9 +162,12 @@
 .ld-table thead th { font-size: var(--fs-label); text-transform: uppercase; letter-spacing: .03em; color: var(--on-dark-muted); }
 .ld-table tbody th { color: var(--on-dark); }
 @media (max-width: 40rem) {
-  .ld-name { visibility: hidden; }
   .ld-needs .ld-opts { flex-wrap: nowrap; overflow-x: auto; padding-bottom: var(--s-1); scrollbar-width: thin; }
   .ld-needs .ld-opts label { flex: none; }
+}
+.ld-stage { container: ld-stage / inline-size; }
+@container ld-stage (max-width: 41.5rem) {
+  .ld-name { visibility: hidden; }
   .ld:has(.ld-levels [value='schakelen']:checked) .ld-legend[data-lv='schakelen'],
   .ld:has(.ld-levels [value='drukknop']:checked) .ld-legend[data-lv='drukknop'],
   .ld:has(.ld-levels [value='draairegelaar']:checked) .ld-legend[data-lv='draairegelaar'],
