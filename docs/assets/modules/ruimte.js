@@ -71,6 +71,7 @@ export function mount(el, config) {
   };
 
   const eff = (g, step, day) => {
+    if (el.querySelector('.rs-ob [value=broadcast]:checked')) g = groups[0];
     const base = levels[step.levels[g.id] || 'uit'] ?? 0;
     if (!g.daylight || base < levels.gedimd) return base;
     return Math.max(base * 0.18, base * (1 - day * g.daylight));
@@ -241,6 +242,7 @@ export function mount(el, config) {
   playBtn.addEventListener('click', () => (playing ? stop() : play()));
   panel.addEventListener('pointerdown', () => (started = true), { capture: true });
   panel.querySelector('[data-rs="prev"]').addEventListener('click', () => jump(idx - 1));
+  el.querySelector('.rs-ob')?.addEventListener('change', () => idx >= 0 && render(idx));
   panel.querySelector('[data-rs="next"]').addEventListener('click', () => jump(idx + 1));
   range.addEventListener('input', () => {
     stop();

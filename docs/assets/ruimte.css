@@ -21,6 +21,50 @@
 .rs-flow li + li::before { content: '→'; margin-right: .2em; color: var(--on-dark-muted); }
 .rs-flow li.is-on { color: #0b1f4d; background: var(--light-vol); border-color: var(--light-vol); }
 .rs-flow li.is-on::before { color: #0b1f4d; }
+.rs [data-arch='sensor'], .rs-tl, .rs-psu-box, .rs-psu-badge, .rs-buspsu, .rs-buspsu2 { display: none; }
+.rs:has(.rs-ob [value='sensor']:checked) [data-arch='sensor'] { display: inline; }
+.rs:has(.rs-ob [value='sensor']:checked) [data-arch='apart'] { display: none; }
+.rs:has(.rs-ob[open]) .rs-box-label { display: none; }
+.rs-ac { transform: var(--ta); }
+.rs:has(.rs-ob [value='sensor']:checked) .rs-ac { transform: var(--ts); }
+.rs:has(.rs-ob[open]):has(.rs-ob [value='apart']:checked):has(.rs-ob [value='eenvoudig']:checked) .k-a-e,
+.rs:has(.rs-ob[open]):has(.rs-ob [value='apart']:checked):has(.rs-ob [value='rollen']:checked) .k-a-r,
+.rs:has(.rs-ob[open]):has(.rs-ob [value='apart']:checked):has(.rs-ob [value='voeding']:checked):has(.rs-ob [value='los']:checked) .k-a-pl,
+.rs:has(.rs-ob[open]):has(.rs-ob [value='apart']:checked):has(.rs-ob [value='voeding']:checked):has(.rs-ob [value='ingebouwd']:checked) .k-a-pi,
+.rs:has(.rs-ob[open]):has(.rs-ob [value='sensor']:checked):has(.rs-ob [value='eenvoudig']:checked) .k-s-e,
+.rs:has(.rs-ob[open]):has(.rs-ob [value='sensor']:checked):has(.rs-ob [value='rollen']:checked) .k-s-r,
+.rs:has(.rs-ob[open]):has(.rs-ob [value='sensor']:checked):has(.rs-ob [value='voeding']:checked):has(.rs-ob [value='los']:checked) .k-s-pl,
+.rs:has(.rs-ob[open]):has(.rs-ob [value='sensor']:checked):has(.rs-ob [value='voeding']:checked):has(.rs-ob [value='ingebouwd']:checked) .k-s-pi { display: inline; }
+.rs:has(.rs-ob[open]):has(.rs-ob [value='voeding']:checked):has(.rs-ob [value='los']:checked) .rs-psu-box,
+.rs:has(.rs-ob[open]):has(.rs-ob [value='voeding']:checked):has(.rs-ob [value='ingebouwd']:checked) .rs-psu-badge,
+.rs:has(.rs-ob[open]):has(.rs-ob [value='apart']:checked):has(.rs-ob [value='voeding']:checked):has(.rs-ob [value='los']:checked) .rs-buspsu,
+.rs:has(.rs-ob[open]):has(.rs-ob [value='sensor']:checked):has(.rs-ob [value='voeding']:checked):has(.rs-ob [value='los']:checked) .rs-buspsu2 { display: inline; }
+@media (max-width: 64rem) { .rs:has(.rs-ob[open]) .rs-stage { position: sticky; top: 0; z-index: 2; padding-bottom: var(--s-2); background: var(--navy); } }
+.rs-ob { margin-top: var(--s-4); border-top: 1px solid rgba(255, 255, 255, .16); padding-top: var(--s-3); }
+.rs-ob > summary { min-height: 40px; display: flex; align-items: center; gap: .5em; font-weight: 700; cursor: pointer; color: var(--on-dark); }
+.rs-ob > summary::marker { color: var(--light-vol); }
+.rs-ob > summary:focus-visible { outline: 2px solid var(--light-vol); outline-offset: 2px; }
+.rs-ob-intro { max-width: 72ch; margin: var(--s-2) 0 var(--s-3); font-size: var(--fs-small); color: var(--on-dark-soft); }
+.rs-ob-set { margin: var(--s-3) 0 0; padding: 0; border: 0; }
+.rs-ob-set legend { padding: 0; margin-bottom: var(--s-1); font-size: var(--fs-label); font-weight: 700; letter-spacing: .03em; text-transform: uppercase; color: var(--on-dark-muted); }
+.rs-ob-opts { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.rs-ob-opts label { display: inline-flex; align-items: center; gap: .45em; min-height: 36px; padding: 0 var(--s-3); font-size: var(--fs-small); font-weight: 600; border: 1px solid rgba(255, 255, 255, .3); border-radius: 999px; cursor: pointer; }
+.rs-ob-opts label:has(input:checked) { color: #0b1f4d; background: var(--light-vol); border-color: var(--light-vol); }
+.rs-ob-opts input { width: 16px; height: 16px; margin: 0; accent-color: #0b1f4d; }
+.rs-ob-opts input:focus-visible { outline: 2px solid var(--light-vol); outline-offset: 2px; }
+.rs-ob-text { display: none; max-width: 72ch; margin: var(--s-2) 0 0; font-size: var(--fs-small); line-height: 1.5; color: var(--on-dark-soft); }
+.rs-ob-text[data-k='apart'], .rs-ob-text[data-k='groepen'] { display: block; }
+.rs:has(.rs-ob [value='sensor']:checked) .rs-ob-text[data-k='sensor'], .rs:has(.rs-ob [value='broadcast']:checked) .rs-ob-text[data-k='broadcast'] { display: block; }
+.rs:has(.rs-ob [value='sensor']:checked) .rs-ob-text[data-k='apart'], .rs:has(.rs-ob [value='broadcast']:checked) .rs-ob-text[data-k='groepen'] { display: none; }
+.rs-ob-psu, .rs-ob-psutext { display: none; }
+.rs:has(.rs-ob [value='voeding']:checked) .rs-ob-psu, .rs:has(.rs-ob [value='voeding']:checked) .rs-ob-psutext { display: block; }
+.rs-ob-deep { margin-top: var(--s-3); font-size: var(--fs-small); color: var(--on-dark-soft); }
+.rs-ob-deep summary { font-weight: 600; cursor: pointer; color: var(--on-dark); }
+.rs-ob-deep ul { margin: var(--s-2) 0 0; padding-left: 1.1em; display: grid; gap: var(--s-1); }
+.rs-ob-deep li.rs-ob-text { display: none; }
+.rs-ob-deep li.rs-ob-text[data-k='apart'] { display: list-item; }
+.rs:has(.rs-ob [value='sensor']:checked) .rs-ob-deep li.rs-ob-text[data-k='sensor'] { display: list-item; }
+.rs:has(.rs-ob [value='sensor']:checked) .rs-ob-deep li.rs-ob-text[data-k='apart'] { display: none; }
 .rs-panel { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--s-3); min-width: 0; margin-top: var(--s-4); }
 .rs-panel > *, .rs > * { min-width: 0; }
 .rs-panel[hidden] { display: none; }
@@ -80,6 +124,7 @@
   .rs-sensor.is-ping .rs-ring { animation: rs-ping 1.6s ease-out 2; }
   .rs-sensor.is-ping .rs-ring--1 { animation-delay: .2s; }
   .rs-sensor.is-ping .rs-ring--2 { animation-delay: .4s; }
+  .rs-ac { transition: transform 1.1s cubic-bezier(.45, .05, .35, 1); }
   .rs-sig.is-active { animation: rs-flow-first 2.4s linear 2; }
   .rs-sig[data-leg='uit'].is-active { animation-name: rs-flow-second; }
 }

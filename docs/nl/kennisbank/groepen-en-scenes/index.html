@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="nl" data-base="/" data-v="24dc867c">
+<html lang="nl" data-base="/" data-v="0fe722ff">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,11 +16,11 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%2032%2032&#39;%3E%3Crect%20width%3D&#39;32&#39;%20height%3D&#39;32&#39;%20rx%3D&#39;7&#39;%20fill%3D&#39;%23072d78&#39;%2F%3E%3Crect%20x%3D&#39;6&#39;%20y%3D&#39;8&#39;%20width%3D&#39;15&#39;%20height%3D&#39;4.5&#39;%20rx%3D&#39;1.6&#39;%20fill%3D&#39;%23fff&#39;%2F%3E%3Cpath%20d%3D&#39;M8.5%2012.5%2018.5%2012.5%2023%2024.5%204%2024.5Z&#39;%20fill%3D&#39;%23ffd166&#39;%20fill-opacity%3D&#39;.92&#39;%2F%3E%3Ccircle%20cx%3D&#39;25.5&#39;%20cy%3D&#39;10.2&#39;%20r%3D&#39;2&#39;%20fill%3D&#39;%237fb2ff&#39;%2F%3E%3Cpath%20d%3D&#39;M22.2%206.5a4.7%204.7%200%200%201%206.6%200&#39;%20fill%3D&#39;none&#39;%20stroke%3D&#39;%237fb2ff&#39;%20stroke-width%3D&#39;1.5&#39;%20stroke-linecap%3D&#39;round&#39;%2F%3E%3C%2Fsvg%3E">
 
-<link rel="stylesheet" href="/assets/site.css?v=24dc867c">
+<link rel="stylesheet" href="/assets/site.css?v=0fe722ff">
 <link rel="stylesheet" href="/assets/platform.css?v=ae440682">
-<link rel="stylesheet" href="/assets/ruimte.css?v=9a8a09ad">
+<link rel="stylesheet" href="/assets/ruimte.css?v=6ebf72eb">
 
-<script type="module" src="/assets/site.js?v=24dc867c"></script>
+<script type="module" src="/assets/site.js?v=0fe722ff"></script>
 </head>
 <body>
 
@@ -90,6 +90,7 @@
 </div>
 <ul class="rs-meters"><li data-g="tafel" style="--c:#2563c9"><span class="rs-meter-label">Boven de tafel</span><span class="rs-meter"><span class="rs-meter-fill"></span></span></li><li data-g="wand" style="--c:#d97706"><span class="rs-meter-label">Schermwand</span><span class="rs-meter"><span class="rs-meter-fill"></span></span></li></ul>
 </div>
+
 <div class="rs-scenarios"><section class="rs-scenario" data-sc="vergadering"><h4>Een vergadering</h4><ol class="rs-steps"><li data-at="buiten" data-presence="0" data-levels="tafel:uit wand:uit" data-day="geen" data-event="" data-phase="leeg" data-dur="3"><strong>Leeg</strong> De ruimte is leeg en het licht is uit.</li><li data-at="deur" data-presence="1" data-levels="tafel:vol wand:vol" data-day="geen" data-event="sensor" data-phase="aanwezig" data-dur="4"><strong>Binnenkomen</strong> Twee mensen komen binnen. De sensor ziet ze en de besturing zet de standaardscène aan: beide groepen vol.</li><li data-at="tafel" data-presence="1" data-levels="tafel:vol wand:vol" data-day="geen" data-event="" data-phase="aanwezig" data-dur="4"><strong>Vergaderen</strong> Iedereen zit. Ook bij rustig vergaderen moet de sensor de mensen aan tafel blijven zien. Kies de plek van de sensor daarop.</li><li data-at="presentatie" data-presence="1" data-levels="tafel:gedimd wand:uit" data-day="geen" data-event="scene" data-phase="scene" data-dur="5"><strong>Presenteren</strong> Een druk op de knop Presenteren: de schermwand gaat uit en het licht boven de tafel dimt. Het scherm blijft goed leesbaar en aantekeningen maken kan nog.</li><li data-at="tafel" data-presence="1" data-levels="tafel:vol wand:vol" data-day="geen" data-event="knop" data-phase="handbediening" data-dur="4"><strong>Terug</strong> Na de presentatie zet dezelfde knop de standaardscène terug. Spreek vooraf af of het systeem ook vanzelf teruggaat.</li><li data-at="vertrek" data-presence="0" data-levels="tafel:vol wand:vol" data-day="geen" data-event="" data-phase="nalooptijd" data-dur="4"><strong>Vertrek</strong> Iedereen vertrekt. De nalooptijd loopt nog even.</li><li data-at="buiten" data-presence="0" data-levels="tafel:uit wand:uit" data-day="geen" data-event="" data-phase="uit" data-dur="3"><strong>Uit</strong> Daarna gaat het licht uit. De volgende keer begint de ruimte weer bij de standaardscène.</li></ol></section></div>
 <script type="application/json" class="module-config">{"id":"interactive_demo.ruimte-vergaderruimte","positions":{"buiten":{"a":{"x":570.6,"y":314.6,"s":1.4340000000000002,"pose":"stand","out":true},"b":{"x":570.6,"y":314.6,"s":1.4340000000000002,"pose":"stand","out":true},"c":{"x":570.6,"y":314.6,"s":1.4340000000000002,"pose":"stand","out":true}},"deur":{"a":{"x":531.1,"y":323.6,"s":1.527,"pose":"walk"},"b":{"x":566.4,"y":337.2,"s":1.666,"pose":"walk"},"c":{"x":570.6,"y":314.6,"s":1.4340000000000002,"pose":"stand","out":true}},"tafel":{"a":{"x":295.4,"y":319.1,"s":1.48,"pose":"sit"},"b":{"x":369.2,"y":319.1,"s":1.48,"pose":"sit"},"c":{"x":443.1,"y":319.1,"s":1.48,"pose":"sit"}},"presentatie":{"a":{"x":295.4,"y":319.1,"s":1.48,"pose":"sit"},"b":{"x":369.2,"y":319.1,"s":1.48,"pose":"sit"},"c":{"x":237.8,"y":301,"s":1.294,"pose":"stand"}},"vertrek":{"a":{"x":558.2,"y":330.4,"s":1.5959999999999999,"pose":"walk"},"b":{"x":590,"y":339.5,"s":1.689,"pose":"walk"},"c":{"x":570.6,"y":314.6,"s":1.4340000000000002,"pose":"stand","out":true}}},"sensors":["sensor"],"groups":[{"id":"tafel","daylight":0},{"id":"wand","daylight":0}],"levels":{"uit":0,"basis":0.24,"gedimd":0.55,"vol":1},"daylight":{"geen":0,"weinig":0.3,"veel":0.85},"autoplay":false,"loop":false,"strings":{"play":"Afspelen","pause":"Pauze","replay":"Opnieuw","prev":"Vorige stap","next":"Volgende stap","step":"Stap","timeline":"Tijdlijn"}}</script>
 </figure></div>
