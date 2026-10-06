@@ -117,6 +117,17 @@ td[data-sup='nee'] .sd-sup, .sd-legend [data-sup='nee'] { color: var(--muted); }
   .sd-table tbody th { width: auto; font-size: var(--fs-body); }
   .sd-table td::before { content: attr(data-col); display: block; font-size: var(--fs-label); font-weight: 700; letter-spacing: .02em; color: var(--ink); }
 }
+.sd-svg--compact, .sd-key { display: none; }
+.sd-stage { container: sd-stage / inline-size; }
+@container sd-stage (max-width: 54.5rem) {
+  .sd-svg--wide, .sd-svg--tall { display: none; }
+  .sd-svg--compact { display: block; max-width: 26rem; margin: 0 auto; }
+  .sd-key { display: flex; }
+}
+.sd-svg--compact .sd-part-txt { font-size: 13px; }
+.sd-svg--compact .sd-layer-txt { font-size: 14px; }
+.sd-svg--compact .sd-set[data-item='gateway'] .sd-tag { font-size: 12.5px; }
+.sd-key { flex-direction: column; gap: var(--s-2); }
 @media (prefers-reduced-motion: no-preference) {
   .sd-set, .sd-badge { transition: opacity var(--dur) var(--ease); }
   .sd-pick button, .sd-fn-pick button, .sd-btn, .sd-steps li, .sd-table--fn tbody tr { transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease); }
