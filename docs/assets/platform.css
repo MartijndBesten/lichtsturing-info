@@ -232,14 +232,17 @@
 .ll-text { font-size: var(--fs-small); font-weight: 600; }
 .ll-text::after { content: '\00a0\2192'; }
 
+.dali .dali-canvas { container: dali-canvas / inline-size; }
 .dali .dali-svg--v { display: none; }
-@media (max-width: 40rem) { .dali .dali-svg--h { display: none; } .dali .dali-svg--v { display: block; max-width: 24rem; } }
+@container dali-canvas (max-width: 42rem) { .dali .dali-svg--h { display: none; } .dali .dali-svg--v { display: block; max-width: 24rem; } }
 .dali[data-mode="broadcast"] .dali-addr { opacity: .35; }
-.dali .dali-svg--v .dali-p-label, .dali .dali-svg--v .dali-ctl text { font-size: 13px; }
-.dali .dali-svg--v .dali-addr { font-size: 11px; }
+.dali .dali-svg--v .dali-p-label, .dali .dali-svg--v .dali-ctl text { font-size: 12px; }
+.dali .dali-svg--v .dali-addr { font-size: 10.5px; }
+.dali .dali-svg--v .arch-link-label { font-size: 10px; }
 .vd-voeding rect { fill: var(--bg); stroke: var(--c-voeding); stroke-width: 1.4; }
 .vd-voeding .arch-icon { stroke: var(--c-voeding); fill: none; stroke-width: 1.3; }
 
 
 .ix-key { display: none; flex-wrap: wrap; gap: var(--s-2) var(--s-4); margin: var(--s-3) 0 0; padding: 0; list-style: none; font-size: 1rem; line-height: 1.4; }
 .ix-key-icon { width: 1.3em; height: 1.3em; margin-right: .45em; vertical-align: -.3em; }
+figure[data-module] { margin-inline: 0; }
