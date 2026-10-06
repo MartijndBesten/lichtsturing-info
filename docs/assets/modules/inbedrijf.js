@@ -32,8 +32,10 @@ export function mount(el, config = {}) {
   const say = (q, text, ok) => {
     const n = $(q);
     n.textContent = '';
-    n.classList.toggle('is-ok', Boolean(ok));
-    setTimeout(() => { n.textContent = text; }, 30);
+    setTimeout(() => {
+      n.textContent = text;
+      n.classList.toggle('is-ok', Boolean(ok));
+    }, 30);
   };
 
   $('.ib-search').addEventListener('click', () => {
