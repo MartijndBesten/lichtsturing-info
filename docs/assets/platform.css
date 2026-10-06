@@ -193,6 +193,8 @@
 .academy-deep { margin-top: var(--s-7); max-width: var(--measure); padding: var(--s-4) var(--s-5); background: var(--surface); border-left: 4px solid var(--navy); border-radius: var(--radius-card); }
 .academy-deep h2 { margin: 0 0 var(--s-2); font-size: var(--fs-h4, 1.1rem); }
 .academy-deep p { margin: 0; }
+.academy-deep p.academy-deep-routes { margin-top: var(--s-3); font-size: var(--fs-small); font-weight: 600; color: var(--muted, inherit); }
+.academy-deep-routes + .academy-deep-list { margin-top: var(--s-2); }
 .academy-deep-list { display: flex; flex-wrap: wrap; gap: var(--s-2); margin: var(--s-3) 0; padding: 0; list-style: none; }
 .academy-deep-list li { padding: .25em .75em; font-size: var(--fs-small); font-weight: 600; background: var(--bg); border: 1px solid var(--line-strong); border-radius: 999px; }
 .academy-deep-more { font-size: var(--fs-small); }

@@ -1,23 +1,23 @@
 <!doctype html>
-<html lang="nl" data-base="/" data-v="3588afec">
+<html lang="nl" data-base="/" data-v="d16f40c7">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BACnet · Lichtsturing.info</title>
-<meta name="description" content="BACnet voor lichtsturing: server en client, BACnet/IP en BACnet/SC, device-ID, prioriteiten en wanneer een koppeling past.">
+<meta name="description" content="BACnet voor lichtsturing: wie vraagt en wie antwoordt, BACnet/IP en BACnet/SC, device-ID, prioriteiten en wanneer een koppeling past.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://lichtsturing.info/nl/kennisbank/bacnet/">
 <meta property="og:site_name" content="Lichtsturing.info">
 <meta property="og:locale" content="nl_NL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="BACnet · Lichtsturing.info">
-<meta property="og:description" content="BACnet voor lichtsturing: server en client, BACnet/IP en BACnet/SC, device-ID, prioriteiten en wanneer een koppeling past.">
+<meta property="og:description" content="BACnet voor lichtsturing: wie vraagt en wie antwoordt, BACnet/IP en BACnet/SC, device-ID, prioriteiten en wanneer een koppeling past.">
 <meta property="og:url" content="https://lichtsturing.info/nl/kennisbank/bacnet/">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%2032%2032&#39;%3E%3Crect%20width%3D&#39;32&#39;%20height%3D&#39;32&#39;%20rx%3D&#39;7&#39;%20fill%3D&#39;%23072d78&#39;%2F%3E%3Crect%20x%3D&#39;6&#39;%20y%3D&#39;8&#39;%20width%3D&#39;15&#39;%20height%3D&#39;4.5&#39;%20rx%3D&#39;1.6&#39;%20fill%3D&#39;%23fff&#39;%2F%3E%3Cpath%20d%3D&#39;M8.5%2012.5%2018.5%2012.5%2023%2024.5%204%2024.5Z&#39;%20fill%3D&#39;%23ffd166&#39;%20fill-opacity%3D&#39;.92&#39;%2F%3E%3Ccircle%20cx%3D&#39;25.5&#39;%20cy%3D&#39;10.2&#39;%20r%3D&#39;2&#39;%20fill%3D&#39;%237fb2ff&#39;%2F%3E%3Cpath%20d%3D&#39;M22.2%206.5a4.7%204.7%200%200%201%206.6%200&#39;%20fill%3D&#39;none&#39;%20stroke%3D&#39;%237fb2ff&#39;%20stroke-width%3D&#39;1.5&#39;%20stroke-linecap%3D&#39;round&#39;%2F%3E%3C%2Fsvg%3E">
 
-<link rel="stylesheet" href="/assets/site.css?v=3588afec">
-<link rel="stylesheet" href="/assets/platform.css?v=d889383e">
+<link rel="stylesheet" href="/assets/site.css?v=d16f40c7">
+<link rel="stylesheet" href="/assets/platform.css?v=c6b18ead">
 
 
 </head>
@@ -45,7 +45,7 @@
 <main id="inhoud" class="wrap" tabindex="-1">
 <nav class="breadcrumb" aria-label="Kruimelpad"><ol><li><a href="/nl/">Home</a></li><li><a href="/nl/kennisbank/">Kennisbank</a></li><li aria-current="page">BACnet</li></ol></nav>
 <article class="article">
-<header class="page-header"><div class="page-header-text"><h1>BACnet</h1><p class="lead">BACnet voor lichtsturing: server en client, BACnet/IP en BACnet/SC, device-ID, prioriteiten en wanneer een koppeling past.</p></div></header>
+<header class="page-header"><div class="page-header-text"><h1>BACnet</h1><p class="lead">BACnet voor lichtsturing: wie vraagt en wie antwoordt, BACnet/IP en BACnet/SC, device-ID, prioriteiten en wanneer een koppeling past.</p></div></header>
 <nav class="ll-strip" aria-label="Plaats in de leerlijn"><a href="/nl/kennisbank/van-drukknop-tot-lichtmanagement/#niveau-gebouw"><span class="ll-dots" aria-hidden="true"><span class="ll-dot" data-cat="bediening">0</span><span class="ll-dot" data-cat="regeling">1</span><span class="ll-dot" data-cat="regeling">2</span><span class="ll-dot" data-cat="regeling">3</span><span class="ll-dot" data-cat="automatisering">4</span><span class="ll-dot" data-cat="automatisering">5</span><span class="ll-dot" data-cat="automatisering">6</span><span class="ll-dot" data-cat="lichtmanagement">7</span><span class="ll-dot" data-cat="lichtmanagement">8</span><span class="ll-dot" data-cat="lichtmanagement">9</span><span class="ll-dot is-on" data-cat="gebouwintegratie">10</span></span><span class="ll-text">In de leerlijn van drukknop tot lichtmanagement: niveau 10</span></a></nav>
 
 <details class="page-toc-m"><summary>Op deze pagina</summary><ul><li><a href="#l-in-30-seconden">In 30 seconden</a></li><li><a href="#l-zo-werkt-het">Zo werkt het</a></li><li><a href="#l-opbouw">Zo is het opgebouwd</a></li><li><a href="#l-instellen">In de praktijk</a></li><li><a href="#l-grenzen">Goed om te weten</a></li></ul></details>
@@ -59,12 +59,12 @@
 
 </section><section class="ladder ladder--zo-werkt-het" aria-labelledby="l-zo-werkt-het">
 <h2 id="l-zo-werkt-het">Zo werkt het</h2>
-<div class="block block--text"><p>In een koppeling met de lichtregeling biedt het lichtsysteem (of een gateway) zijn gegevens en bediening aan als BACnet-objecten: het is dan BACnet-server. Het gebouwbeheersysteem leest die objecten uit en stuurt ze aan als client.</p></div><details class="more more-how"><summary>Meer uitleg</summary><div class="block block--text"><p>De lichtregeling blijft daarbij zelf het licht regelen; het gebouwbeheer is een extra laag erbovenop.</p></div><div class="block block--list"><p class="kbasis kbasis--voorbeeld" title="Een uitwerking om het principe te laten zien; namen en instellingen verschillen per systeem.">Voorbeeld</p><p>Wat er typisch over een BACnet-koppeling met verlichting gaat:</p><ul><li><strong>Bedienen</strong><span class="li-sep"> — </span>groepen schakelen en dimmen, scènes oproepen.</li><li><strong>Bewaken</strong><span class="li-sep"> — </span>storingen per groep of per apparaat.</li><li><strong>Informatie</strong><span class="li-sep"> — </span>bijvoorbeeld bezetting per groep, als het lichtsysteem die aanbiedt.</li></ul></div></details>
+<div class="block block--text"><p>In een veelvoorkomende koppeling biedt de lichtregeling (of een gateway) haar gegevens en bediening aan als BACnet-objecten, die het gebouwbeheersysteem leest of schrijft. Voor die interacties vraagt het gebouwbeheer gegevens of opdrachten op, en reageert de lichtregeling daarop.</p></div><details class="more more-how"><summary>Meer uitleg</summary><div class="block block--text"><p>BACnet werkt van gelijke tot gelijke: een apparaat kan in andere interacties ook zelf vragen, of beide doen. De lichtregeling blijft daarbij zelf het licht regelen; het gebouwbeheer is een extra laag erbovenop.</p></div><div class="block block--list"><p class="kbasis kbasis--voorbeeld" title="Een uitwerking om het principe te laten zien; namen en instellingen verschillen per systeem.">Voorbeeld</p><p>Wat er typisch over een BACnet-koppeling met verlichting gaat:</p><ul><li><strong>Bedienen</strong><span class="li-sep"> — </span>groepen schakelen en dimmen, scènes oproepen.</li><li><strong>Bewaken</strong><span class="li-sep"> — </span>storingen per groep of per apparaat.</li><li><strong>Informatie</strong><span class="li-sep"> — </span>bijvoorbeeld bezetting per groep, als het lichtsysteem die aanbiedt.</li></ul></div></details>
 
 
 </section><section class="ladder ladder--opbouw" aria-labelledby="l-opbouw">
 <h2 id="l-opbouw">Zo is het opgebouwd</h2>
-<details class="more more-deep"><summary>Technische uitleg</summary><div class="block block--text"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>BACnet kan over verschillende netwerken lopen. In gebouwen kom je vooral BACnet/IP tegen, over het gewone IP-netwerk. BACnet Secure Connect (BACnet/SC) is een nieuwere vorm die de communicatie beveiligt volgens gangbare IT-praktijk; die vraagt extra inrichting, zoals certificaten. Kies de variant samen met IT en de partij die het gebouwbeheer levert.</p></div><div class="block block--text"><p>Ieder BACnet-apparaat heeft een device-ID dat binnen het BACnet-netwerk uniek moet zijn. Zitten er meerdere lichtsystemen of gateways in hetzelfde BACnet-netwerk, maak die ID’s dan bewust uniek en leg ze vast.</p></div><div class="block block--text"><p>BACnet werkt met een prioriteitentabel: die bepaalt welke opdracht de actuele waarde van een object mag overschrijven, van kritieke alarmen via handmatige ingrepen en tijdprogramma’s tot de normale, automatische werking. Spreek af op welk niveau het gebouwbeheer opdrachten geeft, zodat duidelijk is wie wint: de lichtregeling, de gebruiker of het gebouwbeheer.</p></div></details>
+<details class="more more-deep"><summary>Technische uitleg</summary><div class="block block--text"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>BACnet kan over verschillende netwerken lopen. In gebouwen kom je vooral BACnet/IP tegen, over het gewone IP-netwerk. BACnet Secure Connect (BACnet/SC) is een nieuwere vorm die de communicatie beveiligt volgens gangbare IT-praktijk; die vraagt extra inrichting, zoals certificaten. Kies de variant samen met IT en de partij die het gebouwbeheer levert.</p></div><div class="block block--text"><p>Ieder BACnet-apparaat heeft een device-ID dat binnen het BACnet-netwerk uniek moet zijn. Zitten er meerdere lichtsystemen of gateways in hetzelfde BACnet-netwerk, maak die ID’s dan bewust uniek en leg ze vast.</p></div><div class="block block--text"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>Objecten die je via BACnet kunt aansturen, hebben vaak een prioriteitenlijst met 16 niveaus (Priority_Array). Een opdracht op een hogere prioriteit, dus een lager nummer, wint, totdat die opdracht wordt vrijgegeven. Staat er op geen enkel niveau een opdracht, dan geldt een vaste standaardwaarde. Spreek per project af op welke prioriteit het gebouwbeheer schrijft, zodat duidelijk is wie wint: de lichtregeling, de gebruiker of het gebouwbeheer.</p></div></details>
 
 
 </section><section class="ladder ladder--instellen" aria-labelledby="l-instellen">

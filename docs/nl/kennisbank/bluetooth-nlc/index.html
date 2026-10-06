@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="nl" data-base="/" data-v="3588afec">
+<html lang="nl" data-base="/" data-v="d16f40c7">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,12 +16,12 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%2032%2032&#39;%3E%3Crect%20width%3D&#39;32&#39;%20height%3D&#39;32&#39;%20rx%3D&#39;7&#39;%20fill%3D&#39;%23072d78&#39;%2F%3E%3Crect%20x%3D&#39;6&#39;%20y%3D&#39;8&#39;%20width%3D&#39;15&#39;%20height%3D&#39;4.5&#39;%20rx%3D&#39;1.6&#39;%20fill%3D&#39;%23fff&#39;%2F%3E%3Cpath%20d%3D&#39;M8.5%2012.5%2018.5%2012.5%2023%2024.5%204%2024.5Z&#39;%20fill%3D&#39;%23ffd166&#39;%20fill-opacity%3D&#39;.92&#39;%2F%3E%3Ccircle%20cx%3D&#39;25.5&#39;%20cy%3D&#39;10.2&#39;%20r%3D&#39;2&#39;%20fill%3D&#39;%237fb2ff&#39;%2F%3E%3Cpath%20d%3D&#39;M22.2%206.5a4.7%204.7%200%200%201%206.6%200&#39;%20fill%3D&#39;none&#39;%20stroke%3D&#39;%237fb2ff&#39;%20stroke-width%3D&#39;1.5&#39;%20stroke-linecap%3D&#39;round&#39;%2F%3E%3C%2Fsvg%3E">
 
-<link rel="stylesheet" href="/assets/site.css?v=3588afec">
-<link rel="stylesheet" href="/assets/platform.css?v=d889383e">
+<link rel="stylesheet" href="/assets/site.css?v=d16f40c7">
+<link rel="stylesheet" href="/assets/platform.css?v=c6b18ead">
 <link rel="stylesheet" href="/assets/standaarden.css?v=804e29b8">
 <link rel="stylesheet" href="/assets/protocols.css?v=b3631d45">
 
-<script type="module" src="/assets/site.js?v=3588afec"></script>
+<script type="module" src="/assets/site.js?v=d16f40c7"></script>
 </head>
 <body>
 
@@ -199,7 +199,7 @@
 </article><article class="sd-card" data-item="d4i" id="sd-dali-familie-d4i">
 <h4 class="sd-card-title">D4i <span class="sd-card-tag">DALI-2 voor slimme armaturen</span></h4>
 <div class="sd-card-grid">
-<div class="sd-is"><h5>Wat het is</h5><p>Een uitbreiding van DALI-2 voor armaturen. De driver heeft een eigen busvoeding voor een sensor of module, en bewaart armatuur-, energie- en diagnosegegevens in een vast formaat (delen 250 tot 253).</p></div>
+<div class="sd-is"><h5>Wat het is</h5><p>Een uitbreiding van DALI-2 voor armaturen. De driver heeft een eigen busvoeding voor een sensor of module (deel 250), en bewaart armatuur-, energie- en diagnosegegevens in een vast formaat (delen 251 tot 253).</p></div>
 <div class="sd-isnot"><h5>Wat het níet is</h5><ul><li>Geen apart protocol: het is DALI-2 met extra verplichte delen.</li><li>Geen draadloze techniek; wel kan er een draadloze module op de armatuur zitten (deel 351).</li><li>Geen beheersysteem: de gegevens zijn er, maar een besturing of beheersysteem moet ze uitlezen.</li></ul></div>
 <div class="sd-rel"><h5>Hoe het zich verhoudt</h5><p>Iedere D4i-driver is ook een DALI-2-driver, maar niet andersom. D4i is vooral bedoeld voor een korte bus binnen de armatuur; meerdere D4i-armaturen kunnen ook samen op één DALI-bus.</p></div>
 </div>
@@ -225,13 +225,13 @@
 <div class="sd-card-grid">
 <div class="sd-is"><h5>Wat het is</h5><p>Een vertaler tussen een draadloos systeem en een bedrade DALI-bus. Deel 341 van de DALI-specificaties beschrijft zo’n gateway voor Bluetooth NLC; deel 342 doet dat voor Zigbee.</p></div>
 <div class="sd-isnot"><h5>Wat het níet is</h5><ul><li>Geen standaard op zich: hij verbindt er twee.</li><li>Niet hetzelfde als een gateway naar gebouwbeheer, zoals BACnet: die koppelt de lichtsturing aan andere gebouwsystemen.</li></ul></div>
-<div class="sd-rel"><h5>Hoe het zich verhoudt</h5><p>Via de gateway regelt het draadloze systeem het lichtniveau en de dimtijd van DALI-drivers en vraagt het lampstoringen op; de drivers geven armatuur-, energie- en diagnosegegevens door. De gateway stuurt de drivers samen aan, alsof het één groep is.</p></div>
+<div class="sd-rel"><h5>Hoe het zich verhoudt</h5><p>Via de gateway regelt het draadloze systeem het lichtniveau en de dimtijd van DALI-drivers en vraagt het lampstoringen op; de drivers geven armatuur-, energie- en diagnosegegevens door. De gateway stuurt de aangesloten DALI-drivers op zijn bedrade uitgang gezamenlijk aan (broadcast). Hij maakt er geen afzonderlijk geadresseerde draadloze lampen van.</p></div>
 </div>
 
 </article></div>
 <section class="sd-steps-box" aria-labelledby="sd-dali-familie-s"><h4 id="sd-dali-familie-s">Zo hangt het samen</h4>
 <div class="sd-transport" hidden><button type="button" class="sd-btn" data-sd="prev" aria-label="Vorige stap">‹</button><button type="button" class="sd-btn sd-btn--main" data-sd="play">Speel af</button><button type="button" class="sd-btn" data-sd="next" aria-label="Volgende stap">›</button><span class="sd-pos"></span></div>
-<ol class="sd-steps"><li data-focus="dali"><strong>DALI</strong> Twee draden, één bus. Een besturing stuurt opdrachten; die kan ook in een sensor zitten. De drivers schakelen, dimmen en geven antwoord.</li><li data-focus="dali-2"><strong>DALI-2</strong> Op dezelfde bus komen gestandaardiseerde sensoren, knoppen en besturingen. Producten worden getest en gecertificeerd.</li><li data-focus="d4i"><strong>D4i</strong> In de armatuur: de driver voedt een korte bus voor een sensor of module, en geeft armatuur-, energie- en diagnosegegevens door.</li><li data-focus="dali-plus"><strong>DALI+</strong> Dezelfde DALI-opdrachten, maar via een draadloos of IP-netwerk in plaats van de bus. Geen vertaling en geen busvoeding; een bridge verbindt het met een bedrade bus.</li><li data-focus="nlc"><strong>Bluetooth NLC</strong> Draadloos: apparaten praten via Bluetooth Mesh. De NLC-profielen leggen vast wat de armatuurregelaar, de sensoren, de knoppen, de energiemeter en de thermostaat doen.</li><li data-focus="gateway"><strong>Samen</strong> Een gateway verbindt beide werelden: het draadloze systeem stuurt DALI-drivers aan en leest hun gegevens uit.</li></ol></section>
+<ol class="sd-steps"><li data-focus="dali"><strong>DALI</strong> Twee draden, één bus. Een besturing stuurt opdrachten; die kan ook in een sensor zitten. De drivers schakelen, dimmen en geven antwoord.</li><li data-focus="dali-2"><strong>DALI-2</strong> Op dezelfde bus komen gestandaardiseerde sensoren, knoppen en besturingen. Producten worden getest en gecertificeerd.</li><li data-focus="d4i"><strong>D4i</strong> In de armatuur: de driver voedt een korte bus voor een sensor of module, en geeft armatuur-, energie- en diagnosegegevens door.</li><li data-focus="dali-plus"><strong>DALI+</strong> Dezelfde DALI-opdrachten, maar via een draadloos of IP-netwerk in plaats van de bus. Geen vertaling, en op het netwerk zelf geen klassieke DALI-busvoeding. Een bridge verbindt het met een bedrade bus; die bus heeft wel een busvoeding.</li><li data-focus="nlc"><strong>Bluetooth NLC</strong> Draadloos: apparaten praten via Bluetooth Mesh. De NLC-profielen leggen vast wat de armatuurregelaar, de sensoren, de knoppen, de energiemeter en de thermostaat doen.</li><li data-focus="gateway"><strong>Samen</strong> Een gateway verbindt beide werelden: het draadloze systeem stuurt DALI-drivers aan en leest hun gegevens uit.</li></ol></section>
 <section class="sd-fn-box" aria-labelledby="sd-dali-familie-f"><h4 id="sd-dali-familie-f">Welke LMS-functie zit waar?</h4>
 <p class="sd-fn-intro">Per functie: hoe die in ieder begrip is vastgelegd. Kies een functie om het in de tekening te zien.</p>
 <div class="sd-fn-pick" role="group" aria-label="Welke LMS-functie zit waar?" hidden><button type="button" data-fn="schakelen-dimmen" aria-pressed="false">Schakelen en dimmen</button><button type="button" data-fn="groepen-scenes" aria-pressed="false">Groepen en scènes</button><button type="button" data-fn="aanwezigheid" aria-pressed="false">Aanwezigheid</button><button type="button" data-fn="daglicht" aria-pressed="false">Daglicht</button><button type="button" data-fn="bediening" aria-pressed="false">Bediening</button><button type="button" data-fn="energie" aria-pressed="false">Energiegegevens</button><button type="button" data-fn="diagnose" aria-pressed="false">Diagnose en onderhoud</button><button type="button" data-fn="gebouwbeheer" aria-pressed="false">Koppeling met gebouwbeheer</button></div>
@@ -242,7 +242,7 @@
 </figure>
 </section><section class="ladder ladder--opbouw" aria-labelledby="l-opbouw">
 <h2 id="l-opbouw">Zo is het opgebouwd</h2>
-<details class="more more-deep"><summary>Technische uitleg</summary><div class="block block--text"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>Bluetooth NLC en DALI kunnen samenwerken. Behalve via de armatuurregelaar met een DALI-bus kan dat met een gateway: deel 341 van de DALI-specificaties beschrijft een gateway tussen Bluetooth NLC en een bedrade DALI-bus (deel 342 doet hetzelfde voor Zigbee). Zo’n gateway werkt binnen één draadloos ecosysteem.</p><p>Via zo’n gateway regelt het draadloze systeem het lichtniveau en de dimtijd van de DALI-drivers en vraagt het lampstoringen op. De drivers geven hun armatuur-, energie- en diagnosegegevens (delen 251 tot 253) door aan het draadloze systeem.</p><p>Zo’n gateway stuurt de DALI-drivers samen aan, alsof het één groep is: niet ieder armatuur apart, en de gegevens komen samengevoegd door. Het draadloze systeem is daarbij de baas: besturingen op de DALI-bus sturen het niet aan. Dat is de stand van de technische gids van de DALI Alliance (2021). Behalve de DALI-certificering is ook de certificering van het draadloze systeem nodig.</p></div></details>
+<details class="more more-deep"><summary>Technische uitleg</summary><div class="block block--text"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>Bluetooth NLC en DALI kunnen samenwerken. Behalve via de armatuurregelaar met een DALI-bus kan dat met een gateway: deel 341 van de DALI-specificaties beschrijft een gateway tussen Bluetooth NLC en een bedrade DALI-bus (deel 342 doet hetzelfde voor Zigbee). Zo’n gateway werkt binnen één draadloos ecosysteem.</p><p>Via zo’n gateway regelt het draadloze systeem het lichtniveau en de dimtijd van de DALI-drivers en vraagt het lampstoringen op. De drivers geven hun armatuur-, energie- en diagnosegegevens (delen 251 tot 253) door aan het draadloze systeem.</p><p>Zo’n gateway stuurt de aangesloten DALI-drivers op zijn bedrade uitgang gezamenlijk aan (broadcast): niet ieder armatuur apart, en de gegevens komen samengevoegd door. Hij maakt er dus geen afzonderlijk geadresseerde draadloze lampen van. Het draadloze systeem is daarbij de baas: besturingen op de DALI-bus sturen het niet aan. Dat is de stand van de technische gids van de DALI Alliance (2021). Behalve de DALI-certificering is ook de certificering van het draadloze systeem nodig.</p></div></details>
 
 
 </section><section class="ladder ladder--grenzen" aria-labelledby="l-grenzen">
@@ -255,7 +255,8 @@
 
 
 <aside class="academy-deep" aria-labelledby="l-academy-deep"><h2 id="l-academy-deep">Verdieping in de Academy</h2>
-<p>Wil je dit toepassen in een concreet lichtregelsysteem? In de Academy ga je er verder mee aan de slag, met oefeningen, in deze leerroutes:</p>
+<p>Wil je zien hoe dit in een echt lichtregelsysteem wordt toegepast? In de Academy oefen je stap voor stap met één systeem.</p>
+<p class="academy-deep-routes">Leerroutes:</p>
 <ul class="academy-deep-list"><li>Draadloze communicatie</li></ul>
 <p class="academy-deep-more"><a href="/nl/academy/">Meer over de Academy</a></p></aside>
 <nav class="next-step" aria-label="Volgende stap"><a class="next-step-link" href="/nl/kennisbank/netwerken-en-ip/">

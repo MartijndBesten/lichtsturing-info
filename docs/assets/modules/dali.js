@@ -58,6 +58,7 @@ export function mount(el, config = {}) {
         }
       };
       if (!flow.length) return apply();
+      if (flow[2]) flow[2].textContent = c.dataset.b ? flow[2].dataset.bc : flow[2].dataset.def;
       const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
       const phases = [() => {}, () => el.classList.add('ix-signal'), () => el.classList.replace('ix-signal', 'ix-decide'), () => { el.classList.remove('ix-decide'); apply(); }];
       phases.forEach((fn, k) => {
