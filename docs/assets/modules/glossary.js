@@ -1,79 +1,21 @@
 const norm = (s) => String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
 
 const VISUALS = {
-  'begrip-aanwezigheidsdetectie': 'compare',
-  'begrip-application-controller': 'flow',
-  'begrip-automatische-lichtregeling': 'decision',
-  'begrip-bacnet': 'network',
-  'begrip-basislicht': 'timeline',
-  'begrip-bedraad-draadloos': 'compare',
-  'begrip-cybersecurity': 'layers',
-  'begrip-bluetooth': 'signal',
+  // Alleen visualiseren als de interactie het begrip aantoonbaar verduidelijkt.
   'begrip-bluetooth-mesh': 'network',
-  'begrip-bluetooth-nlc': 'network',
   'begrip-broadcast': 'bus',
   'begrip-busvoeding': 'bus',
   'begrip-constantlichtregeling': 'threshold',
-  'begrip-control-device': 'layers',
-  'begrip-control-gear': 'flow',
-  'begrip-d4i': 'layers',
   'begrip-daglichtregeling': 'threshold',
   'begrip-dali': 'bus',
-  'begrip-dali-2': 'compare',
-  'begrip-schakelfunctie': 'flow',
-  'begrip-dali-plus': 'compare',
-  'begrip-dect-nr': 'network',
   'begrip-detectieveld': 'room',
-  'begrip-dali-device-types': 'layers',
-  'begrip-draadloos-netwerk': 'network',
-  'begrip-draadloze-protocollen': 'layers',
-  'begrip-drukknopdimmen': 'threshold',
-  'begrip-drukknopinterface': 'flow',
-  'begrip-keuzehulp': 'decision',
-  'begrip-energie-en-regelgeving': 'compare',
-  'begrip-enocean': 'signal',
-  'begrip-gacs': 'network',
-  'begrip-gateway': 'flow',
-  'begrip-gebouwbeheer': 'network',
-  'begrip-groep': 'room',
-  'begrip-handbediening': 'compare',
   'begrip-hf-sensor': 'signal',
-  'begrip-dali-capaciteit': 'threshold',
-  'begrip-commissioning': 'flow',
-  'begrip-input-device': 'flow',
   'begrip-dali-kleur': 'threshold',
-  'begrip-knx': 'network',
-  'begrip-knx-rf': 'network',
-  'begrip-knx-secure': 'layers',
-  'begrip-leveranciersmesh': 'compare',
-  'begrip-lichtregelinstallatie': 'layers',
-  'begrip-lms': 'network',
-  'begrip-lichtscene': 'compare',
-  'begrip-lichtsturing': 'flow',
-  'begrip-lorawan': 'signal',
-  'begrip-matter': 'layers',
   'begrip-mesh': 'network',
   'begrip-nalooptijd': 'timeline',
-  'begrip-ip-netwerk': 'network',
   'begrip-nfc': 'signal',
-  'begrip-dali-noodverlichting': 'flow',
-  'begrip-normenwijzer': 'layers',
   'begrip-pir': 'room',
-  'begrip-regelgeving': 'flow',
-  'begrip-regelstrategie': 'decision',
-  'begrip-schemerschakelaar': 'threshold',
-  'begrip-sensor': 'room',
-  'begrip-dali2-input-devices': 'layers',
-  'begrip-sensorpositie': 'room',
-  'begrip-storing-zoeken': 'decision',
-  'begrip-thread': 'network',
-  'begrip-tijdschema': 'timeline',
-  'begrip-bruikbare-data': 'flow',
-  'begrip-wifi': 'network',
-  'begrip-wi-sun': 'network',
-  'begrip-z-wave': 'network',
-  'begrip-zhaga': 'layers',
-  'begrip-zigbee': 'network'
+  'begrip-sensorpositie': 'room'
 };
 
 const SPECIAL = {
@@ -493,9 +435,9 @@ function enhanceEntries(entries) {
   for (const { node } of entries) {
     const term = node.querySelector('.glossary-term')?.textContent?.trim() || '';
     const desc = node.querySelector('dd > p')?.textContent?.trim() || '';
-    const visual = VISUALS[node.id] || 'flow';
+    const visual = VISUALS[node.id];
     const dd = node.querySelector('dd');
-    if (!dd || dd.querySelector('.glossary-demo-toggle')) continue;
+    if (!visual || !dd || dd.querySelector('.glossary-demo-toggle')) continue;
 
     node.classList.add('is-interactive');
 
