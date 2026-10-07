@@ -5,60 +5,119 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<meta name="theme-color" content="#050608">
-<meta name="description" content="Stap in de wereld van lichtsturing.info. Een korte ervaring voor de iPhone.">
+<meta name="theme-color" content="#0b1f4d">
+<meta name="description" content="Deze website bekijk je anders: stap in lichtsturing.info. Een korte ervaring voor de iPhone.">
 <title>Ervaar · Lichtsturing.info</title>
-<style>
-  :root {
-    --zwart: #050608; --inkt: #e9e4da; --zacht: rgba(233, 228, 218, .62); --licht: #ffe39a; --licht-basis: #fff4d1;
-    --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI Variable Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
-  }
-  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-  html, body { margin: 0; height: 100%; background: var(--zwart); color: var(--inkt); font: 16px/1.4 var(--font); overflow: hidden; overscroll-behavior: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
-  body { position: fixed; inset: 0; touch-action: none; }
-  canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
-  .laag { position: fixed; inset: 0; display: grid; place-items: center; padding: max(1.5rem, env(safe-area-inset-top)) 1.5rem max(1.5rem, env(safe-area-inset-bottom)); text-align: center; transition: opacity 1.4s ease; }
-  .laag[hidden] { display: none; }
-  .uit { opacity: 0; pointer-events: none; }
-  .titel { margin: 0; font-weight: 300; font-size: .82rem; letter-spacing: .5em; text-transform: uppercase; color: var(--zacht); padding-left: .5em; }
-  .open { display: grid; gap: 3.25rem; justify-items: center; }
-  button, .knop { appearance: none; border: 1px solid rgba(255, 227, 154, .38); background: transparent; color: var(--inkt); font: 400 .82rem var(--font); letter-spacing: .28em; text-transform: uppercase; padding: 1.05rem 1.6rem 1.05rem calc(1.6rem + .28em); border-radius: 999px; cursor: pointer; text-decoration: none; touch-action: manipulation; }
-  button:active, .knop:active { background: rgba(255, 227, 154, .08); }
-  .hint { position: fixed; left: 0; right: 0; bottom: max(2.5rem, calc(env(safe-area-inset-bottom) + 1.5rem)); margin: 0; text-align: center; font-weight: 300; font-size: .82rem; letter-spacing: .32em; text-transform: uppercase; color: var(--zacht); transition: opacity 2.4s ease; pointer-events: none; }
-  .kern { position: fixed; left: 1.5rem; right: 1.5rem; top: 38%; margin: 0; text-align: center; font-weight: 300; font-size: clamp(1.15rem, 6.2vw, 1.6rem); line-height: 1.35; letter-spacing: .14em; text-transform: uppercase; color: var(--licht-basis); text-shadow: 0 0 24px rgba(255, 227, 154, .25); transition: opacity 2.6s ease, transform 2.6s ease; pointer-events: none; }
-  .kern.uit { transform: translateY(.6rem); }
-  .verder { position: fixed; left: 0; right: 0; bottom: max(2.25rem, calc(env(safe-area-inset-bottom) + 1.25rem)); display: flex; justify-content: center; transition: opacity 2s ease; }
-  .melding { max-width: 22rem; display: grid; gap: 2rem; justify-items: center; }
-  .melding p { margin: 0; font-weight: 300; font-size: 1.05rem; line-height: 1.55; color: var(--inkt); letter-spacing: .02em; }
-  .melding .klein { font-size: .82rem; color: var(--zacht); }
-  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-  @media (orientation: landscape) and (max-height: 520px) { .rechtop { display: grid !important; } }
-  .rechtop { display: none; position: fixed; inset: 0; place-items: center; background: var(--zwart); z-index: 5; }
-</style>
+<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/platform.css">
+<link rel="stylesheet" href="ervaar.css">
 </head>
 <body>
-<canvas id="wereld" aria-hidden="true"></canvas>
+<svg class="scene-sprite" aria-hidden="true" focusable="false" width="0" height="0"><defs>
+<linearGradient id="scg-ceil" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e3e8f0"/><stop offset="1" stop-color="#f6f7fa"/></linearGradient>
+<linearGradient id="scg-wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eef1f6"/><stop offset="1" stop-color="#dde3ec"/></linearGradient>
+<linearGradient id="scg-side" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#c8d0dc"/><stop offset="1" stop-color="#dbe1ea"/></linearGradient>
+<linearGradient id="scg-floor" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e4d6bc"/><stop offset="1" stop-color="#c9b18b"/></linearGradient>
+<linearGradient id="scg-tile" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e6e9ef"/><stop offset="1" stop-color="#cbd2dd"/></linearGradient>
+<linearGradient id="scg-glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe2ff"/><stop offset="1" stop-color="#eef5ff"/></linearGradient>
+<linearGradient id="scg-shaft" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff7de" stop-opacity=".6"/><stop offset="1" stop-color="#fff7de" stop-opacity="0"/></linearGradient>
+<linearGradient id="scg-cone" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe39a" stop-opacity=".62"/><stop offset="1" stop-color="#ffe39a" stop-opacity=".04"/></linearGradient>
+<linearGradient id="scg-beam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe39a" stop-opacity=".3"/><stop offset="1" stop-color="#ffe39a" stop-opacity=".02"/></linearGradient>
+<radialGradient id="scg-pool"><stop offset="0" stop-color="#ffe9b0" stop-opacity=".85"/><stop offset="1" stop-color="#ffe9b0" stop-opacity="0"/></radialGradient>
+<radialGradient id="scg-pool-n"><stop offset="0" stop-color="#ffe9b0" stop-opacity=".5"/><stop offset="1" stop-color="#ffe9b0" stop-opacity="0"/></radialGradient>
+<linearGradient id="scg-screen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b6b90"/><stop offset="1" stop-color="#2f3a56"/></linearGradient>
+<linearGradient id="scg-night" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1f4d"/><stop offset="1" stop-color="#1c3369"/></linearGradient>
+<linearGradient id="scg-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dbe7f8"/><stop offset="1" stop-color="#f3f6fb"/></linearGradient>
+<filter id="scg-glow" x="-30%" y="-200%" width="160%" height="500%"><feGaussianBlur stdDeviation="2.5"/></filter>
+</defs><symbol id="pw-s-kantoor" viewBox="0 0 320 200"><polygon points="0,0 320,0 260,30 60,30" fill="url(#scg-ceil)"/>
+<rect x="60" y="30" width="200" height="100" fill="url(#scg-wall)"/>
+<polygon points="0,0 60,30 60,130 0,200" fill="url(#scg-side)"/>
+<polygon points="260,30 320,0 320,200 260,130" fill="url(#scg-side)" opacity=".85"/>
+<polygon points="60,130 260,130 320,200 0,200" fill="url(#scg-floor)"/>
+<polyline points="0,200 60,130 260,130 320,200" fill="none" stroke="#9aa3b3" stroke-opacity=".5" stroke-width="1.2"/><polygon points="96,94 224,94 253.3,156.6 66.7,156.6" fill="url(#scg-shaft)"/><rect x="96" y="50" width="128" height="44" fill="url(#scg-glass)" stroke="#ffffff" stroke-width="2.5"/><line x1="138.7" y1="50" x2="138.7" y2="94" stroke="#fff" stroke-width="1.6"/><line x1="181.3" y1="50" x2="181.3" y2="94" stroke="#fff" stroke-width="1.6"/><line x1="96" y1="72" x2="224" y2="72" stroke="#fff" stroke-width="1.2" stroke-opacity=".8"/><polygon points="81.6,25 139.2,25 149.1,158 71.7,158" fill="url(#scg-cone)"/><ellipse cx="110.4" cy="158" rx="41.8" ry="11.6" fill="url(#scg-pool)"/>
 
-<div class="laag" id="open">
-  <div class="open">
-    <h1 class="titel" id="open-titel">Vind het licht</h1>
-    <button id="start" type="button">Start ervaring</button>
-  </div>
+<rect x="80.6" y="18" width="59.6" height="7" rx="2" fill="#f4f6f9" stroke="#b4bccb" stroke-width="1"/>
+<rect x="82.6" y="22" width="55.6" height="2.2" rx="1" fill="#fff1c2" filter="url(#scg-glow)"/><polygon points="180.8,25 238.4,25 248.3,158 170.9,158" fill="url(#scg-cone)"/><ellipse cx="209.6" cy="158" rx="41.8" ry="11.6" fill="url(#scg-pool)"/>
+
+<rect x="179.8" y="18" width="59.6" height="7" rx="2" fill="#f4f6f9" stroke="#b4bccb" stroke-width="1"/>
+<rect x="181.8" y="22" width="55.6" height="2.2" rx="1" fill="#fff1c2" filter="url(#scg-glow)"/><ellipse cx="160" cy="19.5" rx="6" ry="2.4" fill="#f4f6fa" stroke="#aeb7c6" stroke-width="1.1"/><circle cx="160" cy="20.6" r="1.4" fill="#2563c9"/><path d="M151 23a9 3.6 0 0 0 18 0M146 26a14 5.5 0 0 0 28 0" fill="none" stroke="#2563c9" stroke-opacity=".55" stroke-width="1" stroke-dasharray="2.5 2.5"/><rect x="83.5" y="115" width="2.4" height="34.6" fill="#6b7280"/><rect x="140.6" y="115" width="2.4" height="34.6" fill="#6b7280"/><rect x="112.3" y="123" width="3" height="25.2" fill="#2f3850"/><path d="M106.8 149.2L113.8 146.2L120.8 149.2M113.8 146.2v4" fill="none" stroke="#2f3850" stroke-width="2" stroke-linecap="round"/><rect x="101.3" y="90.2" width="24.9" height="34.8" rx="3" fill="#3f4a63"/><rect x="103.3" y="92.2" width="20.9" height="3" rx="1.5" fill="#4d5a78"/><polygon points="81.7,115 144.8,115 144,119.3 77.7,119.3" fill="#efe4d0" stroke="#c8b899" stroke-width="1"/><rect x="77.7" y="119.3" width="66.3" height="4" fill="#cbb896"/><rect x="79.5" y="123.3" width="2.4" height="33.3" fill="#6b7280"/><rect x="139.8" y="123.3" width="2.4" height="33.3" fill="#6b7280"/><rect x="110.7" y="113.5" width="3" height="3.5" fill="#4b5262"/><ellipse cx="112.2" cy="117" rx="6.7" ry="1.2" fill="#4b5262"/><rect x="97" y="94" width="30.5" height="19.5" rx="1.5" fill="#2b3040"/><rect x="98.2" y="95.2" width="28.1" height="16.5" rx="1" fill="url(#scg-screen)"/><rect x="102.4" y="118.2" width="19.5" height="2" rx="1" fill="#cfd5df"/><rect x="177" y="115" width="2.4" height="34.6" fill="#6b7280"/><rect x="234.1" y="115" width="2.4" height="34.6" fill="#6b7280"/><rect x="204.7" y="123" width="3" height="25.2" fill="#2f3850"/><path d="M199.2 149.2L206.2 146.2L213.2 149.2M206.2 146.2v4" fill="none" stroke="#2f3850" stroke-width="2" stroke-linecap="round"/><rect x="193.8" y="90.2" width="24.9" height="34.8" rx="3" fill="#3f4a63"/><rect x="195.8" y="92.2" width="20.9" height="3" rx="1.5" fill="#4d5a78"/><polygon points="175.2,115 238.3,115 242.3,119.3 176,119.3" fill="#efe4d0" stroke="#c8b899" stroke-width="1"/><rect x="176" y="119.3" width="66.3" height="4" fill="#cbb896"/><rect x="177.8" y="123.3" width="2.4" height="33.3" fill="#6b7280"/><rect x="238.1" y="123.3" width="2.4" height="33.3" fill="#6b7280"/><rect x="206.3" y="113.5" width="3" height="3.5" fill="#4b5262"/><ellipse cx="207.8" cy="117" rx="6.7" ry="1.2" fill="#4b5262"/><rect x="192.6" y="94" width="30.5" height="19.5" rx="1.5" fill="#2b3040"/><rect x="193.8" y="95.2" width="28.1" height="16.5" rx="1" fill="url(#scg-screen)"/><rect x="198" y="118.2" width="19.5" height="2" rx="1" fill="#cfd5df"/><g transform="translate(279 174.8) scale(1)"><ellipse cx="0" cy="0" rx="9" ry="2.4" fill="#000" fill-opacity=".12"/><path d="M-8 -12h16l-2 12h-12z" fill="#b98b62"/><ellipse cx="-7" cy="-22" rx="6" ry="10" transform="rotate(-30 -7 -22)" fill="#5f8f5a"/><ellipse cx="7" cy="-23" rx="6" ry="11" transform="rotate(28 7 -23)" fill="#6f9f66"/><ellipse cx="0" cy="-28" rx="5" ry="13" fill="#7aab6c"/></g></symbol><symbol id="pw-s-vergaderen" viewBox="0 0 320 200"><polygon points="0,0 320,0 260,30 60,30" fill="url(#scg-ceil)"/>
+<rect x="60" y="30" width="200" height="100" fill="url(#scg-wall)"/>
+<polygon points="0,0 60,30 60,130 0,200" fill="url(#scg-side)"/>
+<polygon points="260,30 320,0 320,200 260,130" fill="url(#scg-side)" opacity=".85"/>
+<polygon points="60,130 260,130 320,200 0,200" fill="url(#scg-floor)"/>
+<polyline points="0,200 60,130 260,130 320,200" fill="none" stroke="#9aa3b3" stroke-opacity=".5" stroke-width="1.2"/><polygon points="123.8,37 196.2,37 199.1,158 120.9,158" fill="url(#scg-cone)"/><ellipse cx="160" cy="158" rx="42.2" ry="11.7" fill="url(#scg-pool)"/>
+<line x1="127.8" y1="18" x2="127.8" y2="30" stroke="#aeb7c6"/><line x1="192.2" y1="18" x2="192.2" y2="30" stroke="#aeb7c6"/>
+<rect x="122.8" y="30" width="74.4" height="7" rx="2" fill="#f4f6f9" stroke="#b4bccb" stroke-width="1"/>
+<rect x="124.8" y="34" width="70.4" height="2.2" rx="1" fill="#fff1c2" filter="url(#scg-glow)"/><polygon points="131.6,40.4 188.4,40.4 190.9,145.4 129.1,145.4" fill="url(#scg-cone)"/><ellipse cx="160" cy="145.4" rx="33.4" ry="9.3" fill="url(#scg-pool)"/>
+<line x1="135.6" y1="23.4" x2="135.6" y2="33.4" stroke="#aeb7c6"/><line x1="184.4" y1="23.4" x2="184.4" y2="33.4" stroke="#aeb7c6"/>
+<rect x="130.6" y="33.4" width="58.8" height="7" rx="2" fill="#f4f6f9" stroke="#b4bccb" stroke-width="1"/>
+<rect x="132.6" y="37.4" width="54.8" height="2.2" rx="1" fill="#fff1c2" filter="url(#scg-glow)"/><rect x="124" y="48" width="72" height="32" rx="2" fill="#2b3040"/><rect x="126.5" y="50.5" width="67" height="27" fill="url(#scg-screen)"/><path d="M136 68h36M136 60h24.5" stroke="#9fb4d6" stroke-opacity=".6" stroke-width="2"/><ellipse cx="160" cy="22.2" rx="6" ry="2.4" fill="#f4f6fa" stroke="#aeb7c6" stroke-width="1.1"/><circle cx="160" cy="23.3" r="1.4" fill="#2563c9"/><path d="M151 25.7a9 3.6 0 0 0 18 0M146 28.7a14 5.5 0 0 0 28 0" fill="none" stroke="#2563c9" stroke-opacity=".55" stroke-width="1" stroke-dasharray="2.5 2.5"/><rect x="128.8" y="115" width="3" height="22" fill="#2f3850"/><path d="M123.3 138L130.3 135L137.3 138M130.3 135v4" fill="none" stroke="#2f3850" stroke-width="2" stroke-linecap="round"/><rect x="120.8" y="93" width="19.1" height="24" rx="3" fill="#3f4a63"/><rect x="122.8" y="95" width="15.1" height="3" rx="1.5" fill="#4d5a78"/><rect x="158.5" y="115" width="3" height="22" fill="#2f3850"/><path d="M153 138L160 135L167 138M160 135v4" fill="none" stroke="#2f3850" stroke-width="2" stroke-linecap="round"/><rect x="150.5" y="93" width="19" height="24" rx="3" fill="#3f4a63"/><rect x="152.5" y="95" width="15" height="3" rx="1.5" fill="#4d5a78"/><rect x="188.2" y="115" width="3" height="22" fill="#2f3850"/><path d="M182.7 138L189.7 135L196.7 138M189.7 135v4" fill="none" stroke="#2f3850" stroke-width="2" stroke-linecap="round"/><rect x="180.1" y="93" width="19.1" height="24" rx="3" fill="#3f4a63"/><rect x="182.1" y="95" width="15.1" height="3" rx="1.5" fill="#4d5a78"/><rect x="111.9" y="109" width="2.4" height="30.8" fill="#6b7280"/><rect x="205.7" y="109" width="2.4" height="30.8" fill="#6b7280"/><polygon points="110.1,109 209.9,109 219.2,123.6 100.8,123.6" fill="#efe4d0" stroke="#c8b899" stroke-width="1"/><rect x="100.8" y="123.6" width="118.4" height="4" fill="#cbb896"/><rect x="102.6" y="127.6" width="2.4" height="36" fill="#6b7280"/><rect x="215" y="127.6" width="2.4" height="36" fill="#6b7280"/><rect x="121.1" y="141.1" width="3" height="28.1" fill="#2f3850"/><path d="M115.6 170.2L122.6 167.2L129.6 170.2M122.6 167.2v4" fill="none" stroke="#2f3850" stroke-width="2" stroke-linecap="round"/><rect x="109.2" y="109.9" width="26.8" height="33.2" rx="3" fill="#3f4a63"/><rect x="111.2" y="111.9" width="22.8" height="3" rx="1.5" fill="#4d5a78"/><rect x="158.5" y="141.1" width="3" height="28.1" fill="#2f3850"/><path d="M153 170.2L160 167.2L167 170.2M160 167.2v4" fill="none" stroke="#2f3850" stroke-width="2" stroke-linecap="round"/><rect x="146.6" y="109.9" width="26.8" height="33.2" rx="3" fill="#3f4a63"/><rect x="148.6" y="111.9" width="22.8" height="3" rx="1.5" fill="#4d5a78"/><rect x="195.9" y="141.1" width="3" height="28.1" fill="#2f3850"/><path d="M190.4 170.2L197.4 167.2L204.4 170.2M197.4 167.2v4" fill="none" stroke="#2f3850" stroke-width="2" stroke-linecap="round"/><rect x="184" y="109.9" width="26.8" height="33.2" rx="3" fill="#3f4a63"/><rect x="186" y="111.9" width="22.8" height="3" rx="1.5" fill="#4d5a78"/></symbol><symbol id="pw-s-magazijn" viewBox="0 0 320 200"><polygon points="0,0 320,0 224,20 96,20" fill="url(#scg-ceil)"/>
+<rect x="96" y="20" width="128" height="112" fill="url(#scg-wall)"/>
+<polygon points="0,0 96,20 96,132 0,200" fill="url(#scg-side)"/>
+<polygon points="224,20 320,0 320,200 224,132" fill="url(#scg-side)" opacity=".85"/>
+<polygon points="96,132 224,132 320,200 0,200" fill="url(#scg-floor)"/>
+<polyline points="0,200 96,132 224,132 320,200" fill="none" stroke="#9aa3b3" stroke-opacity=".5" stroke-width="1.2"/><rect x="6" y="40" width="70" height="150" fill="none" stroke="#4b5a78" stroke-width="2.2"/><line x1="6" y1="77.5" x2="76" y2="77.5" stroke="#4b5a78" stroke-width="2.2"/><line x1="6" y1="115" x2="76" y2="115" stroke="#4b5a78" stroke-width="2.2"/><line x1="6" y1="152.5" x2="76" y2="152.5" stroke="#4b5a78" stroke-width="2.2"/><rect x="9" y="73.5" width="64" height="2.4" fill="#8a6a48"/><rect x="10" y="51" width="30" height="22.5" fill="#d9c39b" stroke="#b39a6e" stroke-width=".8"/><rect x="42" y="55.5" width="30" height="18" fill="#d9c39b" stroke="#b39a6e" stroke-width=".8"/><rect x="9" y="111" width="64" height="2.4" fill="#8a6a48"/><rect x="10" y="88.5" width="30" height="22.5" fill="#d9c39b" stroke="#b39a6e" stroke-width=".8"/><rect x="42" y="93" width="30" height="18" fill="#d9c39b" stroke="#b39a6e" stroke-width=".8"/><rect x="9" y="148.5" width="64" height="2.4" fill="#8a6a48"/><rect x="10" y="126" width="30" height="22.5" fill="#d9c39b" stroke="#b39a6e" stroke-width=".8"/><rect x="42" y="130.5" width="30" height="18" fill="#d9c39b" stroke="#b39a6e" stroke-width=".8"/><rect x="9" y="186" width="64" height="2.4" fill="#8a6a48"/><rect x="10" y="163.5" width="30" height="22.5" fill="#d9c39b" stroke="#b39a6e" stroke-width=".8"/><rect x="42" y="168" width="30" height="18" fill="#d9c39b" stroke="#b39a6e" stroke-width=".8"/><rect x="244" y="40" width="70" height="150" fill="none" stroke="#4b5a78" stroke-width="2.2"/><line x1="244" y1="77.5" x2="314" y2="77.5" stroke="#4b5a78" stroke-width="2.2"/><line x1="244" y1="115" x2="314" y2="115" stroke="#4b5a78" stroke-width="2.2"/><line x1="244" y1="152.5" x2="314" y2="152.5" stroke="#4b5a78" stroke-width="2.2"/><rect x="247" y="73.5" width="64" height="2.4" fill="#8a6a48"/><rect x="248" y="51" width="30" height="22.5" fill="#d9c39b" stroke="#b39a6e" stroke-width=".8"/><rect x="280" y="55.5" width="30" height="18" fill="#d9c39b" stroke="#b39a6e" stroke-width=".8"/><rect x="247" y="111" width="64" height="2.4" fill="#8a6a48"/><rect x="248" y="88.5" width="30" height="22.5" fill="#d9c39b" stroke="#b39a6e" stroke-width=".8"/><rect x="280" y="93" width="30" height="18" fill="#d9c39b" stroke="#b39a6e" stroke-width=".8"/><rect x="247" y="148.5" width="64" height="2.4" fill="#8a6a48"/><rect x="248" y="126" width="30" height="22.5" fill="#d9c39b" stroke="#b39a6e" stroke-width=".8"/><rect x="280" y="130.5" width="30" height="18" fill="#d9c39b" stroke="#b39a6e" stroke-width=".8"/><rect x="247" y="186" width="64" height="2.4" fill="#8a6a48"/><rect x="248" y="163.5" width="30" height="22.5" fill="#d9c39b" stroke="#b39a6e" stroke-width=".8"/><rect x="280" y="168" width="30" height="18" fill="#d9c39b" stroke="#b39a6e" stroke-width=".8"/><polygon points="116.6,33 130.6,33 153.6,151 93.6,151" fill="url(#scg-cone)"/><ellipse cx="123.6" cy="151" rx="32" ry="6" fill="url(#scg-pool)"/><line x1="123.6" y1="14" x2="123.6" y2="24" stroke="#aeb7c6" stroke-width="1.2"/><rect x="115.6" y="24" width="16" height="9" rx="3" fill="#f4f6f9" stroke="#b4bccb"/><ellipse cx="123.6" cy="33" rx="6" ry="2" fill="#fff1c2" filter="url(#scg-glow)"/><polygon points="189.4,33 203.4,33 226.4,151 166.4,151" fill="url(#scg-cone)"/><ellipse cx="196.4" cy="151" rx="32" ry="6" fill="url(#scg-pool)"/><line x1="196.4" y1="14" x2="196.4" y2="24" stroke="#aeb7c6" stroke-width="1.2"/><rect x="188.4" y="24" width="16" height="9" rx="3" fill="#f4f6f9" stroke="#b4bccb"/><ellipse cx="196.4" cy="33" rx="6" ry="2" fill="#fff1c2" filter="url(#scg-glow)"/><ellipse cx="160" cy="11.5" rx="6" ry="2.4" fill="#f4f6fa" stroke="#aeb7c6" stroke-width="1.1"/><circle cx="160" cy="12.6" r="1.4" fill="#2563c9"/><path d="M151 15a9 3.6 0 0 0 18 0M146 18a14 5.5 0 0 0 28 0" fill="none" stroke="#2563c9" stroke-opacity=".55" stroke-width="1" stroke-dasharray="2.5 2.5"/><g transform="translate(97.3 166) scale(0.9 0.9)"><ellipse cx="26" cy="0" rx="30" ry="3" fill="#000" fill-opacity=".16"/>
+<line x1="8" y1="-20" x2="8" y2="-40" stroke="#5b6478" stroke-width="2"/><line x1="26" y1="-20" x2="26" y2="-40" stroke="#5b6478" stroke-width="2"/><rect x="5" y="-43" width="24" height="3.5" rx="1" fill="#5b6478"/>
+<rect x="12" y="-28" width="10" height="7" rx="2" fill="#2f3850"/><path d="M2 -8 L2 -19 Q2 -21 4 -21 L30 -21 L30 -8 Z" fill="#d8a23a"/><rect x="2" y="-12" width="28" height="4" fill="#b98a2a"/>
+<rect x="31" y="-46" width="2.6" height="42" fill="#5b6478"/><rect x="35.5" y="-46" width="2.6" height="42" fill="#5b6478"/><rect x="30" y="-16" width="9" height="9" fill="#6b7690"/>
+<rect x="38" y="-4.5" width="20" height="2.4" fill="#5b6478"/><rect x="40" y="-18" width="15" height="13" fill="#d9c39b" stroke="#b39a6e"/>
+<circle cx="9" cy="-5" r="5" fill="#151b29"/><circle cx="9" cy="-5" r="2.3" fill="#8b95aa"/><circle cx="29" cy="-6.5" r="6.5" fill="#151b29"/><circle cx="29" cy="-6.5" r="2.9" fill="#8b95aa"/></g></symbol></svg>
+
+<div id="stage" aria-hidden="true">
+  <div id="wereld"><div id="vloer"></div></div>
+</div>
+<canvas id="licht" aria-hidden="true"></canvas>
+
+<div id="open">
+<header class="site-header">
+<div class="wrap header-row">
+<a class="site-name" href="/nl/"><svg class="brand-badge" viewBox="0 0 32 32" role="presentation" focusable="false"><rect width="32" height="32" rx="7" fill="#072d78"/><rect x="6" y="8" width="15" height="4.5" rx="1.6" fill="#fff"/><path d="M8.5 12.5 18.5 12.5 23 24.5 4 24.5Z" fill="#ffd166" fill-opacity=".92"/><circle cx="25.5" cy="10.2" r="2" fill="#7fb2ff"/><path d="M22.2 6.5a4.7 4.7 0 0 1 6.6 0" fill="none" stroke="#7fb2ff" stroke-width="1.5" stroke-linecap="round"/></svg><span class="brand-stack"><span class="brand-mark"><span class="brand-first">Lichtsturing</span><span class="brand-rest">.info</span></span><span class="brand-tagline">Lichtsturing begrijpelijk gemaakt</span></span></a>
+</div>
+</header>
+<section class="pf-hero pf-hero--live" aria-labelledby="h-open">
+<div class="wrap pf-hero-inner">
+<div class="pf-hero-text">
+<p class="eyebrow" id="open-eyebrow">Kennisplatform lichtsturing</p>
+<h1 id="h-open">Deze website bekijk je anders.</h1>
+<div class="houd" id="houd">
+<svg class="houd-art" viewBox="0 0 88 104" aria-hidden="true" focusable="false"><g class="tel"><rect x="24" y="8" width="40" height="80" rx="7" fill="rgba(255,255,255,.08)" stroke="#dfe6f5" stroke-width="2"/><rect x="29" y="16" width="30" height="58" rx="2" fill="rgba(255,227,154,.14)"/><rect x="38" y="11" width="12" height="2.5" rx="1.25" fill="#aab8d8"/><circle cx="44" cy="82" r="2.2" fill="#aab8d8"/><path d="M14 92c8 6 52 6 60 0" fill="none" stroke="#aab8d8" stroke-width="1.5" stroke-dasharray="3 3" opacity=".7"/></g><g class="vink"><circle cx="70" cy="22" r="10" fill="#ffe39a"/><path d="M64.5 22.3l3.6 3.5 7.2-7.3" fill="none" stroke="#0b1f4d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></g></svg>
+<p id="houd-tekst">Houd je iPhone rechtop voor je.<small id="houd-klein">Dit wordt je startpositie.</small></p>
+</div>
+<p class="pf-cta-row"><button class="pf-button" id="start" type="button">Start ervaring</button></p>
+</div>
+</div>
+</section>
 </div>
 
+<p class="vind uit" id="vind"></p>
 <p class="hint uit" id="hint" aria-live="polite"></p>
-<p class="kern uit" id="kern" aria-live="polite"></p>
-<div class="verder uit" id="verder"><a class="knop" id="verder-knop" href="/nl/">Ontdek verder</a></div>
+<div id="kern" class="uit" aria-live="polite"><p class="eyebrow">Kennisplatform lichtsturing</p><h2 id="kern-tekst"></h2></div>
+<div id="kop"><header class="site-header">
+<div class="wrap header-row">
+<a class="site-name" href="/nl/"><svg class="brand-badge" viewBox="0 0 32 32" role="presentation" focusable="false"><rect width="32" height="32" rx="7" fill="#072d78"/><rect x="6" y="8" width="15" height="4.5" rx="1.6" fill="#fff"/><path d="M8.5 12.5 18.5 12.5 23 24.5 4 24.5Z" fill="#ffd166" fill-opacity=".92"/><circle cx="25.5" cy="10.2" r="2" fill="#7fb2ff"/><path d="M22.2 6.5a4.7 4.7 0 0 1 6.6 0" fill="none" stroke="#7fb2ff" stroke-width="1.5" stroke-linecap="round"/></svg><span class="brand-stack"><span class="brand-mark"><span class="brand-first">Lichtsturing</span><span class="brand-rest">.info</span></span><span class="brand-tagline">Lichtsturing begrijpelijk gemaakt</span></span></a>
+</div>
+</header></div>
+<div id="verder"><a class="pf-button" id="verder-knop" href="/nl/">Ontdek verder</a></div>
 
-<div class="laag" id="melding" hidden>
-  <div class="melding">
-    <p id="melding-tekst"></p>
-    <p class="klein" id="melding-klein"></p>
-    <a class="knop" href="/nl/">Naar lichtsturing.info</a>
-  </div>
+<div id="melding" hidden>
+<header class="site-header">
+<div class="wrap header-row">
+<a class="site-name" href="/nl/"><svg class="brand-badge" viewBox="0 0 32 32" role="presentation" focusable="false"><rect width="32" height="32" rx="7" fill="#072d78"/><rect x="6" y="8" width="15" height="4.5" rx="1.6" fill="#fff"/><path d="M8.5 12.5 18.5 12.5 23 24.5 4 24.5Z" fill="#ffd166" fill-opacity=".92"/><circle cx="25.5" cy="10.2" r="2" fill="#7fb2ff"/><path d="M22.2 6.5a4.7 4.7 0 0 1 6.6 0" fill="none" stroke="#7fb2ff" stroke-width="1.5" stroke-linecap="round"/></svg><span class="brand-stack"><span class="brand-mark"><span class="brand-first">Lichtsturing</span><span class="brand-rest">.info</span></span><span class="brand-tagline">Lichtsturing begrijpelijk gemaakt</span></span></a>
+</div>
+</header>
+<div class="wrap"><p class="lead" id="melding-tekst"></p><p id="melding-klein"></p><p class="pf-cta-row"><a class="pf-button" href="/nl/">Naar lichtsturing.info</a></p></div>
 </div>
 
-<div class="rechtop" aria-hidden="true"><p class="titel">Houd je iPhone rechtop</p></div>
+<template id="t-keten">
+<figure class="kt"><figcaption class="kt-title"></figcaption><div class="kt-art"><svg class="kt-svg" viewBox="0 0 760 170" aria-hidden="true" focusable="false"><path class="kt-line kt-line--1" d="M126 96H244" fill="none" stroke="#c5ccd8" stroke-width="3" stroke-linecap="round"/><path class="kt-pulse kt-pulse--1" d="M126 96H244" fill="none" stroke="#2563c9" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="10 14"/><path class="kt-line kt-line--2" d="M326 96H434" fill="none" stroke="#c5ccd8" stroke-width="3" stroke-linecap="round"/><path class="kt-pulse kt-pulse--2" d="M326 96H434" fill="none" stroke="#2563c9" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="10 14"/><path class="kt-line kt-line--3" d="M518 96H620" fill="none" stroke="#c5ccd8" stroke-width="3" stroke-linecap="round"/><path class="kt-pulse kt-pulse--3" d="M518 96H620" fill="none" stroke="#2563c9" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="10 14"/><g class="kt-node kt-node--1"><path d="M40 54h110" stroke="#9aa6ba" stroke-width="2"/><ellipse cx="95" cy="57" rx="14" ry="5" fill="#f4f6fa" stroke="#9aa6ba" stroke-width="1.5"/><circle cx="95" cy="59" r="2.6" fill="#2563c9"/><path class="kt-wave" d="M77 70a18 7 0 0 0 36 0M68 82a27 10 0 0 0 54 0" fill="none" stroke="#3b82f6" stroke-width="2" stroke-dasharray="4 4"/><rect x="86" y="112" width="18" height="26" rx="3" fill="#f7f8fb" stroke="#9aa6ba" stroke-width="1.5"/><rect x="90.5" y="117" width="9" height="16" rx="2" fill="#dfe4ec" stroke="#9aa6ba"/></g><g class="kt-node kt-node--2"><rect x="250" y="70" width="70" height="52" rx="6" fill="#33405e" stroke="#1e2a44" stroke-width="1.5"/><circle class="kt-led" cx="306" cy="82" r="4" fill="#7fd1a8"/><path d="M262 96h30M262 106h22M262 86h16" stroke="#9fb4d6" stroke-width="3" stroke-linecap="round"/></g><g class="kt-node kt-node--3"><rect x="440" y="58" width="72" height="10" rx="3" fill="#f4f6f9" stroke="#aeb7c6" stroke-width="1.5"/><polygon class="kt-beam" points="444,68 508,68 534,150 418,150" fill="#ffe39a" fill-opacity=".55"/><ellipse class="kt-beam" cx="476" cy="150" rx="62" ry="9" fill="#ffe9b0" fill-opacity=".8"/><rect x="444" y="64" width="64" height="3" rx="1.5" fill="#fff1c2"/></g><g class="kt-node kt-node--4"><rect x="626" y="58" width="44" height="88" rx="2" fill="#e8ecf2" stroke="#9aa6ba" stroke-width="1.5"/><path d="M634 70h8M650 70h8M634 84h8M650 84h8M634 98h8M650 98h8M634 112h8M650 112h8" stroke="#9aa6ba" stroke-width="3"/><rect x="680" y="84" width="46" height="32" rx="3" fill="#2b3040"/><path class="kt-data" d="M686 106l8-8 7 5 9-11 10 6" fill="none" stroke="#7fd1a8" stroke-width="2.4" stroke-linejoin="round"/><rect x="699" y="116" width="8" height="8" fill="#4b5262"/></g></svg></div>
+<ol class="kt-steps">
+<li class="kt-step kt-step--1"><span class="kt-step-btn"><span class="kt-step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18"/><path d="M8 4a4 4 0 0 0 8 0"/><path d="M6.5 11a7 7 0 0 0 11 0M4 14.5a10.5 10.5 0 0 0 16 0" stroke-dasharray="2 2.5"/></svg></span><span class="kt-step-name">Waarnemen</span></span></li>
+<li class="kt-step kt-step--2"><span class="kt-step-btn"><span class="kt-step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></span><span class="kt-step-name">Beslissen</span></span></li>
+<li class="kt-step kt-step--3"><span class="kt-step-btn"><span class="kt-step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 5h7l-1.2 4.5h-4.6z"/><path d="M12 3v2"/><path d="M9.5 9.5l-3 9M14.5 9.5l3 9"/><path d="M8 15h8" stroke-dasharray="1.5 2"/><path d="M5 20h14"/></svg></span><span class="kt-step-name">Uitvoeren</span></span></li>
+<li class="kt-step kt-step--4"><span class="kt-step-btn"><span class="kt-step-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="9" height="15" rx="1"/><path d="M15 9h6M18 6l3 3-3 3M21 15h-6M18 12l-3 3 3 3"/></svg></span><span class="kt-step-name">Koppelen</span></span></li>
+</ol></figure>
+</template>
+
 <p class="sr" id="sr" aria-live="polite"></p>
 <script type="module" src="ervaar.mjs"></script>
 </body>

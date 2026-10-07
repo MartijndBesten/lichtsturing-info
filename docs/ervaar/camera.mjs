@@ -111,3 +111,35 @@ export function ontdekking(cfg = LICHT) {
   }
   return { stap, toestand: s };
 }
+
+// ---------- CSS-3D (art-direction 07-10-2026: de ruimte bestaat uit echte sitecomponenten in het DOM) ----------
+// De kijker staat in de oorsprong; CSS zet het oog op afstand P vóór het vlak z = 0. Een element op afstand r recht vooruit
+// krijgt dus schaal P/r; met `zoom` = r/P × schaal oogt het weer 1:1 (echte lettergroottes), en de diepte zit in de parallax.
+export const PERSPECTIEF = 520; // px
+
+/** Transform van de wereld (tegengesteld aan de camera): eerst yaw, dan pitch, dan roll, en het oog naar de oorsprong. */
+export function wereldTransform(yaw, pitch, roll, cfg = CAMERA, P = PERSPECTIEF) {
+  return `translateZ(${P}px) rotateZ(${(roll * cfg.ROLL_FACTOR).toFixed(2)}deg) rotateX(${pitch.toFixed(2)}deg) rotateY(${yaw.toFixed(2)}deg)`;
+}
+
+/**
+ * Transform van een paneel: in de richting (yaw/pitch) op afstand r, gedraaid naar de kijker, met een verschuiving
+ * (dx rechts, dy omlaag, dz naar de kijker toe) in het vlak van het onderwerp. Het paneel is gecentreerd op dat punt.
+ */
+export function paneelTransform({ yaw, pitch, afstand, dx = 0, dy = 0, dz = 0, schaal = 1 }) {
+  // Volgorde (van rechts naar links toegepast, om de transform-origin = het midden van het paneel): eerst schalen om
+  // het midden, dan centreren met de ongeschaalde halve maat, dan verplaatsen en draaien. Andersom verschuift het paneel
+  // met (1 − schaal) × halve grootte (gemeten in de proef van 07-10-2026).
+  return `rotateY(${(-yaw).toFixed(2)}deg) rotateX(${(-pitch).toFixed(2)}deg) translate3d(${dx}px, ${dy}px, ${(dz - afstand).toFixed(1)}px) translate(-50%, -50%) scale(${schaal.toFixed(3)})`;
+}
+
+/** Positie van een paneel in de ruimte (voor de verlichting): richting + verschuiving in het vlak. */
+export function paneelPositie(o, p = {}) {
+  const DEG2 = Math.PI / 180;
+  const y = o.yaw * DEG2, pt = o.pitch * DEG2;
+  const f = [Math.sin(y) * Math.cos(pt), Math.sin(pt), -Math.cos(y) * Math.cos(pt)];
+  const R = [Math.cos(y), 0, Math.sin(y)];
+  const U = [-Math.sin(y) * Math.sin(pt), Math.cos(pt), Math.cos(y) * Math.sin(pt)];
+  const r = o.afstand - (p.dz ?? 0);
+  return [f[0] * r + R[0] * (p.dx ?? 0) - U[0] * (p.dy ?? 0), f[1] * r + R[1] * (p.dx ?? 0) - U[1] * (p.dy ?? 0), f[2] * r + R[2] * (p.dx ?? 0) - U[2] * (p.dy ?? 0)];
+}
