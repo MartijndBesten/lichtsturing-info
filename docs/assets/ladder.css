@@ -1,4 +1,4 @@
-.ld { --c-bediening: #9aa6ba; --c-regeling: #f0b429; --c-automatisering: #3b82f6; --c-lichtmanagement: #8b6fe0; --c-gebouwintegratie: #2aa198; margin: var(--s-5) 0; padding: var(--s-4); color: var(--on-dark); background: var(--navy); border-radius: 12px; box-shadow: var(--shadow-2); }
+.ld { --c-bediening: #9aa6ba; --c-regeling: #f0b429; --c-automatisering: #3b82f6; --c-lichtmanagement: #d97052; --c-gebouwintegratie: #2aa198; margin: var(--s-5) 0; padding: var(--s-4); color: var(--on-dark); background: var(--navy); border-radius: 12px; box-shadow: var(--shadow-2); }
 .ld > * { min-width: 0; }
 .ld [data-cat='bediening'] { --cat: var(--c-bediening); }
 .ld [data-cat='regeling'] { --cat: var(--c-regeling); }
@@ -38,6 +38,9 @@
 .ld-cats { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-3); margin: 0 0 var(--s-2); padding: 0; list-style: none; font-size: var(--fs-label); font-weight: 700; color: var(--on-dark-soft); }
 .ld-cats li { display: inline-flex; align-items: center; gap: .4em; }
 .ld-cats li::before { content: ''; width: .8em; height: .8em; border-radius: 2px; background: var(--cat); }
+.ld-cat-range { font-variant-numeric: tabular-nums; color: var(--on-dark); }
+.ld-levels [data-cat='bediening'] + [data-cat='regeling'], .ld-levels [data-cat='regeling'] + [data-cat='automatisering'],
+.ld-levels [data-cat='automatisering'] + [data-cat='lichtmanagement'], .ld-levels [data-cat='lichtmanagement'] + [data-cat='gebouwintegratie'] { margin-inline-start: 5px; }
 .ld-levels { margin-bottom: var(--s-2); }
 .ld-levels ol { display: grid; grid-template-columns: repeat(11, minmax(0, 1fr)); gap: 3px; margin: 0; padding: 0; list-style: none; }
 .ld-levels li { min-width: 0; }
@@ -186,6 +189,8 @@
   .ld-cats { display: grid; grid-template-columns: repeat(11, minmax(0, 1fr)); gap: 3px; }
   .ld-cats li { grid-column: span var(--span); justify-content: center; padding: 2px 4px; text-align: center; line-height: 1.15; hyphens: auto; overflow-wrap: break-word; color: #0b1530; background: var(--cat); border-radius: 4px; }
   .ld-cats li::before { display: none; }
+  .ld-cats li + li { margin-inline-start: 5px; }
+  .ld-cats .ld-cat-range { display: none; }
   .ld-levels label { place-items: start; align-content: start; min-height: 58px; padding: var(--s-1) var(--s-2); }
   .ld-levels .ld-short { display: block; hyphens: auto; overflow-wrap: break-word; }
   .ld-current { display: none; }
