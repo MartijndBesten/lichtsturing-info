@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#050608">
+<meta name="description" content="Stap in de wereld van lichtsturing.info. Een korte ervaring voor de iPhone.">
+<title>Ervaar · Lichtsturing.info</title>
+<style>
+  :root {
+    --zwart: #050608; --inkt: #e9e4da; --zacht: rgba(233, 228, 218, .62); --licht: #ffe39a; --licht-basis: #fff4d1;
+    --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI Variable Text", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; height: 100%; background: var(--zwart); color: var(--inkt); font: 16px/1.4 var(--font); overflow: hidden; overscroll-behavior: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+  body { position: fixed; inset: 0; touch-action: none; }
+  canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+  .laag { position: fixed; inset: 0; display: grid; place-items: center; padding: max(1.5rem, env(safe-area-inset-top)) 1.5rem max(1.5rem, env(safe-area-inset-bottom)); text-align: center; transition: opacity 1.4s ease; }
+  .laag[hidden] { display: none; }
+  .uit { opacity: 0; pointer-events: none; }
+  .titel { margin: 0; font-weight: 300; font-size: .82rem; letter-spacing: .5em; text-transform: uppercase; color: var(--zacht); padding-left: .5em; }
+  .open { display: grid; gap: 3.25rem; justify-items: center; }
+  button, .knop { appearance: none; border: 1px solid rgba(255, 227, 154, .38); background: transparent; color: var(--inkt); font: 400 .82rem var(--font); letter-spacing: .28em; text-transform: uppercase; padding: 1.05rem 1.6rem 1.05rem calc(1.6rem + .28em); border-radius: 999px; cursor: pointer; text-decoration: none; touch-action: manipulation; }
+  button:active, .knop:active { background: rgba(255, 227, 154, .08); }
+  .hint { position: fixed; left: 0; right: 0; bottom: max(2.5rem, calc(env(safe-area-inset-bottom) + 1.5rem)); margin: 0; text-align: center; font-weight: 300; font-size: .82rem; letter-spacing: .32em; text-transform: uppercase; color: var(--zacht); transition: opacity 2.4s ease; pointer-events: none; }
+  .kern { position: fixed; left: 1.5rem; right: 1.5rem; top: 38%; margin: 0; text-align: center; font-weight: 300; font-size: clamp(1.15rem, 6.2vw, 1.6rem); line-height: 1.35; letter-spacing: .14em; text-transform: uppercase; color: var(--licht-basis); text-shadow: 0 0 24px rgba(255, 227, 154, .25); transition: opacity 2.6s ease, transform 2.6s ease; pointer-events: none; }
+  .kern.uit { transform: translateY(.6rem); }
+  .verder { position: fixed; left: 0; right: 0; bottom: max(2.25rem, calc(env(safe-area-inset-bottom) + 1.25rem)); display: flex; justify-content: center; transition: opacity 2s ease; }
+  .melding { max-width: 22rem; display: grid; gap: 2rem; justify-items: center; }
+  .melding p { margin: 0; font-weight: 300; font-size: 1.05rem; line-height: 1.55; color: var(--inkt); letter-spacing: .02em; }
+  .melding .klein { font-size: .82rem; color: var(--zacht); }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  @media (orientation: landscape) and (max-height: 520px) { .rechtop { display: grid !important; } }
+  .rechtop { display: none; position: fixed; inset: 0; place-items: center; background: var(--zwart); z-index: 5; }
+</style>
+</head>
+<body>
+<canvas id="wereld" aria-hidden="true"></canvas>
+
+<div class="laag" id="open">
+  <div class="open">
+    <h1 class="titel" id="open-titel">Vind het licht</h1>
+    <button id="start" type="button">Start ervaring</button>
+  </div>
+</div>
+
+<p class="hint uit" id="hint" aria-live="polite"></p>
+<p class="kern uit" id="kern" aria-live="polite"></p>
+<div class="verder uit" id="verder"><a class="knop" id="verder-knop" href="/nl/">Ontdek verder</a></div>
+
+<div class="laag" id="melding" hidden>
+  <div class="melding">
+    <p id="melding-tekst"></p>
+    <p class="klein" id="melding-klein"></p>
+    <a class="knop" href="/nl/">Naar lichtsturing.info</a>
+  </div>
+</div>
+
+<div class="rechtop" aria-hidden="true"><p class="titel">Houd je iPhone rechtop</p></div>
+<p class="sr" id="sr" aria-live="polite"></p>
+<script type="module" src="ervaar.mjs"></script>
+</body>
+</html>
