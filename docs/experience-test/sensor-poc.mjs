@@ -117,8 +117,45 @@ function unlockAudio() {
     o.start(); o.stop(audio.currentTime + 0.02);
   } catch { audio = null; }
 }
+// Tweede route (07-10, test 5: Web Audio + audioSession 'playback' bleef stil in de stille modus): een <audio>-element.
+// HTML-media spelen op iOS volgens WebKit ook in de stille modus. De pieptoon wordt hier in JavaScript als WAV gemaakt
+// (geen bestand, geen netwerk). Het element wordt in de tik op Start of het vinkje gedempt „vrijgespeeld”, zodat een
+// latere play() vanuit een sensorgebeurtenis mag.
+let tone = null;
+function toneUrl() {
+  const rate = 22050, n = Math.round(rate * 0.25), buf = new ArrayBuffer(44 + n * 2), v = new DataView(buf);
+  const str = (o, t) => [...t].forEach((c, i) => v.setUint8(o + i, c.charCodeAt(0)));
+  str(0, 'RIFF'); v.setUint32(4, 36 + n * 2, true); str(8, 'WAVEfmt '); v.setUint32(16, 16, true); v.setUint16(20, 1, true);
+  v.setUint16(22, 1, true); v.setUint32(24, rate, true); v.setUint32(28, rate * 2, true); v.setUint16(32, 2, true);
+  v.setUint16(34, 16, true); str(36, 'data'); v.setUint32(40, n * 2, true);
+  for (let i = 0; i < n; i++) {
+    const env = Math.min(1, i / 200) * Math.max(0, 1 - i / n);
+    v.setInt16(44 + i * 2, Math.round(Math.sin((2 * Math.PI * 880 * i) / rate) * env * 0.6 * 32767), true);
+  }
+  return URL.createObjectURL(new Blob([buf], { type: 'audio/wav' }));
+}
+function unlockTone() {
+  try {
+    tone = tone || Object.assign(new Audio(toneUrl()), { preload: 'auto' });
+    tone.muted = true; // iOS negeert volume; muted wel
+    const p = tone.play();
+    const done = () => { tone.pause(); tone.currentTime = 0; tone.muted = false; };
+    if (p && p.then) p.then(done, (e) => log(`geluid vrijgeven mislukt: ${e?.name ?? e}`)); else done();
+  } catch (e) { log(`geluid vrijgeven mislukt: ${e?.name ?? e}`); }
+}
+const soundMethod = () => $('soundmethod').value;
 function beep() {
-  if (!audio || !$('sound').checked) return;
+  if (!$('sound').checked) return;
+  if (soundMethod() === 'element') {
+    if (!tone) return;
+    try {
+      tone.currentTime = 0;
+      const p = tone.play();
+      if (p && p.then) p.then(() => log('geluid: afgespeeld (audio-element)'), (e) => log(`geluid: geweigerd (${e?.name ?? e})`));
+    } catch (e) { log(`geluid: fout (${e?.name ?? e})`); }
+    return;
+  }
+  if (!audio) return;
   try {
     if (audio.state !== 'running') audio.resume(); // ook „interrupted” (iOS)
     const t = audio.currentTime, o = audio.createOscillator(), g = audio.createGain();
@@ -128,10 +165,13 @@ function beep() {
     g.gain.exponentialRampToValueAtTime(0.0001, t + 0.25);
     o.connect(g).connect(audio.destination);
     o.start(t); o.stop(t + 0.3);
+    log(`geluid: afgespeeld (Web Audio, ${audio.state})`);
   } catch { /* geluid is optioneel */ }
 }
 // Vinkje aanzetten is zelf een gebruikersactie: daar de sessie zetten en de context (opnieuw) starten.
-$('sound').addEventListener('change', () => { if ($('sound').checked && st.started) unlockAudio(); });
+$('sound').addEventListener('change', () => { if ($('sound').checked && st.started) { unlockAudio(); unlockTone(); } });
+$('soundmethod').addEventListener('change', () => { if ($('sound').checked && st.started) { unlockAudio(); unlockTone(); } });
+$('testsound').addEventListener('click', () => { if (!tone) unlockTone(); if (!audio) unlockAudio(); const c = $('sound').checked; $('sound').checked = true; beep(); $('sound').checked = c; });
 
 function flash() {
   const el = $('flash');
@@ -143,6 +183,7 @@ function flash() {
 async function start() {
   $('start').disabled = true;
   unlockAudio();
+  unlockTone();
   $('msg').textContent = 'Toestemming vragen…';
   if (!window.isSecureContext) {
     $('msg').textContent = 'Geen secure context: iOS geeft alleen via https toegang tot sensoren.';
@@ -376,7 +417,7 @@ function report() {
     `relatief: ${st.view ? `yaw ${fmt(st.view.yaw)} pitch ${fmt(st.view.pitch)} roll ${fmt(st.view.roll)}` : 'niet gekalibreerd'}`,
     `motion nu: acc ${fmt(st.motion?.acceleration?.x, 2)}/${fmt(st.motion?.acceleration?.y, 2)}/${fmt(st.motion?.acceleration?.z, 2)}; accG ${fmt(st.motion?.accelerationIncludingGravity?.x, 2)}/${fmt(st.motion?.accelerationIncludingGravity?.y, 2)}/${fmt(st.motion?.accelerationIncludingGravity?.z, 2)}; rot ${fmt(st.motion?.rotationRate?.alpha, 0)}/${fmt(st.motion?.rotationRate?.beta, 0)}/${fmt(st.motion?.rotationRate?.gamma, 0)}`,
     `status: moving=${d.moving} stationary=${d.stationary} flat=${d.flat} side=${screenSide()} accGz=${fmt(st.motion?.accelerationIncludingGravity?.z, 2)} pickup=${d.pickup} tilt=${fmt(d.tiltDeg, 0)} linearFallback=${d.linearFallback} wakeLock=${st.wakeLock}`,
-    `sound: ${$('sound').checked ? 'aan' : 'uit'}${audio ? ` (audio ${audio.state})` : ''}, audioSession ${navigator.audioSession ? navigator.audioSession.type : 'niet beschikbaar'}`,
+    `sound: ${$('sound').checked ? 'aan' : 'uit'}, methode ${soundMethod()}${tone ? ' (element klaar)' : ''}${audio ? ` (audio ${audio.state})` : ''}, audioSession ${navigator.audioSession ? navigator.audioSession.type : 'niet beschikbaar'}`,
     `onderbrekingen: ${st.gaps.n}`,
     `config: ${Object.entries(detector.config).map(([k, v]) => `${k}=${v}`).join(' ')}`,
     '',
