@@ -75,6 +75,9 @@
 .kbasis--ontwerp { color: var(--c-relatie); }
 .kbasis--praktijk { color: var(--warn); }
 .kbasis--voorbeeld { color: var(--muted); border-style: dashed; }
+.kbasis--wet { color: var(--on-dark); background: var(--navy); border-color: var(--navy); }
+.kbasis--aangewezen { color: var(--navy); background: var(--blue-pale); }
+.kbasis--uitleg { color: #5b3f8c; }
 
 
 .pf-hero--live { color: var(--on-dark); background: var(--navy); border-bottom: 0; }
