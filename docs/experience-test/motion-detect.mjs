@@ -26,6 +26,14 @@
 //                    kanteling levert de gebeurtenis „bump” op en geen pickup. Pickup blijft YES tot het toestel opnieuw
 //                    FLAT/STABLE is (nieuwe cyclus).
 //   STRONG         = aLin > STRONG_ACCEL („duidelijke beweging/versnelling”), hooguit eens per STRONG_LOG_MS gelogd.
+//   RESUME         = er zat meer dan GAP_RESET_MS tussen twee samples (iOS stopt de events zodra de pagina verborgen is:
+//                    andere app, schermafbeelding, vergrendeling). De tijdvensters beginnen dan opnieuw, zodat stationary en
+//                    flat niet „gratis” waar worden over de onderbreking heen. Flat zelf blijft staan; is het toestel
+//                    intussen opgepakt, dan ziet de kantelingtoets dat bij de eerste samples na terugkeer.
+//
+// Bevindingen op een echte iPhone (iOS 26.6.1, 07-10-2026): plat met het scherm omhoog levert accelerationIncludingGravity
+// z ≈ −9,7 (het teken is dus omgekeerd t.o.v. de W3C-tekening); de detectie gebruikt alleen |z| en hoeken en is daar
+// ongevoelig voor. MOVING_HOLD_MS van 400 naar 1000 ms: in de hand flipperde moving bij langzaam rondkijken.
 //
 // Alle drempels zijn beginwaarden op basis van de orde van grootte van handbeweging; ze zijn bewust nog niet op een
 // echte iPhone gevalideerd. De pagina laat ze via de URL overschrijven (?STILL_ACCEL=0.3&FLAT_MS=1500 …) zodat tunen op
@@ -40,7 +48,7 @@ export const DEFAULT_CONFIG = {
   MOVE_ROT: 45, // °/s
   STRONG_ACCEL: 3.0, // m/s²: duidelijke versnelling
   STRONG_LOG_MS: 1000,
-  MOVING_HOLD_MS: 400, // moving blijft YES zolang er binnen deze tijd een bewegingssample was
+  MOVING_HOLD_MS: 1000, // moving blijft YES zolang er binnen deze tijd een bewegingssample was (iPhone-test: 400 flipperde)
   STATIONARY_MS: 1500, // zo lang alleen stil-samples → stationary
   // Vlak liggen.
   FLAT_ANGLE_DEG: 15, // hoek tussen zwaartekracht en de Z-as van het toestel
@@ -52,6 +60,7 @@ export const DEFAULT_CONFIG = {
   // Filters.
   GRAVITY_EMA: 0.2, // gewicht nieuwe sample in het trage zwaartekrachtgemiddelde (≈ 80 ms bij 60 Hz)
   GRAVITY_MAG_EMA: 0.02, // nog trager, voor de terugvaloptie zonder `acceleration`
+  GAP_RESET_MS: 500, // grotere pauze tussen samples = onderbreking (pagina verborgen); tijdvensters opnieuw
 };
 
 const mag = (x, y, z) => Math.hypot(x ?? 0, y ?? 0, z ?? 0);
@@ -110,6 +119,15 @@ export function createDetector(config = DEFAULT_CONFIG) {
     const emit = (type, detail) => events.push(detail ? { t, type, detail } : { t, type });
     // Eerste sample: nog geen geschiedenis, dus stationary/flat pas na STATIONARY_MS/FLAT_MS aan échte stil-samples.
     if (s.t == null) s.lastNonStillT = t;
+    else if (t - s.t > cfg.GAP_RESET_MS) {
+      emit('resume', `${((t - s.t) / 1000).toFixed(1)} s geen sensordata`);
+      s.lastNonStillT = t;
+      s.lastMotionT = -Infinity;
+      s.flatCandidateSince = null;
+      s.pending = null;
+      s.stationary = false;
+      s.moving = false;
+    }
     s.t = t;
 
     // Zwaartekracht (traag) en vlakheid.

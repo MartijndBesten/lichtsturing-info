@@ -22,6 +22,15 @@ const clock = (t = Date.now()) => new Date(t).toTimeString().slice(0, 8);
 const cfg = configFrom(Object.fromEntries(new URLSearchParams(location.search)));
 const detector = createDetector(cfg);
 
+// iOS levert DeviceMotionEvent.interval in seconden (gemeten: 0,0x), de specificatie in milliseconden.
+const intervalMs = (v) => (typeof v === 'number' && Number.isFinite(v) ? (v > 0 && v < 1 ? v * 1000 : v) : null);
+const intervalText = (v) => (intervalMs(v) == null ? '—' : `${fmt(intervalMs(v), 1)} ms${v > 0 && v < 1 ? ` (ruw ${v}, iOS: seconden)` : ''}`);
+// Schermzijde uit de oriëntatie (beta ≈ 0 = scherm omhoog, ± 180 = scherm omlaag); onafhankelijk van het teken van accG.
+const screenSide = () => {
+  const b = st.orientation?.beta;
+  return typeof b === 'number' ? (Math.abs(b) < 90 ? 'scherm omhoog' : 'scherm omlaag') : null;
+};
+
 const st = {
   started: false,
   perm: { orientation: 'niet gevraagd', motion: 'niet gevraagd' },
@@ -84,8 +93,45 @@ function attachListeners() {
   window.addEventListener('devicemotion', onMotion, true);
 }
 
+// Signaal bij pickup: een flits over het hele scherm, en optioneel een kort geluid. Trillen kan niet: iOS Safari heeft geen
+// Vibration API. Web Audio wordt in de tik op „Start sensortest” vrijgegeven; of iOS het in de stille modus dempt, is
+// juist een van de dingen die deze test laat zien.
+let audio = null;
+function unlockAudio() {
+  try {
+    const AC = window.AudioContext || window.webkitAudioContext;
+    if (!AC) return;
+    audio = audio || new AC();
+    if (audio.state === 'suspended') audio.resume();
+    const o = audio.createOscillator(), g = audio.createGain();
+    g.gain.value = 0.0001; // onhoorbaar: alleen om de context in de gebruikersactie te starten
+    o.connect(g).connect(audio.destination);
+    o.start(); o.stop(audio.currentTime + 0.02);
+  } catch { audio = null; }
+}
+function beep() {
+  if (!audio || !$('sound').checked) return;
+  try {
+    if (audio.state === 'suspended') audio.resume();
+    const t = audio.currentTime, o = audio.createOscillator(), g = audio.createGain();
+    o.frequency.value = 880;
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(0.4, t + 0.01);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + 0.25);
+    o.connect(g).connect(audio.destination);
+    o.start(t); o.stop(t + 0.3);
+  } catch { /* geluid is optioneel */ }
+}
+function flash() {
+  const el = $('flash');
+  el.classList.remove('on');
+  void el.offsetWidth; // animatie opnieuw starten
+  el.classList.add('on');
+}
+
 async function start() {
   $('start').disabled = true;
+  unlockAudio();
   $('msg').textContent = 'Toestemming vragen…';
   if (!window.isSecureContext) {
     $('msg').textContent = 'Geen secure context: iOS geeft alleen via https toegang tot sensoren.';
@@ -170,6 +216,7 @@ const EVENT_TEXT = {
   stationary: 'stationary',
   flat: 'flat/stable',
   pickup: 'pickup detected',
+  resume: 'sensordata hervat',
   bump: 'bump (geen pickup)',
   unflat: 'niet meer vlak',
   strong: 'strong movement',
@@ -180,7 +227,11 @@ function onMotion(e) {
   stamp(st.motionStamps, t);
   st.motion = e;
   const events = detector.sample({ t, acc: e.acceleration, accG: e.accelerationIncludingGravity, rot: e.rotationRate });
-  for (const ev of events) log(`${EVENT_TEXT[ev.type] ?? ev.type}${ev.detail ? ` (${ev.detail})` : ''}`);
+  for (const ev of events) {
+    const detail = ev.type === 'flat' ? screenSide() ?? ev.detail : ev.detail;
+    log(`${EVENT_TEXT[ev.type] ?? ev.type}${detail ? ` (${detail})` : ''}`);
+    if (ev.type === 'pickup') { flash(); beep(); }
+  }
 }
 
 // ---------- Weergave ----------
@@ -256,7 +307,7 @@ function renderStatus(now) {
     ['calibrated', yesno(!!st.calibrated)],
     ['moving', yesno(mAct ? d.moving : null)],
     ['stationary', yesno(mAct ? d.stationary : null)],
-    ['phone flat/stable', yesno(mAct ? d.flat : null) + (d.faceUp != null && d.flat ? (d.faceUp ? ' (accG z > 0)' : ' (accG z < 0)') : '')],
+    ['phone flat/stable', yesno(mAct ? d.flat : null) + (d.flat && screenSide() ? ` ${screenSide()}` : '')],
     ['pickup detected', yesno(mAct ? d.pickup : null) + ago],
     ['tilt t.o.v. vlak', `${fmt(d.tiltDeg, 0)}°`],
     ['activity', `aLin ${fmt(d.aLin, 2)} m/s² · rot ${fmt(d.rot, 0)} °/s${d.linearFallback ? ' (terugval zonder acceleration)' : ''}`],
@@ -280,7 +331,7 @@ function renderStatus(now) {
     ['acceleration x', fmt(a?.x, 2)], ['acceleration y', fmt(a?.y, 2)], ['acceleration z', fmt(a?.z, 2)],
     ['accelerationIncludingGravity x/y/z', g ? `${fmt(g.x, 2)} / ${fmt(g.y, 2)} / ${fmt(g.z, 2)}` : '—'],
     ['rotationRate alpha/beta/gamma', r && r.alpha != null ? `${fmt(r.alpha, 0)} / ${fmt(r.beta, 0)} / ${fmt(r.gamma, 0)} °/s` : (m ? 'niet beschikbaar' : '—')],
-    ['interval', m ? `${fmt(m.interval, 1)} ms` : '—'],
+    ['interval', m ? intervalText(m.interval) : '—'],
   ].map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('');
 }
 
@@ -306,12 +357,13 @@ function report() {
     ...Object.entries(apis).map(([k, v]) => `  ${k}: ${v ? 'ja' : 'nee'}`),
     '',
     `permission: orientation=${st.perm.orientation}, motion=${st.perm.motion}`,
-    `rates: orientation ${st.orientationStamps.length} Hz, motion ${st.motionStamps.length} Hz, interval ${fmt(st.motion?.interval, 1)} ms`,
+    `rates: orientation ${st.orientationStamps.length} Hz, motion ${st.motionStamps.length} Hz, interval ${intervalText(st.motion?.interval)}`,
     `orientation nu: alpha ${fmt(st.orientation?.alpha)} beta ${fmt(st.orientation?.beta)} gamma ${fmt(st.orientation?.gamma)} absolute ${st.orientation?.absolute}` +
       (st.orientation && 'webkitCompassHeading' in st.orientation ? ` compass ${fmt(st.orientation.webkitCompassHeading)}` : ''),
     `relatief: ${st.view ? `yaw ${fmt(st.view.yaw)} pitch ${fmt(st.view.pitch)} roll ${fmt(st.view.roll)}` : 'niet gekalibreerd'}`,
     `motion nu: acc ${fmt(st.motion?.acceleration?.x, 2)}/${fmt(st.motion?.acceleration?.y, 2)}/${fmt(st.motion?.acceleration?.z, 2)}; accG ${fmt(st.motion?.accelerationIncludingGravity?.x, 2)}/${fmt(st.motion?.accelerationIncludingGravity?.y, 2)}/${fmt(st.motion?.accelerationIncludingGravity?.z, 2)}; rot ${fmt(st.motion?.rotationRate?.alpha, 0)}/${fmt(st.motion?.rotationRate?.beta, 0)}/${fmt(st.motion?.rotationRate?.gamma, 0)}`,
-    `status: moving=${d.moving} stationary=${d.stationary} flat=${d.flat} faceUp=${d.faceUp} pickup=${d.pickup} tilt=${fmt(d.tiltDeg, 0)} linearFallback=${d.linearFallback} wakeLock=${st.wakeLock}`,
+    `status: moving=${d.moving} stationary=${d.stationary} flat=${d.flat} side=${screenSide()} accGz=${fmt(st.motion?.accelerationIncludingGravity?.z, 2)} pickup=${d.pickup} tilt=${fmt(d.tiltDeg, 0)} linearFallback=${d.linearFallback} wakeLock=${st.wakeLock}`,
+    `sound: ${$('sound').checked ? 'aan' : 'uit'}${audio ? ` (audio ${audio.state})` : ''}`,
     `config: ${Object.entries(detector.config).map(([k, v]) => `${k}=${v}`).join(' ')}`,
     '',
     'log (nieuwste eerst):',
