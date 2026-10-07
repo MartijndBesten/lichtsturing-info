@@ -56,17 +56,27 @@ export function apply(m, v) {
  *
  * Toestelframe (W3C): X naar rechts, Y naar boven (bovenkant scherm), Z uit het scherm naar de gebruiker. De
  * kijkrichting is -Z. In het gekalibreerde frame: f = R0ᵀ·R·(0,0,-1); yaw = atan2(f.x, -f.z); pitch = asin(f.y).
- * Roll uit de „rechts”-as r = R0ᵀ·R·(1,0,0): roll = atan2(r.y, r.x).
+ * Roll uit de „rechts”-as r = R0ᵀ·R·(1,0,0), gemeten ten opzichte van de kijkrichting zelf: h = f × (0,1,0) is de
+ * horizontale rechts-as zonder kanteling, uh = h × f de bijbehorende omhoog-as; roll = atan2(r·uh, r·h).
+ * (Tot 07-10-2026 stond hier atan2(r.y, r.x): dat klopt alleen dicht bij de kalibratierichting. Na ± 90° draaien wordt
+ * r.x ≈ 0 en sprong roll naar ±180° of 45°; zichtbaar in /ervaar/ als scheve tekst achter je.)
  */
 export function relativeView(calibrated, current) {
   const rel = multiply(transpose(calibrated), current);
   const f = apply(rel, [0, 0, -1]);
   const r = apply(rel, [1, 0, 0]);
   const fy = Math.max(-1, Math.min(1, f[1]));
+  let roll = 0;
+  const hl = Math.hypot(f[0], f[2]);
+  if (hl > 1e-3) {
+    const h = [-f[2] / hl, 0, f[0] / hl];
+    const uh = [h[1] * f[2] - h[2] * f[1], h[2] * f[0] - h[0] * f[2], h[0] * f[1] - h[1] * f[0]];
+    roll = Math.atan2(r[0] * uh[0] + r[1] * uh[1] + r[2] * uh[2], r[0] * h[0] + r[1] * h[1] + r[2] * h[2]) / DEG;
+  }
   return {
     yaw: Math.atan2(f[0], -f[2]) / DEG,
     pitch: Math.asin(fy) / DEG,
-    roll: Math.atan2(r[1], r[0]) / DEG,
+    roll,
   };
 }
 
