@@ -352,12 +352,12 @@ function renderThreshold(stage, entry) {
     if(entry.id==='begrip-dali-kleur'){
       const kelvin=Math.round(2700+(6500-2700)*(v/100));
       value.textContent=kelvin+' K';
-      cone.style.setProperty('--gv-level','82%');
-      cone.style.setProperty('--gv-temp',String(v));
+      cone.style.opacity = '.82';
+      cone.style.filter = `sepia(${Math.max(0,(55-v))/100}) saturate(1.15)`;
     } else {
       const artificial=100-v;
       value.textContent='Daglicht '+v+'% · kunstlicht '+artificial+'%';
-      cone.style.setProperty('--gv-level',artificial+'%');
+      cone.style.opacity = String(.15 + (artificial / 100) * .85);
     }
   };
   input.addEventListener('input',paint); paint();
