@@ -17,6 +17,8 @@ export function mount(el, config = {}) {
   const pos = $('.wz-pos');
   const top = $('.wz-top');
   const back = $('.wz-back');
+  const prog = $('.wz-prog');
+  const fill = $('.wz-prog-fill');
   const live = $('.wz-live');
   const done = $('.wz-done');
   const answersBox = $('.wz-answers');
@@ -48,6 +50,7 @@ export function mount(el, config = {}) {
     const list = possible();
     const i = list.findIndex((q) => q.id === id);
     pos.textContent = fmt(s.pos, i + 1, list.length);
+    if (prog) { prog.hidden = false; fill.style.width = `${Math.max(6, Math.round((i / list.length) * 100))}%`; }
     back.hidden = path.length === 0;
     pos.hidden = false;
     top.hidden = false;
@@ -69,6 +72,7 @@ export function mount(el, config = {}) {
   function finish() {
     for (const f of fs.values()) f.hidden = true;
     top.hidden = true;
+    if (prog) prog.hidden = true;
     back.hidden = true;
     showResults(true);
     const ids = new Set(asked().map((q) => q.id));
