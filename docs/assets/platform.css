@@ -76,6 +76,7 @@
 .kbasis--ontwerp { color: var(--c-relatie); }
 .kbasis--praktijk { color: var(--warn); }
 .kbasis--voorbeeld { color: var(--muted); border-style: dashed; }
+.kbasis--denkrichting { color: var(--c-nlc); border-style: dashed; }
 .kbasis--wet { color: var(--on-dark); background: var(--navy); border-color: var(--navy); }
 .kbasis--aangewezen { color: var(--navy); background: var(--blue-pale); }
 .kbasis--uitleg { color: #5b3f8c; }
@@ -280,3 +281,20 @@ figure[data-module] { margin-inline: 0; }
   .dali.ix-signal .ch-line--bus { animation: ix-bus .45s linear; }
 }
 @keyframes ix-bus { from { stroke-dashoffset: 30; } to { stroke-dashoffset: 0; } }
+
+.chapter > h2 { margin: var(--s-1) 0 var(--s-4); max-width: var(--measure); }
+.chapter-kicker { display: flex; align-items: center; gap: var(--s-2); margin: 0; font-size: var(--fs-label); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); }
+.chapter-n { display: inline-grid; place-items: center; flex: none; width: 1.6rem; height: 1.6rem; border: 1.5px solid currentColor; border-radius: 50%; font-size: .8rem; letter-spacing: 0; }
+.chapter-short { margin: var(--s-5) 0 var(--s-3); padding: 0 0 0 var(--s-4); border-left: 3px solid var(--blue); max-width: calc(var(--measure) + var(--s-4) + 3px); }
+.chapter-label { margin: 0 0 var(--s-2); font-size: var(--fs-label); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); }
+.chapter-short .block { font-size: 1.0625rem; color: var(--ink); }
+.chapter-short > :last-child, .chapter-short > :last-child p:last-child { margin-bottom: 0; }
+.chapter-short .limitations { margin: var(--s-3) 0 0; }
+.chapter > figure[data-module] { margin-block: 0; }
+.chapter > .block:not(.chapter-short .block) { margin-top: 0; }
+@container steps (min-width: 40rem) {
+  .chapter > .block--steps ol.steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-4) var(--s-5); }
+  .chapter > .block--steps ol.steps > li { padding: 2.5rem 0 0; }
+  .chapter > .block--steps ol.steps > li:not(:last-child)::after { left: 2.25rem; right: calc(var(--s-5) * -1 + .5rem); top: .8rem; bottom: auto; border-left: 0; border-top: 1.5px solid var(--line-strong); }
+  .chapter > .block--steps ol.steps > li:nth-child(3n)::after { display: none; }
+}
