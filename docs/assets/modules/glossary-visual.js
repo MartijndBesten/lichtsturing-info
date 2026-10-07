@@ -1,4 +1,5 @@
 import { SVG_DRAW, button, fill, node } from './glossary-visual-kit.js';
+import { ROOM_DRAW } from './glossary-visual-room.js';
 
 function timeline(stage, it, L) {
   const box = node('div', 'gv-timeline-box');
@@ -115,7 +116,7 @@ function decision(stage, it, L, cfg) {
   stage.append(box);
 }
 
-const DRAW = { ...SVG_DRAW, timeline, threshold, layers, flow, compare, decision };
+const DRAW = { ...SVG_DRAW, ...ROOM_DRAW, timeline, threshold, layers, flow, compare, decision };
 
 export function enhance(el, cfg) {
   const L = cfg.labels || {};

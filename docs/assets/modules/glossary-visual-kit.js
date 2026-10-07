@@ -36,34 +36,6 @@ const statusLine = (text) => {
   return p;
 };
 
-function room(stage, it, L) {
-  const svg = baseSvg(L.roomFigure, 232);
-  const zone1 = svgEl('path', { d: 'M360 47 L205 220 L360 220 Z', class: 'gv-zone gv-zone-a' });
-  const zone2 = svgEl('path', { d: 'M360 47 L360 220 L515 220 Z', class: 'gv-zone gv-zone-b' });
-  const sensor = svgEl('g', { class: 'gv-sensor' });
-  sensor.append(svgEl('rect', { x: 332, y: 24, width: 56, height: 18, rx: 7 }), svgEl('circle', { cx: 360, cy: 46, r: 9 }));
-  const person = svgEl('g', { class: 'gv-person', tabindex: '0', role: 'button', 'aria-label': L.roomPerson });
-  person.append(
-    svgEl('circle', { cx: 250, cy: 137, r: 12 }),
-    svgEl('line', { x1: 250, y1: 149, x2: 250, y2: 188 }),
-    svgEl('line', { x1: 250, y1: 160, x2: 232, y2: 176 }),
-    svgEl('line', { x1: 250, y1: 160, x2: 269, y2: 176 }),
-    svgEl('line', { x1: 250, y1: 188, x2: 235, y2: 214 }),
-    svgEl('line', { x1: 250, y1: 188, x2: 266, y2: 214 }),
-  );
-  const status = statusLine(L.roomStart);
-  svg.append(zone1, zone2, svgEl('line', { x1: 40, y1: 35, x2: 680, y2: 35, class: 'gv-line' }), svgEl('line', { x1: 40, y1: 220, x2: 680, y2: 220, class: 'gv-line' }), sensor, person);
-  stage.append(svg, status);
-  let right = false;
-  onActivate(person, () => {
-    right = !right;
-    person.style.transform = right ? 'translateX(220px)' : 'translateX(0)';
-    zone1.classList.toggle('is-active', !right);
-    zone2.classList.toggle('is-active', right);
-    status.textContent = it.v === 'pir' ? L.roomPir : right ? L.roomIn : L.roomOut;
-  });
-}
-
 function network(stage, it, L) {
   const svg = baseSvg(L.netFigure, 200);
   const pts = [[110, 150], [250, 85], [370, 165], [500, 90], [620, 155]];
@@ -146,4 +118,4 @@ function signal(stage, it, L) {
   stage.append(svg, status, run);
 }
 
-export const SVG_DRAW = { room, network, bus, signal };
+export const SVG_DRAW = { network, bus, signal };

@@ -17,11 +17,42 @@
 .glossary-remember { margin-right: .4em; color: var(--blue); font-weight: 750; text-transform: uppercase; letter-spacing: .05em; font-size: .78em; }
 .glossary-svg { width: 100%; max-width: 720px; height: auto; overflow: visible; }
 .gv-line, .gv-link, .gv-bus, .gv-drop { stroke: var(--line-strong); stroke-width: 2.5; fill: none; }
-.gv-zone { fill: color-mix(in srgb, var(--blue) 7%, transparent); stroke: color-mix(in srgb, var(--blue) 25%, transparent); stroke-width: 1.5; }
-.gv-zone.is-active { fill: color-mix(in srgb, #f0a800 22%, transparent); stroke: #d58a00; }
+.gv-seg { fill: color-mix(in srgb, var(--blue) 5%, transparent); stroke: color-mix(in srgb, var(--blue) 28%, transparent); stroke-width: 1; }
+.gv-seg--odd { fill: color-mix(in srgb, var(--blue) 11%, transparent); }
+.gv-seg.is-seen { fill: color-mix(in srgb, #f0a800 22%, transparent); }
+.gv-seg.is-now { fill: color-mix(in srgb, #f0a800 55%, transparent); stroke: #d58a00; stroke-width: 1.5; }
+.gv-heat { fill: #f0a800; stroke: none; opacity: .2; }
 .gv-sensor rect, .gv-sensor circle { fill: var(--ink); }
-.gv-person { stroke: var(--blue); stroke-width: 5; stroke-linecap: round; fill: var(--blue); cursor: pointer; transform-box: fill-box; transform-origin: center; }
-.gv-person:focus-visible, .gv-node:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
+.gv-label { fill: var(--muted); font: 600 13px system-ui, sans-serif; }
+.gv-person { stroke: var(--blue); stroke-width: 5; stroke-linecap: round; fill: var(--blue); }
+.gv-node:focus-visible { outline: 3px solid var(--blue); outline-offset: 4px; }
+.gv-pos-hall { fill: color-mix(in srgb, var(--ink) 4%, transparent); stroke: var(--line-strong); stroke-width: 1.5; stroke-dasharray: 6 5; }
+.gv-pos-wall { fill: none; stroke: var(--ink); stroke-width: 4; stroke-linejoin: round; }
+.gv-pos-field { fill: color-mix(in srgb, var(--blue) 13%, transparent); stroke: var(--blue); stroke-width: 1.5; }
+.gv-pos-near { fill: none; stroke: var(--blue); stroke-width: 1.5; stroke-dasharray: 4 5; opacity: .65; }
+.gv-pos-shadow { fill: var(--ink); opacity: .2; }
+.gv-pos-cab { fill: color-mix(in srgb, var(--ink) 30%, var(--bg)); stroke: var(--ink); stroke-width: 2; }
+.gv-pos-desk rect, .gv-pos-desk circle { fill: var(--bg); stroke: var(--muted); stroke-width: 2.5; }
+.gv-pos-route line, .gv-pos-route path { stroke: var(--muted); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.gv-pos-route line { stroke-dasharray: 9 7; fill: none; }
+.gv-pos-route path { fill: var(--muted); }
+.gv-pos [data-state='ok'] rect, .gv-pos [data-state='ok'] circle, .gv-pos [data-state='ok'] line { stroke: #2f8f3a; }
+.gv-pos [data-state='ok'] path { fill: #2f8f3a; stroke: #2f8f3a; }
+.gv-pos [data-state='warn'] rect, .gv-pos [data-state='warn'] circle, .gv-pos [data-state='warn'] line { stroke: #d58a00; }
+.gv-pos [data-state='warn'] path { fill: #d58a00; stroke: #d58a00; }
+.gv-pos [data-state='bad'] rect, .gv-pos [data-state='bad'] circle { stroke-dasharray: 5 4; }
+.gv-pos-sensor { cursor: grab; touch-action: none; }
+.gv-pos-grip { fill: color-mix(in srgb, var(--bg) 55%, transparent); stroke: var(--blue); stroke-width: 2; }
+.gv-pos-dome { fill: var(--ink); }
+.gv-pos-eye { fill: var(--bg); }
+.gv-pos-sensor:focus { outline: none; }
+.gv-pos-sensor:focus-visible .gv-pos-grip { stroke-width: 5; }
+.gv-pos-list { width: 100%; margin: var(--s-2) 0 var(--s-2); padding: 0; list-style: none; display: grid; gap: 4px; color: var(--ink); font-size: var(--fs-small); }
+.gv-pos-list li { display: flex; gap: .5em; align-items: baseline; }
+.gv-pos-list li::before { flex: none; width: 1.3em; height: 1.3em; display: inline-grid; place-items: center; border-radius: 50%; color: #fff; font-size: .8em; font-weight: 800; }
+.gv-pos-list li[data-state='ok']::before { content: '✓'; background: #2f8f3a; }
+.gv-pos-list li[data-state='warn']::before { content: '!'; background: #d58a00; }
+.gv-pos-list li[data-state='bad']::before { content: '×'; background: var(--muted); }
 .gv-status { min-height: 1.5em; margin: var(--s-1) 0 0 !important; color: var(--muted); font-size: var(--fs-small); text-align: center; }
 .gv-node circle { fill: var(--bg); stroke: var(--blue); stroke-width: 2.5; }
 .gv-node text { fill: var(--blue); font: 700 15px system-ui, sans-serif; }
@@ -67,6 +98,7 @@
 @container begrip (max-width: 560px) {
   .gv-node text { font-size: 30px; }
   .gv-radio-device text { font-size: 26px; }
+  .gv-label { font-size: 24px; }
 }
 @media (max-width: 680px) {
   .glossary-visual-head { display: block; }
@@ -83,8 +115,8 @@
 }
 @media (prefers-reduced-motion: no-preference) {
   .glossary-entry.is-interactive { transition: background .2s ease, box-shadow .2s ease, padding .2s ease, margin .2s ease; }
-  .gv-zone { transition: fill .25s ease, opacity .25s ease; }
-  .gv-person { transition: transform .65s cubic-bezier(.2,.8,.2,1); }
+  .gv-seg { transition: fill .2s ease; }
+  .gv-person { transition: transform .17s linear; }
   .gv-node circle { transition: opacity .2s ease, fill .2s ease; }
   .gv-device { transition: fill .18s ease, transform .18s ease; }
   .gv-timeline-fill { transition: width .45s linear; }
