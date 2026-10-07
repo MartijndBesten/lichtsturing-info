@@ -59,7 +59,7 @@
     <button id="start" type="button">Start sensortest</button>
     <button id="calibrate" type="button" class="secondary" disabled>Kalibreer huidige positie</button>
   </div>
-  <label class="opt"><input id="sound" type="checkbox"> Geluid bij pickup (test ook met de stille modus aan en uit)</label>
+  <label class="opt"><input id="sound" type="checkbox"> Geluid bij pickup (pauzeert eventuele muziek; test ook met de stille modus aan)</label>
   <p id="msg" class="small" aria-live="polite"></p>
   <div class="btns" id="retry" hidden>
     <button id="retry-orientation" type="button" class="secondary" hidden>Vraag oriëntatie-toestemming apart</button>
@@ -107,6 +107,7 @@
       <li>Leg de telefoon plat op tafel, scherm omhoog, en wacht: na ± 2 s <b>flat/stable YES</b>.</li>
       <li>Tik één keer tegen de tafel: dat moet „bump” geven, geen pickup.</li>
       <li>Pak de telefoon op: <b>pickup YES</b> in het log, met de reden (kanteling of aanhoudende beweging). Het scherm flitst; met „Geluid bij pickup” aan klinkt ook een tik.</li>
+      <li>Scrolltest: houd de telefoon stil, scrol 3 s met je vinger op en neer en kijk bij <b>Status › onderbrekingen</b> of de teller oploopt. Doe daarna 10 s niets (niet scrollen): de teller moet gelijk blijven.</li>
       <li>Herhaal neerleggen en oppakken een paar keer, ook rustig en ook met het scherm omlaag. Tel gemiste en valse pickups.</li>
       <li>Druk <b>Kopieer rapport</b> en plak de tekst in de chat.</li>
     </ol>
