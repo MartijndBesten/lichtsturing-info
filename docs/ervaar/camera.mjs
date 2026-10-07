@@ -14,12 +14,13 @@ export const CAMERA = {
   TAU_LICHT: 0.22,
 };
 
+// 07-10-2026 (Martijn: „te donker, je moet echt zoeken”): bredere bundel en sneller herkennen.
 export const LICHT = {
-  BUNDEL: 13, // halve openingshoek (graden) waarbinnen een onderwerp volledig verlicht is
-  RAND: 13, // extra graden waarover het licht naar nul afloopt
+  BUNDEL: 18, // halve openingshoek (graden) waarbinnen een onderwerp volledig verlicht is
+  RAND: 16, // extra graden waarover het licht naar nul afloopt
   // Ontdekking per onderwerp (seconden ononderbroken verlicht, met „verlicht” = intensiteit > 0,6):
-  LAAG2_NA: 0.7, // herkenning
-  LAAG3_NA: 2.0, // glimp
+  LAAG2_NA: 0.45, // herkenning
+  LAAG3_NA: 1.2, // glimp
   TERUGVAL: 0.8, // verblijftijd zakt met deze factor × dt terug als je wegkijkt (inhoud zakt rustig terug)
   FADE: 0.35, // tau (s) voor het in- en uitfaden van zichtbare lagen
 };

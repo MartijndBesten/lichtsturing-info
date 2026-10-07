@@ -12,8 +12,9 @@
 // klassen en de echte stylesheets van de site. `laag` = wanneer het paneel verschijnt (1 begrip, 2 herkenning, 3 glimp).
 //
 // RUIMTE: richting in graden t.o.v. de startpositie (yaw > 0 = rechts, pitch > 0 = omhoog), `afstand` in CSS-pixels
-// (parallax), `schaal` = hoe groot het op het scherm oogt (1 = als op de gewone site). Bewust geen cirkel: dichtbij en
-// ver, hoog en laag, lege zones ertussen, Academie achter je. `dx/dy` = verschuiving in het vlak van het onderwerp (px); `dy: 'auto'` = onder het vorige gestapelde paneel, op de echte hoogte.
+// (parallax), `schaal` = hoe groot het op het scherm oogt (1 = als op de gewone site). Alles binnen 180° vóór je (besluit
+// Martijn 07-10-2026: zittend te beoordelen van links naar rechts), in drie hoogtes, dichtbij en ver; Academie het verst
+// en het hoogst. `dx/dy` = verschuiving in het vlak van het onderwerp (px); `dy: 'auto'` = onder het vorige gestapelde paneel, op de echte hoogte.
 
 export const KERN = 'Lichtsturing stuurt meer dan licht.';
 export const CTA = { tekst: 'Ontdek verder', href: '/nl/' };
@@ -25,7 +26,7 @@ export const OPEN = {
   knop: 'Start ervaring',
   goed: 'Goed zo.',
   vind: 'Vind het licht.',
-  hint: 'Kijk om je heen.',
+  hint: 'Kijk naar links en rechts.',
 };
 export const FALLBACK = 'Deze ervaring is gemaakt om op een iPhone te ontdekken.';
 
@@ -52,7 +53,7 @@ export const LEERLIJN = (aan, tekst) => ({ ...LL, aan, tekst });
 /** @type {Onderwerp[]} */
 export const ONDERWERPEN = [
   {
-    id: 'lichtsturing', naam: 'Lichtsturing', groep: 'licht', yaw: -16, pitch: 5, afstand: 950, schaal: 1,
+    id: 'lichtsturing', naam: 'Lichtsturing', groep: 'licht', yaw: 0, pitch: -2, afstand: 950, schaal: 1,
     herkenning: 'Verlichting die het gebruik van een gebouw volgt',
     glimp: ['Licht reageert op aanwezigheid, regelt terug als er genoeg daglicht is, en laat zich bedienen en per situatie instellen.'],
     pad: '/nl/kennisbank/wat-is-lichtsturing/',
@@ -62,7 +63,7 @@ export const ONDERWERPEN = [
     ],
   },
   {
-    id: 'sensoren', naam: 'Sensoren', groep: 'licht', yaw: 40, pitch: 24, afstand: 1150, schaal: 0.92,
+    id: 'sensoren', naam: 'Sensoren', groep: 'licht', yaw: 32, pitch: 30, afstand: 1150, schaal: 0.92,
     herkenning: 'Een sensor is in de eerste plaats een informatiebron.',
     glimp: ['Hij neemt iets waar en geeft dat door.'],
     pad: '/nl/kennisbank/sensoren/', kruimel: ['Home', 'Kennisbank'],
@@ -74,7 +75,7 @@ export const ONDERWERPEN = [
     ],
   },
   {
-    id: 'dali', naam: 'DALI', groep: 'licht', yaw: -64, pitch: -6, afstand: 1050, schaal: 0.95,
+    id: 'dali', naam: 'DALI', groep: 'licht', yaw: -58, pitch: -4, afstand: 1050, schaal: 0.95,
     herkenning: 'Internationale standaard (IEC 62386) voor digitale lichtsturing',
     glimp: ['Twee draden, één bus: alle apparaten hangen eraan.', 'De sensor of knop meldt. De besturing beslist. De driver voert uit. (Sensoren en knoppen zijn pas met DALI-2 vastgelegd.)', 'Een opdracht gaat naar één adres, naar een groep of naar alle apparaten tegelijk (broadcast).'],
     pad: '/nl/kennisbank/dali/', kruimel: ['Home', 'Kennisbank'],
@@ -85,7 +86,7 @@ export const ONDERWERPEN = [
     ],
   },
   {
-    id: 'dali2', naam: 'DALI-2', groep: 'licht', yaw: -94, pitch: 3, afstand: 1500, schaal: 0.82,
+    id: 'dali2', naam: 'DALI-2', groep: 'licht', yaw: -86, pitch: 6, afstand: 1450, schaal: 0.82,
     herkenning: 'Wat DALI-2 verandert ten opzichte van DALI version-1 (de eerste DALI-generatie), hoe certificering werkt en wat je mag verwachten bij gemengde systemen.',
     glimp: ['naast drivers zijn nu ook sensoren, drukknopinterfaces, besturingen en busvoedingen gestandaardiseerd.'],
     pad: '/nl/kennisbank/dali-2/',
@@ -95,7 +96,7 @@ export const ONDERWERPEN = [
     ],
   },
   {
-    id: 'daglicht', naam: 'Daglichtregeling', groep: 'licht', yaw: 8, pitch: 34, afstand: 1300, schaal: 0.88,
+    id: 'daglicht', naam: 'Daglichtregeling', groep: 'licht', yaw: -32, pitch: 32, afstand: 1250, schaal: 0.88,
     herkenning: 'Kunstlicht regelt terug wanneer er genoeg daglicht is.',
     glimp: ['Zo brandt er alleen het kunstlicht dat nog nodig is.'],
     pad: '/nl/kennisbank/daglichtregeling/', kruimel: ['Home', 'Kennisbank'],
@@ -106,7 +107,7 @@ export const ONDERWERPEN = [
     ],
   },
   {
-    id: 'gacs', naam: 'GACS', groep: 'gebouw', yaw: 92, pitch: 6, afstand: 1000, schaal: 1,
+    id: 'gacs', naam: 'GACS', groep: 'gebouw', yaw: 58, pitch: 2, afstand: 1000, schaal: 1,
     herkenning: 'Gebouwautomatiserings- en controlesysteem',
     glimp: ['het geheel van systemen dat de installaties van een gebouw automatisch volgt, analyseert en regelt.', 'Een gebouwbeheersysteem is niet automatisch een GACS.'],
     pad: '/nl/kennisbank/regelgeving/', kruimel: ['Home', 'Kennisbank'],
@@ -117,7 +118,7 @@ export const ONDERWERPEN = [
     ],
   },
   {
-    id: 'gebouw', naam: 'Gebouw & data', groep: 'gebouw', yaw: 130, pitch: -6, afstand: 1200, schaal: 0.9,
+    id: 'gebouw', naam: 'Gebouw & data', groep: 'gebouw', yaw: 86, pitch: -4, afstand: 1250, schaal: 0.9,
     herkenning: 'Koppelen met gebouwbeheer',
     glimp: ['brengt de technische installaties van een gebouw samen: klimaat, energie, toegang, en vaak ook verlichting.'],
     pad: '/nl/kennisbank/gebouwbeheer/', kruimel: ['Home', 'Kennisbank'],
@@ -129,7 +130,7 @@ export const ONDERWERPEN = [
     ],
   },
   {
-    id: 'iot', naam: 'IoT', groep: 'gebouw', yaw: 64, pitch: -26, afstand: 900, schaal: 0.95,
+    id: 'iot', naam: 'IoT', groep: 'gebouw', yaw: 30, pitch: -34, afstand: 900, schaal: 0.95,
     herkenning: 'apparaten die met internet verbonden zijn',
     glimp: ['Gebouw en IoT', 'Zigbee · Thread · Matter'],
     pad: '/nl/kennisbank/draadloze-protocollen/',
@@ -139,7 +140,7 @@ export const ONDERWERPEN = [
     ],
   },
   {
-    id: 'praktijk', naam: 'Praktijk', groep: 'praktijk', yaw: -26, pitch: -34, afstand: 720, schaal: 1,
+    id: 'praktijk', naam: 'Praktijk', groep: 'praktijk', yaw: -26, pitch: -38, afstand: 760, schaal: 1,
     herkenning: 'Werkplekken langs de gevel: aanwezigheid, daglicht en een knop bij de deur.',
     glimp: ['Hoge montage, stellinggangen en licht dat per gang meegaat.', 'Scènes voor vergaderen en presenteren, en een duidelijke terugweg.'],
     pad: '/nl/praktijk/',
@@ -152,9 +153,9 @@ export const ONDERWERPEN = [
   },
 ];
 
-/** De Academie: geen onderwerp maar een bestemming, ver weg achter je. Geen link: er is nog geen publieke Academie. */
+/** De Academie: geen onderwerp maar een bestemming, het verst weg en hoog boven de rest. Geen link: er is nog geen publieke Academie. */
 export const ACADEMIE = {
-  id: 'academie', naam: 'Academie', yaw: 178, pitch: 6, afstand: 1700, schaal: 0.9,
+  id: 'academie', naam: 'Academie', yaw: 0, pitch: 40, afstand: 1900, schaal: 0.9, // hoog en ver boven alles uit: de bestemming
   label: 'Volgende stap', // de echte „Volgende stap”-kaart van de pagina's als deur
   tekst: 'Binnenkort verder leren',
   ondertitel: 'Van ontdekken naar leren',

@@ -4,16 +4,19 @@
 // Opbouw: sensor-engine uit fase 1 (orientation-math, motion-detect) → gedempte camera (camera.mjs) → echte
 // sitecomponenten (klassen en stylesheets van lichtsturing.info) als panelen in CSS-3D, één wereld-transform per frame →
 // het licht als overlay-canvas: donker buiten de lichtkring, en per paneel een onthulling (laag 1/2/3). Geen bibliotheek.
-import { rotationMatrix, relativeView } from '../experience-test/orientation-math.mjs?v=fb23827d8b';
-import { createDetector } from '../experience-test/motion-detect.mjs?v=fb23827d8b';
-import { CAMERA, demp, dempVast, basis, projecteer, verlichting, ontdekking, smoothstep, PERSPECTIEF, wereldTransform, paneelTransform, paneelPositie } from './camera.mjs?v=fb23827d8b';
-import { ONDERWERPEN, ACADEMIE, VERBINDINGEN, DRAMATURGIE, KERN, FALLBACK, OPEN, ICONEN, richting } from './world.mjs?v=fb23827d8b';
+import { rotationMatrix, relativeView } from '../experience-test/orientation-math.mjs?v=23cc8ba950';
+import { createDetector } from '../experience-test/motion-detect.mjs?v=23cc8ba950';
+import { CAMERA, demp, dempVast, basis, projecteer, verlichting, ontdekking, smoothstep, PERSPECTIEF, wereldTransform, paneelTransform, paneelPositie } from './camera.mjs?v=23cc8ba950';
+import { ONDERWERPEN, ACADEMIE, VERBINDINGEN, DRAMATURGIE, KERN, FALLBACK, OPEN, ICONEN, richting } from './world.mjs?v=23cc8ba950';
 
 // ---------- Instelbaar ----------
 const BEELD = {
-  POOL: 0.56, // straal van de lichtkring t.o.v. de korte schermzijde
-  DONKER_START: 0.94, // hoeveel de wereld buiten het licht gedekt is (1 = zwart) aan het begin
-  DONKER_SITE: 0.62, // … zodra de ruimte „site” wordt (DRAMATURGIE.SITE_NA)
+  // 07-10-2026 (Martijn: „te donker, je moet echt zoeken”): grotere lichtkring, minder donker, en lichtpunten die
+  // vanaf het begin laten zien wáár iets te ontdekken is.
+  POOL: 0.68, // straal van de lichtkring t.o.v. de korte schermzijde
+  DONKER_START: 0.8, // hoeveel de wereld buiten het licht gedekt is (1 = zwart) aan het begin
+  DONKER_SITE: 0.5, // … zodra de ruimte „site” wordt (DRAMATURGIE.SITE_NA)
+  PUNT: 7, // straal (px) van een lichtpunt op een nog niet ontdekt onderwerp
   HINT_WEG_NA_GRADEN: 28,
   HINT_MAX_MS: 7000,
   VIND_MS: 1700, // „Vind het licht.” zichtbaar vóór „Kijk om je heen.”
@@ -46,6 +49,60 @@ const st = {
   academie: { open: 0, verblijf: 0, ontdekt: false, verlicht: 0 },
 };
 let hintWeg = false;
+
+// ---------- Geluid ----------
+// Bij iedere eerste ontdekking een zachte toon, bij de Academie een eigen akkoord. Via een <audio>-element: dat klinkt op
+// de iPhone ook in de stille modus (fase 1, bevestigd door Martijn); Web Audio zwijgt daar. De klanken worden hier als WAV
+// gemaakt (geen bestand, geen netwerk) en in de tik op Start vrijgegeven. Trillen kan in iOS Safari niet (geen Vibration
+// API); op Android trilt het toestel kort mee.
+function wav(noten, duur, rate = 22050) {
+  const n = Math.round(rate * duur), buf = new ArrayBuffer(44 + n * 2), v = new DataView(buf);
+  const str = (o, t) => [...t].forEach((c, i) => v.setUint8(o + i, c.charCodeAt(0)));
+  str(0, 'RIFF'); v.setUint32(4, 36 + n * 2, true); str(8, 'WAVEfmt '); v.setUint32(16, 16, true); v.setUint16(20, 1, true);
+  v.setUint16(22, 1, true); v.setUint32(24, rate, true); v.setUint32(28, rate * 2, true); v.setUint16(32, 2, true);
+  v.setUint16(34, 16, true); str(36, 'data'); v.setUint32(40, n * 2, true);
+  for (let i = 0; i < n; i++) {
+    const t = i / rate;
+    let x = 0;
+    for (const { f, t0, amp, verval } of noten) {
+      if (t < t0) continue;
+      const d = t - t0;
+      const env = Math.min(1, d / 0.008) * Math.exp(-d * verval); // zachte aanslag, natuurlijk uitklinken (klokje)
+      x += amp * env * (Math.sin(2 * Math.PI * f * d) + 0.28 * Math.sin(2 * Math.PI * f * 2.01 * d));
+    }
+    v.setInt16(44 + i * 2, Math.round(Math.max(-1, Math.min(1, x)) * 32767), true);
+  }
+  return URL.createObjectURL(new Blob([buf], { type: 'audio/wav' }));
+}
+const KLANK = {
+  // Ontdekking: twee zachte tonen (kwint), kort. Academie: rustig opgaand akkoord, langer.
+  ontdek: () => wav([{ f: 784, t0: 0, amp: 0.16, verval: 7 }, { f: 1175, t0: 0.07, amp: 0.1, verval: 8 }], 0.6),
+  academie: () => wav([{ f: 523.25, t0: 0, amp: 0.14, verval: 2.2 }, { f: 659.25, t0: 0.16, amp: 0.12, verval: 2.2 }, { f: 783.99, t0: 0.32, amp: 0.12, verval: 2 }, { f: 1046.5, t0: 0.5, amp: 0.08, verval: 1.8 }], 2.2),
+};
+const geluid = { aan: true, el: {} };
+function geluidVrij() {
+  for (const k of Object.keys(KLANK)) {
+    try {
+      const a = geluid.el[k] || (geluid.el[k] = Object.assign(new Audio(KLANK[k]()), { preload: 'auto' }));
+      a.muted = true; // iOS negeert volume; muted wel
+      const p = a.play();
+      const klaar = () => { a.pause(); a.currentTime = 0; a.muted = false; };
+      if (p && p.then) p.then(klaar, () => {}); else klaar();
+    } catch { /* geluid is optioneel */ }
+  }
+}
+function speel(k) {
+  if (navigator.vibrate) { try { navigator.vibrate(k === 'academie' ? [20, 60, 20] : 12); } catch { /* optioneel */ } }
+  if (!geluid.aan) return;
+  const a = geluid.el[k];
+  if (!a) return;
+  try { a.currentTime = 0; const p = a.play(); if (p && p.catch) p.catch(() => {}); } catch { /* optioneel */ }
+}
+$('geluid').addEventListener('click', () => {
+  geluid.aan = !geluid.aan;
+  $('geluid').setAttribute('aria-pressed', String(geluid.aan));
+  $('geluid').setAttribute('aria-label', geluid.aan ? 'Geluid uit' : 'Geluid aan');
+});
 const GLOEIT = new Set(['lichtsturing', 'sensoren', 'gacs']); // zwak zichtbaar vanaf het begin (uitnodiging)
 const detector = createDetector(RUST_CFG);
 
@@ -218,6 +275,7 @@ $('kern-tekst').textContent = KERN;
 
 $('start').addEventListener('click', async () => {
   $('start').disabled = true;
+  geluidVrij();
   const [o, m] = await Promise.all([vraag(window.DeviceOrientationEvent), vraag(window.DeviceMotionEvent)]);
   if (o === 'denied' || o === 'fout') { melding('Zonder toegang tot de bewegingssensoren kun je hier niet rondkijken.', 'Sluit het tabblad en open de pagina opnieuw om de vraag nog eens te krijgen.'); return; }
   if (o === 'niet beschikbaar') { melding(FALLBACK); return; }
@@ -263,6 +321,7 @@ function begin() {
     vind.classList.add('uit');
     st.fase = 'wereld';
     st.tStart = performance.now();
+    $('geluid').classList.remove('uit');
     setTimeout(() => toonHint(OPEN.hint), 900);
   }, BEELD.VIND_MS);
 }
@@ -295,6 +354,48 @@ function tekenLicht(Lp, donker) {
     g.addColorStop(1, 'rgba(0,0,0,0)');
     lctx.fillStyle = g;
     lctx.fillRect(Lp.x - straal, Lp.y - straal, straal * 2, straal * 2);
+  }
+  // Lichtpunten: wáár iets te ontdekken is (nog niet ontdekt: warm punt; ontdekt: dun ringetje). Boven de donkerte, zodat
+  // je in het donker ziet waar je heen kunt kijken. De Academie heeft een eigen, groter en langzaam ademend punt.
+  lctx.globalCompositeOperation = 'source-over';
+  for (const o of onderwerpen) {
+    const q = schermpunt(o.dir);
+    if (!q || q.x < -40 || q.x > W + 40 || q.y < -40 || q.y > H + 40) continue;
+    const t = o.od.toestand;
+    const zicht = (1 - t.l1) * (1 - st.einde) * (1 - 0.7 * st.rust);
+    if (zicht < 0.02) continue;
+    if (!t.ontdekt) {
+      const r = BEELD.PUNT * (1 + 0.18 * Math.sin(st.tijd * 2 + o.seed));
+      const g = lctx.createRadialGradient(q.x, q.y, 0, q.x, q.y, r * 3.2);
+      g.addColorStop(0, `rgba(255,227,154,${(0.95 * zicht).toFixed(3)})`);
+      g.addColorStop(0.3, `rgba(255,227,154,${(0.45 * zicht).toFixed(3)})`);
+      g.addColorStop(1, 'rgba(255,227,154,0)');
+      lctx.fillStyle = g;
+      lctx.fillRect(q.x - r * 3.2, q.y - r * 3.2, r * 6.4, r * 6.4);
+    } else {
+      lctx.strokeStyle = `rgba(255,227,154,${(0.4 * zicht).toFixed(3)})`;
+      lctx.lineWidth = 1.2;
+      lctx.beginPath(); lctx.arc(q.x, q.y, 5, 0, Math.PI * 2); lctx.stroke();
+    }
+  }
+  {
+    const q = schermpunt(ac.dir);
+    const A = st.academie;
+    const zicht = (1 - A.open) * (1 - st.einde) * (1 - 0.7 * st.rust);
+    if (q && zicht > 0.02) {
+      const adem = 0.75 + 0.25 * Math.sin(st.tijd * 1.3);
+      const r = 26 * adem;
+      const g = lctx.createRadialGradient(q.x, q.y, 0, q.x, q.y, r);
+      g.addColorStop(0, `rgba(255,244,209,${(0.9 * zicht).toFixed(3)})`);
+      g.addColorStop(0.35, `rgba(255,209,102,${(0.5 * zicht).toFixed(3)})`);
+      g.addColorStop(1, 'rgba(255,209,102,0)');
+      lctx.fillStyle = g;
+      lctx.fillRect(q.x - r, q.y - r, r * 2, r * 2);
+      // De spleet van de deur: een verticale lichtlijn.
+      lctx.strokeStyle = `rgba(255,244,209,${(0.85 * zicht).toFixed(3)})`;
+      lctx.lineWidth = 2;
+      lctx.beginPath(); lctx.moveTo(q.x, q.y - 22); lctx.lineTo(q.x, q.y + 22); lctx.stroke();
+    }
   }
   // Warme gloed van het licht zelf (ook als de ruimte al licht is: het blijft „jouw licht”).
   lctx.globalCompositeOperation = 'source-over';
@@ -332,7 +433,7 @@ function frame(nu) {
   const dt = clamp((nu - vorige) / 1000, 0, 0.05);
   vorige = nu;
   st.tijd += dt;
-  if (st.fase === 'wereld' || st.fase === 'einde') { stap(dt, nu); teken(); }
+  if ((st.fase === 'wereld' || st.fase === 'einde') && !st.pauze) { stap(dt, nu); teken(); }
   requestAnimationFrame(frame);
 }
 function stap(dt, nu) {
@@ -352,11 +453,12 @@ function stap(dt, nu) {
   const kracht = 1 - 0.8 * st.rust;
   for (const o of onderwerpen) {
     if (o.od.stap(verlichting(o.dir, L) * kracht, dt)) { st.ontdekt += 1; $('sr').textContent = `Ontdekt: ${o.naam}`; }
+    if (!o.gezien && o.od.toestand.l1 > 0.55) { o.gezien = true; speel('ontdek'); }
   }
   const A = st.academie;
   const va = verlichting(ac.dir, L) * kracht;
   if (va > 0.6) A.verblijf += dt; else A.verblijf = Math.max(0, A.verblijf - dt * 0.5);
-  if (A.verblijf > 1.1) A.open = Math.min(1, A.open + dt / 2.4);
+  if (A.verblijf > 1.1) { A.open = Math.min(1, A.open + dt / 2.4); if (!A.klank) { A.klank = true; speel('academie'); } }
   else A.open = Math.max(A.ontdekt ? 0.35 : 0, A.open - dt / 7);
   if (!A.ontdekt && A.open > 0.6) { A.ontdekt = true; st.ontdekt += 1; $('sr').textContent = 'Ontdekt: Academie'; }
   A.verlicht = va;
@@ -432,4 +534,29 @@ function teken() {
 requestAnimationFrame(frame);
 
 document.addEventListener('touchmove', (e) => { if (!e.target.closest('a,button')) e.preventDefault(); }, { passive: false });
+
+// ---------- Doorklikken en weer terug ----------
+// Een link in de ruimte opent die pagina van lichtsturing.info in een venster over de ervaring, met bovenin
+// „Terug naar de ervaring”. De ervaring pauzeert en gaat daarna verder waar je was (geen nieuwe start of kalibratie).
+function openPagina(href) {
+  st.pauze = true;
+  $('pagina-frame').src = href;
+  $('pagina').hidden = false;
+  requestAnimationFrame(() => $('pagina').classList.add('is-open'));
+}
+function sluitPagina() {
+  $('pagina').classList.remove('is-open');
+  setTimeout(() => { $('pagina').hidden = true; $('pagina-frame').src = 'about:blank'; }, 450);
+  vorige = performance.now();
+  st.pauze = false;
+}
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('#wereld a, #kop a.site-name');
+  if (!a) return;
+  const href = a.getAttribute('href') || '';
+  if (!href.startsWith('/nl/')) return;
+  e.preventDefault();
+  openPagina(href);
+});
+$('terug').addEventListener('click', sluitPagina);
 window.__ervaarKlaar = true; // voor het vangnet in index.html

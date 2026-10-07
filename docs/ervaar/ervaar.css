@@ -105,3 +105,19 @@ body.is-site { background: var(--bg); }
 #melding .wrap { display: grid; align-content: center; gap: var(--s-4); padding-top: var(--s-6); }
 #melding .pf-cta-row { display: flex; }
 body.is-uit #stage, body.is-uit #licht, body.is-uit #kern { opacity: 0; transition: opacity .9s ease; }
+
+/* Geluid aan/uit: klein en rustig, rechtsboven (iconstijl van de site). */
+.geluid { position: fixed; right: max(var(--gutter), env(safe-area-inset-right)); top: max(var(--s-4), env(safe-area-inset-top)); z-index: 4; display: grid; place-items: center; width: 44px; height: 44px; padding: 0; color: var(--on-dark-soft); background: rgba(5, 14, 38, .55); border: 1px solid rgba(255, 255, 255, .14); border-radius: 50%; cursor: pointer; transition: opacity 1.2s ease; }
+.geluid svg { width: 22px; height: 22px; }
+.geluid .streep { display: none; }
+.geluid[aria-pressed='false'] .golf { display: none; }
+.geluid[aria-pressed='false'] .streep { display: inline; }
+body.is-site .geluid { color: var(--ink); background: var(--bg); border-color: var(--line); top: calc(var(--header-h, 56px) + var(--s-3)); }
+/* Doorklikken: de pagina van de site in een venster, met „Terug naar de ervaring”. */
+#pagina { position: fixed; inset: 0; z-index: 10; display: grid; grid-template-rows: auto 1fr; background: var(--bg); transform: translateY(100%); transition: transform .45s cubic-bezier(.2, .7, .2, 1); }
+#pagina.is-open { transform: none; }
+#pagina[hidden] { display: none; }
+.pagina-balk { padding: max(var(--s-3), env(safe-area-inset-top)) var(--gutter) var(--s-3); background: var(--navy); }
+.terug { display: inline-flex; align-items: center; gap: var(--s-2); min-height: 44px; padding: 0 var(--s-4); font: inherit; font-weight: 650; color: #0b1f4d; background: var(--light-vol); border: 0; border-radius: var(--radius); cursor: pointer; }
+.terug::before { content: '\2190'; }
+#pagina-frame { width: 100%; height: 100%; border: 0; background: var(--bg); }

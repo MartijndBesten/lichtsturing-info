@@ -8,9 +8,9 @@
 <meta name="theme-color" content="#0b1f4d">
 <meta name="description" content="Deze website bekijk je anders: stap in lichtsturing.info. Een korte ervaring voor de iPhone.">
 <title>Ervaar · Lichtsturing.info</title>
-<link rel="stylesheet" href="/assets/site.css?v=fb23827d8b">
-<link rel="stylesheet" href="/assets/platform.css?v=fb23827d8b">
-<link rel="stylesheet" href="ervaar.css?v=fb23827d8b">
+<link rel="stylesheet" href="/assets/site.css?v=23cc8ba950">
+<link rel="stylesheet" href="/assets/platform.css?v=23cc8ba950">
+<link rel="stylesheet" href="ervaar.css?v=23cc8ba950">
 </head>
 <body>
 <svg class="scene-sprite" aria-hidden="true" focusable="false" width="0" height="0"><defs>
@@ -91,6 +91,7 @@
 
 <p class="vind uit" id="vind"></p>
 <p class="hint uit" id="hint" aria-live="polite"></p>
+<button class="geluid uit" id="geluid" type="button" aria-pressed="true" aria-label="Geluid uit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 9h4l5-4v14l-5-4H4z"/><path class="golf" d="M16.5 9a4 4 0 0 1 0 6M19 6.5a7.5 7.5 0 0 1 0 11"/><path class="streep" d="M16 9l6 6M22 9l-6 6"/></svg></button>
 <div id="kern" class="uit" aria-live="polite"><p class="eyebrow">Kennisplatform lichtsturing</p><h2 id="kern-tekst"></h2></div>
 <div id="kop"><header class="site-header">
 <div class="wrap header-row">
@@ -98,6 +99,11 @@
 </div>
 </header></div>
 <div id="verder"><a class="pf-button" id="verder-knop" href="/nl/">Ontdek verder</a></div>
+
+<div id="pagina" hidden>
+<div class="pagina-balk"><button class="terug" id="terug" type="button">Terug naar de ervaring</button></div>
+<iframe id="pagina-frame" title="Pagina van lichtsturing.info" src="about:blank"></iframe>
+</div>
 
 <div id="melding" hidden>
 <header class="site-header">
@@ -119,7 +125,7 @@
 </template>
 
 <p class="sr" id="sr" aria-live="polite"></p>
-<script type="module" src="ervaar.mjs?v=fb23827d8b"></script>
+<script type="module" src="ervaar.mjs?v=23cc8ba950"></script>
 <script>
 // Vangnet: is het script van de ervaring niet (goed) geladen, bijvoorbeeld door een oude versie in de cache van de
 // browser, dan doet de startknop niets. Herlaad dan één keer vers in plaats van stil te blijven hangen.
