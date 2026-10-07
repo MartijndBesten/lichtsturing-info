@@ -1,9 +1,18 @@
+function unfold(d, tag) {
+  const a = document.createElement(tag);
+  for (const at of d.attributes) a.setAttribute(at.name, at.value);
+  const sm = d.querySelector(':scope > summary');
+  a.append(...(sm ? sm.childNodes : []), ...[...d.childNodes].filter((n) => n !== sm));
+  d.replaceWith(a);
+  return a;
+}
 export function mount(el, config = {}) {
   const s = config.strings || {};
   const m = config.model;
   if (!m) return;
   const $ = (sel) => el.querySelector(sel);
   const $$ = (sel) => [...el.querySelectorAll(sel)];
+  for (const d of $$('details.wz-r')) unfold(d, 'article');
   const run = $('.wz-run');
   const pos = $('.wz-pos');
   const top = $('.wz-top');

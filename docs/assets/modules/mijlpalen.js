@@ -1,8 +1,15 @@
 export function mount(el) {
   const line = el.querySelector('.mp-line');
   const btns = [...el.querySelectorAll('.mp-btn')];
-  const panels = [...el.querySelectorAll('.mp-panel')];
   if (!line || !btns.length) return;
+  for (const d of [...el.querySelectorAll('details.mp-panel')]) {
+    const a = document.createElement('section');
+    for (const at of d.attributes) a.setAttribute(at.name, at.value);
+    const sm = d.querySelector(':scope > summary');
+    a.append(...(sm ? sm.childNodes : []), ...[...d.childNodes].filter((n) => n !== sm));
+    d.replaceWith(a);
+  }
+  const panels = [...el.querySelectorAll('.mp-panel')];
   el.classList.add('is-enhanced');
   line.hidden = false;
   const pick = (id, focus) => {

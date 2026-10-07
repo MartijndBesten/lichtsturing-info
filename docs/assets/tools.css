@@ -32,6 +32,14 @@
 .wz-r { margin: 0 0 var(--s-3); padding: var(--s-3) var(--s-4); background: var(--bg); border: 1px solid var(--line); border-left: 4px solid var(--navy); border-radius: var(--radius-card); }
 .wz-group + .wz-group .wz-r { border-left-color: var(--line-strong); }
 .wz-rt { margin: 0 0 var(--s-2); font-size: 1.05rem; }
+.wz-rs, .mp-sum { cursor: pointer; list-style: none; }
+.wz-rs::-webkit-details-marker, .mp-sum::-webkit-details-marker { display: none; }
+.wz-rs .wz-rt, .mp-sum .mp-head { margin: 0; }
+.wz-rs .wz-rt::before, .mp-sum .mp-head::before { content: "+"; display: inline-block; width: 1.1em; color: var(--blue); font-weight: 700; }
+details[open] > .wz-rs .wz-rt::before, details[open] > .mp-sum .mp-head::before { content: "−"; }
+details[open] > .wz-rs .wz-rt, details[open] > .mp-sum .mp-head { margin: 0 0 var(--s-2); }
+.wz-rs:focus-visible, .mp-sum:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+details.wz-r:not([open]), details.mp-panel:not([open]) { padding-top: var(--s-2); padding-bottom: var(--s-2); }
 .wz-rt .kbasis { margin-left: var(--s-1); vertical-align: middle; }
 .wz-chain { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-1) var(--s-2); margin: 0 0 var(--s-3); padding: 0; list-style: none; }
 .wz-c { display: inline-flex; align-items: center; gap: .35em; padding: .25em .65em; font-size: var(--fs-small); font-weight: 600; background: var(--surface); border: 1px solid var(--line-strong); border-radius: 999px; }
