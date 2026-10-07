@@ -46,6 +46,7 @@ export function mount(el, config) {
   const dayCtl = panel.querySelector('[data-rs="day"]');
   const meters = Object.fromEntries([...panel.querySelectorAll('.rs-meters li')].map((li) => [li.dataset.g, li.querySelector('.rs-meter-fill')]));
   const tabs = [...panel.querySelectorAll('.rs-tabs [data-sc]')];
+  const hold = panel.querySelector('.rs-hold'), holdF = hold?.firstChild;
 
   let sc = 0;
   let idx = -1;
@@ -92,7 +93,7 @@ export function mount(el, config) {
     node.classList.add(cls);
   };
 
-  function render(i, { announce = false } = {}) {
+  function render(i, { announce = false, force = false } = {}) {
     const st = steps();
     const step = st[i];
     const prev = idx >= 0 && idx < st.length ? st[idx] : null;
@@ -176,6 +177,14 @@ export function mount(el, config) {
     nowText.textContent = ` ${tmp.textContent.trim()}`;
     now.setAttribute('aria-live', announce ? 'polite' : 'off');
     [...phasesEl.children].forEach((li, k) => li.classList.toggle('is-current', k === i));
+    if (hold) {
+      hold.hidden = step.phase !== 'nalooptijd';
+      if (!hold.hidden && (changed || force)) {
+        hold.style.cssText = `--d:${step.dur}s;--o:${startOf(i) - t}s`;
+        holdF.style.animationPlayState = '';
+        pulse(hold, 'is-run');
+      }
+    }
   }
 
   function setTime(time, opts) {
@@ -214,12 +223,13 @@ export function mount(el, config) {
     last = 0;
     el.classList.add('is-playing');
     playBtn.textContent = s.pause || 'Pauze';
-    if (idx < 0) setTime(t, { force: true });
+    setTime(t, { force: true });
     clearInterval(tick);
     tick = setInterval(frame, 100);
   }
   function stop() {
     playing = false;
+    if (holdF) holdF.style.animationPlayState = 'paused';
     clearInterval(tick);
     el.classList.remove('is-playing');
     playBtn.textContent = t >= total() - 0.01 ? s.replay || 'Opnieuw' : s.play || 'Afspelen';

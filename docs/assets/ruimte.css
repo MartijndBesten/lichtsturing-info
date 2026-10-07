@@ -112,6 +112,9 @@
 .rs-meter-label::before { content: ''; display: inline-block; width: .7em; height: .7em; margin-right: .45em; vertical-align: -.05em; background: var(--c); border-radius: 2px; }
 .rs-meter { height: 8px; overflow: hidden; background: rgba(255, 255, 255, .12); border-radius: 4px; }
 .rs-meter-fill { display: block; width: 0; height: 100%; background: var(--light-vol); border-radius: 4px; }
+.rs-hold { display: block; height: 6px; margin: calc(var(--s-1) * -1) 0 var(--s-1); overflow: hidden; background: rgba(255, 255, 255, .12); border-radius: 3px; }
+.rs-hold[hidden] { display: none; }
+.rs-hold > span { display: block; height: 100%; background: var(--light-vol); border-radius: 3px; transform-origin: left center; }
 .rs-scenarios { margin-top: var(--s-4); font-size: var(--fs-small); color: var(--on-dark-soft); }
 .rs-scenario h4 { margin: var(--s-3) 0 var(--s-1); color: var(--on-dark); font-size: var(--fs-small); }
 .rs-steps { margin: 0; padding-left: 1.3em; }
@@ -143,8 +146,11 @@
   .rs-ac { transition: transform 1.1s cubic-bezier(.45, .05, .35, 1); }
   .rs-sig.is-active { animation: rs-flow-first 2.4s linear 2; }
   .rs-sig[data-leg='uit'].is-active { animation-name: rs-flow-second; }
+  .rs-hold.is-run > span { animation: rs-hold var(--d, 4s) linear var(--o, 0s) forwards; }
+  @keyframes rs-hold { to { transform: scaleX(0); } }
 }
 @media (prefers-reduced-motion: reduce) {
+  .rs-hold { display: none; }
   .rs-sensor.is-ping .rs-ring--0 { opacity: .8; }
 }
 @keyframes rs-ping { 0% { opacity: .9; transform: scale(.6); } 100% { opacity: 0; transform: scale(1.25); } }
