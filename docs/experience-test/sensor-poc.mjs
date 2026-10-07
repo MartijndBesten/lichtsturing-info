@@ -44,6 +44,7 @@ const st = {
   view: null, // ruwe yaw/pitch/roll t.o.v. kalibratie
   smooth: { yaw: 0, pitch: 0, roll: 0 },
   wakeLock: 'niet gevraagd',
+  gaps: { n: 0, last: null }, // onderbrekingen van de sensordata (event „resume”)
   log: [],
   nullOrientation: false,
 };
@@ -96,13 +97,20 @@ function attachListeners() {
 // Signaal bij pickup: een flits over het hele scherm, en optioneel een kort geluid. Trillen kan niet: iOS Safari heeft geen
 // Vibration API. Web Audio wordt in de tik op „Start sensortest” vrijgegeven; of iOS het in de stille modus dempt, is
 // juist een van de dingen die deze test laat zien.
+// iOS: Web Audio staat standaard in audiosessie „ambient” en zwijgt dan in de stille modus (test 07-10: geen geluid,
+// AudioContext „interrupted”). Met navigator.audioSession.type = 'playback' (Safari 17+) speelt het wel; nadeel: andere
+// audio (muziek) pauzeert. Daarom alleen als het vinkje aan staat.
 let audio = null;
+function setSession() {
+  try { if (navigator.audioSession && $('sound').checked) navigator.audioSession.type = 'playback'; } catch { /* optioneel */ }
+}
 function unlockAudio() {
+  setSession();
   try {
     const AC = window.AudioContext || window.webkitAudioContext;
     if (!AC) return;
     audio = audio || new AC();
-    if (audio.state === 'suspended') audio.resume();
+    if (audio.state !== 'running') audio.resume();
     const o = audio.createOscillator(), g = audio.createGain();
     g.gain.value = 0.0001; // onhoorbaar: alleen om de context in de gebruikersactie te starten
     o.connect(g).connect(audio.destination);
@@ -112,7 +120,7 @@ function unlockAudio() {
 function beep() {
   if (!audio || !$('sound').checked) return;
   try {
-    if (audio.state === 'suspended') audio.resume();
+    if (audio.state !== 'running') audio.resume(); // ook „interrupted” (iOS)
     const t = audio.currentTime, o = audio.createOscillator(), g = audio.createGain();
     o.frequency.value = 880;
     g.gain.setValueAtTime(0.0001, t);
@@ -122,6 +130,9 @@ function beep() {
     o.start(t); o.stop(t + 0.3);
   } catch { /* geluid is optioneel */ }
 }
+// Vinkje aanzetten is zelf een gebruikersactie: daar de sessie zetten en de context (opnieuw) starten.
+$('sound').addEventListener('change', () => { if ($('sound').checked && st.started) unlockAudio(); });
+
 function flash() {
   const el = $('flash');
   el.classList.remove('on');
@@ -231,6 +242,7 @@ function onMotion(e) {
     const detail = ev.type === 'flat' ? screenSide() ?? ev.detail : ev.detail;
     log(`${EVENT_TEXT[ev.type] ?? ev.type}${detail ? ` (${detail})` : ''}`);
     if (ev.type === 'pickup') { flash(); beep(); }
+    if (ev.type === 'resume') { st.gaps.n += 1; st.gaps.last = { at: Date.now(), detail: ev.detail }; }
   }
 }
 
@@ -311,6 +323,7 @@ function renderStatus(now) {
     ['pickup detected', yesno(mAct ? d.pickup : null) + ago],
     ['tilt t.o.v. vlak', `${fmt(d.tiltDeg, 0)}°`],
     ['activity', `aLin ${fmt(d.aLin, 2)} m/s² · rot ${fmt(d.rot, 0)} °/s${d.linearFallback ? ' (terugval zonder acceleration)' : ''}`],
+    ['onderbrekingen', st.gaps.n ? `${st.gaps.n}× · laatste ${clock(st.gaps.last.at)} (${escapeHtml(st.gaps.last.detail)})` : '0'],
     ['wake lock', escapeHtml(st.wakeLock)],
     ['screen orientation', screen.orientation ? `${screen.orientation.type} ${screen.orientation.angle}°` : '—'],
   ].map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('');
@@ -363,7 +376,8 @@ function report() {
     `relatief: ${st.view ? `yaw ${fmt(st.view.yaw)} pitch ${fmt(st.view.pitch)} roll ${fmt(st.view.roll)}` : 'niet gekalibreerd'}`,
     `motion nu: acc ${fmt(st.motion?.acceleration?.x, 2)}/${fmt(st.motion?.acceleration?.y, 2)}/${fmt(st.motion?.acceleration?.z, 2)}; accG ${fmt(st.motion?.accelerationIncludingGravity?.x, 2)}/${fmt(st.motion?.accelerationIncludingGravity?.y, 2)}/${fmt(st.motion?.accelerationIncludingGravity?.z, 2)}; rot ${fmt(st.motion?.rotationRate?.alpha, 0)}/${fmt(st.motion?.rotationRate?.beta, 0)}/${fmt(st.motion?.rotationRate?.gamma, 0)}`,
     `status: moving=${d.moving} stationary=${d.stationary} flat=${d.flat} side=${screenSide()} accGz=${fmt(st.motion?.accelerationIncludingGravity?.z, 2)} pickup=${d.pickup} tilt=${fmt(d.tiltDeg, 0)} linearFallback=${d.linearFallback} wakeLock=${st.wakeLock}`,
-    `sound: ${$('sound').checked ? 'aan' : 'uit'}${audio ? ` (audio ${audio.state})` : ''}`,
+    `sound: ${$('sound').checked ? 'aan' : 'uit'}${audio ? ` (audio ${audio.state})` : ''}, audioSession ${navigator.audioSession ? navigator.audioSession.type : 'niet beschikbaar'}`,
+    `onderbrekingen: ${st.gaps.n}`,
     `config: ${Object.entries(detector.config).map(([k, v]) => `${k}=${v}`).join(' ')}`,
     '',
     'log (nieuwste eerst):',
