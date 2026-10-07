@@ -196,3 +196,63 @@ details.wz-r:not([open]), details.mp-panel:not([open]) { padding-top: var(--s-2)
   .sg-svg * { transition: opacity .3s ease; }
   .sg-btn { transition: background-color .15s ease, border-color .15s ease; }
 }
+
+.rt { margin: var(--s-5) 0; }
+.rt [hidden] { display: none !important; }
+.rt-pick { display: flex; flex-wrap: wrap; gap: var(--s-2); margin: var(--s-3) 0; padding: 0; list-style: none; }
+.rt-btn { display: inline-flex; align-items: center; gap: var(--s-2); min-height: 2.75rem; padding: var(--s-1) var(--s-3) var(--s-1) var(--s-1); border: 1px solid var(--line-strong); border-radius: 999px; background: var(--bg); color: var(--navy); font: inherit; font-size: var(--fs-small); font-weight: 600; text-align: left; cursor: pointer; }
+.rt-btn[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: var(--on-dark); }
+.rt-n { display: inline-grid; place-items: center; flex: none; width: 1.8rem; height: 1.8rem; border: 1.5px solid currentColor; border-radius: 50%; font-size: .85rem; }
+.rt-btn:focus-visible, .rt-next:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.rt-stage { max-width: 34rem; margin: var(--s-2) 0; padding: var(--s-2); background: var(--surface); border-radius: var(--radius-card); }
+.rt-svg { display: block; width: 100%; height: auto; }
+.rt-room { fill: var(--bg); stroke: var(--line-strong); stroke-width: 2; }
+.rt-win { stroke: #8fb4e8; stroke-width: 5; }
+.rt-door { fill: none; stroke: var(--line-strong); stroke-width: 1.5; }
+.rt-lum { fill: var(--bg); stroke: var(--navy); stroke-width: 1.5; }
+.rt-zone { fill: #e6eefb; }
+.rt-desk { fill: var(--surface); stroke: var(--line-strong); stroke-width: 1.5; }
+.rt-person { fill: var(--muted); }
+.rt-walk { fill: none; stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 3 4; }
+.rt-grp { fill: none; stroke-width: 1.5; stroke-dasharray: 5 4; }
+.rt-grp--a { stroke: #2f6fd6; }
+.rt-grp--b { stroke: #0e7490; }
+.rt-fill--a { fill: #2f6fd6; }
+.rt-fill--b { fill: #0e7490; }
+.rt-field { fill: rgba(11, 31, 77, .05); stroke: var(--navy); stroke-width: 1.2; stroke-dasharray: 4 4; }
+.rt-sensor, .rt-key { fill: var(--navy); }
+.rt-pool { fill: #f8e3b0; opacity: .9; }
+.rt-pool--dim { opacity: .4; }
+.rt-sun { fill: #f2b54a; }
+.rt-rays { stroke: #f2b54a; stroke-width: 2; stroke-linecap: round; }
+.rt-box { fill: var(--bg); stroke: var(--navy); stroke-width: 1.5; }
+.rt-t { font-size: 14px; font-weight: 600; text-anchor: middle; fill: var(--ink); }
+.rt-bus { fill: none; stroke: var(--navy); stroke-width: 2; }
+.rt-link { fill: none; stroke: var(--navy); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.rt-check { fill: none; stroke: var(--ok); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.rt-doc { fill: var(--bg); stroke: var(--ink); stroke-width: 1.5; }
+.rt-docline { stroke: var(--line-strong); stroke-width: 1.5; }
+.rt.is-enhanced .rt-l { opacity: 0; }
+.rt.is-enhanced .rt-l.is-on { opacity: .45; }
+.rt.is-enhanced .rt-l.is-now { opacity: 1; }
+.rt-steps { max-width: var(--measure); margin: var(--s-3) 0 0; padding: 0; list-style: none; }
+.rt-step { margin: 0 0 var(--s-3); padding: var(--s-3) var(--s-4); background: var(--bg); border: 1px solid var(--line); border-left: 4px solid var(--navy); border-radius: var(--radius-card); }
+.rt-sn { margin: 0; color: var(--muted); font-size: var(--fs-small); font-weight: 600; }
+.rt-q { margin: var(--s-1) 0 var(--s-2); font-size: 1.1rem; }
+.rt-q:focus { outline: none; }
+.rt-fix { margin: 0 0 var(--s-2); }
+.rt-fix strong { color: var(--navy); }
+.rt-more { margin: 0; }
+.rt-nav { margin: var(--s-2) 0 0; }
+.rt-next { min-height: 2.75rem; padding: var(--s-1) var(--s-4); border: 0; border-radius: var(--radius); background: var(--navy); color: var(--on-dark); font: inherit; font-weight: 600; cursor: pointer; }
+@media (max-width: 40rem) {
+  .rt-step { padding: var(--s-3); }
+  .rt-pick { flex-wrap: nowrap; justify-content: space-between; gap: var(--s-1); }
+  .rt-btn { justify-content: center; width: 2.75rem; padding: 0; border-radius: 50%; }
+  .rt-n { border: 0; }
+  .rt-bt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .rt-l { transition: opacity .3s ease; }
+  .rt.is-enhanced .rt-step:not([hidden]) { animation: wz-in .25s ease-out; }
+}
