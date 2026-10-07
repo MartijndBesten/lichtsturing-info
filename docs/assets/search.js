@@ -19,7 +19,8 @@ const el = (tag, cls, text) => Object.assign(document.createElement(tag), cls ? 
 
 function render(hits) {
   results.replaceChildren();
-  statusEl.textContent = hits.length ? config.strings.results.replace('{count}', hits.length) : config.strings.empty;
+  statusEl.textContent = !hits.length ? config.strings.empty
+    : (hits.length === 1 && config.strings.result ? config.strings.result : config.strings.results).replace('{count}', hits.length);
   for (const { entry, via } of hits) {
     const li = el('li', 'search-result');
     const a = Object.assign(el('a', 'search-result-title', entry.t), { href: config.base + entry.u });
