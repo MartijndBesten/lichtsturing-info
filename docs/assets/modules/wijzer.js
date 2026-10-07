@@ -41,6 +41,8 @@ export function mount(el, config = {}) {
     for (const g of groups.values()) g.hidden = !on;
     for (const c of cards.values()) c.hidden = !on;
     done.hidden = answersBox.hidden = actions.hidden = !on;
+    const sum = $('.wz-sum');
+    if (sum && !on) sum.hidden = true;
     none.hidden = true;
   }
 
@@ -69,6 +71,27 @@ export function mount(el, config = {}) {
     finish();
   }
 
+  function summarize() {
+    const box = $('.wz-sum');
+    if (!box || !m.summary) return;
+    const picked = new Set();
+    for (const row of m.summary) {
+      const el = box.querySelector(`.wz-sum-row[data-row="${row.id}"]`);
+      const st = ok(row.when) ? row.states.find((x) => ok(x.when)) : null;
+      el.hidden = !st;
+      for (const d of el.querySelectorAll('.wz-sum-st')) d.hidden = !st || d.dataset.st !== st.id;
+      if (st) picked.add(`${row.id}:${st.id}`);
+    }
+    let gaps = 0;
+    for (const li of box.querySelectorAll('[data-m]')) {
+      li.hidden = !li.dataset.m.split(' ').some((k) => picked.has(k));
+      if (!li.hidden) gaps += 1;
+    }
+    const okMsg = box.querySelector('.wz-sum-ok');
+    if (okMsg) okMsg.hidden = gaps > 0;
+    box.hidden = picked.size === 0;
+  }
+
   function finish() {
     for (const f of fs.values()) f.hidden = true;
     top.hidden = true;
@@ -90,6 +113,7 @@ export function mount(el, config = {}) {
       shown += keep.size;
     }
     none.hidden = shown > 0;
+    summarize();
     done.focus({ preventScroll: false });
     say(s.done);
   }
