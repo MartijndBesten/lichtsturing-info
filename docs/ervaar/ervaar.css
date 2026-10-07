@@ -1,0 +1,107 @@
+/* /ervaar/ — bovenop de echte stylesheets van lichtsturing.info (site.css, platform.css). Hier alleen: de ruimte (CSS-3D),
+   het licht, de startinstructie en de overgang van donker naar de gewone site. Geen tweede huisstijl: kleuren, letters en
+   componenten komen uit de site. */
+html, body { height: 100%; overflow: hidden; overscroll-behavior: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
+body { position: fixed; inset: 0; margin: 0; touch-action: none; --zwart: #050608; background: var(--zwart); transition: background-color 2.4s ease; }
+body.is-site { background: var(--bg); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.scene-sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* Startscherm: de echte site-header en een hero in de huisstijl, binnen één scherm, zonder scroll. */
+#open { position: fixed; inset: 0; display: grid; grid-template-rows: auto 1fr; background: var(--bg); transition: opacity 1.1s ease; }
+#open .pf-hero { display: grid; align-content: center; min-height: 0; padding-bottom: max(1.5rem, env(safe-area-inset-bottom)); }
+#open .pf-hero-inner { grid-template-columns: 1fr; gap: var(--s-5); padding-top: var(--s-6); padding-bottom: var(--s-6); align-items: start; }
+#open .pf-hero h1 { font-size: clamp(1.9rem, 8.4vw, 2.6rem); max-width: 12ch; }
+#open .pf-cta-row { display: flex; margin-top: var(--s-5); }
+.houd { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); align-items: center; gap: var(--s-4); margin: var(--s-5) 0 0; padding: var(--s-4); background: rgba(5, 14, 38, .55); border: 1px solid rgba(255, 255, 255, .12); border-radius: var(--radius-card); }
+.houd p { margin: 0; color: var(--on-dark); font-weight: 650; line-height: 1.35; }
+.houd p small { display: block; margin-top: .2rem; font-size: var(--fs-small); font-weight: 400; color: var(--on-dark-muted); }
+.houd-art { width: 5.5rem; height: 6.5rem; }
+.houd-art .tel { transform-origin: 50% 85%; animation: tel-rechtop 3.6s ease-in-out infinite; }
+.houd-art .vink { opacity: 0; animation: tel-vink 3.6s ease-in-out infinite; }
+.houd.is-live .tel, .houd.is-live .vink { animation: none; }
+.houd.is-live .tel { transition: transform .25s ease-out; }
+.houd.is-live .vink { transition: opacity .4s ease; }
+.houd.is-goed .vink { opacity: 1; }
+@keyframes tel-rechtop { 0%, 12% { transform: rotate(-26deg); } 45%, 100% { transform: rotate(0deg); } }
+@keyframes tel-vink { 0%, 55% { opacity: 0; } 70%, 92% { opacity: 1; } 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .houd-art .tel, .houd-art .vink { animation: none; opacity: 1; } }
+
+/* De ruimte. */
+#stage { position: fixed; inset: 0; perspective: 520px; perspective-origin: 50% 50%; overflow: hidden; }
+#wereld { position: absolute; left: 50%; top: 50%; width: 0; height: 0; transform-style: preserve-3d; will-change: transform; }
+.paneel { position: absolute; left: 0; top: 0; transform-style: preserve-3d; backface-visibility: hidden; -webkit-backface-visibility: hidden; opacity: 0; will-change: opacity; pointer-events: none; }
+.paneel.is-weg { visibility: hidden; }
+.paneel > * { pointer-events: none; }
+.paneel a { pointer-events: auto; }
+.paneel .site-fragment { background: var(--bg); color: var(--text); padding: var(--s-4); border-radius: var(--radius-card); box-shadow: var(--shadow-2); }
+.paneel .fragment-navy { background: var(--navy); color: var(--on-dark-soft); padding: var(--s-5); border-radius: 12px; }
+.paneel .fragment-navy h1 { color: var(--on-dark); font-size: 2.25rem; line-height: 1.08; letter-spacing: -.02em; margin: 0 0 var(--s-3); }
+.paneel .fragment-navy .lead { color: var(--on-dark-soft); }
+.paneel .fragment-navy .eyebrow { color: var(--light-vol); }
+.paneel .fragment-navy .pf-button { color: #0b1f4d; background: var(--light-vol); border-color: var(--light-vol); }
+.paneel .page-header { margin: 0; }
+.paneel .page-header h1 { margin: var(--s-1) 0 var(--s-3); }
+.paneel .breadcrumb { margin: 0 0 var(--s-2); }
+.paneel .ladder--in-30-seconden { margin: 0; }
+.paneel .ll-strip { margin: 0; }
+.paneel .ll-strip a { background: var(--bg); box-shadow: var(--shadow-2); }
+.paneel .topic-card { pointer-events: auto; }
+.paneel .kernpunten { margin: 0; }
+.paneel .kt { margin: 0; }
+.paneel .kt-steps { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s-2); }
+.paneel .kt-step-text { display: none; }
+.paneel .kt-step-btn { font-size: var(--fs-small); gap: var(--s-1); min-height: 0; }
+.paneel .kt-step-icon { width: 1.75rem; height: 1.75rem; }
+.paneel .pf-example { display: block; color: var(--text); text-decoration: none; background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius-card); box-shadow: var(--shadow-2); overflow: hidden; }
+.paneel .pf-example-art { position: relative; display: block; aspect-ratio: 16 / 10; background: var(--surface-2); }
+.paneel .pf-example-art .scene { display: block; width: 100%; height: 100%; }
+.paneel .pf-example-badge { position: absolute; left: var(--s-3); bottom: var(--s-3); padding: .2rem .6rem; font-size: var(--fs-label); font-weight: 700; color: #0b1f4d; background: var(--light-vol); border-radius: 999px; }
+.paneel .pf-example-badge::before { content: '\25B6\00a0'; font-size: .6rem; }
+.paneel .pf-example-body { display: grid; gap: 2px; padding: var(--s-3) var(--s-4) var(--s-4); }
+.paneel .pf-example-title { font-size: 1.0625rem; font-weight: 650; color: var(--ink); }
+.paneel .pf-example-text { font-size: var(--fs-small); color: var(--muted); line-height: 1.45; }
+.paneel .icoon { display: grid; place-items: center; width: 3.25rem; height: 3.25rem; color: var(--blue); background: var(--blue-pale); border-radius: var(--radius); box-shadow: var(--shadow-2); }
+.paneel .icoon svg { width: 1.75rem; height: 1.75rem; }
+/* Legenda en status zoals in de tijdlijn van de GACS-pagina (regels overgenomen uit tools.css van de site). */
+.paneel .mp-legend { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-4); margin: var(--s-2) 0 0; padding: 0; list-style: none; font-size: var(--fs-small); font-weight: 650; color: var(--ink); }
+.paneel .mp-tag::before { content: ""; display: inline-block; width: .6rem; height: .6rem; margin-right: .3rem; border-radius: 2px; }
+.paneel .mp-tag--1::before { background: var(--blue); }
+.paneel .mp-tag--2::before { background: var(--light-vol); box-shadow: inset 0 0 0 1px #8a6d12; }
+.paneel .chips { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2); width: 300px; box-sizing: border-box; padding: var(--s-2) var(--s-3); background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-2); font-size: var(--fs-small); }
+.paneel .chips .eyebrow { margin: 0; }
+.paneel .chip { padding: .15rem .6rem; border: 1px solid var(--line-strong); border-radius: 999px; font-weight: 600; color: var(--ink); background: var(--surface); }
+.paneel .next-step { margin: 0; }
+.paneel .pf-link { background: var(--bg); padding: 0 var(--s-4); border-radius: var(--radius); box-shadow: var(--shadow-2); }
+/* Vloer: het raster van de site (lijnkleur) op een horizontaal vlak, alleen zichtbaar in het licht. */
+#vloer { position: absolute; left: -3000px; top: -3000px; width: 6000px; height: 6000px; transform: translateY(560px) rotateX(90deg); opacity: 0; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 120px 120px; -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 0, #000 900px, transparent 2200px); mask-image: radial-gradient(circle at 50% 50%, #000 0, #000 900px, transparent 2200px); will-change: opacity; }
+/* Academie: de „Volgende stap”-kaart als deur; daarachter een lichtere ruimte van de site (pale blue, wit). */
+.ac-deur { position: absolute; left: 0; top: 0; width: 50%; height: 100%; overflow: hidden; will-change: transform; }
+.ac-deur .next-step-link { width: 200%; height: 100%; box-sizing: border-box; }
+.ac-deur--r { left: 50%; }
+.ac-deur--r .next-step-link { margin-left: -100%; }
+.ac-ruimte { position: absolute; left: 50%; top: 50%; transform-style: preserve-3d; }
+.ac-kozijn { position: absolute; left: 0; top: 0; border: 1px solid var(--line-strong); background: transparent; transform: translate(-50%, -50%); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .5); }
+.ac-achter { position: absolute; left: 0; top: 0; width: 320px; padding: var(--s-5); transform: translate(-50%, -50%); text-align: center; background: var(--blue-pale); border-radius: 12px; }
+.ac-achter .eyebrow { margin-bottom: var(--s-2); }
+.ac-achter h1 { margin: 0 0 var(--s-2); font-size: 2.25rem; }
+.ac-achter .lead { margin: 0 auto; }
+/* Licht (overlay) en teksten van de ervaring. */
+#licht { position: fixed; inset: 0; pointer-events: none; }
+.hint { position: fixed; left: 0; right: 0; bottom: max(2.5rem, calc(env(safe-area-inset-bottom) + 1.5rem)); margin: 0; text-align: center; font-size: var(--fs-label); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--on-dark-muted); transition: opacity 2.2s ease; pointer-events: none; }
+.vind { position: fixed; inset: 0; display: grid; place-items: center; margin: 0; padding: 0 2rem; text-align: center; color: var(--on-dark); font-size: var(--fs-display); font-weight: 700; letter-spacing: -.02em; line-height: 1.08; transition: opacity 1.6s ease; pointer-events: none; }
+.uit { opacity: 0 !important; pointer-events: none !important; }
+#kern { position: fixed; left: var(--gutter); right: var(--gutter); top: 50%; transform: translateY(-50%); margin: 0; padding: var(--s-6) var(--s-5); color: var(--on-dark); background: var(--navy); border-radius: 12px; box-shadow: var(--shadow-2); transition: opacity 2.2s ease, transform 2.2s ease; pointer-events: none; }
+#kern.uit { transform: translateY(calc(-50% + .75rem)); }
+#kern .eyebrow { color: var(--light-vol); }
+#kern h2 { margin: 0; color: var(--on-dark); font-size: clamp(1.6rem, 7.6vw, 2.25rem); line-height: 1.1; letter-spacing: -.02em; }
+#kop { position: fixed; left: 0; right: 0; top: 0; transform: translateY(-110%); transition: transform 1.6s cubic-bezier(.2, .7, .2, 1); z-index: 3; }
+#kop.is-in { transform: none; }
+#verder { position: fixed; left: 0; right: 0; bottom: 0; padding: var(--s-4) var(--gutter) max(var(--s-4), env(safe-area-inset-bottom)); display: flex; justify-content: center; background: var(--bg); border-top: 1px solid var(--line); transform: translateY(110%); transition: transform 1.6s cubic-bezier(.2, .7, .2, 1); z-index: 3; }
+#verder.is-in { transform: none; }
+#verder .pf-button { pointer-events: auto; }
+#melding { position: fixed; inset: 0; display: grid; grid-template-rows: auto 1fr; background: var(--bg); }
+#open[hidden], #melding[hidden] { display: none; }
+#melding .wrap { display: grid; align-content: center; gap: var(--s-4); padding-top: var(--s-6); }
+#melding .pf-cta-row { display: flex; }
+body.is-uit #stage, body.is-uit #licht, body.is-uit #kern { opacity: 0; transition: opacity .9s ease; }
