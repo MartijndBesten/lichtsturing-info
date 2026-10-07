@@ -6,8 +6,8 @@ export function mount(el, config) {
   const panel = el.querySelector('.rs-panel');
   const svg = el.querySelector('.rs-svg');
   if (!panel || !svg) return;
-  const levels = config.levels || { uit: 0, basis: 0.24, gedimd: 0.55, vol: 1 };
-  const dayMap = config.daylight || { geen: 0, weinig: 0.3, veel: 0.85 };
+  const levels = config.levels || {};
+  const dayMap = config.daylight || {};
   const groups = config.groups || [];
   const positions = config.positions || {};
 
@@ -21,7 +21,7 @@ export function mount(el, config) {
       event: li.dataset.event || '',
       phase: li.dataset.phase || '',
       dur: Math.max(1.5, Number(li.dataset.dur) || 4),
-      label: li.querySelector('strong')?.textContent || '',
+      label: (li.querySelector('strong')?.textContent || '').replace(/\.$/, ''),
       html: li.innerHTML,
     })),
   }));
@@ -55,7 +55,16 @@ export function mount(el, config) {
   let tick = 0;
   let last = 0;
   let dayOverride = null;
-  let poseTimer = 0;
+  const timers = new Map();
+  const clearTimers = (a) => {
+    for (const x of timers.get(a) || []) clearTimeout(x);
+    timers.set(a, []);
+  };
+  const later = (a, fn, ms) => timers.get(a).push(setTimeout(fn, ms));
+  const place = (a, x, y, sc, dur = 0) => {
+    a.style.transitionDuration = dur ? `${dur}s` : '';
+    a.style.transform = `translate(${x}px, ${y}px) scale(${sc})`;
+  };
 
   const steps = () => scenarios[sc].steps;
   const total = () => steps().reduce((a, x) => a + x.dur, 0);
@@ -90,10 +99,13 @@ export function mount(el, config) {
     const changed = i !== idx;
     idx = i;
     const day = dayOverride ?? step.day;
+    svg.dataset.phase = step.phase;
+    svg.dataset.at = step.at;
+    svg.dataset.event = step.event;
     const pos = positions[step.at] || {};
-    clearTimeout(poseTimer);
     for (const a of actors) {
       const p = pos[a.dataset.a];
+      clearTimers(a);
       if (!p) {
         a.style.opacity = '0';
         continue;
@@ -101,10 +113,23 @@ export function mount(el, config) {
       const key = `${p.x},${p.y}`;
       const moved = Boolean(a.dataset.key) && a.dataset.key !== key;
       a.dataset.key = key;
-      a.style.transform = `translate(${p.x}px, ${p.y}px) scale(${p.s})`;
       a.style.opacity = p.out ? '0' : '1';
-      a.dataset.pose = moved && !reduce() ? 'walk' : p.pose || 'stand';
-      if (moved && !reduce()) poseTimer = setTimeout(() => (a.dataset.pose = p.pose || 'stand'), 1500);
+      const walk = moved && !reduce();
+      const route = walk ? (prev && p.viaFrom && p.viaFrom[prev.at]) || p.via || [] : [];
+      if (!route.length) {
+        place(a, p.x, p.y, p.s);
+        a.dataset.pose = walk ? 'walk' : p.pose || 'stand';
+        if (walk) later(a, () => (a.dataset.pose = p.pose || 'stand'), 1500);
+        continue;
+      }
+      const LEG = 0.6;
+      a.dataset.pose = 'walk';
+      route.forEach(([x, y], k) => later(a, () => place(a, x, y, p.s, LEG), k * LEG * 1000));
+      later(a, () => place(a, p.x, p.y, p.s, 1.2), route.length * LEG * 1000);
+      later(a, () => {
+        a.dataset.pose = p.pose || 'stand';
+        a.style.transitionDuration = '';
+      }, route.length * LEG * 1000 + 1200);
     }
     let max = 0;
     for (const g of groups) {
@@ -144,7 +169,7 @@ export function mount(el, config) {
       });
     }
     nowPos.textContent = `${s.step || 'Stap'} ${i + 1}/${st.length} · `;
-    nowLabel.textContent = step.label;
+    nowLabel.textContent = `${step.label}.`;
     const tmp = document.createElement('div');
     tmp.innerHTML = step.html;
     tmp.querySelector('strong')?.remove();

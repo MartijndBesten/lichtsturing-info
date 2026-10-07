@@ -52,7 +52,8 @@
 .ib-lum.is-blink rect { stroke: #c98a00; stroke-width: 4; }
 .ib-sensor circle { fill: var(--bg); stroke: var(--ink); stroke-width: 1.5; }
 .ib-person { display: none; }
-.ib-person circle, .ib-person path { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; }
+.ib-person circle, .ib-person ellipse { fill: var(--ink); fill-opacity: .18; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; }
+.ib-person circle { fill-opacity: .9; }
 .ib.is-present[data-step="testen"] .ib-person { display: inline; }
 .ib.is-enhanced .ib-lum:not(.is-placed) .ib-tag { visibility: hidden; }
 .ib.is-enhanced:not(.is-found) .ib-found { display: none; }
