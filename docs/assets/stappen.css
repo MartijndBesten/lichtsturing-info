@@ -61,6 +61,19 @@
 .ib-place::before { content: '\2192\00a0'; color: var(--muted); }
 .ib.is-enhanced .ib-panel-title { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 .ib-panel { margin-top: var(--s-3); }
+details.ib-panel { margin: 0 0 var(--s-2); padding: var(--s-2) var(--s-3); background: var(--surface); border-left: 4px solid var(--navy); border-radius: var(--radius-card); }
+.ib-canvas + details.ib-panel { margin-top: var(--s-3); }
+details.ib-panel[open] { padding-bottom: var(--s-3); }
+.ib-sum { cursor: pointer; list-style: none; }
+.ib-sum::-webkit-details-marker { display: none; }
+.ib-sum .ib-panel-title { display: flex; align-items: center; gap: var(--s-2); min-height: 2.25rem; margin: 0; font-size: 1rem; }
+.ib-sum .ib-panel-title::after { content: "+"; margin-left: auto; color: var(--blue); font-weight: 700; font-size: 1.2rem; }
+details[open] > .ib-sum .ib-panel-title { margin-bottom: var(--s-2); }
+details[open] > .ib-sum .ib-panel-title::after { content: "\2212"; }
+.ib-sum:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.ib-addr { font-weight: 600; color: var(--navy); }
+.ib:not(.is-enhanced) .ib-groups input, .ib:not(.is-enhanced) .ib-fn input { appearance: none; flex: none; margin: 0; border: 2px solid var(--line-strong); border-radius: 50%; background: var(--bg); vertical-align: middle; }
+.ib:not(.is-enhanced) .ib-groups input:checked, .ib:not(.is-enhanced) .ib-fn input:checked { border-color: var(--blue); background: var(--blue); box-shadow: inset 0 0 0 3px var(--bg); }
 .ib-text { margin: 0 0 var(--s-2); }
 .ib-act { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2); margin: var(--s-2) 0; }
 .ib-act-label { flex-basis: 100%; font-weight: 600; font-size: var(--fs-small); }

@@ -4,6 +4,24 @@ export function mount(el, config = {}) {
   const ids = Object.keys(lum);
   const $ = (q) => el.querySelector(q);
   const $$ = (q) => [...el.querySelectorAll(q)];
+  for (const d of $$('details.ib-panel')) {
+    const a = document.createElement('section');
+    for (const at of d.attributes) a.setAttribute(at.name, at.value);
+    a.setAttribute('role', 'tabpanel');
+    a.setAttribute('aria-labelledby', d.id.replace(/^ibp-/, 'ibs-'));
+    const sm = d.querySelector(':scope > summary');
+    a.append(...(sm ? sm.childNodes : []), ...[...d.childNodes].filter((n) => n !== sm));
+    d.replaceWith(a);
+  }
+  for (const sp of $$('.ib-addr')) {
+    const b = document.createElement('button');
+    Object.assign(b, { type: 'button', className: 'ib-btn ib-blink', textContent: sp.textContent, disabled: true });
+    b.dataset.l = sp.dataset.l;
+    b.setAttribute('aria-pressed', 'false');
+    sp.replaceWith(b);
+  }
+  for (const n of $$('.ib-js')) n.hidden = false;
+  for (const i of $$('.ib-groups input, .ib-fn input')) i.disabled = false;
   const part = (id) => $(`.ib-lum[data-l="${id}"]`);
   const place = (id) => $(`.ib-place[data-l="${id}"]`).textContent;
   const steps = $$('.ib-step');
