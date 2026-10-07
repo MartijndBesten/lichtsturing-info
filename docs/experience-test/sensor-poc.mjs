@@ -3,8 +3,8 @@
 //
 // Instelbaar (bovenin): weergave van de bundel. De detectiedrempels staan in motion-detect.mjs (DEFAULT_CONFIG) en zijn
 // via URL-parameters te overschrijven (?STILL_ACCEL=0.3&FLAT_MS=1500 …).
-import { rotationMatrix, relativeView } from './orientation-math.mjs';
-import { createDetector, configFrom } from './motion-detect.mjs';
+import { rotationMatrix, relativeView } from './orientation-math.mjs?v=fb23827d8b';
+import { createDetector, configFrom } from './motion-detect.mjs?v=fb23827d8b';
 
 const VIEW = {
   HALF_FOV_H: 35, // ° yaw die de rand van het canvas haalt

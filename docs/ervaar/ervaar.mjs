@@ -4,10 +4,10 @@
 // Opbouw: sensor-engine uit fase 1 (orientation-math, motion-detect) → gedempte camera (camera.mjs) → echte
 // sitecomponenten (klassen en stylesheets van lichtsturing.info) als panelen in CSS-3D, één wereld-transform per frame →
 // het licht als overlay-canvas: donker buiten de lichtkring, en per paneel een onthulling (laag 1/2/3). Geen bibliotheek.
-import { rotationMatrix, relativeView } from '../experience-test/orientation-math.mjs';
-import { createDetector } from '../experience-test/motion-detect.mjs';
-import { CAMERA, demp, dempVast, basis, projecteer, verlichting, ontdekking, smoothstep, PERSPECTIEF, wereldTransform, paneelTransform, paneelPositie } from './camera.mjs';
-import { ONDERWERPEN, ACADEMIE, VERBINDINGEN, DRAMATURGIE, KERN, FALLBACK, OPEN, ICONEN, richting } from './world.mjs';
+import { rotationMatrix, relativeView } from '../experience-test/orientation-math.mjs?v=fb23827d8b';
+import { createDetector } from '../experience-test/motion-detect.mjs?v=fb23827d8b';
+import { CAMERA, demp, dempVast, basis, projecteer, verlichting, ontdekking, smoothstep, PERSPECTIEF, wereldTransform, paneelTransform, paneelPositie } from './camera.mjs?v=fb23827d8b';
+import { ONDERWERPEN, ACADEMIE, VERBINDINGEN, DRAMATURGIE, KERN, FALLBACK, OPEN, ICONEN, richting } from './world.mjs?v=fb23827d8b';
 
 // ---------- Instelbaar ----------
 const BEELD = {
@@ -432,3 +432,4 @@ function teken() {
 requestAnimationFrame(frame);
 
 document.addEventListener('touchmove', (e) => { if (!e.target.closest('a,button')) e.preventDefault(); }, { passive: false });
+window.__ervaarKlaar = true; // voor het vangnet in index.html

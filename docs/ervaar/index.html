@@ -8,9 +8,9 @@
 <meta name="theme-color" content="#0b1f4d">
 <meta name="description" content="Deze website bekijk je anders: stap in lichtsturing.info. Een korte ervaring voor de iPhone.">
 <title>Ervaar · Lichtsturing.info</title>
-<link rel="stylesheet" href="/assets/site.css">
-<link rel="stylesheet" href="/assets/platform.css">
-<link rel="stylesheet" href="ervaar.css">
+<link rel="stylesheet" href="/assets/site.css?v=fb23827d8b">
+<link rel="stylesheet" href="/assets/platform.css?v=fb23827d8b">
+<link rel="stylesheet" href="ervaar.css?v=fb23827d8b">
 </head>
 <body>
 <svg class="scene-sprite" aria-hidden="true" focusable="false" width="0" height="0"><defs>
@@ -119,6 +119,17 @@
 </template>
 
 <p class="sr" id="sr" aria-live="polite"></p>
-<script type="module" src="ervaar.mjs"></script>
+<script type="module" src="ervaar.mjs?v=fb23827d8b"></script>
+<script>
+// Vangnet: is het script van de ervaring niet (goed) geladen, bijvoorbeeld door een oude versie in de cache van de
+// browser, dan doet de startknop niets. Herlaad dan één keer vers in plaats van stil te blijven hangen.
+document.getElementById('start').addEventListener('click', function () {
+  if (window.__ervaarKlaar) return;
+  var u = new URL(location.href);
+  if (u.searchParams.get('vers')) return;
+  u.searchParams.set('vers', String(Date.now()));
+  location.replace(u.toString());
+});
+</script>
 </body>
 </html>
