@@ -43,6 +43,8 @@
   #msg { min-height: 1.4rem; }
   .opt { display: flex; align-items: center; gap: .5rem; min-height: 44px; font-size: .9rem; }
   .opt input { width: 1.25rem; height: 1.25rem; accent-color: var(--accent); }
+  .opt select { min-height: 40px; font: inherit; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 0 .5rem; }
+  .opt button { min-height: 40px; }
   #flash { position: fixed; inset: 0; pointer-events: none; background: #fff3c4; opacity: 0; z-index: 10; }
   #flash.on { animation: flash .7s ease-out; }
   @keyframes flash { 0% { opacity: .9; } 100% { opacity: 0; } }
@@ -60,6 +62,11 @@
     <button id="calibrate" type="button" class="secondary" disabled>Kalibreer huidige positie</button>
   </div>
   <label class="opt"><input id="sound" type="checkbox"> Geluid bij pickup (pauzeert eventuele muziek; test ook met de stille modus aan)</label>
+  <div class="opt">
+    <label for="soundmethod">Methode</label>
+    <select id="soundmethod"><option value="element">audio-element</option><option value="webaudio">Web Audio</option></select>
+    <button id="testsound" type="button" class="secondary">Test geluid</button>
+  </div>
   <p id="msg" class="small" aria-live="polite"></p>
   <div class="btns" id="retry" hidden>
     <button id="retry-orientation" type="button" class="secondary" hidden>Vraag oriëntatie-toestemming apart</button>
