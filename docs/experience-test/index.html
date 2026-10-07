@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#0b0f17">
+<title>Sensortest iPhone — proof-of-concept, niet definitief · Lichtsturing.info</title>
+<style>
+  :root { --bg: #0b0f17; --panel: #121826; --line: #22304a; --ink: #e6ebf5; --muted: #8b97ad; --ok: #4ade80; --no: #f87171; --warn: #fbbf24; --accent: #ffd166; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; -webkit-text-size-adjust: 100%; }
+  body { padding: 0 0 max(2rem, env(safe-area-inset-bottom)); }
+  .flag { margin: 0; padding: .45rem 1rem; font-size: .75rem; font-weight: 650; letter-spacing: .06em; text-align: center; color: #5a3b00; background: #ffe7a8; }
+  main { max-width: 42rem; margin: 0 auto; padding: 0 1rem; }
+  h1 { font-size: 1.15rem; margin: 1rem 0 .25rem; }
+  h2 { font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 1.25rem 0 .4rem; }
+  p { margin: .4rem 0; }
+  .small { font-size: .8rem; color: var(--muted); }
+  .btns { display: flex; flex-wrap: wrap; gap: .5rem; margin: .75rem 0; }
+  button { min-height: 48px; padding: 0 1rem; font: inherit; font-weight: 650; color: #0b0f17; background: var(--accent); border: 0; border-radius: 8px; cursor: pointer; touch-action: manipulation; }
+  button.secondary { background: var(--panel); color: var(--ink); border: 1px solid var(--line); }
+  button:disabled { opacity: .45; cursor: default; }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: .6rem .8rem; }
+  .kv { display: grid; grid-template-columns: minmax(0, 11rem) minmax(0, 1fr); gap: .15rem .75rem; font: 13px/1.5 ui-monospace, Menlo, Consolas, monospace; }
+  .kv dt { color: var(--muted); margin: 0; overflow-wrap: anywhere; }
+  .kv dd { margin: 0; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+  .yes { color: var(--ok); font-weight: 700; }
+  .no { color: var(--no); font-weight: 700; }
+  .warn { color: var(--warn); font-weight: 700; }
+  .stage { position: relative; margin: .5rem 0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: #05070c; }
+  .stage canvas { display: block; width: 100%; height: auto; touch-action: none; }
+  .stage .hint { position: absolute; left: .6rem; top: .5rem; font-size: .75rem; color: var(--muted); }
+  .stage .view { position: absolute; right: .6rem; bottom: .4rem; font: 12px/1.4 ui-monospace, Menlo, Consolas, monospace; color: var(--ink); background: rgba(11,15,23,.7); padding: .15rem .4rem; border-radius: 4px; }
+  .log { margin: 0; padding: .5rem .8rem; list-style: none; font: 12px/1.6 ui-monospace, Menlo, Consolas, monospace; min-height: 4rem; }
+  .log li b { color: var(--accent); font-weight: 600; }
+  details { margin: .75rem 0; }
+  summary { cursor: pointer; font-weight: 650; }
+  ol { padding-left: 1.25rem; }
+  ol li { margin: .25rem 0; }
+  textarea { width: 100%; min-height: 10rem; margin-top: .5rem; font: 12px/1.4 ui-monospace, Menlo, Consolas, monospace; background: #05070c; color: var(--ink); border: 1px solid var(--line); border-radius: 8px; padding: .5rem; }
+  #msg { min-height: 1.4rem; }
+</style>
+</head>
+<body>
+<p class="flag">Sensortest iPhone — technische proof-of-concept, niet definitief</p>
+<main>
+  <h1>Sensortest: oriëntatie, beweging, neerleggen, oppakken</h1>
+  <p class="small">Fase 1: alleen technisch bewijs. Alle sensordata blijft in deze browser; er wordt niets opgeslagen of verstuurd, er is geen analytics. Open deze pagina in Safari op een iPhone (niet in een in-app browser) via <b>https</b>.</p>
+
+  <div class="btns">
+    <button id="start" type="button">Start sensortest</button>
+    <button id="calibrate" type="button" class="secondary" disabled>Kalibreer huidige positie</button>
+  </div>
+  <p id="msg" class="small" aria-live="polite"></p>
+  <div class="btns" id="retry" hidden>
+    <button id="retry-orientation" type="button" class="secondary" hidden>Vraag oriëntatie-toestemming apart</button>
+    <button id="retry-motion" type="button" class="secondary" hidden>Vraag motion-toestemming apart</button>
+  </div>
+
+  <h2>Visuele test: lichtbundel volgt de kijkrichting</h2>
+  <div class="stage">
+    <canvas id="stage" width="640" height="480" aria-label="Lichtpunt dat de kijkrichting van de telefoon volgt"></canvas>
+    <span class="hint">kalibreer, draai dan langzaam links/rechts en richt omhoog/omlaag</span>
+    <span class="view" id="viewtxt">yaw — · pitch — · roll —</span>
+  </div>
+  <p class="small">Rode rand = buiten het bereik (±<span id="fovh">35</span>° horizontaal, ±<span id="fovv">25</span>° verticaal). De bundel is gedempt met factor <span id="smooth">0.25</span> per frame; de ruwe waarden staan rechtsonder.</p>
+
+  <h2>Status</h2>
+  <dl class="kv panel" id="status"></dl>
+
+  <h2>Orientation</h2>
+  <dl class="kv panel" id="orientation"></dl>
+
+  <h2>Motion</h2>
+  <dl class="kv panel" id="motion"></dl>
+
+  <h2>Eventlog (laatste <span id="logmax">14</span>)</h2>
+  <ol class="log panel" id="log" reversed></ol>
+  <div class="btns">
+    <button id="copy" type="button" class="secondary">Kopieer rapport</button>
+    <button id="clearlog" type="button" class="secondary">Log wissen</button>
+  </div>
+  <textarea id="report" hidden readonly aria-label="Rapporttekst"></textarea>
+
+  <h2>Beschikbare API's</h2>
+  <dl class="kv panel" id="apis"></dl>
+
+  <details>
+    <summary>Testprocedure</summary>
+    <ol>
+      <li>Druk <b>Start sensortest</b> en geef toestemming in het iOS-venster.</li>
+      <li>Houd de iPhone normaal rechtop voor je (portret) en druk <b>Kalibreer huidige positie</b>.</li>
+      <li>Draai langzaam naar links en rechts: de bundel moet dezelfde kant op, zonder sprongen.</li>
+      <li>Richt omhoog en omlaag: de bundel moet omhoog/omlaag. Kantel de telefoon: de horizonlijn draait mee.</li>
+      <li>Houd 30–60 s stil: loopt yaw weg (drift)? Noteer hoeveel graden.</li>
+      <li>Beweeg de telefoon wat sneller: <b>moving YES</b>, bij een ferme beweging „strong”.</li>
+      <li>Houd stil: na ± 1,5 s <b>stationary YES</b>.</li>
+      <li>Leg de telefoon plat op tafel, scherm omhoog, en wacht: na ± 2 s <b>flat/stable YES</b>.</li>
+      <li>Tik één keer tegen de tafel: dat moet „bump” geven, geen pickup.</li>
+      <li>Pak de telefoon op: <b>pickup YES</b> in het log, met de reden (kanteling of aanhoudende beweging).</li>
+      <li>Druk <b>Kopieer rapport</b> en plak de tekst in de chat.</li>
+    </ol>
+    <p class="small">Drempels tunen zonder nieuwe deploy: zet ze in de URL, bijvoorbeeld <code>?STILL_ACCEL=0.3&amp;FLAT_MS=1500</code>. De actieve waarden staan in het rapport.</p>
+  </details>
+</main>
+<script type="module" src="sensor-poc.mjs"></script>
+</body>
+</html>
