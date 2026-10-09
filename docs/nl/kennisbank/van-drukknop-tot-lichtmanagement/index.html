@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="nl" data-base="/" data-v="a248d6c7">
+<html lang="nl" data-base="/" data-v="cb461fd6">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,12 +16,12 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D&#39;http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg&#39;%20viewBox%3D&#39;0%200%2032%2032&#39;%3E%3Crect%20width%3D&#39;32&#39;%20height%3D&#39;32&#39;%20rx%3D&#39;7&#39;%20fill%3D&#39;%23072d78&#39;%2F%3E%3Crect%20x%3D&#39;6&#39;%20y%3D&#39;8&#39;%20width%3D&#39;15&#39;%20height%3D&#39;4.5&#39;%20rx%3D&#39;1.6&#39;%20fill%3D&#39;%23fff&#39;%2F%3E%3Cpath%20d%3D&#39;M8.5%2012.5%2018.5%2012.5%2023%2024.5%204%2024.5Z&#39;%20fill%3D&#39;%23ffd166&#39;%20fill-opacity%3D&#39;.92&#39;%2F%3E%3Ccircle%20cx%3D&#39;25.5&#39;%20cy%3D&#39;10.2&#39;%20r%3D&#39;2&#39;%20fill%3D&#39;%237fb2ff&#39;%2F%3E%3Cpath%20d%3D&#39;M22.2%206.5a4.7%204.7%200%200%201%206.6%200&#39;%20fill%3D&#39;none&#39;%20stroke%3D&#39;%237fb2ff&#39;%20stroke-width%3D&#39;1.5&#39;%20stroke-linecap%3D&#39;round&#39;%2F%3E%3C%2Fsvg%3E">
 
-<link rel="stylesheet" href="/assets/site.css?v=a248d6c7">
+<link rel="stylesheet" href="/assets/site.css?v=cb461fd6">
 <link rel="stylesheet" href="/assets/platform.css?v=82bbc4b3">
 <link rel="stylesheet" href="/assets/ladder.css?v=2fd9ebea">
 <link rel="stylesheet" href="/assets/widgets.css?v=492d7b5f">
 
-<script type="module" src="/assets/site.js?v=a248d6c7"></script>
+<script type="module" src="/assets/site.js?v=cb461fd6"></script>
 </head>
 <body>
 
@@ -98,7 +98,7 @@
 <p>Eén wandregelaar bevat alles: de bediening, de besturing die de DALI-opdrachten geeft en de busvoeding. DALI is een standaard voor digitale lichtsturing; de opdrachten gaan over een stuurkabel, de DALI-bus. Eén buskabel loopt langs alle drivers. Een kleine DALI-installatie hoeft dus helemaal geen centrale kast, server of software te hebben.</p>
 <p class="ld-try"><strong>Probeer:</strong> Druk om aan of uit te schakelen en dim met de schuif: alle armaturen dimmen samen.</p>
 <div class="ld-actions" data-kind="rotary" hidden></div>
-<details class="ld-tech"><summary>Technische uitleg</summary><ul><li>In DALI-termen zitten hier bediening, besturing (application controller: beslist wat het licht doet) en busvoeding (bus power supply) in één product. De drivers heten in DALI control gear.</li><li>Zo’n regelaar werkt standaard met broadcast: één opdracht voor alle armaturen op de DALI-bus. Groepen zijn pas mogelijk na configuratie, en alleen als het product dat ondersteunt.</li><li>De ingebouwde busvoeding werkt alleen als de regelaar zelf netspanning krijgt.</li><li>Er bestaan single-master- en multi-masteruitvoeringen. Een single-master moet de enige besturing op de bus zijn. Een multi-master kan samen met andere multi-masters op één bus. Wil je meerdere van zulke regelaars op één DALI-bus, dan moeten het dus geschikte multi-masters zijn.</li><li>Hoeveel drivers op de bus kunnen, hangt af van de busvoeding van het product: dat staat in het productblad.</li></ul></details>
+<details class="ld-tech"><summary>Technische uitleg</summary><ul><li>In DALI-termen zitten hier bediening, besturing (application controller: beslist wat het licht doet) en busvoeding (bus power supply) in één product. De drivers heten in DALI control gear.</li><li>Zo’n regelaar werkt standaard met broadcast: één opdracht voor alle armaturen op de DALI-bus. Groepen zijn pas mogelijk na configuratie, en alleen als het product dat ondersteunt.</li><li>De ingebouwde busvoeding werkt alleen als de regelaar zelf netspanning krijgt.</li><li>Wil je meerdere van zulke regelaars op één DALI-bus, dan moeten het multi-masters zijn: besturingen die de bus met andere besturingen kunnen delen.</li><li>Hoeveel drivers op de bus kunnen, hangt af van de busvoeding van het product: dat staat in het productblad.</li></ul></details>
 </section><section class="ld-level" data-lv="losse-voeding" aria-label="Niveau 3: Dezelfde bediening, de busvoeding apart">
 <p class="ld-sub"><span class="ld-nr">3</span> Functies verdeeld over producten <span class="ld-cat" data-cat="regeling">Regeling</span></p>
 <h4 class="ld-h">Dezelfde bediening, de busvoeding apart</h4>
@@ -147,7 +147,7 @@
 <p>Een deel van de ruimte is bedraad met DALI, een ander deel werkt draadloos. Een gateway verbindt beide delen en vertaalt tussen die twee. Als het gekozen systeem dat ondersteunt, regelt één bovenliggende regeling beide delen als één geheel.</p>
 <p class="ld-try"><strong>Probeer:</strong> Laat iemand binnenkomen of druk op de knop: de gevelzone krijgt de opdracht via radio, de binnenzone via de gateway en de DALI-bus.</p>
 <div class="ld-actions" data-kind="hybride" hidden></div>
-<details class="ld-tech"><summary>Technische uitleg</summary><ul><li>Een gateway tussen een draadloos netwerk en een DALI-bus vertaalt tussen twee systemen. Volgens de DALI Alliance stuurt zo’n gateway de bedrade armaturen meestal samen aan.</li><li>Of bedrade en draadloze delen één regeling en één beheer delen en samen in bedrijf worden gesteld, verschilt per systeem.</li><li>Hybride is vaak een keuze bij renovatie of uitbreiding. Gebruik bestaande, bruikbare busbekabeling waar dat kan. Draadloos kan interessant zijn waar nieuwe stuurkabel te ingrijpend, te duur of onpraktisch is.</li></ul></details>
+<details class="ld-tech"><summary>Technische uitleg</summary><ul><li>Een gateway tussen een draadloos netwerk en een DALI-bus vertaalt tussen twee systemen. Volgens de technische gids van de DALI Alliance (2021) stuurt zo’n gateway alle bedrade armaturen samen aan (broadcast).</li><li>Of bedrade en draadloze delen één regeling en één beheer delen en samen in bedrijf worden gesteld, verschilt per systeem.</li><li>Hybride is vaak een keuze bij renovatie of uitbreiding. Gebruik bestaande, bruikbare busbekabeling waar dat kan. Draadloos kan interessant zijn waar nieuwe stuurkabel te ingrijpend, te duur of onpraktisch is.</li></ul></details>
 </section><section class="ld-level" data-lv="gebouw" aria-label="Niveau 10: Gebouwintegratie">
 <p class="ld-sub"><span class="ld-nr">10</span> Koppeling met het gebouwbeheer <span class="ld-cat" data-cat="gebouwintegratie">Gebouwintegratie</span></p>
 <h4 class="ld-h">Gebouwintegratie</h4>
@@ -182,30 +182,26 @@
 </details>
 </article><article class="part" id="onderdeel-input-device">
 <h3>Input device</h3>
-<div class="block block--text"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>Een invoerapparaat (input device) levert informatie: een sensor meldt beweging of een lichtwaarde, een drukknopinterface meldt een druk. Een invoerapparaat stuurt de drivers niet zelf aan.</p></div>
+<p>Een invoerapparaat op de DALI-bus dat informatie levert, zoals een sensor of een drukknopinterface. Het beslist niet zelf wat het licht doet.</p>
 
 
 
 
 
 <details class="more"><summary>Meer over Input device</summary>
-<div class="block block--text"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>Voor een werkende DALI-2-regeling moet er ergens een besturing (application controller) zijn die de meldingen gebruikt en de opdrachten geeft.</p></div><div class="block block--list"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>Waar die besturing zit, verschilt per opbouw:</p><ul><li>in hetzelfde product, zoals een sensor met besturing;</li><li>in een aparte besturing op dezelfde bus;</li><li>in een groter lichtmanagementsysteem.</li></ul></div><aside class="block block--callout"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>Dus niet: „sensor plus busvoeding is altijd een werkend systeem”. Kijk eerst welke rollen de sensor heeft.</p></aside>
+<div class="block block--list"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>Waar die besturing zit, verschilt per opbouw:</p><ul><li>in hetzelfde product, zoals een sensor met besturing;</li><li>in een aparte besturing op dezelfde bus;</li><li>in een groter lichtmanagementsysteem.</li></ul></div><aside class="block block--callout"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>Dus niet: „sensor plus busvoeding is altijd een werkend systeem”. Kijk eerst welke rollen de sensor heeft.</p></aside>
 
 
 </details>
 </article><article class="part" id="onderdeel-application-controller">
 <h3>Application controller</h3>
-<div class="block block--text"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>Een besturing (application controller) beslist wat het licht doet. Ze gebruikt de meldingen van invoerapparaten (input devices), zoals sensoren en drukknoppen, en stuurt opdrachten naar de drivers (control gear).</p></div>
+<p>Het deel van een DALI-systeem dat beslist en de opdrachten aan de drivers geeft; in gewone woorden: de besturing.</p>
 
 
 
 
 
-<details class="more"><summary>Meer over Application controller</summary>
-<div class="block block--text"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>Alleen een besturing geeft opdrachten aan drivers. Ze kan een eigen product zijn, of zitten in een wandregelaar, een sensor of een lichtmanagementsysteem.</p></div><div class="block block--text"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>Er zijn single-masters en multi-masters. Een single-master moet de enige besturing op de bus zijn. Een multi-master kan samen met andere multi-masters op één bus. Dat zegt niets over hoe groot een systeem is: ook een single-master kan een groot systeem besturen. Welke van de twee een product is, staat in het productblad.</p></div>
 
-
-</details>
 </article><article class="part" id="onderdeel-broadcast">
 <h3>Broadcast</h3>
 <div class="block block--text"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>Broadcast is een manier om een DALI-opdracht te adresseren: aan alle drivers op de bus tegelijk. Een opdracht kan ook naar een groep of naar één adres gaan.</p></div>
@@ -215,7 +211,7 @@
 
 
 <details class="more"><summary>Meer over Broadcast</summary>
-<div class="block block--text"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>Nieuwe DALI-drivers reageren af fabriek op broadcast, zonder adres. Voor broadcast hoeven de drivers dus niet te worden ingesteld; de sensor of besturing die de opdrachten geeft soms wel.</p></div><div class="block block--list"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>Wat broadcast níét betekent:</p><ul><li>Dat er geen besturing is: er is altijd iets dat de opdracht geeft.</li><li>Dat het een ander soort DALI-bus is: dezelfde drivers kunnen later een adres en een groep krijgen.</li><li>Dat een driver „op broadcast staat”: de besturing kiest of ze een opdracht naar alle drivers, een groep of één adres stuurt.</li></ul></div>
+<div class="block block--text"><p>Nieuwe DALI-drivers reageren af fabriek op broadcast, zonder adres. Voor broadcast hoeven de drivers dus niet te worden ingesteld; de sensor of besturing die de opdrachten geeft soms wel.</p></div><div class="block block--list"><p class="kbasis kbasis--protocol" title="Vastgelegd in een standaard; uit de officiële documentatie van de standaardorganisatie.">Norm</p><p>Wat broadcast níét betekent:</p><ul><li>Dat er geen besturing is: er is altijd iets dat de opdracht geeft.</li><li>Dat het een ander soort DALI-bus is: dezelfde drivers kunnen later een adres en een groep krijgen.</li><li>Dat een driver „op broadcast staat”: de besturing kiest of ze een opdracht naar alle drivers, een groep of één adres stuurt.</li></ul></div>
 
 
 </details>
@@ -241,7 +237,7 @@
 
 
 <details class="more"><summary>Meer over Drukknopdimmen</summary>
-<div class="block block--text"><p class="kbasis kbasis--ontwerp" title="Algemeen werkingsprincipe of ontwerpregel: geen eis uit een norm en geen productgrens.">Principe</p><p>Kort drukken schakelt, lang drukken dimt, en bij iedere nieuwe lange druk keert de richting om.</p></div><div class="block block--list"><p class="kbasis kbasis--ontwerp" title="Algemeen werkingsprincipe of ontwerpregel: geen eis uit een norm en geen productgrens.">Principe</p><p>Wat het niet is:</p><ul><li>Geen DALI: er is geen busvoeding, geen adres, geen groep en geen terugmelding. Alle drivers op dezelfde drukknop krijgen hetzelfde signaal.</li><li>Geen norm: iedere fabrikant heeft een eigen functie met een eigen naam, zoals switchDIM, Touch DIM of Touch and Dim.</li><li>Geen pulsdimmer: dat is een inbouwdimmer die zelf de netspanning dimt.</li><li>Geen DALI-drukknopinterface: die zit op de DALI-bus en meldt aan een besturing.</li></ul></div><div class="block block--list"><p class="kbasis kbasis--ontwerp" title="Algemeen werkingsprincipe of ontwerpregel: geen eis uit een norm en geen productgrens.">Principe</p><p>Grenzen die meerdere fabrikanten noemen:</p><ul><li>Gebruik geen drukknop met glimlampje of verlichting.</li><li>Er geldt een maximum aantal drivers per drukknop; het getal verschilt per fabrikant.</li><li>Gebruik drukknopdimmen niet tegelijk met DALI-sturing.</li><li>Drivers kunnen uit de pas gaan lopen; hoe je ze weer gelijk zet, verschilt per fabrikant.</li><li>Zet geen verschillende typen drivers op dezelfde drukknop.</li><li>Zet alleen netspanning op een ingang die daarvoor bedoeld is. De stuurdraad voert netspanning: behandel hem ook zo.</li></ul></div>
+<div class="block block--text"><p>Kort drukken schakelt, lang drukken dimt, en bij iedere nieuwe lange druk keert de richting om.</p></div><div class="block block--list"><p class="kbasis kbasis--ontwerp" title="Algemeen werkingsprincipe of ontwerpregel: geen eis uit een norm en geen productgrens.">Principe</p><p>Wat het niet is:</p><ul><li>Geen DALI: er is geen busvoeding, geen adres, geen groep en geen terugmelding. Alle drivers op dezelfde drukknop krijgen hetzelfde signaal.</li><li>Geen norm: iedere fabrikant heeft een eigen functie met een eigen naam, zoals switchDIM, Touch DIM of Touch and Dim.</li><li>Geen pulsdimmer: dat is een inbouwdimmer die zelf de netspanning dimt.</li><li>Geen DALI-drukknopinterface: die zit op de DALI-bus en meldt aan een besturing.</li></ul></div><div class="block block--list"><p class="kbasis kbasis--ontwerp" title="Algemeen werkingsprincipe of ontwerpregel: geen eis uit een norm en geen productgrens.">Principe</p><p>Grenzen die meerdere fabrikanten noemen:</p><ul><li>Gebruik geen drukknop met glimlampje of verlichting.</li><li>Er geldt een maximum aantal drivers per drukknop; het getal verschilt per fabrikant.</li><li>Gebruik drukknopdimmen niet tegelijk met DALI-sturing.</li><li>Drivers kunnen uit de pas gaan lopen; hoe je ze weer gelijk zet, verschilt per fabrikant.</li><li>Zet geen verschillende typen drivers op dezelfde drukknop.</li><li>Zet alleen netspanning op een ingang die daarvoor bedoeld is. De stuurdraad voert netspanning: behandel hem ook zo.</li></ul></div>
 
 <p class="more-label">Goed om te weten</p><ul class="limitations"><li>Tijden, maximale aantallen, kabellengte en het gedrag na een spanningsonderbreking verschillen per fabrikant: volg het productblad van de driver.</li></ul>
 </details>
@@ -298,7 +294,7 @@
 
 
 <aside class="academy-deep" aria-labelledby="l-academy-deep"><h2 id="l-academy-deep">Verdieping in de Academy</h2>
-<p>Wil je zien hoe dit in een echt lichtmanagementsysteem wordt toegepast? In de Academy oefen je stap voor stap met één bestaand systeem als voorbeeld.</p>
+<p>In de Academy oefen je dit stap voor stap, met één bestaand systeem als voorbeeld.</p>
 <p class="academy-deep-routes">Leerroutes:</p>
 <ul class="academy-deep-list"><li>Basis lichtsturing</li><li>DALI basis</li></ul>
 <p class="academy-deep-more"><a href="/nl/academy/">Meer over de Academy</a></p></aside>
