@@ -53,6 +53,14 @@
 .pf-academy p { margin: 0; color: var(--text); max-width: var(--measure); }
 .pf-academy-action:empty { display: none; }
 .pf-academy-page .pf-academy { margin-top: var(--s-7); }
+.pf-reach { grid-column: 1 / -1; padding: var(--s-3) var(--s-4); border-radius: var(--radius); background: var(--bg); border: 1px solid var(--line); }
+.pf-reach[data-state="down"] { background: var(--warn-pale); border-color: var(--warn); }
+.pf-reach p + p { margin-top: var(--s-2); }
+.pf-reach-actions { display: flex; flex-wrap: wrap; gap: var(--s-3); align-items: center; }
+.pf-reach-retry { min-height: 44px; padding: 0 var(--s-4); font: inherit; font-weight: 650; color: var(--blue); background: var(--bg); border: 1px solid var(--blue); border-radius: var(--radius); cursor: pointer; }
+.pf-reach-retry:hover { color: var(--on-blue); background: var(--blue); }
+.pf-reach-retry:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+.pf-academy-action a[aria-busy="true"] { cursor: progress; opacity: .75; }
 .pf-prose { max-width: var(--measure); }
 .pf-prose .block + .block { margin-top: var(--s-4); }
 
@@ -67,7 +75,7 @@
   .pf-hero h1 { font-size: 3rem; }
   .pf-audiences { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
-@media print { .pf-cta-row, .pf-academy-action { display: none; } }
+@media print { .pf-cta-row, .pf-academy-action, .pf-reach { display: none; } }
 @media (forced-colors: active) { .pf-button { border: 1px solid ButtonText; } }
 
 .kbasis { display: table; margin: 0 0 var(--s-1); padding: 0 .45rem; border: 1px solid currentColor; border-radius: 999px; font-size: .6875rem; font-weight: 700; letter-spacing: .04em; line-height: 1.5; text-transform: uppercase; }
