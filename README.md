@@ -9,9 +9,6 @@ over lichtsturing. Normen, productdocumentatie en projectspecificaties blijven l
 - Broncode, content, bronnen en redactie worden elders beheerd. Deze repository bevat geen bronbestanden.
 - De 41 publieke pagina’s in `docs/sitemap.xml` zijn bedoeld voor indexering. Test- en overige niet-publieke indexdoelen behouden hun `noindex`-instelling.
 - **Let op:** bij iedere nieuwe publicatie wordt `docs/` vanuit de externe broncode opnieuw gegenereerd. De generator moet daarom dezelfde SEO-instellingen toepassen, anders keert de oude indexeringsblokkade terug.
+- Op de 41 publieke pagina’s staat de bezoekersteller van het Denckh.-dashboard (`https://dashboard.denckh.nl/s.js`: cookieloos, geen persoonsgegevens), met een privacyregel in de voettekst. De teller zit in de generator (siteprofiel `kennisplatform.teller`), dus iedere publicatie neemt hem vanzelf mee; plaats hem hier niet met de hand.
 - Productnamen en merknamen behoren toe aan hun respectieve rechthebbenden.
 - Iedere publicatiecommit heet „Publicatie <commit>”; terugdraaien kan door die commit terug te zetten.
-
-## Bezoekersteller (dashboard.denckh.nl)
-
-De openbare pagina's (precies die in `docs/sitemap.xml`) hebben de cookieloze teller van het Denckh.-dashboard en een korte privacyregel in de voettekst. Zolang de generator dit niet zelf doet: **na iedere publicatie** `python scripts/teller.py` draaien (idempotent) en controleren met `python scripts/teller.py --controleer`. Test-, preview- en noindex-pagina's krijgen geen teller. De teller zet geen cookies en legt alleen pagina, dag en herkomstcategorie vast. Verwijderen: het script uit de generator/publicatie weglaten.
