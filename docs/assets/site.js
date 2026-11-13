@@ -28,3 +28,13 @@ const openTarget = () => {
 };
 openTarget();
 addEventListener('hashchange', openTarget);
+
+document.addEventListener('click', (e) => {
+  const a = e.target.closest?.('.lang-switch a[hreflang]');
+  if (a) {
+    try {
+      localStorage.setItem('ll-lang', a.getAttribute('hreflang'));
+    } catch {
+    }
+  }
+});
