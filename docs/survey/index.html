@@ -21,10 +21,10 @@ a{color:#980026}
 <p><a href="https://enquete.martijndenbesten.com/survey?lang=nl">Open de vragenlijst</a></p>
 <footer>Lichtsturing.info is een merkonafhankelijk kennisplatform over lichtsturing.</footer>
 </main>
-<iframe id="survey" title="Vragenlijst" sandbox="allow-scripts allow-same-origin" referrerpolicy="no-referrer" hidden></iframe>
+<iframe id="survey" title="Vragenlijst" sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox" referrerpolicy="no-referrer" hidden></iframe>
 <script>
 const origin = 'https://enquete.martijndenbesten.com';
-const languages = ['en', 'nl', 'de', 'pl'];
+const languages = ['en', 'nl', 'de', 'pl', 'fr'];
 const frame = document.querySelector('#survey');
 const fallback = document.querySelector('#fallback');
 const current = new URL(location.href);
