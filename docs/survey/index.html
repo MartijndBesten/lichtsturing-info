@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<title>Naar de vragenlijst</title>
+</head>
+<body>
+<main>
+<h1>Naar de vragenlijst</h1>
+<p><a href="https://enquete.martijndenbesten.com/survey?lang=nl">Open de vragenlijst</a></p>
+</main>
+<footer>Lichtsturing.info is een merkonafhankelijk kennisplatform over lichtsturing.</footer>
+<script>
+const destination = new URL(document.querySelector('main a').href);
+const source = new URLSearchParams(location.search);
+const lang = source.get('lang');
+if (['en', 'nl', 'de', 'pl'].includes(lang)) destination.searchParams.set('lang', lang);
+if (source.get('preview') === '1') destination.searchParams.set('preview', '1');
+location.replace(destination.href);
+</script>
+</body>
+</html>
