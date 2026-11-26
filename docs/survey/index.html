@@ -2,24 +2,52 @@
 <html lang="nl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<title>Naar de vragenlijst</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; frame-src https://enquete.martijndenbesten.com; base-uri 'none'; form-action 'none'">
+<title>Vragenlijst</title>
+<style>
+html,body{margin:0;background:#f4f3f1;color:#1e1c20;font-family:system-ui,sans-serif}
+iframe{display:block;border:0;width:100%;height:100vh;height:100dvh}
+[hidden]{display:none!important}
+main{width:min(100% - 2rem,42rem);margin:4rem auto}
+a{color:#980026}
+</style>
 </head>
 <body>
-<main>
-<h1>Naar de vragenlijst</h1>
+<main id="fallback">
+<h1>Vragenlijst</h1>
 <p><a href="https://enquete.martijndenbesten.com/survey?lang=nl">Open de vragenlijst</a></p>
-</main>
 <footer>Lichtsturing.info is een merkonafhankelijk kennisplatform over lichtsturing.</footer>
+</main>
+<iframe id="survey" title="Vragenlijst" sandbox="allow-scripts allow-same-origin" referrerpolicy="no-referrer" hidden></iframe>
 <script>
-const destination = new URL(document.querySelector('main a').href);
-const source = new URLSearchParams(location.search);
-const lang = source.get('lang');
-if (['en', 'nl', 'de', 'pl'].includes(lang)) destination.searchParams.set('lang', lang);
-if (source.get('preview') === '1') destination.searchParams.set('preview', '1');
-location.replace(destination.href);
+const origin = 'https://enquete.martijndenbesten.com';
+const languages = ['en', 'nl', 'de', 'pl'];
+const frame = document.querySelector('#survey');
+const fallback = document.querySelector('#fallback');
+const current = new URL(location.href);
+const requested = current.searchParams.get('lang');
+const initialStep = Number(current.searchParams.get('step'));
+const url = new URL('/survey', origin);
+url.searchParams.set('lang', languages.includes(requested) ? requested : 'nl');
+if (Number.isInteger(initialStep) && initialStep >= 1 && initialStep <= 21) url.searchParams.set('step', initialStep);
+fallback.querySelector('a').href = url.href;
+addEventListener('message', event => {
+  if (event.origin !== origin || event.source !== frame.contentWindow) return;
+  const {type, lang, step} = event.data ?? {};
+  if (type !== 'survey-location' || !languages.includes(lang) || !Number.isInteger(step) || step < 0 || step > 21) return;
+  const visible = new URL(location.href);
+  visible.searchParams.set('lang', lang);
+  if (step) visible.searchParams.set('step', step); else visible.searchParams.delete('step');
+  history.replaceState(history.state, '', visible);
+  document.documentElement.lang = lang;
+  frame.hidden = false;
+  fallback.hidden = true;
+});
+url.searchParams.set('embed', '1');
+frame.src = url.href;
 </script>
 </body>
 </html>
